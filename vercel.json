@@ -1,0 +1,28 @@
+{
+  "cleanUrls": true,
+  "trailingSlash": true,
+  "redirects": [
+    { "source": "/home", "destination": "/", "permanent": true },
+    { "source": "/real-estate-sellers", "destination": "/sellers", "permanent": true },
+    { "source": "/real-estate-buyers", "destination": "/buyers", "permanent": true },
+    { "source": "/search-tampa-bay-properties", "destination": "/search", "permanent": true },
+    { "source": "/best-mortgage-advice", "destination": "/mortgage-advice", "permanent": true },
+    { "source": "/best-mortgage-advice/:slug*", "destination": "/mortgage-advice", "permanent": true },
+    { "source": "/tampa-bay-recommendation-wizard", "destination": "/tampa-bay-recommendations", "permanent": true },
+    { "source": "/subscribe", "destination": "/contact", "permanent": true },
+    { "source": "/rsvp", "destination": "/contact", "permanent": true },
+    { "source": "/building-inquiry", "destination": "/contact", "permanent": true },
+    { "source": "/new-page-1", "destination": "/", "permanent": true },
+    { "source": "/blog/:slug*", "destination": "/", "permanent": false }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        { "key": "X-Frame-Options", "value": "SAMEORIGIN" },
+        { "key": "X-Content-Type-Options", "value": "nosniff" },
+        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" }
+      ]
+    }
+  ]
+}

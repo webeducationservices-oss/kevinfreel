@@ -1,0 +1,616 @@
+{
+  "properties": [
+    {
+      "slug": "grandifloras",
+      "name": "11 Grandifloras",
+      "location": "Homosassa, FL",
+      "description": "Sprawling Florida estate with saltwater pool and screened lanai, tucked into mature oaks and pines.",
+      "photos": [
+        {
+          "file": "exterior-aerial-1",
+          "category": "aerial",
+          "description": "Aerial view of the Grandifloras estate surrounded by mature forest and an expansive circular driveway."
+        },
+        {
+          "file": "exterior-1",
+          "category": "exterior",
+          "description": "Front elevation of the single-story estate with tile roof, arched entry and three-car garage."
+        },
+        {
+          "file": "detail-1",
+          "category": "detail",
+          "description": "Covered front entry with red shutters, patterned tile paving and intimate seating nook."
+        },
+        {
+          "file": "living-1",
+          "category": "interior",
+          "description": "Open great room with tray ceiling, built-in bookshelves and sliding glass doors to the pool."
+        },
+        {
+          "file": "kitchen-1",
+          "category": "kitchen",
+          "description": "Eat-in kitchen with granite island, pendant lighting and sliders opening to the screened lanai."
+        },
+        {
+          "file": "bedroom-1",
+          "category": "bedroom",
+          "description": "Generous primary suite with tray ceiling, sitting area and backyard-facing sliders."
+        },
+        {
+          "file": "bedroom-2",
+          "category": "bedroom",
+          "description": "Bright guest bedroom with sliding doors leading to the pool patio and a paver deck."
+        },
+        {
+          "file": "pool-1",
+          "category": "outdoor",
+          "description": "Screen-enclosed saltwater pool and spa with travertine decking, backing to private woods."
+        },
+        {
+          "file": "exterior-aerial-2",
+          "category": "aerial",
+          "description": "Overhead view of the estate's cul-de-sac setting surrounded by acres of preserved woodland."
+        },
+        {
+          "file": "exterior-2",
+          "category": "exterior",
+          "description": "Daytime front elevation with arched windows, red shutters and three-car garage."
+        },
+        {
+          "file": "interior-1",
+          "category": "interior",
+          "description": "Home office/library with built-in bookshelves, French doors and neutral decor."
+        },
+        {
+          "file": "exterior-aerial-3",
+          "category": "aerial",
+          "description": "Zoomed aerial with locator pin showing the estate and its screened pool on the private lot."
+        }
+      ]
+    },
+    {
+      "slug": "lemon",
+      "name": "1206 W Lemon",
+      "location": "Tampa, FL",
+      "description": "Three new construction townhomes near downtown Tampa with designer kitchens, oak floors and open layouts.",
+      "photos": [
+        {
+          "file": "exterior-1",
+          "category": "exterior",
+          "description": "Three coastal-modern townhomes with blue and white siding and individual gated entries."
+        },
+        {
+          "file": "exterior-aerial-1",
+          "category": "aerial",
+          "description": "Aerial view of the townhomes with the downtown Tampa skyline in the background."
+        },
+        {
+          "file": "kitchen-1",
+          "category": "kitchen",
+          "description": "Open chef's kitchen with white cabinetry, oversized island and stainless wall ovens."
+        },
+        {
+          "file": "interior-1",
+          "category": "interior",
+          "description": "Bright entry and living area with white oak floors and abundant natural light."
+        },
+        {
+          "file": "bedroom-1",
+          "category": "bedroom",
+          "description": "Primary bedroom with ensuite bath and a view to the gold-accent vanity through the open doorway."
+        },
+        {
+          "file": "bedroom-2",
+          "category": "bedroom",
+          "description": "Secondary bedroom with built-in closet and warm oak plank flooring."
+        },
+        {
+          "file": "bathroom-1",
+          "category": "bathroom",
+          "description": "Powder bath with arched mirror, quartz counter and matte black fixtures."
+        },
+        {
+          "file": "exterior-2",
+          "category": "exterior",
+          "description": "Angled street view of the townhome trio with blue-and-white siding and arching rooflines."
+        },
+        {
+          "file": "exterior-aerial-2",
+          "category": "aerial",
+          "description": "Lifted aerial view showing the townhomes with the downtown Tampa skyline as a backdrop."
+        },
+        {
+          "file": "bedroom-3",
+          "category": "bedroom",
+          "description": "Spacious upstairs bedroom with three oversized windows, oak plank floors and fresh paint."
+        },
+        {
+          "file": "kitchen-2",
+          "category": "kitchen",
+          "description": "Kitchen detail showing the waterfall island, natural wood cabinetry and pendant lighting."
+        },
+        {
+          "file": "interior-2",
+          "category": "interior",
+          "description": "Sunlit upstairs hallway with oak floors and open stair rail."
+        }
+      ]
+    },
+    {
+      "slug": "coverdale",
+      "name": "12861 Coverdale",
+      "location": "Riverview, FL",
+      "description": "Light-filled single-family home with vaulted ceilings in an established neighborhood near community amenities.",
+      "photos": [
+        {
+          "file": "exterior-1",
+          "category": "exterior",
+          "description": "Classic white brick home with arched window, attached garage and welcoming front walkway."
+        },
+        {
+          "file": "exterior-2",
+          "category": "exterior",
+          "description": "Front elevation with young palm and fresh landscape island at the entry."
+        },
+        {
+          "file": "exterior-3",
+          "category": "exterior",
+          "description": "Straight-on view of the white brick facade, arched window and tile roofline."
+        },
+        {
+          "file": "exterior-aerial-1",
+          "category": "aerial",
+          "description": "Overhead aerial of the home and its tree-lined Riverview neighborhood."
+        },
+        {
+          "file": "exterior-aerial-2",
+          "category": "aerial",
+          "description": "High aerial showing the property's position within the subdivision near community parks."
+        },
+        {
+          "file": "exterior-aerial-3",
+          "category": "aerial",
+          "description": "Lower aerial showing the home's well-kept block and immediate surroundings."
+        },
+        {
+          "file": "living-1",
+          "category": "interior",
+          "description": "Vaulted-ceiling living and dining area with modern fan and tile flooring."
+        },
+        {
+          "file": "kitchen-1",
+          "category": "kitchen",
+          "description": "Galley kitchen with stainless appliances, painted cabinets and natural light."
+        },
+        {
+          "file": "bedroom-1",
+          "category": "bedroom",
+          "description": "Secondary bedroom currently used as a nursery with wood-look plank flooring."
+        },
+        {
+          "file": "outdoor-1",
+          "category": "outdoor",
+          "description": "Fenced side yard patio with covered area and access to the backyard."
+        },
+        {
+          "file": "outdoor-2",
+          "category": "outdoor",
+          "description": "Fully fenced backyard with concrete patio, perfect for families and play."
+        },
+        {
+          "file": "detail-1",
+          "category": "detail",
+          "description": "Covered front entry detail with hardy board siding and welcoming threshold."
+        }
+      ]
+    },
+    {
+      "slug": "central",
+      "name": "2204 N Central #1",
+      "location": "Tampa, FL",
+      "description": "Tampa Heights bungalow-style townhome with craftsman details, designer finishes and a covered front porch.",
+      "photos": [
+        {
+          "file": "exterior-1",
+          "category": "exterior",
+          "description": "Corner-lot craftsman townhome with white siding, wraparound porch and brick pavers."
+        },
+        {
+          "file": "exterior-2",
+          "category": "exterior",
+          "description": "Front elevation showing the covered porch, magnolia tree and picket fence."
+        },
+        {
+          "file": "exterior-3",
+          "category": "exterior",
+          "description": "Front view of the white craftsman townhome with mature trees framing the facade."
+        },
+        {
+          "file": "exterior-4",
+          "category": "exterior",
+          "description": "Secondary-angle exterior showing the symmetrical porch and entry columns."
+        },
+        {
+          "file": "living-1",
+          "category": "interior",
+          "description": "Open living room with modern ceiling fan, oak floors and double French doors to the porch."
+        },
+        {
+          "file": "kitchen-1",
+          "category": "kitchen",
+          "description": "Chef's kitchen with waterfall island, lantern pendants and arabesque tile backsplash."
+        },
+        {
+          "file": "kitchen-2",
+          "category": "kitchen",
+          "description": "Alternate kitchen view showing the dark island, gold chair accents and range hood."
+        },
+        {
+          "file": "outdoor-1",
+          "category": "outdoor",
+          "description": "Charming covered porch strung with Edison lights overlooking a private artificial-turf yard."
+        },
+        {
+          "file": "interior-1",
+          "category": "interior",
+          "description": "Spacious walk-in closet with custom shelving, drawers and shoe storage."
+        },
+        {
+          "file": "bathroom-1",
+          "category": "bathroom",
+          "description": "Powder bath with circular gold mirror, navy vanity and modern towel ring."
+        },
+        {
+          "file": "exterior-aerial-1",
+          "category": "aerial",
+          "description": "Aerial view of the townhome in its tree-lined Tampa Heights neighborhood."
+        },
+        {
+          "file": "exterior-aerial-2",
+          "category": "aerial",
+          "description": "Aerial showing the home's proximity to downtown Tampa on the horizon."
+        }
+      ]
+    },
+    {
+      "slug": "frances",
+      "name": "418 W Frances",
+      "location": "Tampa, FL",
+      "description": "Newly built modern farmhouse in Tampa Heights with designer kitchen, wide-plank oak floors and soaring ceilings.",
+      "photos": [
+        {
+          "file": "exterior-1",
+          "category": "exterior",
+          "description": "Modern farmhouse facade in sage green stucco and white siding with dramatic black-framed windows."
+        },
+        {
+          "file": "exterior-2",
+          "category": "exterior",
+          "description": "Front elevation showing the fresh sod, twin palms and contrast-color siding."
+        },
+        {
+          "file": "exterior-aerial-1",
+          "category": "aerial",
+          "description": "Drone view of 418 W Frances with the Tampa skyline visible beyond the Hillsborough River."
+        },
+        {
+          "file": "exterior-3",
+          "category": "exterior",
+          "description": "Secondary front view of the sage-and-white farmhouse framed by a live oak."
+        },
+        {
+          "file": "kitchen-1",
+          "category": "kitchen",
+          "description": "Two-story open kitchen with quartz island, industrial pendants, wall ovens and statement hood."
+        },
+        {
+          "file": "kitchen-2",
+          "category": "kitchen",
+          "description": "Kitchen detail showing the dramatic calacatta quartz island and dome pendants by the stairs."
+        },
+        {
+          "file": "living-1",
+          "category": "interior",
+          "description": "Sunlit living room with oversized windows, oak plank flooring and modern front door."
+        },
+        {
+          "file": "interior-1",
+          "category": "interior",
+          "description": "Upstairs landing with modern black-and-oak staircase and open-concept floor plan."
+        },
+        {
+          "file": "bathroom-1",
+          "category": "bathroom",
+          "description": "Primary bath with double quartz vanity, matte-black fixtures and frameless glass shower."
+        },
+        {
+          "file": "bedroom-1",
+          "category": "bedroom",
+          "description": "Secondary bedroom with oak plank floors and side-by-side closet doors."
+        },
+        {
+          "file": "bedroom-2",
+          "category": "bedroom",
+          "description": "Bedroom with ensuite bath visible through the open door."
+        },
+        {
+          "file": "bedroom-3",
+          "category": "bedroom",
+          "description": "Primary bedroom entry showing closet, ensuite bath and coordinated finishes."
+        }
+      ]
+    },
+    {
+      "slug": "12th-ave",
+      "name": "419 12th Ave",
+      "location": "Indian Rocks Beach, FL",
+      "description": "Waterfront Florida cottage on a protected bayou with dock, open layout and tropical curb appeal.",
+      "photos": [
+        {
+          "file": "exterior-1",
+          "category": "exterior",
+          "description": "Coastal cottage with mature palms, breeze-block facade detail and manicured lawn."
+        },
+        {
+          "file": "exterior-aerial-1",
+          "category": "aerial",
+          "description": "Aerial view showing the home's waterfront setting on a protected bayou with Intracoastal access."
+        },
+        {
+          "file": "exterior-2",
+          "category": "exterior",
+          "description": "Street-level angle showing the expansive front yard, attached garage and palm-lined entrance."
+        },
+        {
+          "file": "kitchen-1",
+          "category": "kitchen",
+          "description": "Bright kitchen with quartz island and large windows framing the waterfront view."
+        },
+        {
+          "file": "living-1",
+          "category": "interior",
+          "description": "Open living room with tile floors and sliding doors leading to the waterfront patio."
+        },
+        {
+          "file": "bedroom-1",
+          "category": "bedroom",
+          "description": "Sunlit bedroom with dual banks of windows and a clean, neutral palette."
+        },
+        {
+          "file": "bathroom-1",
+          "category": "bathroom",
+          "description": "Updated bathroom with floating vanity, gold accents and tile accent wall."
+        },
+        {
+          "file": "outdoor-1",
+          "category": "outdoor",
+          "description": "Private dock with boat lift overlooking the tranquil bayou with distant neighborhood homes."
+        },
+        {
+          "file": "exterior-aerial-2",
+          "category": "aerial",
+          "description": "Lower aerial of the property and its private dock on a protected Intracoastal cove."
+        },
+        {
+          "file": "exterior-aerial-3",
+          "category": "aerial",
+          "description": "Golden-hour aerial showing the home's cul-de-sac waterfront location with panoramic water views."
+        },
+        {
+          "file": "exterior-3",
+          "category": "exterior",
+          "description": "Angled view of the front yard and driveway flanked by mature palms and tropical foliage."
+        },
+        {
+          "file": "detail-1",
+          "category": "detail",
+          "description": "Tropical landscaping detail with lush palms and the home's soft coastal palette."
+        }
+      ]
+    },
+    {
+      "slug": "1st-st",
+      "name": "724 1st St",
+      "location": "Indian Rocks Beach, FL",
+      "description": "Mid-century beachside bungalow compound with breeze-block walls, multiple units and coastal charm.",
+      "photos": [
+        {
+          "file": "exterior-1",
+          "category": "exterior",
+          "description": "Front view of the mid-century bungalow complex with white breeze-block screens and arched entries."
+        },
+        {
+          "file": "exterior-2",
+          "category": "exterior",
+          "description": "Interior courtyard view between the two bungalow units with turquoise chairs and palms."
+        },
+        {
+          "file": "outdoor-1",
+          "category": "outdoor",
+          "description": "Shared gravel courtyard with tropical palms and coral-colored front doors."
+        },
+        {
+          "file": "exterior-3",
+          "category": "exterior",
+          "description": "Side angle of the rear bungalow unit with fresh asphalt driveway and mature palm."
+        },
+        {
+          "file": "exterior-aerial-1",
+          "category": "aerial",
+          "description": "Aerial view of the compound showing proximity to the Gulf of Mexico and beach community."
+        },
+        {
+          "file": "kitchen-1",
+          "category": "kitchen",
+          "description": "Updated kitchen with white shaker cabinets, stainless appliances and exterior door to the yard."
+        },
+        {
+          "file": "living-1",
+          "category": "interior",
+          "description": "Bright open living space with luxury vinyl plank floors and fresh neutral paint."
+        },
+        {
+          "file": "bedroom-1",
+          "category": "bedroom",
+          "description": "Comfortable bedroom with oversized window and plank floors."
+        },
+        {
+          "file": "detail-2",
+          "category": "detail",
+          "description": "Coral-painted entry doors framed by breeze-block screens and palms."
+        },
+        {
+          "file": "interior-1",
+          "category": "interior",
+          "description": "Second unit interior showing open living and kitchen area with uniform finishes."
+        },
+        {
+          "file": "detail-1",
+          "category": "detail",
+          "description": "Iconic breeze-block pattern detail that defines the compound's mid-century character."
+        },
+        {
+          "file": "exterior-aerial-2",
+          "category": "aerial",
+          "description": "Overhead aerial of the compound outlined in red, steps from the Gulf beach and Intracoastal."
+        }
+      ]
+    },
+    {
+      "slug": "morton",
+      "name": "7307 S Morton",
+      "location": "Tampa, FL",
+      "description": "Two-story South Tampa pool home with open kitchen, screened lanai and fenced yard.",
+      "photos": [
+        {
+          "file": "exterior-1",
+          "category": "exterior",
+          "description": "Two-story stucco home with peaked roofline, two-car garage and welcoming front walkway."
+        },
+        {
+          "file": "exterior-2",
+          "category": "exterior",
+          "description": "Front elevation with paver driveway, tropical landscaping and inviting covered entry."
+        },
+        {
+          "file": "exterior-3",
+          "category": "exterior",
+          "description": "Close-in exterior view showcasing the home's stucco facade and mature tropical plantings."
+        },
+        {
+          "file": "kitchen-1",
+          "category": "kitchen",
+          "description": "Bright kitchen with granite counters, globe pendants and stainless appliances."
+        },
+        {
+          "file": "kitchen-2",
+          "category": "kitchen",
+          "description": "Staged dining nook overlooking the kitchen with globe chandelier and proteas centerpiece."
+        },
+        {
+          "file": "living-1",
+          "category": "interior",
+          "description": "Cozy flex room with sectional seating, large windows and a modern ceiling fan."
+        },
+        {
+          "file": "interior-1",
+          "category": "interior",
+          "description": "Walk-in primary closet with custom built-in shelving and drawers."
+        },
+        {
+          "file": "bedroom-1",
+          "category": "bedroom",
+          "description": "Primary bedroom with tray ceiling, plush carpet and soft natural light."
+        },
+        {
+          "file": "outdoor-1",
+          "category": "outdoor",
+          "description": "Screened covered lanai with ceiling fan, string lights and a built-in bench."
+        },
+        {
+          "file": "outdoor-2",
+          "category": "outdoor",
+          "description": "Spacious fenced backyard with mature oaks and direct patio access."
+        },
+        {
+          "file": "outdoor-3",
+          "category": "outdoor",
+          "description": "View from the screened porch overlooking the fenced backyard and neighbor homes."
+        },
+        {
+          "file": "detail-1",
+          "category": "detail",
+          "description": "Side yard with paver walkway leading from the patio to the fenced backyard."
+        }
+      ]
+    },
+    {
+      "slug": "willow",
+      "name": "905 N Willow",
+      "location": "Tampa, FL",
+      "description": "Two-story new construction home in Tampa's North Hyde Park with open chef's kitchen and luxury finishes.",
+      "photos": [
+        {
+          "file": "exterior-twilight-1",
+          "category": "exterior",
+          "description": "Stunning twilight shot of the modern farmhouse with warm interior glow and paver driveway."
+        },
+        {
+          "file": "exterior-1",
+          "category": "exterior",
+          "description": "Daytime front elevation with white board-and-batten siding, second-story balcony and two-car garage."
+        },
+        {
+          "file": "exterior-2",
+          "category": "exterior",
+          "description": "Rear view of the home showing the gable profile, fresh landscaping and privacy fencing."
+        },
+        {
+          "file": "kitchen-1",
+          "category": "kitchen",
+          "description": "Open chef's kitchen with waterfall quartz island, globe pendants and statement range hood."
+        },
+        {
+          "file": "kitchen-2",
+          "category": "kitchen",
+          "description": "Chef's kitchen detail with herringbone tile backsplash, gas range and stainless hood."
+        },
+        {
+          "file": "living-1",
+          "category": "interior",
+          "description": "Great room with large sliders and open sight lines to the kitchen and dining area."
+        },
+        {
+          "file": "bedroom-1",
+          "category": "bedroom",
+          "description": "Spacious primary suite with tray ceiling and oak-look plank floors."
+        },
+        {
+          "file": "bedroom-2",
+          "category": "bedroom",
+          "description": "Primary bedroom with tray ceiling, floating oak shelves and ensuite access."
+        },
+        {
+          "file": "bedroom-3",
+          "category": "bedroom",
+          "description": "Secondary bedroom with oversized picture window, transom and fresh oak floors."
+        },
+        {
+          "file": "bedroom-4",
+          "category": "bedroom",
+          "description": "Compact bedroom with dual windows framing palm and sky views."
+        },
+        {
+          "file": "bathroom-1",
+          "category": "bathroom",
+          "description": "Spa-like primary bath with dual vanity, matte-black fixtures and abundant natural light."
+        },
+        {
+          "file": "outdoor-1",
+          "category": "outdoor",
+          "description": "Covered back patio with paver deck and shaded ceiling fan overlooking the private backyard."
+        }
+      ]
+    }
+  ]
+}

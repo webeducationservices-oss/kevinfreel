@@ -1,0 +1,14 @@
+# Large source photo archives — only optimized WebPs are committed
+images/*.zip
+images/_extracted/
+
+# Python cache from process_photos.py
+__pycache__/
+*.pyc
+
+# macOS
+.DS_Store
+
+# Editor
+.vscode/
+*.swp
