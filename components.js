@@ -346,6 +346,53 @@ document.querySelectorAll('form[data-resource]').forEach(function (rForm) {
   });
 })();
 
+/* ── Blog Index Search + Tag Filter ── */
+(function () {
+  var grid = document.querySelector('.blog-grid');
+  if (!grid) return;
+  var cards = grid.querySelectorAll('.blog-card');
+  var searchInput = document.getElementById('blog-search');
+  var tagFilters = document.querySelectorAll('.blog-tag-filter');
+  var empty = document.querySelector('.blog-empty');
+  var activeTag = 'all';
+  var activeQuery = '';
+
+  function apply() {
+    var q = activeQuery.toLowerCase();
+    var visible = 0;
+    cards.forEach(function (card) {
+      var tags = (card.dataset.tags || '').toLowerCase();
+      var title = (card.dataset.title || '').toLowerCase();
+      var excerpt = (card.dataset.excerpt || '').toLowerCase();
+      var tagMatch = activeTag === 'all' || tags.indexOf(activeTag) !== -1;
+      var queryMatch = !q || title.indexOf(q) !== -1 || excerpt.indexOf(q) !== -1 || tags.indexOf(q) !== -1;
+      if (tagMatch && queryMatch) {
+        card.classList.remove('hidden');
+        visible++;
+      } else {
+        card.classList.add('hidden');
+      }
+    });
+    if (empty) empty.classList.toggle('visible', visible === 0);
+  }
+
+  tagFilters.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      tagFilters.forEach(function (b) { b.classList.remove('active'); });
+      btn.classList.add('active');
+      activeTag = btn.dataset.filter || 'all';
+      apply();
+    });
+  });
+
+  if (searchInput) {
+    searchInput.addEventListener('input', function (e) {
+      activeQuery = e.target.value || '';
+      apply();
+    });
+  }
+})();
+
 /* ── Contact Form (AJAX submit) ── */
 var form = document.querySelector('form[data-ajax]');
 if (form) {

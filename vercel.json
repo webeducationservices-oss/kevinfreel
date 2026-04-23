@@ -12,8 +12,7 @@
     { "source": "/subscribe", "destination": "/contact", "permanent": true },
     { "source": "/rsvp", "destination": "/contact", "permanent": true },
     { "source": "/building-inquiry", "destination": "/contact", "permanent": true },
-    { "source": "/new-page-1", "destination": "/", "permanent": true },
-    { "source": "/blog/:slug*", "destination": "/", "permanent": false }
+    { "source": "/new-page-1", "destination": "/", "permanent": true }
   ],
   "headers": [
     {
