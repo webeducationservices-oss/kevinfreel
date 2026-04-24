@@ -101,21 +101,22 @@ ul { list-style: none; }
   letter-spacing: 0.04em;
   display: inline-flex;
   flex-direction: column;
+  align-items: center;
+  text-align: center;
   line-height: 1.05;
   text-decoration: none;
 }
+.nav-logo .nav-logo-name { color: var(--white); }
 .nav-logo .nav-logo-name > span { color: var(--gold); }
-.nav-logo-tagline {
+.nav-logo .nav-logo-tagline {
   font-family: var(--font-sans);
-  font-size: 0.625rem;
+  font-size: 0.6875rem;
   font-weight: 600;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.7);
-  margin-top: 0.25rem;
+  color: var(--white);
+  margin-top: 0.3rem;
 }
-/* Back-compat: if .nav-logo still contains raw "KEVIN <span>FREEL</span>" the gold FREEL still works */
-.nav-logo > span { color: var(--gold); }
 .nav-links {
   display: flex;
   gap: 2rem;
