@@ -99,8 +99,23 @@ ul { list-style: none; }
   font-weight: 600;
   color: var(--white);
   letter-spacing: 0.04em;
+  display: inline-flex;
+  flex-direction: column;
+  line-height: 1.05;
+  text-decoration: none;
 }
-.nav-logo span { color: var(--gold); }
+.nav-logo .nav-logo-name > span { color: var(--gold); }
+.nav-logo-tagline {
+  font-family: var(--font-sans);
+  font-size: 0.625rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.7);
+  margin-top: 0.25rem;
+}
+/* Back-compat: if .nav-logo still contains raw "KEVIN <span>FREEL</span>" the gold FREEL still works */
+.nav-logo > span { color: var(--gold); }
 .nav-links {
   display: flex;
   gap: 2rem;
@@ -681,7 +696,9 @@ ul { list-style: none; }
 }
 .footer-social {
   display: flex;
-  gap: 1rem;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  justify-content: flex-end;
 }
 .footer-social a {
   width: 36px;
@@ -2710,4 +2727,159 @@ ul { list-style: none; }
   .wizard-form { padding: 1.5rem; }
   .mood-grid { grid-template-columns: 1fr; }
   .download-card { padding: 1.75rem 1.25rem; margin: 2rem 1rem 0; }
+}
+
+/* ────────────────────────────────────
+   ACTIVE LISTINGS (auto-synced from C21)
+──────────────────────────────────── */
+.listings-meta-row {
+  text-align: center;
+  font-size: 0.9375rem;
+  color: var(--text-muted);
+  margin-bottom: 2rem;
+  letter-spacing: 0.01em;
+}
+.listings-grid {
+  margin-top: 1rem;
+}
+.listing-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
+}
+.listing-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 40px rgba(0,0,0,0.1);
+  border-color: var(--gold);
+}
+.listing-card-image {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  background: var(--cream);
+  overflow: hidden;
+}
+.listing-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s;
+}
+.listing-card:hover .listing-card-image img {
+  transform: scale(1.04);
+}
+.listing-badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: var(--gold);
+  color: var(--white);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.35rem 0.75rem;
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  z-index: 1;
+}
+.listing-card-body {
+  padding: 1.5rem 1.5rem 1.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  flex: 1;
+}
+.listing-price {
+  font-family: var(--font-serif);
+  font-size: 1.625rem;
+  font-weight: 700;
+  color: var(--navy);
+  line-height: 1.1;
+  margin-bottom: 0.25rem;
+}
+.listing-address {
+  font-family: var(--font-serif);
+  font-size: 1.0625rem;
+  font-weight: 600;
+  color: var(--navy);
+  line-height: 1.3;
+  margin: 0;
+}
+.listing-location {
+  color: var(--text-muted);
+  font-size: 0.9375rem;
+  line-height: 1.4;
+  margin: 0;
+}
+.listing-meta {
+  color: var(--text);
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  margin: 0.5rem 0 0;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--border);
+}
+.listing-mls {
+  color: var(--text-light, #9ca3af);
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin: 0.25rem 0 0.75rem;
+}
+.listing-cta {
+  margin-top: auto;
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--gold);
+  font-weight: 600;
+  font-size: 0.9375rem;
+  text-decoration: none;
+  letter-spacing: 0.02em;
+  transition: color 0.25s;
+}
+.listing-cta:hover { color: var(--gold-hover); }
+
+.listings-empty {
+  text-align: center;
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 3rem 1.5rem;
+  background: var(--cream);
+  border-radius: 10px;
+}
+.listings-empty-headline {
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--navy);
+  margin-bottom: 0.75rem;
+}
+.listings-empty p:last-child {
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+.listings-empty a {
+  color: var(--gold);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+/* Homepage featured listings "View All" button wrapper */
+.featured-listings-more {
+  text-align: center;
+  margin-top: 2.5rem;
+}
+
+@media (max-width: 768px) {
+  .listings-grid { grid-template-columns: 1fr; }
+  .listing-price { font-size: 1.375rem; }
+  .listing-card-body { padding: 1.25rem 1.25rem 1.5rem; }
 }

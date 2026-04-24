@@ -1,0 +1,58 @@
+name: Sync Century 21 Listings
+
+on:
+  schedule:
+    # 10:00 UTC = 6 AM EDT / 5 AM EST
+    - cron: "0 10 * * *"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sync-listings
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Check out repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install beautifulsoup4 Pillow requests
+
+      - name: Run sync_listings.py
+        id: sync
+        run: python scripts/sync_listings.py
+        # Exit codes:
+        #   0 = success
+        #   2 = fetch / parse crash (fail loudly)
+        #   3 = 0 listings parsed (fail loudly, don't blank files)
+
+      - name: Commit and push changes
+        if: success()
+        run: |
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+
+          if [ -n "$(git status --porcelain)" ]; then
+            DATE=$(date -u +"%Y-%m-%d")
+            git add listings.json listings/ images/listings/ index.html
+            git commit -m "Auto-sync Century 21 listings — ${DATE}"
+            git push origin HEAD:main
+            echo "Committed and pushed listing updates."
+          else
+            echo "No changes to commit."
+          fi
