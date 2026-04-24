@@ -6,6 +6,9 @@ images/_extracted/
 __pycache__/
 *.pyc
 
+# Debug dump from sync_listings.py
+scripts/_debug_c21.html
+
 # macOS
 .DS_Store
 

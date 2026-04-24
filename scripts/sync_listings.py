@@ -119,6 +119,9 @@ def fetch_agent_page() -> str:
 # C21 property IDs (P00800000...) start with P and are followed by MORE
 # alphanumerics — use a negative-lookahead to skip them.
 _MLS_RE = re.compile(r"\b([A-Z]{1,3}\d{6,10})(?![A-Za-z0-9])")
+
+# C21 "listing ID" (property ID) used inside detail URLs: /lid-P008XXXXXX...
+_LID_RE = re.compile(r"/lid-(P\d+[A-Za-z0-9]+)")
 _PRICE_RE = re.compile(r"\$[\d,]+")
 _ACRES_RE = re.compile(r"([\d,.]+)\s*Acres?", re.IGNORECASE)
 _SQFT_RE = re.compile(r"([\d,]+)\s*sq\.?\s*ft\.?", re.IGNORECASE)
@@ -153,6 +156,14 @@ def _extract_mls_from_url(url: str) -> str | None:
         return None
     m = _MLS_RE.search(url)
     return m.group(0) if m else None
+
+
+def _extract_lid_from_url(url: str) -> str | None:
+    """Pull the C21 listing ID (P008...) out of a detail URL."""
+    if not url:
+        return None
+    m = _LID_RE.search(url)
+    return m.group(1) if m else None
 
 
 def _parse_address(block_text: str) -> tuple[str, str, str, str]:
@@ -233,77 +244,89 @@ def parse_listings(html_text: str) -> list[dict[str, Any]]:
 
     Strategy:
     1. JSON-LD ItemList in <script type="application/ld+json"> — structured
-       data for price, address, beds, baths, sqft, image, URL (authoritative).
-    2. DOM cards (.any-listing-card) — for fields JSON-LD lacks: lot acres,
-       status indicator ("Active"/"Pending"), MLS number confirmation.
+       data for price, address, beds, baths, sqft, image, URL.
+    2. DOM cards (a.single-property-info) — authoritative for MLS#, status,
+       lot acres. The image URL's embedded identifier does NOT always match
+       the MLS, so we rely on the DOM's explicit "MLS# ..." label.
 
-    Results merged by MLS number. Returns only Active listings sorted by
-    price desc.
+    Records merged by C21 listing ID (the /lid-P... segment of the URL).
+
+    Returns only Active listings sorted by price desc.
     """
-    by_mls: dict[str, dict[str, Any]] = {}
+    by_lid: dict[str, dict[str, Any]] = {}
+    soup = BeautifulSoup(html_text, "html.parser")
 
     # ── Strategy 1: JSON-LD ItemList ──
-    soup = BeautifulSoup(html_text, "html.parser")
     for tag in soup.find_all("script", type="application/ld+json"):
         try:
             data = json.loads(tag.string or "{}")
         except (ValueError, TypeError):
             continue
-        # Navigate to the @graph → ItemList → itemListElement[]
-        graphs = []
+        graphs: list[Any] = []
         if isinstance(data, dict):
-            if isinstance(data.get("@graph"), list):
-                graphs = data["@graph"]
-            else:
-                graphs = [data]
+            graphs = data["@graph"] if isinstance(data.get("@graph"), list) else [data]
         elif isinstance(data, list):
             graphs = data
         for g in graphs:
-            if not isinstance(g, dict):
-                continue
-            t = g.get("@type")
-            if t != "ItemList":
+            if not isinstance(g, dict) or g.get("@type") != "ItemList":
                 continue
             for e in g.get("itemListElement", []) or []:
                 entry = _extract_listing_from_jsonld_item(e)
-                if entry:
-                    by_mls[entry["mls_number"]] = entry
+                if not entry:
+                    continue
+                lid = _extract_lid_from_url(entry.get("c21_url", ""))
+                if lid:
+                    by_lid[lid] = entry
 
-    # ── Strategy 2: DOM cards, to fill in acres / status / confirm MLS ──
-    # C21 wraps each listing in an <a class="any-anchor-wrap single-property-info">.
-    # Some older markup also uses .any-listing-card — keep both for safety.
+    # ── Strategy 2: DOM cards ──
     for card in soup.select(
         "a.single-property-info, .any-listing-card, .listing-card-container"
     ):
         dom_entry = _extract_listing_from_dom(card)
         if not dom_entry:
             continue
-        mls = dom_entry["mls_number"]
-        if mls in by_mls:
-            # merge: prefer JSON-LD values, but override status / sqft_or_acres
-            # if DOM has a non-empty one
-            target = by_mls[mls]
+        lid = _extract_lid_from_url(dom_entry.get("c21_url", ""))
+        if not lid:
+            continue
+        if lid in by_lid:
+            target = by_lid[lid]
+            # DOM wins on MLS# (authoritative) + status
+            if dom_entry.get("mls_number"):
+                target["mls_number"] = dom_entry["mls_number"]
             if dom_entry.get("status"):
                 target["status"] = dom_entry["status"]
+            # Acres / sqft — fill in or override w/ DOM value when JSON-LD blank
             if dom_entry.get("sqft_or_acres") and not target.get("sqft_or_acres"):
                 target["sqft_or_acres"] = dom_entry["sqft_or_acres"]
-            # If DOM found acres even when JSON-LD had some sqft placeholder
             if "acre" in dom_entry.get("sqft_or_acres", "").lower():
                 target["sqft_or_acres"] = dom_entry["sqft_or_acres"]
+            # Photo fallback
             if not target.get("hero_photo_url") and dom_entry.get("hero_photo_url"):
                 target["hero_photo_url"] = dom_entry["hero_photo_url"]
         else:
-            by_mls[mls] = dom_entry
+            by_lid[lid] = dom_entry
 
-    # Final filter/sort
+    # ── Final filter + sort ──
     out: list[dict[str, Any]] = []
-    for entry in by_mls.values():
+    for entry in by_lid.values():
         if entry.get("status", "Active") != "Active":
             continue
         if not entry.get("price"):
             continue
+        if not entry.get("mls_number"):
+            continue
+        # If sqft_or_acres is still empty but we have a numeric floorSize, format it
+        if not entry.get("sqft_or_acres"):
+            sqft_val = entry.pop("_sqft_value", None)
+            if sqft_val:
+                try:
+                    entry["sqft_or_acres"] = f"{int(sqft_val):,} sq. ft."
+                except (TypeError, ValueError):
+                    pass
+        entry.pop("_sqft_value", None)
+
+        # Photo fallback: synthesize C21 image URL from MLS if missing
         if not entry.get("hero_photo_url"):
-            # Synthesize the standard C21 listings-image URL from MLS if possible
             mls = entry["mls_number"]
             if len(mls) >= 8 and mls[:2].isalpha():
                 prefix = mls[:2]
@@ -316,16 +339,6 @@ def parse_listings(html_text: str) -> list[dict[str, Any]]:
                 )
             else:
                 continue
-        # Coerce sqft_or_acres to final display value
-        if not entry.get("sqft_or_acres"):
-            # Derive from stored numeric sqft if present
-            sqft_val = entry.pop("_sqft_value", None)
-            if sqft_val:
-                try:
-                    entry["sqft_or_acres"] = f"{int(sqft_val):,} sq. ft."
-                except (TypeError, ValueError):
-                    pass
-        entry.pop("_sqft_value", None)
 
         out.append(entry)
 
@@ -422,11 +435,10 @@ def _extract_listing_from_jsonld_item(item: dict[str, Any]) -> dict[str, Any] | 
         if isinstance(ls, dict) and ls.get("value"):
             size = f"{ls['value']} Acres"
 
-    # Prefer the photo URL for MLS (C21 property IDs on detail URLs can
-    # confuse greedy regexes).
-    mls = _extract_mls_from_url(str(image)) or _extract_mls_from_url(detail_url) or ""
-    if not mls:
-        return None
+    # The image URL contains an MLS-like token but it's the CoreLogic listing
+    # asset ID, not the real MLS number. We leave mls_number empty here and
+    # let the DOM parser (which reads "MLS# XXX" text) populate it.
+    mls = _extract_mls_from_url(str(image)) or ""
 
     return {
         "address": street,

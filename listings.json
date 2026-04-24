@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-04-24T11:18:20Z",
-  "count": 9,
+  "updated_at": "2026-04-24T12:36:30Z",
+  "count": 8,
   "listings": [
     {
       "address": "16315 Mcglamery Road",
@@ -35,23 +35,6 @@
       "hero_photo_url": "https://images-listings.century21.com/MFRMLS/TB/84/48/41/6/_P/TB8448416_P00.jpg",
       "local_hero": "/images/listings/TB8448416.webp",
       "local_thumb": "/images/listings/TB8448416-sm.webp"
-    },
-    {
-      "address": "419 12th Avenue",
-      "city": "Indian Rocks Beach",
-      "state": "FL",
-      "zip": "33785",
-      "price_display": "$1,199,900",
-      "price": 1199900,
-      "beds": 2,
-      "baths": 2,
-      "sqft_or_acres": "1,410 sq. ft.",
-      "mls_number": "TB8486575",
-      "status": "Active",
-      "c21_url": "https://www.century21.com/homes/detail/fl/indian-rocks-beach/419-12th-ave/lid-P00800000H7jSQMU8l9TlfTE0qn9i8jIYu8YTGsS",
-      "hero_photo_url": "https://images-listings.century21.com/MFRMLS/TB/84/86/57/5/_P/TB8486575_P00.jpg",
-      "local_hero": "/images/listings/TB8486575.webp",
-      "local_thumb": "/images/listings/TB8486575-sm.webp"
     },
     {
       "address": "419 12th Avenue",

@@ -31,7 +31,7 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install beautifulsoup4 Pillow requests
+          pip install beautifulsoup4 Pillow
 
       - name: Run sync_listings.py
         id: sync
