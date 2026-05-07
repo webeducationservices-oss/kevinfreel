@@ -1,3 +1,20 @@
+/* ── Active Nav Highlighting ── */
+/* Reads window.location.pathname and adds .nav-active to the matching nav link.
+   Drives off [data-nav] attribute set by partials/nav.html. */
+(function () {
+  var path = window.location.pathname.replace(/\/+$/, '') || '/';
+  // Map path → nav key
+  var slug;
+  if (path === '/' || path === '') slug = 'home';
+  else if (path.indexOf('/blog') === 0) slug = 'blog';
+  else if (path.indexOf('/listings') === 0) slug = 'listings';
+  else slug = path.replace(/^\//, '').split('/')[0];
+
+  document.querySelectorAll('[data-nav="' + slug + '"]').forEach(function (a) {
+    a.classList.add('nav-active');
+  });
+})();
+
 /* ── Mobile Menu ── */
 const menuBtn = document.getElementById('menu-btn');
 const mobileMenu = document.getElementById('mobile-menu');
@@ -346,41 +363,58 @@ document.querySelectorAll('form[data-resource]').forEach(function (rForm) {
   });
 })();
 
-/* ── Blog Index Search + Tag Filter ── */
+/* ── Blog Index Search + Filter ── */
+/* Supports both new spec (#postGrid + .post-card[data-cat]) and the
+   legacy .blog-card[data-tags] pattern. */
 (function () {
-  var grid = document.querySelector('.blog-grid');
+  var grid = document.querySelector('#postGrid, .blog-grid');
   if (!grid) return;
-  var cards = grid.querySelectorAll('.blog-card');
+  var cards = grid.querySelectorAll('.post-card, .blog-card');
+  if (!cards.length) return;
+
   var searchInput = document.getElementById('blog-search');
-  var tagFilters = document.querySelectorAll('.blog-tag-filter');
+  var filterBtns = document.querySelectorAll('.filter-btn, .blog-tag-filter');
   var empty = document.querySelector('.blog-empty');
-  var activeTag = 'all';
+  var activeFilter = 'all';
   var activeQuery = '';
+
+  function matchesFilter(card) {
+    if (activeFilter === 'all') return true;
+    var f = activeFilter.toLowerCase();
+    var cat = (card.dataset.cat || '').toLowerCase();
+    var tags = (card.dataset.tags || '').toLowerCase();
+    if (cat === f) return true;
+    if (tags.split(',').map(function (t) { return t.trim(); }).indexOf(f) !== -1) return true;
+    return false;
+  }
 
   function apply() {
     var q = activeQuery.toLowerCase();
     var visible = 0;
     cards.forEach(function (card) {
-      var tags = (card.dataset.tags || '').toLowerCase();
-      var title = (card.dataset.title || '').toLowerCase();
+      var title = (card.dataset.title || card.querySelector('.post-card-title, h3') && (card.querySelector('.post-card-title, h3').textContent) || '').toLowerCase();
       var excerpt = (card.dataset.excerpt || '').toLowerCase();
-      var tagMatch = activeTag === 'all' || tags.indexOf(activeTag) !== -1;
-      var queryMatch = !q || title.indexOf(q) !== -1 || excerpt.indexOf(q) !== -1 || tags.indexOf(q) !== -1;
-      if (tagMatch && queryMatch) {
+      var tags = (card.dataset.tags || '').toLowerCase();
+      var cat = (card.dataset.cat || '').toLowerCase();
+      var filterMatch = matchesFilter(card);
+      var queryMatch = !q || title.indexOf(q) !== -1 || excerpt.indexOf(q) !== -1 || tags.indexOf(q) !== -1 || cat.indexOf(q) !== -1;
+      if (filterMatch && queryMatch) {
         card.classList.remove('hidden');
+        card.style.display = '';
         visible++;
       } else {
         card.classList.add('hidden');
+        card.style.display = 'none';
       }
     });
     if (empty) empty.classList.toggle('visible', visible === 0);
   }
 
-  tagFilters.forEach(function (btn) {
+  filterBtns.forEach(function (btn) {
     btn.addEventListener('click', function () {
-      tagFilters.forEach(function (b) { b.classList.remove('active'); });
+      filterBtns.forEach(function (b) { b.classList.remove('active'); });
       btn.classList.add('active');
-      activeTag = btn.dataset.filter || 'all';
+      activeFilter = btn.dataset.filter || 'all';
       apply();
     });
   });

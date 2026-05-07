@@ -14,6 +14,7 @@
   <meta property="og:url" content="https://kevinfreel.com/blog/2860buckhorn">
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="Kevin Freel Real Estate">
+  <meta name="twitter:image" content="https://kevinfreel.com/images/blog/2860buckhorn/hero.webp">
   <meta property="article:published_time" content="2024-09-09T13:54:18-04:00">
   <meta property="article:author" content="Kevin Freel">
 
@@ -22,6 +23,7 @@
 
   <link rel="preload" as="font" type="font/woff2" href="/fonts/playfair-display.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="/fonts/inter.woff2" crossorigin>
+  <link rel="preload" as="image" type="image/webp" href="/images/blog/2860buckhorn/hero.webp" fetchpriority="high">
 
   <link rel="stylesheet" href="/fonts/fonts.css">
   <link rel="stylesheet" href="/styles.css">
@@ -31,6 +33,7 @@
     "@context": "https://schema.org",
     "@type": "BlogPosting",
     "headline": "Move-In Ready 4-Bed Home in Valrico | $599,999",
+    "description": "The Perfect Move-In Ready Home in Valrico  Finding the perfect move-in ready home that balances modern amenities, spacious living, and\u2026",
     "author": {"@type": "Person", "name": "Kevin Freel"},
     "datePublished": "2024-09-09T13:54:18-04:00",
     "image": "https://kevinfreel.com/images/blog/2860buckhorn/hero.webp",
@@ -43,107 +46,160 @@
 </head>
 <body>
 
-  <!-- ── NAV ── -->
-  <nav class="nav scrolled" aria-label="Main navigation">
-    <div class="nav-inner">
-      <a href="/" class="nav-logo" aria-label="Kevin Freel — Realtor Since 1985"><span class="nav-logo-name">KEVIN <span>FREEL</span></span><span class="nav-logo-tagline">Realtor Since 1985</span></a>
-      <ul class="nav-links">
-        <li><a href="/search">Search</a></li>
-        <li><a href="/about">About</a></li>
-        <li><a href="/resources">Resources</a></li>
-        <li><a href="/sellers">Sellers</a></li>
-        <li><a href="/buyers">Buyers</a></li>
-        <li><a href="/photography">Photography</a></li>
-        <li><a href="/contact">Contact</a></li>
-        <li>
-          <a href="tel:7274108599" class="nav-cta">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-            727-410-8599
-          </a>
-        </li>
-      </ul>
-      <button id="menu-btn" aria-label="Open menu" aria-expanded="false">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
-      </button>
-    </div>
-  </nav>
-
-  <!-- ── Mobile Menu ── -->
-  <div id="menu-overlay" class="menu-overlay"></div>
-  <div id="mobile-menu" class="mobile-menu" aria-label="Mobile navigation">
-    <a href="/">Home</a>
-    <a href="/search">Search</a>
-    <a href="/about">About</a>
-    <a href="/resources">Resources</a>
-    <a href="/sellers">Sellers</a>
-    <a href="/buyers">Buyers</a>
-    <a href="/photography">Photography</a>
-    <a href="/contact">Contact</a>
-    <a href="tel:7274108599" class="nav-cta">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-      727-410-8599
-    </a>
+  <!-- BEGIN_NAV -->
+<!-- ── NAV ── -->
+<nav class="nav scrolled" aria-label="Main navigation">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo" aria-label="Kevin Freel — Realtor Since 1985"><span class="nav-logo-name">KEVIN <span>FREEL</span></span><span class="nav-logo-tagline">Realtor Since 1985</span></a>
+    <ul class="nav-links">
+      <li><a href="/search" data-nav="search">Search</a></li>
+      <li><a href="/listings" data-nav="listings">Listings</a></li>
+      <li><a href="/about" data-nav="about">About</a></li>
+      <li><a href="/resources" data-nav="resources">Resources</a></li>
+      <li><a href="/sellers" data-nav="sellers">Sellers</a></li>
+      <li><a href="/buyers" data-nav="buyers">Buyers</a></li>
+      <li><a href="/photography" data-nav="photography">Photography</a></li>
+      <li><a href="/blog" data-nav="blog">Blog</a></li>
+      <li><a href="/contact" data-nav="contact">Contact</a></li>
+      <li>
+        <a href="tel:7274108599" class="nav-cta">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          727-410-8599
+        </a>
+      </li>
+    </ul>
+    <button id="menu-btn" aria-label="Open menu" aria-expanded="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
   </div>
+</nav>
+
+<!-- ── Mobile Menu ── -->
+<div id="menu-overlay" class="menu-overlay"></div>
+<div id="mobile-menu" class="mobile-menu" aria-label="Mobile navigation">
+  <a href="/" data-nav="home">Home</a>
+  <a href="/search" data-nav="search">Search</a>
+  <a href="/listings" data-nav="listings">Listings</a>
+  <a href="/about" data-nav="about">About</a>
+  <a href="/resources" data-nav="resources">Resources</a>
+  <a href="/sellers" data-nav="sellers">Sellers</a>
+  <a href="/buyers" data-nav="buyers">Buyers</a>
+  <a href="/photography" data-nav="photography">Photography</a>
+  <a href="/blog" data-nav="blog">Blog</a>
+  <a href="/contact" data-nav="contact">Contact</a>
+  <a href="tel:7274108599" class="nav-cta">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+    727-410-8599
+  </a>
+</div>
+  <!-- END_NAV -->
 
   <main>
 
     <section class="blog-post-hero">
-      <div class="blog-post-hero-inner">
+      <img src="/images/blog/2860buckhorn/hero.webp" alt="Move-In Ready 4-Bed Home in Valrico | $599,999" loading="eager" width="1200" height="675">
+      <div class="blog-post-hero-content">
         <a href="/blog" class="blog-back-link">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
           Back to Blog
         </a>
-        <div class="blog-post-meta">
-          <span>September 9, 2024</span>
-          <span class="tag">News</span>
-        </div>
+        <span class="blog-post-cat">News</span>
         <h1>Move-In Ready 4-Bed Home in Valrico | $599,999</h1>
+        <div class="post-meta">
+          <span>Kevin Freel</span>
+          <span class="post-meta-dot"></span>
+          <span>September 9, 2024</span>
+          <span class="post-meta-dot"></span>
+          <span>3 min read</span>
+        </div>
       </div>
     </section>
 
-    <article class="blog-post-body">
-      <p><a href="https://www.youtube.com/watch?v=mvhgVb78lzE" rel="noopener noreferrer" target="_blank">Watch the video →</a></p>
-      <h2>The Perfect Move-In Ready Home in Valrico</h2><p>Finding the perfect move-in ready home that balances modern amenities, spacious living, and energy efficiency can be challenging, especially in today’s market. If you’ve been searching for a newer home that doesn’t need any upgrades or repairs, look no further than 2860 Buckhorn Forest Dr in Valrico. Built in 2021 by Pulte Homes, this stunning single-story property has everything a family could want — from a gorgeous saltwater pool to eco-friendly features like an EV charger. Move-in ready doesn’t begin to describe this pristine property; it’s built for convenience, comfort, and a lifestyle you’ll love.<br/></p><h2>Spacious Living with Modern Amenities</h2><p>This one-story, 4-bedroom, 3-bath home offers 2,292 square feet of modern living space, perfectly designed for family life or entertaining guests. The open floor plan creates a seamless flow from the kitchen to the living room, allowing for easy interaction and hosting. The kitchen boasts a 10-foot extended quartz island, complete with high-end stainless steel appliances from LG and KitchenAid, making it a chef’s dream. The spacious walk-in pantry ensures that storage will never be an issue, while the built-in shelves and electric fireplace in the family room add a cozy yet contemporary touch.<br/></p><h2>Outdoor Living at Its Finest</h2><p>Step outside and you'll be greeted by your own private oasis. The saltwater pool is not only stunning but also energy-efficient, heated for year-round enjoyment. The screened enclosure and paver-lined lanai offer a perfect setting for outdoor gatherings or simply relaxing in the Florida sun. With child safety fencing and a large covered area, this outdoor space is as practical as it is beautiful, making it the ideal backdrop for both family time and entertaining friends.<br/></p><h2>Energy-Efficient and Smart Home Features</h2><p>In addition to its aesthetic appeal, this home offers numerous upgrades that make life more convenient and energy-efficient. From the Tesla EV charger in the garage to the whole-house surge protector and upgraded HVAC system, this home is designed for modern living. The Nest doorbell and Ecobee Smart Thermostat provide cutting-edge smart home technology that helps you control energy use and security right from your phone. Plus, with an average EV charging cost of just $5–$8 per charge, the green features of this home will save you money in the long run.<br/></p><h2>Luxurious Primary Suite and Additional Bedrooms</h2><p>The primary bedroom is designed as a relaxing retreat, featuring tile flooring and a massive walk-in closet. The en-suite bathroom comes equipped with dual sinks, a spacious walk-in shower lined with subway tiles, a separate soaking tub, and ample storage. The additional three bedrooms all include built-in closets and plenty of space, ensuring comfort for family members or guests alike.<br/></p><h2>Prime Location in Valrico</h2><p>Situated in the heart of Valrico, this home offers easy access to top-rated schools, shopping, dining, and recreational activities. Its location within a non-flood zone (Zone X) also provides peace of mind, as no flood insurance is required. Whether you’re looking for a quiet place to raise a family or a modern home with plenty of amenities, this home is the perfect fit.</p><h2>Schedule Your Private Showing Today</h2><p>This move-in ready gem won’t last long on the market! With a competitive price of $599,999, it’s an opportunity you won’t want to miss. Contact Kevin Freel today to schedule a private showing and take the first step toward making 2860 Buckhorn Forest Dr your new home.</p><p>Kevin Freel, your partner in making pivotal life moments happen.</p><p>Realtor since 1985</p><p><br/><strong>Phone:</strong> <a href="tel:7274108599">727-410-8599</a></p>
-    </article>
+    <div class="blog-post-wrap">
+      <article class="blog-article">
+        <div class="blog-video">
+        <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" frameborder="0" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube-nocookie.com/embed/mvhgVb78lzE" title="Move-In Ready 4-Bed Home in Valrico | $599,999"></iframe></div>
+        
+        <h2>The Perfect Move-In Ready Home in Valrico</h2>
+        <p>Finding the perfect move-in ready home that balances modern amenities, spacious living, and energy efficiency can be challenging, especially in today’s market. If you’ve been searching for a newer home that doesn’t need any upgrades or repairs, look no further than 2860 Buckhorn Forest Dr in Valrico. Built in 2021 by Pulte Homes, this stunning single-story property has everything a family could want — from a gorgeous saltwater pool to eco-friendly features like an EV charger. Move-in ready doesn’t begin to describe this pristine property; it’s built for convenience, comfort, and a lifestyle you’ll love.<br/></p>
+        <h2>Spacious Living with Modern Amenities</h2>
+        <p>This one-story, 4-bedroom, 3-bath home offers 2,292 square feet of modern living space, perfectly designed for family life or entertaining guests. The open floor plan creates a seamless flow from the kitchen to the living room, allowing for easy interaction and hosting. The kitchen boasts a 10-foot extended quartz island, complete with high-end stainless steel appliances from LG and KitchenAid, making it a chef’s dream. The spacious walk-in pantry ensures that storage will never be an issue, while the built-in shelves and electric fireplace in the family room add a cozy yet contemporary touch.<br/></p>
+        <h2>Outdoor Living at Its Finest</h2>
+        <p>Step outside and you'll be greeted by your own private oasis. The saltwater pool is not only stunning but also energy-efficient, heated for year-round enjoyment. The screened enclosure and paver-lined lanai offer a perfect setting for outdoor gatherings or simply relaxing in the Florida sun. With child safety fencing and a large covered area, this outdoor space is as practical as it is beautiful, making it the ideal backdrop for both family time and entertaining friends.<br/></p>
+        <h2>Energy-Efficient and Smart Home Features</h2>
+        <p>In addition to its aesthetic appeal, this home offers numerous upgrades that make life more convenient and energy-efficient. From the Tesla EV charger in the garage to the whole-house surge protector and upgraded HVAC system, this home is designed for modern living. The Nest doorbell and Ecobee Smart Thermostat provide cutting-edge smart home technology that helps you control energy use and security right from your phone. Plus, with an average EV charging cost of just $5–$8 per charge, the green features of this home will save you money in the long run.<br/></p>
+        <h2>Luxurious Primary Suite and Additional Bedrooms</h2>
+        <p>The primary bedroom is designed as a relaxing retreat, featuring tile flooring and a massive walk-in closet. The en-suite bathroom comes equipped with dual sinks, a spacious walk-in shower lined with subway tiles, a separate soaking tub, and ample storage. The additional three bedrooms all include built-in closets and plenty of space, ensuring comfort for family members or guests alike.<br/></p>
+        <h2>Prime Location in Valrico</h2>
+        <p>Situated in the heart of Valrico, this home offers easy access to top-rated schools, shopping, dining, and recreational activities. Its location within a non-flood zone (Zone X) also provides peace of mind, as no flood insurance is required. Whether you’re looking for a quiet place to raise a family or a modern home with plenty of amenities, this home is the perfect fit.</p>
+        <h2>Schedule Your Private Showing Today</h2>
+        <p>This move-in ready gem won’t last long on the market! With a competitive price of $599,999, it’s an opportunity you won’t want to miss. Contact Kevin Freel today to schedule a private showing and take the first step toward making 2860 Buckhorn Forest Dr your new home.</p>
+        <p>Kevin Freel, your partner in making pivotal life moments happen.</p>
+        <p>Realtor since 1985</p>
+        <p><br/><strong>Phone:</strong> <a href="tel:7274108599">727-410-8599</a></p>
+      </article>
+
+      <aside class="blog-sidebar">
+        <div class="sidebar-card">
+          <div class="sidebar-head">Related Articles</div>
+          <div class="sidebar-body">
+          <a class="sidebar-link" href="/blog/thankyou2025">A Heartfelt Thank You For Another Amazing Year</a>
+          <a class="sidebar-link" href="/blog/21-years-ago-i-help-a-couple-buy-a-townhome-amp-now-im-honored-to-sell-it-for-the-family">21 Years Ago I Help A Couple Buy A Townhome &amp; Now I’m Honored To Sell It For The Family</a>
+          <a class="sidebar-link" href="/blog/stock-market-real-estate-market-ups-and-downs-dad-in-the-hospital-family-house-fire-amp-lots-of-closings-in-2022-this-is-life">Stock Market, Real Estate Market Ups and Downs, Dad In The Hospital, Family House Fire &amp; Lots of Closings in 2022… This Is life</a>
+          </div>
+        </div>
+        <div class="sidebar-cta">
+          <div class="sidebar-cta-title">Looking to Make a Move?</div>
+          <p>Kevin Freel has been guiding Tampa Bay families home since 1985. Real talk, real results.</p>
+          <a href="tel:7274108599" class="btn-primary">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+            Call Kevin
+          </a>
+          <a href="/contact" class="sidebar-cta-link">Send a message →</a>
+        </div>
+      </aside>
+    </div>
 
     <div class="blog-post-footer">
       <div class="blog-post-cta">
         <h3>Interested in Tampa Bay Real Estate?</h3>
         <p>Whether you're buying, selling, or just have questions — Kevin is here to help.</p>
         <a href="tel:7274108599" class="btn-primary">Call Kevin — 727-410-8599</a>
+        <a href="/contact" class="btn-outline">Send a Message</a>
       </div>
     </div>
 
   </main>
 
-  <!-- ── FOOTER ── -->
-  <footer class="footer">
-    <div class="footer-inner">
-      <a href="/" class="footer-logo">KEVIN <span>FREEL</span></a>
-      <p class="footer-copy">&copy; 2026 Kevin Freel Real Estate. All rights reserved.</p>
-      <div class="footer-social">
-        <a href="https://www.facebook.com/SellingTampa" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-        </a>
-        <a href="https://www.instagram.com/kevinsellstampabay/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
-        </a>
-      
-        <a href="https://www.linkedin.com/in/kevin-freel-b0363029/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.063 2.063 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-        </a>
-        <a href="https://x.com/Sellingtampa1" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231 5.45-6.231zm-1.161 17.52h1.833L7.084 4.126H5.117L17.083 19.77z"/></svg>
-        </a>
-        <a href="https://www.tiktok.com/@kevinfreel" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-5.2 1.74 2.89 2.89 0 012.31-4.64 2.93 2.93 0 01.88.13V9.4a6.84 6.84 0 00-1-.05A6.33 6.33 0 005.8 20.1a6.34 6.34 0 0010.86-4.43v-7a8.16 8.16 0 004.77 1.52v-3.4a4.85 4.85 0 01-1.84-.1z"/></svg>
-        </a>
-        <a href="https://share.google/KxNDtGpzlkBEwSXu2" target="_blank" rel="noopener noreferrer" aria-label="Google Business Profile">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84A10.997 10.997 0 0012 23z"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
-        </a>
-      </div>
+  <!-- BEGIN_FOOTER -->
+<!-- ── FOOTER ── -->
+<footer class="footer">
+  <div class="footer-inner">
+    <a href="/" class="footer-logo">KEVIN <span>FREEL</span></a>
+    <p class="footer-copy">&copy; 2026 Kevin Freel Real Estate. All rights reserved.</p>
+    <div class="footer-social">
+      <a href="https://www.facebook.com/SellingTampa" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+      </a>
+      <a href="https://www.instagram.com/kevinsellstampabay/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+      </a>
+      <a href="https://www.linkedin.com/in/kevin-freel-b0363029/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.063 2.063 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+      </a>
+      <a href="https://x.com/Sellingtampa1" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231 5.45-6.231zm-1.161 17.52h1.833L7.084 4.126H5.117L17.083 19.77z"/></svg>
+      </a>
+      <a href="https://www.tiktok.com/@kevinfreel" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-5.2 1.74 2.89 2.89 0 012.31-4.64 2.93 2.93 0 01.88.13V9.4a6.84 6.84 0 00-1-.05A6.33 6.33 0 005.8 20.1a6.34 6.34 0 0010.86-4.43v-7a8.16 8.16 0 004.77 1.52v-3.4a4.85 4.85 0 01-1.84-.1z"/></svg>
+      </a>
+      <a href="https://share.google/KxNDtGpzlkBEwSXu2" target="_blank" rel="noopener noreferrer" aria-label="Google Business Profile">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84A10.997 10.997 0 0012 23z"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+      </a>
     </div>
-  </footer>
+  </div>
+</footer>
+  <!-- END_FOOTER -->
 
 </body>
 </html>

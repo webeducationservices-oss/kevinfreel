@@ -14,6 +14,7 @@
   <meta property="og:url" content="https://kevinfreel.com/blog/birthday-surprise">
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="Kevin Freel Real Estate">
+  <meta name="twitter:image" content="https://kevinfreel.com/images/blog/birthday-surprise/hero.webp">
   <meta property="article:published_time" content="2025-01-09T14:16:29-05:00">
   <meta property="article:author" content="Kevin Freel">
 
@@ -22,6 +23,7 @@
 
   <link rel="preload" as="font" type="font/woff2" href="/fonts/playfair-display.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="/fonts/inter.woff2" crossorigin>
+  <link rel="preload" as="image" type="image/webp" href="/images/blog/birthday-surprise/hero.webp" fetchpriority="high">
 
   <link rel="stylesheet" href="/fonts/fonts.css">
   <link rel="stylesheet" href="/styles.css">
@@ -31,6 +33,7 @@
     "@context": "https://schema.org",
     "@type": "BlogPosting",
     "headline": "A Birthday Surprise: A Story About Real Estate, My Mom, and Her New Car",
+    "description": "The Everyday Hero   My mom is like most moms\u2014a pillar of strength, selflessness, and love. At 80 years old, she continues to inspire me\u2026",
     "author": {"@type": "Person", "name": "Kevin Freel"},
     "datePublished": "2025-01-09T14:16:29-05:00",
     "image": "https://kevinfreel.com/images/blog/birthday-surprise/hero.webp",
@@ -43,109 +46,175 @@
 </head>
 <body>
 
-  <!-- ── NAV ── -->
-  <nav class="nav scrolled" aria-label="Main navigation">
-    <div class="nav-inner">
-      <a href="/" class="nav-logo" aria-label="Kevin Freel — Realtor Since 1985"><span class="nav-logo-name">KEVIN <span>FREEL</span></span><span class="nav-logo-tagline">Realtor Since 1985</span></a>
-      <ul class="nav-links">
-        <li><a href="/search">Search</a></li>
-        <li><a href="/about">About</a></li>
-        <li><a href="/resources">Resources</a></li>
-        <li><a href="/sellers">Sellers</a></li>
-        <li><a href="/buyers">Buyers</a></li>
-        <li><a href="/photography">Photography</a></li>
-        <li><a href="/contact">Contact</a></li>
-        <li>
-          <a href="tel:7274108599" class="nav-cta">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-            727-410-8599
-          </a>
-        </li>
-      </ul>
-      <button id="menu-btn" aria-label="Open menu" aria-expanded="false">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
-      </button>
-    </div>
-  </nav>
-
-  <!-- ── Mobile Menu ── -->
-  <div id="menu-overlay" class="menu-overlay"></div>
-  <div id="mobile-menu" class="mobile-menu" aria-label="Mobile navigation">
-    <a href="/">Home</a>
-    <a href="/search">Search</a>
-    <a href="/about">About</a>
-    <a href="/resources">Resources</a>
-    <a href="/sellers">Sellers</a>
-    <a href="/buyers">Buyers</a>
-    <a href="/photography">Photography</a>
-    <a href="/contact">Contact</a>
-    <a href="tel:7274108599" class="nav-cta">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-      727-410-8599
-    </a>
+  <!-- BEGIN_NAV -->
+<!-- ── NAV ── -->
+<nav class="nav scrolled" aria-label="Main navigation">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo" aria-label="Kevin Freel — Realtor Since 1985"><span class="nav-logo-name">KEVIN <span>FREEL</span></span><span class="nav-logo-tagline">Realtor Since 1985</span></a>
+    <ul class="nav-links">
+      <li><a href="/search" data-nav="search">Search</a></li>
+      <li><a href="/listings" data-nav="listings">Listings</a></li>
+      <li><a href="/about" data-nav="about">About</a></li>
+      <li><a href="/resources" data-nav="resources">Resources</a></li>
+      <li><a href="/sellers" data-nav="sellers">Sellers</a></li>
+      <li><a href="/buyers" data-nav="buyers">Buyers</a></li>
+      <li><a href="/photography" data-nav="photography">Photography</a></li>
+      <li><a href="/blog" data-nav="blog">Blog</a></li>
+      <li><a href="/contact" data-nav="contact">Contact</a></li>
+      <li>
+        <a href="tel:7274108599" class="nav-cta">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          727-410-8599
+        </a>
+      </li>
+    </ul>
+    <button id="menu-btn" aria-label="Open menu" aria-expanded="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
   </div>
+</nav>
+
+<!-- ── Mobile Menu ── -->
+<div id="menu-overlay" class="menu-overlay"></div>
+<div id="mobile-menu" class="mobile-menu" aria-label="Mobile navigation">
+  <a href="/" data-nav="home">Home</a>
+  <a href="/search" data-nav="search">Search</a>
+  <a href="/listings" data-nav="listings">Listings</a>
+  <a href="/about" data-nav="about">About</a>
+  <a href="/resources" data-nav="resources">Resources</a>
+  <a href="/sellers" data-nav="sellers">Sellers</a>
+  <a href="/buyers" data-nav="buyers">Buyers</a>
+  <a href="/photography" data-nav="photography">Photography</a>
+  <a href="/blog" data-nav="blog">Blog</a>
+  <a href="/contact" data-nav="contact">Contact</a>
+  <a href="tel:7274108599" class="nav-cta">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+    727-410-8599
+  </a>
+</div>
+  <!-- END_NAV -->
 
   <main>
 
     <section class="blog-post-hero">
-      <div class="blog-post-hero-inner">
+      <img src="/images/blog/birthday-surprise/hero.webp" alt="A Birthday Surprise: A Story About Real Estate, My Mom, and Her New Car" loading="eager" width="1200" height="675">
+      <div class="blog-post-hero-content">
         <a href="/blog" class="blog-back-link">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
           Back to Blog
         </a>
-        <div class="blog-post-meta">
-          <span>January 9, 2025</span>
-          <span class="tag">Storm Recovery</span>
-          <span class="tag">South Tampa</span>
-          <span class="tag">Mortgage</span>
-        </div>
+        <span class="blog-post-cat">Storm Recovery</span>
         <h1>A Birthday Surprise: A Story About Real Estate, My Mom, and Her New Car</h1>
+        <div class="post-meta">
+          <span>Kevin Freel</span>
+          <span class="post-meta-dot"></span>
+          <span>January 9, 2025</span>
+          <span class="post-meta-dot"></span>
+          <span>4 min read</span>
+        </div>
       </div>
     </section>
 
-    <article class="blog-post-body">
-      <p><a href="https://www.youtube.com/watch?v=Tc0uqum3VvU" rel="noopener noreferrer" target="_blank">Watch the video →</a></p>
-      <h2><strong>The Everyday Hero</strong></h2><p>My mom is like most moms—a pillar of strength, selflessness, and love. At 80 years old, she continues to inspire me every day. She’s the type of woman who always puts others first, whether she’s working part-time to support the family, helping raise her two grandsons, or being a loving partner to her wonderful husband. For 38 years, she’s been a steady presence at the same eye doctor’s office, driving 30 miles each way to ensure patients are cared for.</p><p>But behind her unyielding dedication, I discovered something troubling—her car, the one she depended on daily, wasn’t reliable anymore. Worse yet, the air conditioning didn’t work, a tough situation for someone making long commutes in all weather. She never complained, never asked for anything. That’s just who she is. But for her 80th birthday, I knew she deserved something truly special.</p><h2>The Dream Takes Shape</h2><p>2024 was a year of growth for me, both personally and professionally. My real estate career hit a record high, and I knew I had to channel that success into doing something meaningful. My mom’s unwavering support over the years has been the foundation of everything I’ve accomplished. I told myself—and everyone who’d listen—that I was going to make it happen: I was going to buy my mom a new car.</p><p>It wasn’t just about the car; it was about giving back to the woman who’s given so much of herself to everyone around her.</p><h2>The Perfect Plan</h2><p>I found the perfect car about a month before Thanksgiving. It was reliable, comfortable, and had working air conditioning—a must for those long drives. I took it home and drove it around for a while to make sure it was flawless. But I didn’t tell her a word. This surprise had to be perfect.</p><p>The plan was set: I’d bring the car with me when I drove up for Thanksgiving, then fly back home after the holiday. She would have no idea it was hers until the moment everything came together.</p><h2>Thanksgiving Morning: The Reveal</h2><p>The morning of Thanksgiving, I could hardly contain my excitement. Before the family woke up, my nephew snuck outside and placed a giant ribbon on the car. Then, I prepared the final touch—a small gift box holding the key.</p><p>After breakfast, I told my mom I had an early birthday gift for her. I handed her the box. She looked at me, puzzled but intrigued. She opened it slowly, revealing the car key inside.</p><p>Her face lit up with confusion at first, then realization dawned. “Wait…what is this?” she asked, holding the key in her hand. I guided her to the driveway, where the car sat gleaming in the morning sun, the big red ribbon shining bright.</p><p>The moment it all clicked, her reaction was priceless. Tears welled up in her eyes, and she was momentarily speechless. “You got me a car?” she finally managed to say, overwhelmed with emotion.</p><h2>A Memory for a Lifetime</h2><p>Watching her hug me, smile through her tears, and sit in the driver’s seat of her new car for the first time was a moment I’ll never forget. It wasn’t just about the car—it was about showing her how much she means to all of us.</p><p>Later, when we watched the video of the surprise, someone joked, “I’m not crying, you’re crying.” But honestly? Everyone was crying.</p><h2>Why It Matters</h2><p>This wasn’t just a gift; it was a symbol of gratitude for everything she’s done for me and our family. My mom deserved something extraordinary for her 80th birthday, and I’m grateful I could make it happen.</p><p>This Thanksgiving, we celebrated more than just the holiday. We celebrated love, family, and the incredible power of giving back to those who’ve given us everything.</p><h2>Watch the Video</h2><p>Don’t miss the moment my mom got her surprise—watch the video. I promise, it’s not just me tearing up; you will, too.</p><p>Happy birthday, Mom. You’re one in a million.</p><h2>A Year of Real Estate Success and Gratitude</h2><p>Now for a little marketing moment—2024 was not just a year of personal milestones; it was also an extraordinary year professionally. I had the privilege of helping <strong>36 amazing clients</strong> close on their dream homes or investment properties, resulting in over <strong>$21,000,000 in sales volume.</strong></p><p>It’s an honor to have been recognized as the <strong>#1 agent at Century 21 Beggins in Tampa Bay,</strong> but I know this achievement isn’t mine alone. It’s a reflection of the trust, support, and loyalty of my clients, who allowed me to guide them through one of the biggest decisions of their lives.</p><p>This year wasn’t without its challenges—higher interest rates, the uncertainty of an election year, and even hurricanes tested the market. Yet, through it all, I persevered, inspired by the resilience and determination of the people I worked with. It’s been a blessing to be part of their journeys, helping them find not just houses, but places they can truly call home.</p><p>To my clients, colleagues, and everyone who played a part in this incredible year—thank you. I couldn’t have done it without you, and I look forward to creating even more success stories together in 2025!</p><h2>Ready to Buy or Sell? Contact Kevin Freel Today!</h2><p>If you’re ready to take the next step in your real estate journey, I’m just a call or email away. Let’s make your South Tampa real estate goals a reality this year!</p><p>📧 <strong>Email:</strong> KevinFreel@c21be.com<br/>📞 <strong>Phone:</strong> (727) 410-8599</p><p>Here’s to building more success stories together in 2025!</p>
-    </article>
+    <div class="blog-post-wrap">
+      <article class="blog-article">
+        <div class="blog-video">
+        <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" frameborder="0" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube-nocookie.com/embed/Tc0uqum3VvU" title="A Birthday Surprise: A Story About Real Estate, My Mom, and Her New Car"></iframe></div>
+        
+        <h2><strong>The Everyday Hero</strong></h2>
+        <p>My mom is like most moms—a pillar of strength, selflessness, and love. At 80 years old, she continues to inspire me every day. She’s the type of woman who always puts others first, whether she’s working part-time to support the family, helping raise her two grandsons, or being a loving partner to her wonderful husband. For 38 years, she’s been a steady presence at the same eye doctor’s office, driving 30 miles each way to ensure patients are cared for.</p>
+        <p>But behind her unyielding dedication, I discovered something troubling—her car, the one she depended on daily, wasn’t reliable anymore. Worse yet, the air conditioning didn’t work, a tough situation for someone making long commutes in all weather. She never complained, never asked for anything. That’s just who she is. But for her 80th birthday, I knew she deserved something truly special.</p>
+        <h2>The Dream Takes Shape</h2>
+        <p>2024 was a year of growth for me, both personally and professionally. My real estate career hit a record high, and I knew I had to channel that success into doing something meaningful. My mom’s unwavering support over the years has been the foundation of everything I’ve accomplished. I told myself—and everyone who’d listen—that I was going to make it happen: I was going to buy my mom a new car.</p>
+        <p>It wasn’t just about the car; it was about giving back to the woman who’s given so much of herself to everyone around her.</p>
+        <h2>The Perfect Plan</h2>
+        <p>I found the perfect car about a month before Thanksgiving. It was reliable, comfortable, and had working air conditioning—a must for those long drives. I took it home and drove it around for a while to make sure it was flawless. But I didn’t tell her a word. This surprise had to be perfect.</p>
+        <p>The plan was set: I’d bring the car with me when I drove up for Thanksgiving, then fly back home after the holiday. She would have no idea it was hers until the moment everything came together.</p>
+        <h2>Thanksgiving Morning: The Reveal</h2>
+        <p>The morning of Thanksgiving, I could hardly contain my excitement. Before the family woke up, my nephew snuck outside and placed a giant ribbon on the car. Then, I prepared the final touch—a small gift box holding the key.</p>
+        <p>After breakfast, I told my mom I had an early birthday gift for her. I handed her the box. She looked at me, puzzled but intrigued. She opened it slowly, revealing the car key inside.</p>
+        <p>Her face lit up with confusion at first, then realization dawned. “Wait…what is this?” she asked, holding the key in her hand. I guided her to the driveway, where the car sat gleaming in the morning sun, the big red ribbon shining bright.</p>
+        <p>The moment it all clicked, her reaction was priceless. Tears welled up in her eyes, and she was momentarily speechless. “You got me a car?” she finally managed to say, overwhelmed with emotion.</p>
+        <h2>A Memory for a Lifetime</h2>
+        <p>Watching her hug me, smile through her tears, and sit in the driver’s seat of her new car for the first time was a moment I’ll never forget. It wasn’t just about the car—it was about showing her how much she means to all of us.</p>
+        <p>Later, when we watched the video of the surprise, someone joked, “I’m not crying, you’re crying.” But honestly? Everyone was crying.</p>
+        <h2>Why It Matters</h2>
+        <p>This wasn’t just a gift; it was a symbol of gratitude for everything she’s done for me and our family. My mom deserved something extraordinary for her 80th birthday, and I’m grateful I could make it happen.</p>
+        <p>This Thanksgiving, we celebrated more than just the holiday. We celebrated love, family, and the incredible power of giving back to those who’ve given us everything.</p>
+        <h2>Watch the Video</h2>
+        <p>Don’t miss the moment my mom got her surprise—watch the video. I promise, it’s not just me tearing up; you will, too.</p>
+        <p>Happy birthday, Mom. You’re one in a million.</p>
+        <h2>A Year of Real Estate Success and Gratitude</h2>
+        <p>Now for a little marketing moment—2024 was not just a year of personal milestones; it was also an extraordinary year professionally. I had the privilege of helping <strong>36 amazing clients</strong> close on their dream homes or investment properties, resulting in over <strong>$21,000,000 in sales volume.</strong></p>
+        <p>It’s an honor to have been recognized as the <strong>#1 agent at Century 21 Beggins in Tampa Bay,</strong> but I know this achievement isn’t mine alone. It’s a reflection of the trust, support, and loyalty of my clients, who allowed me to guide them through one of the biggest decisions of their lives.</p>
+        <p>This year wasn’t without its challenges—higher interest rates, the uncertainty of an election year, and even hurricanes tested the market. Yet, through it all, I persevered, inspired by the resilience and determination of the people I worked with. It’s been a blessing to be part of their journeys, helping them find not just houses, but places they can truly call home.</p>
+        <p>To my clients, colleagues, and everyone who played a part in this incredible year—thank you. I couldn’t have done it without you, and I look forward to creating even more success stories together in 2025!</p>
+        <h2>Ready to Buy or Sell? Contact Kevin Freel Today!</h2>
+        <p>If you’re ready to take the next step in your real estate journey, I’m just a call or email away. Let’s make your South Tampa real estate goals a reality this year!</p>
+        <p>📧 <strong>Email:</strong> KevinFreel@c21be.com<br/>📞 <strong>Phone:</strong> (727) 410-8599</p>
+        <p>Here’s to building more success stories together in 2025!</p>
+      </article>
+
+      <aside class="blog-sidebar">
+        <div class="sidebar-card">
+          <div class="sidebar-head">Related Articles</div>
+          <div class="sidebar-body">
+          <a class="sidebar-link" href="/blog/1206lemon">From Teardown to Treasure: A South Tampa Real Estate Success Story</a>
+          <a class="sidebar-link" href="/blog/morton">South Tampa 4 Bedroom Home for Sale Near MacDill Air Force Base</a>
+          <a class="sidebar-link" href="/blog/after-hurricane-helene">After Hurricane Helene: Kevin Freel’s Tampa Recovery Resources Hub</a>
+          </div>
+        </div>
+        <div class="sidebar-cta">
+          <div class="sidebar-cta-title">Looking to Make a Move?</div>
+          <p>Kevin Freel has been guiding Tampa Bay families home since 1985. Real talk, real results.</p>
+          <a href="tel:7274108599" class="btn-primary">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+            Call Kevin
+          </a>
+          <a href="/contact" class="sidebar-cta-link">Send a message →</a>
+        </div>
+      </aside>
+    </div>
 
     <div class="blog-post-footer">
       <div class="blog-post-cta">
-        <h3>Interested in Tampa Bay Real Estate?</h3>
-        <p>Whether you're buying, selling, or just have questions — Kevin is here to help.</p>
+        <h3>Storm-Affected? Kevin Can Help.</h3>
+        <p>From insurance to selling as-is or rebuilding, Kevin has guided dozens of Tampa Bay families through recovery.</p>
         <a href="tel:7274108599" class="btn-primary">Call Kevin — 727-410-8599</a>
+        <a href="/contact" class="btn-outline">Send a Message</a>
       </div>
     </div>
 
   </main>
 
-  <!-- ── FOOTER ── -->
-  <footer class="footer">
-    <div class="footer-inner">
-      <a href="/" class="footer-logo">KEVIN <span>FREEL</span></a>
-      <p class="footer-copy">&copy; 2026 Kevin Freel Real Estate. All rights reserved.</p>
-      <div class="footer-social">
-        <a href="https://www.facebook.com/SellingTampa" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-        </a>
-        <a href="https://www.instagram.com/kevinsellstampabay/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
-        </a>
-      
-        <a href="https://www.linkedin.com/in/kevin-freel-b0363029/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.063 2.063 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-        </a>
-        <a href="https://x.com/Sellingtampa1" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231 5.45-6.231zm-1.161 17.52h1.833L7.084 4.126H5.117L17.083 19.77z"/></svg>
-        </a>
-        <a href="https://www.tiktok.com/@kevinfreel" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-5.2 1.74 2.89 2.89 0 012.31-4.64 2.93 2.93 0 01.88.13V9.4a6.84 6.84 0 00-1-.05A6.33 6.33 0 005.8 20.1a6.34 6.34 0 0010.86-4.43v-7a8.16 8.16 0 004.77 1.52v-3.4a4.85 4.85 0 01-1.84-.1z"/></svg>
-        </a>
-        <a href="https://share.google/KxNDtGpzlkBEwSXu2" target="_blank" rel="noopener noreferrer" aria-label="Google Business Profile">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84A10.997 10.997 0 0012 23z"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
-        </a>
-      </div>
+  <!-- BEGIN_FOOTER -->
+<!-- ── FOOTER ── -->
+<footer class="footer">
+  <div class="footer-inner">
+    <a href="/" class="footer-logo">KEVIN <span>FREEL</span></a>
+    <p class="footer-copy">&copy; 2026 Kevin Freel Real Estate. All rights reserved.</p>
+    <div class="footer-social">
+      <a href="https://www.facebook.com/SellingTampa" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+      </a>
+      <a href="https://www.instagram.com/kevinsellstampabay/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+      </a>
+      <a href="https://www.linkedin.com/in/kevin-freel-b0363029/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.063 2.063 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+      </a>
+      <a href="https://x.com/Sellingtampa1" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231 5.45-6.231zm-1.161 17.52h1.833L7.084 4.126H5.117L17.083 19.77z"/></svg>
+      </a>
+      <a href="https://www.tiktok.com/@kevinfreel" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-5.2 1.74 2.89 2.89 0 012.31-4.64 2.93 2.93 0 01.88.13V9.4a6.84 6.84 0 00-1-.05A6.33 6.33 0 005.8 20.1a6.34 6.34 0 0010.86-4.43v-7a8.16 8.16 0 004.77 1.52v-3.4a4.85 4.85 0 01-1.84-.1z"/></svg>
+      </a>
+      <a href="https://share.google/KxNDtGpzlkBEwSXu2" target="_blank" rel="noopener noreferrer" aria-label="Google Business Profile">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84A10.997 10.997 0 0012 23z"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+      </a>
     </div>
-  </footer>
+  </div>
+</footer>
+  <!-- END_FOOTER -->
 
 </body>
 </html>

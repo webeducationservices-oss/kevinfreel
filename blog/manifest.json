@@ -8,7 +8,8 @@
     "tags": [
       "open-house",
       "buying"
-    ]
+    ],
+    "category": "Open House"
   },
   {
     "slug": "irb",
@@ -20,7 +21,8 @@
       "open-house",
       "market-update",
       "buying"
-    ]
+    ],
+    "category": "Open House"
   },
   {
     "slug": "3openhouses",
@@ -32,7 +34,8 @@
       "open-house",
       "south-tampa",
       "buying"
-    ]
+    ],
+    "category": "Open House"
   },
   {
     "slug": "carrollwood",
@@ -44,7 +47,8 @@
       "open-house",
       "selling",
       "buying"
-    ]
+    ],
+    "category": "Open House"
   },
   {
     "slug": "thankyou2025",
@@ -54,7 +58,8 @@
     "hero_image": "/images/blog/thankyou2025/hero.webp",
     "tags": [
       "news"
-    ]
+    ],
+    "category": "News"
   },
   {
     "slug": "11grandifloras",
@@ -66,7 +71,8 @@
       "open-house",
       "market-update",
       "buying"
-    ]
+    ],
+    "category": "Open House"
   },
   {
     "slug": "3223paxton",
@@ -77,7 +83,8 @@
     "tags": [
       "south-tampa",
       "buying"
-    ]
+    ],
+    "category": "South Tampa"
   },
   {
     "slug": "6closings",
@@ -89,7 +96,8 @@
       "open-house",
       "south-tampa",
       "selling"
-    ]
+    ],
+    "category": "Open House"
   },
   {
     "slug": "905nwillowave",
@@ -101,7 +109,8 @@
       "open-house",
       "south-tampa",
       "buying"
-    ]
+    ],
+    "category": "Open House"
   },
   {
     "slug": "1206lemon",
@@ -113,7 +122,8 @@
       "storm-recovery",
       "south-tampa",
       "selling"
-    ]
+    ],
+    "category": "Storm Recovery"
   },
   {
     "slug": "905willow",
@@ -124,7 +134,8 @@
     "tags": [
       "south-tampa",
       "buying"
-    ]
+    ],
+    "category": "South Tampa"
   },
   {
     "slug": "418frances",
@@ -136,7 +147,8 @@
       "just-sold",
       "open-house",
       "south-tampa"
-    ]
+    ],
+    "category": "Just Sold"
   },
   {
     "slug": "40-years",
@@ -148,7 +160,8 @@
       "south-tampa",
       "tampa-bay",
       "mortgage"
-    ]
+    ],
+    "category": "South Tampa"
   },
   {
     "slug": "hot-summer-homes",
@@ -160,7 +173,8 @@
       "open-house",
       "south-tampa",
       "selling"
-    ]
+    ],
+    "category": "Open House"
   },
   {
     "slug": "morton",
@@ -172,7 +186,8 @@
       "open-house",
       "storm-recovery",
       "south-tampa"
-    ]
+    ],
+    "category": "Open House"
   },
   {
     "slug": "luxurious-urban-living-at-westshore-marina-district",
@@ -183,7 +198,8 @@
     "tags": [
       "open-house",
       "tampa-bay"
-    ]
+    ],
+    "category": "Open House"
   },
   {
     "slug": "modernhome",
@@ -195,7 +211,8 @@
       "just-sold",
       "open-house",
       "south-tampa"
-    ]
+    ],
+    "category": "Just Sold"
   },
   {
     "slug": "tampaheights",
@@ -207,7 +224,8 @@
       "open-house",
       "south-tampa",
       "buying"
-    ]
+    ],
+    "category": "Open House"
   },
   {
     "slug": "from-dream-to-reality",
@@ -219,7 +237,8 @@
       "south-tampa",
       "selling",
       "buying"
-    ]
+    ],
+    "category": "South Tampa"
   },
   {
     "slug": "tampa-bay-best-realtor",
@@ -230,7 +249,8 @@
     "tags": [
       "selling",
       "buying"
-    ]
+    ],
+    "category": "Selling"
   },
   {
     "slug": "birthday-surprise",
@@ -242,7 +262,8 @@
       "storm-recovery",
       "south-tampa",
       "mortgage"
-    ]
+    ],
+    "category": "Storm Recovery"
   },
   {
     "slug": "7closings",
@@ -254,7 +275,8 @@
       "selling",
       "buying",
       "tampa-bay"
-    ]
+    ],
+    "category": "Selling"
   },
   {
     "slug": "2919elrod",
@@ -265,7 +287,8 @@
     "tags": [
       "south-tampa",
       "buying"
-    ]
+    ],
+    "category": "South Tampa"
   },
   {
     "slug": "after-hurricane-helene",
@@ -275,7 +298,8 @@
     "hero_image": "/images/blog/after-hurricane-helene/hero.webp",
     "tags": [
       "storm-recovery"
-    ]
+    ],
+    "category": "Storm Recovery"
   },
   {
     "slug": "plamettobeach",
@@ -286,7 +310,8 @@
     "tags": [
       "storm-recovery",
       "buying"
-    ]
+    ],
+    "category": "Storm Recovery"
   },
   {
     "slug": "2860buckhorn",
@@ -296,7 +321,8 @@
     "hero_image": "/images/blog/2860buckhorn/hero.webp",
     "tags": [
       "news"
-    ]
+    ],
+    "category": "News"
   },
   {
     "slug": "404nwestland",
@@ -307,7 +333,8 @@
     "tags": [
       "selling",
       "buying"
-    ]
+    ],
+    "category": "Selling"
   },
   {
     "slug": "grateful",
@@ -319,7 +346,8 @@
       "market-update",
       "selling",
       "buying"
-    ]
+    ],
+    "category": "Market Update"
   },
   {
     "slug": "1308wstatest",
@@ -331,7 +359,8 @@
       "just-sold",
       "south-tampa",
       "buying"
-    ]
+    ],
+    "category": "Just Sold"
   },
   {
     "slug": "1310wstatest",
@@ -343,7 +372,8 @@
       "just-sold",
       "south-tampa",
       "buying"
-    ]
+    ],
+    "category": "Just Sold"
   },
   {
     "slug": "316eadaleest",
@@ -355,7 +385,8 @@
       "just-sold",
       "open-house",
       "selling"
-    ]
+    ],
+    "category": "Just Sold"
   },
   {
     "slug": "4324wgrayst",
@@ -366,7 +397,8 @@
     "tags": [
       "south-tampa",
       "buying"
-    ]
+    ],
+    "category": "South Tampa"
   },
   {
     "slug": "realestaterelocation",
@@ -377,7 +409,8 @@
     "tags": [
       "buying",
       "tampa-bay"
-    ]
+    ],
+    "category": "Buying"
   },
   {
     "slug": "affordable-dream-homes-in-tampa-amp-st-pete-just-listed",
@@ -389,7 +422,8 @@
       "open-house",
       "buying",
       "tampa-bay"
-    ]
+    ],
+    "category": "Open House"
   },
   {
     "slug": "just-sold-move-in-condition-3br-2ba-block-home-south-tampa-572000",
@@ -401,7 +435,8 @@
       "just-sold",
       "open-house",
       "south-tampa"
-    ]
+    ],
+    "category": "Just Sold"
   },
   {
     "slug": "316-adalee",
@@ -412,7 +447,8 @@
     "tags": [
       "open-house",
       "tampa-bay"
-    ]
+    ],
+    "category": "Open House"
   },
   {
     "slug": "2905wsancarlosst",
@@ -423,7 +459,8 @@
     "tags": [
       "just-sold",
       "south-tampa"
-    ]
+    ],
+    "category": "Just Sold"
   },
   {
     "slug": "3602sbelcher",
@@ -435,7 +472,8 @@
       "open-house",
       "south-tampa",
       "buying"
-    ]
+    ],
+    "category": "Open House"
   },
   {
     "slug": "discovering-the-perfect-home-a-first-time-buyers-journey-with-kevin-feel",
@@ -446,7 +484,8 @@
     "tags": [
       "south-tampa",
       "buying"
-    ]
+    ],
+    "category": "South Tampa"
   },
   {
     "slug": "418-w-frances-ave",
@@ -458,7 +497,8 @@
       "selling",
       "buying",
       "tampa-bay"
-    ]
+    ],
+    "category": "Selling"
   },
   {
     "slug": "ntvo975q63n593c29pqf9bmlh33w9u",
@@ -470,7 +510,8 @@
       "just-sold",
       "selling",
       "buying"
-    ]
+    ],
+    "category": "Just Sold"
   },
   {
     "slug": "real-estate-reflections-thank-you-everyone-for-a-blessed-2023",
@@ -482,7 +523,8 @@
       "just-sold",
       "buying",
       "mortgage"
-    ]
+    ],
+    "category": "Just Sold"
   },
   {
     "slug": "real-estate-listing-marketing-tactics",
@@ -494,7 +536,8 @@
       "open-house",
       "selling",
       "buying"
-    ]
+    ],
+    "category": "Open House"
   },
   {
     "slug": "just-listed-an-enchanting-single-family-home-in-south-tampa-awaits-you",
@@ -506,7 +549,8 @@
       "open-house",
       "south-tampa",
       "selling"
-    ]
+    ],
+    "category": "Open House"
   },
   {
     "slug": "mapping-real-estate-success-decades-of-diverse-property-sales",
@@ -517,7 +561,8 @@
     "tags": [
       "south-tampa",
       "buying"
-    ]
+    ],
+    "category": "South Tampa"
   },
   {
     "slug": "2023-real-estate-market-challenges-in-tampa-florida-adapting-and-overcoming",
@@ -529,7 +574,8 @@
       "south-tampa",
       "selling",
       "buying"
-    ]
+    ],
+    "category": "South Tampa"
   },
   {
     "slug": "meet-the-team-behind-kevin-freel-realtor",
@@ -541,7 +587,8 @@
       "selling",
       "buying",
       "mortgage"
-    ]
+    ],
+    "category": "Selling"
   },
   {
     "slug": "exclusive-home-listing-in-south-tampa",
@@ -552,7 +599,8 @@
     "tags": [
       "south-tampa",
       "buying"
-    ]
+    ],
+    "category": "South Tampa"
   },
   {
     "slug": "just-sold-this-brand-new-house-in-seminole-heights-560000",
@@ -562,7 +610,8 @@
     "hero_image": "/images/blog/just-sold-this-brand-new-house-in-seminole-heights-560000/hero.webp",
     "tags": [
       "just-sold"
-    ]
+    ],
+    "category": "Just Sold"
   },
   {
     "slug": "tampa-bay-market-is-on-fire-again-a-summer-of-escalation-clauses",
@@ -574,7 +623,8 @@
       "south-tampa",
       "selling",
       "buying"
-    ]
+    ],
+    "category": "South Tampa"
   },
   {
     "slug": "just-listed-a-courtyard-pool-home-375000-near-westchase-of-tampa",
@@ -585,7 +635,8 @@
     "tags": [
       "buying",
       "tampa-bay"
-    ]
+    ],
+    "category": "Buying"
   },
   {
     "slug": "just-sold-in-north-hyde-park-we-received-an-offer-in-less-than-3-hours",
@@ -597,7 +648,8 @@
       "just-sold",
       "open-house",
       "south-tampa"
-    ]
+    ],
+    "category": "Just Sold"
   },
   {
     "slug": "from-cramped-apartments-to-dream-homes-a-realtors-mission-in-hyde-park",
@@ -608,7 +660,8 @@
     "tags": [
       "storm-recovery",
       "south-tampa"
-    ]
+    ],
+    "category": "Storm Recovery"
   },
   {
     "slug": "a-serendipitous-sale-the-masked-visitor-at-my-open-house",
@@ -620,7 +673,8 @@
       "open-house",
       "south-tampa",
       "buying"
-    ]
+    ],
+    "category": "Open House"
   },
   {
     "slug": "north-hyde-park-revitalized-the-life-changing-journey-of-five-grateful-sellers",
@@ -632,7 +686,8 @@
       "south-tampa",
       "selling",
       "buying"
-    ]
+    ],
+    "category": "South Tampa"
   },
   {
     "slug": "21-years-ago-i-help-a-couple-buy-a-townhome-amp-now-im-honored-to-sell-it-for-the-family",
@@ -642,7 +697,8 @@
     "hero_image": "/images/blog/21-years-ago-i-help-a-couple-buy-a-townhome-amp-now-im-honored-to-sell-it-for-the-family/hero.webp",
     "tags": [
       "news"
-    ]
+    ],
+    "category": "News"
   },
   {
     "slug": "just-list-amp-seller-accepted-a-cash-offer-in-3-days-north-hyde-park-real-estate",
@@ -654,7 +710,8 @@
       "open-house",
       "south-tampa",
       "selling"
-    ]
+    ],
+    "category": "Open House"
   },
   {
     "slug": "48-years-of-friendship-led-to-a-perfect-home-for-this-family-kevin-freel-realtor",
@@ -664,7 +721,8 @@
     "hero_image": "/images/blog/48-years-of-friendship-led-to-a-perfect-home-for-this-family-kevin-freel-realtor/hero.webp",
     "tags": [
       "buying"
-    ]
+    ],
+    "category": "Buying"
   },
   {
     "slug": "discover-your-dream-home-in-south-tampa-with-mobley-custom-homes",
@@ -674,7 +732,8 @@
     "hero_image": "/images/blog/discover-your-dream-home-in-south-tampa-with-mobley-custom-homes/hero.webp",
     "tags": [
       "south-tampa"
-    ]
+    ],
+    "category": "South Tampa"
   },
   {
     "slug": "finding-the-perfect-home-in-tampa-bay-420-s-matanzas-avenue",
@@ -686,7 +745,8 @@
       "open-house",
       "south-tampa",
       "buying"
-    ]
+    ],
+    "category": "Open House"
   },
   {
     "slug": "against-all-odds-the-story-of-a-persistent-real-estate-agents-triumph-in-clearwater-florida",
@@ -698,7 +758,8 @@
       "selling",
       "buying",
       "luxury"
-    ]
+    ],
+    "category": "Selling"
   },
   {
     "slug": "get-your-mortgage-ducks-in-a-row-pre-qualify-or-pre-approve",
@@ -709,7 +770,8 @@
     "tags": [
       "selling",
       "mortgage"
-    ]
+    ],
+    "category": "Selling"
   },
   {
     "slug": "just-sold-amp-closed-655000-all-cash-townhome-in-tampa-heights-near-armatureworks",
@@ -721,7 +783,8 @@
       "just-sold",
       "open-house",
       "selling"
-    ]
+    ],
+    "category": "Just Sold"
   },
   {
     "slug": "stock-market-real-estate-market-ups-and-downs-dad-in-the-hospital-family-house-fire-amp-lots-of-closings-in-2022-this-is-life",
@@ -731,7 +794,8 @@
     "hero_image": "/images/blog/stock-market-real-estate-market-ups-and-downs-dad-in-the-hospital-family-house-fire-amp-lots-of-closings-in-2022-this-is-life/hero.webp",
     "tags": [
       "news"
-    ]
+    ],
+    "category": "News"
   },
   {
     "slug": "just-listed-south-tampa-townhome-amp-sold-in-8-days-for-465000-closing-this-friday-all-cash",
@@ -743,7 +807,8 @@
       "just-sold",
       "south-tampa",
       "selling"
-    ]
+    ],
+    "category": "Just Sold"
   },
   {
     "slug": "just-listed-new-townhomes-the-charm-of-1920s-craftsmanship-and-the-security-of-new-construction",
@@ -755,7 +820,8 @@
       "open-house",
       "storm-recovery",
       "tampa-bay"
-    ]
+    ],
+    "category": "Open House"
   },
   {
     "slug": "coming-soon-dutch-west-indies-inspired-townhomes-with-a-private-rooftop",
@@ -767,7 +833,8 @@
       "storm-recovery",
       "buying",
       "tampa-bay"
-    ]
+    ],
+    "category": "Storm Recovery"
   },
   {
     "slug": "listed-sold-this-tear-down-bungalow-in-north-hyde-park",
@@ -779,7 +846,8 @@
       "just-sold",
       "south-tampa",
       "selling"
-    ]
+    ],
+    "category": "Just Sold"
   },
   {
     "slug": "welcome-to-schooner-cove-home-for-sale-5-minutes-from-macdill-airforce-base",
@@ -790,7 +858,8 @@
     "tags": [
       "south-tampa",
       "tampa-bay"
-    ]
+    ],
+    "category": "South Tampa"
   },
   {
     "slug": "hurricane-check-list",
@@ -800,7 +869,8 @@
     "hero_image": "/images/blog/hurricane-check-list/hero.webp",
     "tags": [
       "storm-recovery"
-    ]
+    ],
+    "category": "Storm Recovery"
   },
   {
     "slug": "just-listed-brand-new-townhomes-with-1920s-charm-near-armatureworks-amp-the-riverwalk",
@@ -811,7 +881,8 @@
     "tags": [
       "storm-recovery",
       "investing"
-    ]
+    ],
+    "category": "Storm Recovery"
   },
   {
     "slug": "just-sold-4-bedroom2bath3-car-garage-pool-home-on-2-ponds-625000",
@@ -822,7 +893,8 @@
     "tags": [
       "just-sold",
       "buying"
-    ]
+    ],
+    "category": "Just Sold"
   },
   {
     "slug": "what-do-four-offers-have-in-common-answer-2000000",
@@ -834,7 +906,8 @@
       "south-tampa",
       "selling",
       "buying"
-    ]
+    ],
+    "category": "South Tampa"
   },
   {
     "slug": "another-house-sold-but-what-about-the-furniture",
@@ -845,7 +918,8 @@
     "tags": [
       "selling",
       "tampa-bay"
-    ]
+    ],
+    "category": "Selling"
   },
   {
     "slug": "the-real-estate-market-in-tampa-is-still-going-strong",
@@ -857,7 +931,8 @@
       "selling",
       "buying",
       "tampa-bay"
-    ]
+    ],
+    "category": "Selling"
   },
   {
     "slug": "just-sold-south-st-pete-pool-home-on-15000-sq-ft-lot-for-720000",
@@ -869,7 +944,8 @@
       "just-sold",
       "selling",
       "buying"
-    ]
+    ],
+    "category": "Just Sold"
   },
   {
     "slug": "just-listed-another-home-in-greenbriarperfect-for-a-first-time-homebuyer-or-retiree",
@@ -880,7 +956,8 @@
     "tags": [
       "buying",
       "tampa-bay"
-    ]
+    ],
+    "category": "Buying"
   },
   {
     "slug": "just-listed-this-luxury-beach-park-renovated-pool-home-with-partial-water-views",
@@ -892,7 +969,8 @@
       "storm-recovery",
       "south-tampa",
       "buying"
-    ]
+    ],
+    "category": "Storm Recovery"
   },
   {
     "slug": "just-sold-this-off-market-zoned-for-2-townhomes-to-be-built-heres-how-it-works",
@@ -904,7 +982,8 @@
       "just-sold",
       "open-house",
       "selling"
-    ]
+    ],
+    "category": "Just Sold"
   },
   {
     "slug": "just-listed-clearwater-home-in-charming-greenbriar",
@@ -915,7 +994,8 @@
     "tags": [
       "buying",
       "tampa-bay"
-    ]
+    ],
+    "category": "Buying"
   },
   {
     "slug": "just-sold-a-tear-down-property-at-1308-w-state-st-as-is-to-builders",
@@ -926,7 +1006,8 @@
     "tags": [
       "just-sold",
       "selling"
-    ]
+    ],
+    "category": "Just Sold"
   },
   {
     "slug": "dont-miss-out-fixer-upper-in-hyde-park-or-tear-down-zoned-for-building-2-new-townhomes",
@@ -936,7 +1017,8 @@
     "hero_image": "/images/blog/dont-miss-out-fixer-upper-in-hyde-park-or-tear-down-zoned-for-building-2-new-townhomes/hero.webp",
     "tags": [
       "south-tampa"
-    ]
+    ],
+    "category": "South Tampa"
   },
   {
     "slug": "just-listed-hyde-park-townhome-with-courtyard-685000-no-hoa-fees",
@@ -948,7 +1030,8 @@
       "just-sold",
       "south-tampa",
       "selling"
-    ]
+    ],
+    "category": "Just Sold"
   },
   {
     "slug": "just-sold-45000-over-the-offering-price-for-a-past-client",
@@ -960,7 +1043,8 @@
       "just-sold",
       "south-tampa",
       "selling"
-    ]
+    ],
+    "category": "Just Sold"
   },
   {
     "slug": "my-parents-lost-everything-in-a-mobile-home-fire",
@@ -970,7 +1054,8 @@
     "hero_image": "/images/blog/my-parents-lost-everything-in-a-mobile-home-fire/hero.webp",
     "tags": [
       "news"
-    ]
+    ],
+    "category": "News"
   },
   {
     "slug": "listed-amp-sold-another-past-clients-house-guest-house-45000-over-asking-price",
@@ -981,7 +1066,8 @@
     "tags": [
       "selling",
       "buying"
-    ]
+    ],
+    "category": "Selling"
   },
   {
     "slug": "townhome-in-hyde-park-just-listed-amp-sold-in-24-hrs-45000-over-asking-price",
@@ -993,7 +1079,8 @@
       "just-sold",
       "south-tampa",
       "selling"
-    ]
+    ],
+    "category": "Just Sold"
   },
   {
     "slug": "just-sold-8534-canterbury-lakes-tampa",
@@ -1005,7 +1092,8 @@
       "just-sold",
       "selling",
       "buying"
-    ]
+    ],
+    "category": "Just Sold"
   },
   {
     "slug": "a-5-star-raving-review-that-i-had-to-share-best-realtor-in-tampa",
@@ -1015,7 +1103,8 @@
     "hero_image": "/images/blog/a-5-star-raving-review-that-i-had-to-share-best-realtor-in-tampa/hero.webp",
     "tags": [
       "selling"
-    ]
+    ],
+    "category": "Selling"
   },
   {
     "slug": "just-listed-amp-multiple-cash-offers-over-asking-in-less-than-24-hours",
@@ -1027,7 +1116,8 @@
       "market-update",
       "south-tampa",
       "selling"
-    ]
+    ],
+    "category": "Market Update"
   },
   {
     "slug": "32-offers-on-this-home-for-sale-amp-our-buying-strategy-won",
@@ -1038,7 +1128,8 @@
     "tags": [
       "selling",
       "buying"
-    ]
+    ],
+    "category": "Selling"
   },
   {
     "slug": "just-sold-this-4-unit-income-property-near-armatureworks-54000000",
@@ -1050,7 +1141,8 @@
       "just-sold",
       "selling",
       "buying"
-    ]
+    ],
+    "category": "Just Sold"
   },
   {
     "slug": "i-work-with-several-amazing-quality-builders-in-tampa-bay",
@@ -1062,7 +1154,8 @@
       "south-tampa",
       "buying",
       "tampa-bay"
-    ]
+    ],
+    "category": "South Tampa"
   },
   {
     "slug": "tampa-bay-is-zillows-hottest-housing-market-for-2022",
@@ -1073,7 +1166,8 @@
     "tags": [
       "market-update",
       "buying"
-    ]
+    ],
+    "category": "Market Update"
   },
   {
     "slug": "homebuyers-how-to-win-a-multiple-offers-situation-in-2022",
@@ -1084,7 +1178,8 @@
     "tags": [
       "selling",
       "buying"
-    ]
+    ],
+    "category": "Selling"
   },
   {
     "slug": "are-you-thinking-of-selling-your-home-heres-a-list-of-kevins-buyers-needs",
@@ -1096,7 +1191,8 @@
       "south-tampa",
       "selling",
       "buying"
-    ]
+    ],
+    "category": "South Tampa"
   },
   {
     "slug": "this-commercial-listing-is-an-eclectic-collection-of-history-and-architecture-must-see-video",
@@ -1106,7 +1202,8 @@
     "hero_image": "/images/blog/this-commercial-listing-is-an-eclectic-collection-of-history-and-architecture-must-see-video/hero.webp",
     "tags": [
       "buying"
-    ]
+    ],
+    "category": "Buying"
   },
   {
     "slug": "tampa-bay-has-many-amazing-restaurants",
@@ -1116,7 +1213,8 @@
     "hero_image": "/images/blog/tampa-bay-has-many-amazing-restaurants/hero.webp",
     "tags": [
       "south-tampa"
-    ]
+    ],
+    "category": "South Tampa"
   },
   {
     "slug": "buying-vs-renting",
@@ -1126,7 +1224,8 @@
     "hero_image": "/images/blog/buying-vs-renting/hero.webp",
     "tags": [
       "news"
-    ]
+    ],
+    "category": "News"
   },
   {
     "slug": "20-years-ago-this-week-i-decided-to-change-markets-from-clearwater-to-tampa",
@@ -1138,7 +1237,8 @@
       "south-tampa",
       "selling",
       "buying"
-    ]
+    ],
+    "category": "South Tampa"
   },
   {
     "slug": "another-luxury-home-sold-on-thixton-ct",
@@ -1150,7 +1250,8 @@
       "just-sold",
       "buying",
       "luxury"
-    ]
+    ],
+    "category": "Just Sold"
   },
   {
     "slug": "sold-amp-closed-167500000-multiple-offers-amp-my-sellers-received-over-asking-price",
@@ -1162,7 +1263,8 @@
       "south-tampa",
       "selling",
       "buying"
-    ]
+    ],
+    "category": "South Tampa"
   },
   {
     "slug": "just-sold-helping-a-friend-amp-first-time-home-buyer-is-always-challenging-but-rewarding",
@@ -1174,7 +1276,8 @@
       "just-sold",
       "selling",
       "buying"
-    ]
+    ],
+    "category": "Just Sold"
   },
   {
     "slug": "real-estate-funny-stories-that-can-only-happen-to-kevin-the-man-in-the-closet",
@@ -1185,7 +1288,8 @@
     "tags": [
       "buying",
       "tampa-bay"
-    ]
+    ],
+    "category": "Buying"
   },
   {
     "slug": "funny-real-stories-from-the-life-of-a-realtor-i-swear-this-all-happened-to-me",
@@ -1197,7 +1301,8 @@
       "south-tampa",
       "selling",
       "buying"
-    ]
+    ],
+    "category": "South Tampa"
   },
   {
     "slug": "top-19-reasons-why-your-out-of-town-friends-amp-family-should-move-to-tampa-bay",
@@ -1209,7 +1314,8 @@
       "south-tampa",
       "luxury",
       "tampa-bay"
-    ]
+    ],
+    "category": "South Tampa"
   },
   {
     "slug": "what-does-buccaneers-football-player-mike-evans-also-do-besides-play-football",
@@ -1221,7 +1327,8 @@
       "just-sold",
       "open-house",
       "south-tampa"
-    ]
+    ],
+    "category": "Just Sold"
   },
   {
     "slug": "if-i-knew-what-i-was-about-to-do-for-this-client-i-may-have-made-a-different-decision",
@@ -1233,7 +1340,8 @@
       "just-sold",
       "buying",
       "luxury"
-    ]
+    ],
+    "category": "Just Sold"
   },
   {
     "slug": "unconventional-showings-in-2021-when-the-market-moves-fast-kevin-takes-action",
@@ -1245,7 +1353,8 @@
       "market-update",
       "south-tampa",
       "buying"
-    ]
+    ],
+    "category": "Market Update"
   },
   {
     "slug": "16-million-dollar-home-under-contract-in-3-days-multiple-offers-over-asking-thanks-kevin",
@@ -1257,7 +1366,8 @@
       "open-house",
       "market-update",
       "selling"
-    ]
+    ],
+    "category": "Open House"
   },
   {
     "slug": "stunning-newer-sophisticated-pool-home-in-south-tampa-owners-retreat-on-the-first-floor",
@@ -1267,7 +1377,8 @@
     "hero_image": "/images/blog/stunning-newer-sophisticated-pool-home-in-south-tampa-owners-retreat-on-the-first-floor/hero.webp",
     "tags": [
       "south-tampa"
-    ]
+    ],
+    "category": "South Tampa"
   },
   {
     "slug": "just-listed-welcome-to-ballast-point-of-south-tampa-around-the-corner-from-the-iconic-bayshore-blvd",
@@ -1277,7 +1388,8 @@
     "hero_image": "/images/blog/just-listed-welcome-to-ballast-point-of-south-tampa-around-the-corner-from-the-iconic-bayshore-blvd/hero.webp",
     "tags": [
       "south-tampa"
-    ]
+    ],
+    "category": "South Tampa"
   },
   {
     "slug": "how-to-buy-a-home-without-having-to-sell-your-house-first",
@@ -1289,7 +1401,8 @@
       "selling",
       "buying",
       "mortgage"
-    ]
+    ],
+    "category": "Selling"
   },
   {
     "slug": "it-was-1985-big-hair-big-cars-big-homes-and-gold-i-became-a-realtor-here-is-my-story",
@@ -1301,7 +1414,8 @@
       "open-house",
       "south-tampa",
       "buying"
-    ]
+    ],
+    "category": "Open House"
   },
   {
     "slug": "offers-waiting-obstacles-and-finding-the-right-property-from-renting-to-owningtampa-real-estate",
@@ -1313,7 +1427,8 @@
       "south-tampa",
       "selling",
       "buying"
-    ]
+    ],
+    "category": "South Tampa"
   },
   {
     "slug": "i-had-the-honor-of-working-with-steve-yzerman-on-a-condo-high-rise-transaction",
@@ -1325,7 +1440,8 @@
       "south-tampa",
       "selling",
       "buying"
-    ]
+    ],
+    "category": "South Tampa"
   },
   {
     "slug": "what-do-a-house-fire-35-years-and-a-century-21-team-have-in-common-just-sold",
@@ -1336,7 +1452,8 @@
     "tags": [
       "just-sold",
       "south-tampa"
-    ]
+    ],
+    "category": "Just Sold"
   },
   {
     "slug": "kenan-thompsons-ties-to-tampa-bay-real-estate",
@@ -1346,7 +1463,8 @@
     "hero_image": "/images/blog/kenan-thompsons-ties-to-tampa-bay-real-estate/hero.webp",
     "tags": [
       "buying"
-    ]
+    ],
+    "category": "Buying"
   },
   {
     "slug": "from-condo-living-to-the-perfect-mother-in-law-suite-how-one-client-battled-the-market-and-won",
@@ -1358,7 +1476,8 @@
       "open-house",
       "south-tampa",
       "buying"
-    ]
+    ],
+    "category": "Open House"
   },
   {
     "slug": "property-sold-waterfront-single-family-home-on-the-hillsborough-river-with-pool",
@@ -1369,7 +1488,8 @@
     "tags": [
       "just-sold",
       "buying"
-    ]
+    ],
+    "category": "Just Sold"
   },
   {
     "slug": "just-sold-zero-days-on-market-north-hyde-park-how-did-this-happen",
@@ -1381,7 +1501,8 @@
       "just-sold",
       "market-update",
       "south-tampa"
-    ]
+    ],
+    "category": "Just Sold"
   },
   {
     "slug": "just-listed-bay-crest-single-family-home-waterfront-community-with-community-boat-ramp",
@@ -1391,7 +1512,8 @@
     "hero_image": "/images/blog/just-listed-bay-crest-single-family-home-waterfront-community-with-community-boat-ramp/hero.webp",
     "tags": [
       "tampa-bay"
-    ]
+    ],
+    "category": "Tampa Bay"
   },
   {
     "slug": "the-undercover-housing-market-when-zillow-searches-arent-cutting-it",
@@ -1403,7 +1525,8 @@
       "market-update",
       "selling",
       "mortgage"
-    ]
+    ],
+    "category": "Market Update"
   },
   {
     "slug": "thinking-of-selling-want-top-for-your-home",
@@ -1414,7 +1537,8 @@
     "tags": [
       "south-tampa",
       "mortgage"
-    ]
+    ],
+    "category": "South Tampa"
   },
   {
     "slug": "just-renovated-spacious-condo-located-in-desirable-hyde-park",
@@ -1424,7 +1548,8 @@
     "hero_image": "/images/blog/just-renovated-spacious-condo-located-in-desirable-hyde-park/hero.webp",
     "tags": [
       "south-tampa"
-    ]
+    ],
+    "category": "South Tampa"
   },
   {
     "slug": "4-unique-tampa-properties-coming-soon-into-the-real-estate-market",
@@ -1436,7 +1561,8 @@
       "south-tampa",
       "selling",
       "buying"
-    ]
+    ],
+    "category": "South Tampa"
   },
   {
     "slug": "strategies-that-take-the-uncertainty-out-of-buying-your-next-home",
@@ -1447,7 +1573,8 @@
     "tags": [
       "selling",
       "buying"
-    ]
+    ],
+    "category": "Selling"
   },
   {
     "slug": "south-tampa-record-breaking-cash-paid-for-your-tear-down-home-or-vacant-lot",
@@ -1458,7 +1585,8 @@
     "tags": [
       "south-tampa",
       "buying"
-    ]
+    ],
+    "category": "South Tampa"
   },
   {
     "slug": "see-this-home-now-before-it-hits-the-market-809-n-oregon-ave-north-hyde-park",
@@ -1468,7 +1596,8 @@
     "hero_image": "/images/blog/see-this-home-now-before-it-hits-the-market-809-n-oregon-ave-north-hyde-park/hero.webp",
     "tags": [
       "south-tampa"
-    ]
+    ],
+    "category": "South Tampa"
   },
   {
     "slug": "know-these-2-option-before-selling-your-home",
@@ -1480,7 +1609,8 @@
       "south-tampa",
       "selling",
       "buying"
-    ]
+    ],
+    "category": "South Tampa"
   },
   {
     "slug": "just-sold-in-ballast-point-stunning-mediterranean-with-an-elevator-amp-swimming-pool",
@@ -1492,6 +1622,7 @@
       "just-sold",
       "south-tampa",
       "selling"
-    ]
+    ],
+    "category": "Just Sold"
   }
 ]

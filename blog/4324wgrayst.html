@@ -14,6 +14,7 @@
   <meta property="og:url" content="https://kevinfreel.com/blog/4324wgrayst">
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="Kevin Freel Real Estate">
+  <meta name="twitter:image" content="https://kevinfreel.com/images/blog/4324wgrayst/hero.webp">
   <meta property="article:published_time" content="2024-04-25T14:06:33-04:00">
   <meta property="article:author" content="Kevin Freel">
 
@@ -22,6 +23,7 @@
 
   <link rel="preload" as="font" type="font/woff2" href="/fonts/playfair-display.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="/fonts/inter.woff2" crossorigin>
+  <link rel="preload" as="image" type="image/webp" href="/images/blog/4324wgrayst/hero.webp" fetchpriority="high">
 
   <link rel="stylesheet" href="/fonts/fonts.css">
   <link rel="stylesheet" href="/styles.css">
@@ -31,6 +33,7 @@
     "@context": "https://schema.org",
     "@type": "BlogPosting",
     "headline": "Introducing Modern Luxury Living: 4 Custom Townhomes by Momentum Homes",
+    "description": "I'm thrilled to list this real estate opportunity that combines luxury and contemporary design. Located at 4324 W Gray Street in Tampa, FL\u2026",
     "author": {"@type": "Person", "name": "Kevin Freel"},
     "datePublished": "2024-04-25T14:06:33-04:00",
     "image": "https://kevinfreel.com/images/blog/4324wgrayst/hero.webp",
@@ -43,108 +46,157 @@
 </head>
 <body>
 
-  <!-- ── NAV ── -->
-  <nav class="nav scrolled" aria-label="Main navigation">
-    <div class="nav-inner">
-      <a href="/" class="nav-logo" aria-label="Kevin Freel — Realtor Since 1985"><span class="nav-logo-name">KEVIN <span>FREEL</span></span><span class="nav-logo-tagline">Realtor Since 1985</span></a>
-      <ul class="nav-links">
-        <li><a href="/search">Search</a></li>
-        <li><a href="/about">About</a></li>
-        <li><a href="/resources">Resources</a></li>
-        <li><a href="/sellers">Sellers</a></li>
-        <li><a href="/buyers">Buyers</a></li>
-        <li><a href="/photography">Photography</a></li>
-        <li><a href="/contact">Contact</a></li>
-        <li>
-          <a href="tel:7274108599" class="nav-cta">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-            727-410-8599
-          </a>
-        </li>
-      </ul>
-      <button id="menu-btn" aria-label="Open menu" aria-expanded="false">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
-      </button>
-    </div>
-  </nav>
-
-  <!-- ── Mobile Menu ── -->
-  <div id="menu-overlay" class="menu-overlay"></div>
-  <div id="mobile-menu" class="mobile-menu" aria-label="Mobile navigation">
-    <a href="/">Home</a>
-    <a href="/search">Search</a>
-    <a href="/about">About</a>
-    <a href="/resources">Resources</a>
-    <a href="/sellers">Sellers</a>
-    <a href="/buyers">Buyers</a>
-    <a href="/photography">Photography</a>
-    <a href="/contact">Contact</a>
-    <a href="tel:7274108599" class="nav-cta">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-      727-410-8599
-    </a>
+  <!-- BEGIN_NAV -->
+<!-- ── NAV ── -->
+<nav class="nav scrolled" aria-label="Main navigation">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo" aria-label="Kevin Freel — Realtor Since 1985"><span class="nav-logo-name">KEVIN <span>FREEL</span></span><span class="nav-logo-tagline">Realtor Since 1985</span></a>
+    <ul class="nav-links">
+      <li><a href="/search" data-nav="search">Search</a></li>
+      <li><a href="/listings" data-nav="listings">Listings</a></li>
+      <li><a href="/about" data-nav="about">About</a></li>
+      <li><a href="/resources" data-nav="resources">Resources</a></li>
+      <li><a href="/sellers" data-nav="sellers">Sellers</a></li>
+      <li><a href="/buyers" data-nav="buyers">Buyers</a></li>
+      <li><a href="/photography" data-nav="photography">Photography</a></li>
+      <li><a href="/blog" data-nav="blog">Blog</a></li>
+      <li><a href="/contact" data-nav="contact">Contact</a></li>
+      <li>
+        <a href="tel:7274108599" class="nav-cta">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          727-410-8599
+        </a>
+      </li>
+    </ul>
+    <button id="menu-btn" aria-label="Open menu" aria-expanded="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
   </div>
+</nav>
+
+<!-- ── Mobile Menu ── -->
+<div id="menu-overlay" class="menu-overlay"></div>
+<div id="mobile-menu" class="mobile-menu" aria-label="Mobile navigation">
+  <a href="/" data-nav="home">Home</a>
+  <a href="/search" data-nav="search">Search</a>
+  <a href="/listings" data-nav="listings">Listings</a>
+  <a href="/about" data-nav="about">About</a>
+  <a href="/resources" data-nav="resources">Resources</a>
+  <a href="/sellers" data-nav="sellers">Sellers</a>
+  <a href="/buyers" data-nav="buyers">Buyers</a>
+  <a href="/photography" data-nav="photography">Photography</a>
+  <a href="/blog" data-nav="blog">Blog</a>
+  <a href="/contact" data-nav="contact">Contact</a>
+  <a href="tel:7274108599" class="nav-cta">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+    727-410-8599
+  </a>
+</div>
+  <!-- END_NAV -->
 
   <main>
 
     <section class="blog-post-hero">
-      <div class="blog-post-hero-inner">
+      <img src="/images/blog/4324wgrayst/hero.webp" alt="Introducing Modern Luxury Living: 4 Custom Townhomes by Momentum Homes" loading="eager" width="1200" height="675">
+      <div class="blog-post-hero-content">
         <a href="/blog" class="blog-back-link">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
           Back to Blog
         </a>
-        <div class="blog-post-meta">
-          <span>April 25, 2024</span>
-          <span class="tag">South Tampa</span>
-          <span class="tag">Buying</span>
-        </div>
+        <span class="blog-post-cat">South Tampa</span>
         <h1>Introducing Modern Luxury Living: 4 Custom Townhomes by Momentum Homes</h1>
+        <div class="post-meta">
+          <span>Kevin Freel</span>
+          <span class="post-meta-dot"></span>
+          <span>April 25, 2024</span>
+          <span class="post-meta-dot"></span>
+          <span>3 min read</span>
+        </div>
       </div>
     </section>
 
-    <article class="blog-post-body">
-      <p><a href="https://www.youtube.com/watch?v=YsOJnifpVLg" rel="noopener noreferrer" target="_blank">Watch the video →</a></p>
-      <p>I'm thrilled to list this real estate opportunity that combines luxury and contemporary design. Located at 4324 W Gray Street in Tampa, FL, these four newly constructed townhomes by Momentum Homes create an amazing living experience. As we look at  the details of these magnificent homes, you'll discover why they are not just a place to live but a way to elevate your lifestyle.</p><h2><strong>Design and Comfort: A Look Inside the Townhomes</strong></h2><p>Each of the four townhomes embodies modern architecture and sophisticated aesthetics, designed to cater to the most discerning tastes. Whether you choose one of the two end units or opt for an interior unit, the quality and attention to detail remain consistent. The first floor of each townhome sets a welcoming tone with a private bedroom complete with an en-suite bathroom, perfect for guests or as an additional family room.</p><p>Moving upstairs, the main floor reveals an open-concept layout that is both spacious and elegantly appointed. This area seamlessly integrates the living, dining, and kitchen spaces, making it ideal for entertaining or simply enjoying a quiet evening at home. Large windows bathe the space in natural light, enhancing the clean lines and modern fixtures that define the interior.</p><h2><strong>Features That Redefine Luxury</strong></h2><p>Each townhome is equipped with features that blend functionality with high-end aesthetics. The kitchens are a standout, boasting large islands with exquisite quartz countertops and custom cabinetry that offer both style and storage. State-of-the-art appliances and designer finishes make these kitchens a dream for anyone who loves to cook or entertain.</p><p>The flooring throughout each home is European white oak, adding warmth and a timeless elegance to each room. This choice in flooring not only complements the modern décor but also offers durability and ease of the bathrooms, luxury meets tranquility. The primary bathrooms feature spa-inspired designs including free-standing tubs and frameless walk-in showers. These spaces are thoughtfully crafted to serve as private retreats where one can unwind and rejuvenate in a serene setting, reflecting a hotel-like luxury in the comfort of your own home.</p><p>Furthermore, safety and efficiency are paramount in these townhomes, which feature high-impact glass windows and doors. This not only ensures a quiet, peaceful living environment but also enhances the energy efficiency of each home, keeping utility costs down and comfort up, no matter the weather outside.</p><h2><strong>The Allure of Location</strong></h2><p>Situated in the vibrant area of South Tampa, these townhomes offer more than just beautiful living spaces—they provide a lifestyle. The location is unbeatable, with residents enjoying proximity to top-rated schools such as Grady Elementary, Coleman Middle, and Plant High School. This makes the townhomes an ideal choice for families looking for a community that supports academic excellence.</p><p>For those who delight in the bustle of city life, the convenience of this location is unmatched. A short drive will take you to International Plaza, Midtown, and Hyde Park, where a variety of shopping, dining, and entertainment options await. Downtown Tampa is also easily accessible, perfect for those commuting to work or seeking evening leisure activities. Moreover, Tampa's International Airport is just a quick trip away, making travel easy for business or pleasure.</p><h2><strong>Schedule Your Showing Today</strong></h2><p>As we approach the completion of these luxurious townhomes, the opportunity to claim your space in this exclusive community is drawing near. If modern design, luxurious amenities, and an enviable location are what you seek, look no further. These homes are designed to fulfill your desires for a sophisticated, comfortable, and convenient lifestyle in Tampa.</p><p>Don't miss out on the chance to view these exquisite townhomes in person. To schedule a showing and see for yourself what makes these properties so special, please contact me, Kevin Freel, at KevinFreel@c21be.com or call (727) 410-8599. This is more than a new home—it's a new beginning in a community designed for the discerning buyer who appreciates the finer things in life. Reach out today and take the first step towards owning a piece of this modern luxury in Tampa.</p>
-    </article>
+    <div class="blog-post-wrap">
+      <article class="blog-article">
+        <div class="blog-video">
+        <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" frameborder="0" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube-nocookie.com/embed/YsOJnifpVLg" title="Introducing Modern Luxury Living: 4 Custom Townhomes by Momentum Homes"></iframe></div>
+        
+        <p>I'm thrilled to list this real estate opportunity that combines luxury and contemporary design. Located at 4324 W Gray Street in Tampa, FL, these four newly constructed townhomes by Momentum Homes create an amazing living experience. As we look at  the details of these magnificent homes, you'll discover why they are not just a place to live but a way to elevate your lifestyle.</p>
+        <h2><strong>Design and Comfort: A Look Inside the Townhomes</strong></h2>
+        <p>Each of the four townhomes embodies modern architecture and sophisticated aesthetics, designed to cater to the most discerning tastes. Whether you choose one of the two end units or opt for an interior unit, the quality and attention to detail remain consistent. The first floor of each townhome sets a welcoming tone with a private bedroom complete with an en-suite bathroom, perfect for guests or as an additional family room.</p>
+        <p>Moving upstairs, the main floor reveals an open-concept layout that is both spacious and elegantly appointed. This area seamlessly integrates the living, dining, and kitchen spaces, making it ideal for entertaining or simply enjoying a quiet evening at home. Large windows bathe the space in natural light, enhancing the clean lines and modern fixtures that define the interior.</p>
+        <h2><strong>Features That Redefine Luxury</strong></h2>
+        <p>Each townhome is equipped with features that blend functionality with high-end aesthetics. The kitchens are a standout, boasting large islands with exquisite quartz countertops and custom cabinetry that offer both style and storage. State-of-the-art appliances and designer finishes make these kitchens a dream for anyone who loves to cook or entertain.</p>
+        <p>The flooring throughout each home is European white oak, adding warmth and a timeless elegance to each room. This choice in flooring not only complements the modern décor but also offers durability and ease of the bathrooms, luxury meets tranquility. The primary bathrooms feature spa-inspired designs including free-standing tubs and frameless walk-in showers. These spaces are thoughtfully crafted to serve as private retreats where one can unwind and rejuvenate in a serene setting, reflecting a hotel-like luxury in the comfort of your own home.</p>
+        <p>Furthermore, safety and efficiency are paramount in these townhomes, which feature high-impact glass windows and doors. This not only ensures a quiet, peaceful living environment but also enhances the energy efficiency of each home, keeping utility costs down and comfort up, no matter the weather outside.</p>
+        <h2><strong>The Allure of Location</strong></h2>
+        <p>Situated in the vibrant area of South Tampa, these townhomes offer more than just beautiful living spaces—they provide a lifestyle. The location is unbeatable, with residents enjoying proximity to top-rated schools such as Grady Elementary, Coleman Middle, and Plant High School. This makes the townhomes an ideal choice for families looking for a community that supports academic excellence.</p>
+        <p>For those who delight in the bustle of city life, the convenience of this location is unmatched. A short drive will take you to International Plaza, Midtown, and Hyde Park, where a variety of shopping, dining, and entertainment options await. Downtown Tampa is also easily accessible, perfect for those commuting to work or seeking evening leisure activities. Moreover, Tampa's International Airport is just a quick trip away, making travel easy for business or pleasure.</p>
+        <h2><strong>Schedule Your Showing Today</strong></h2>
+        <p>As we approach the completion of these luxurious townhomes, the opportunity to claim your space in this exclusive community is drawing near. If modern design, luxurious amenities, and an enviable location are what you seek, look no further. These homes are designed to fulfill your desires for a sophisticated, comfortable, and convenient lifestyle in Tampa.</p>
+        <p>Don't miss out on the chance to view these exquisite townhomes in person. To schedule a showing and see for yourself what makes these properties so special, please contact me, Kevin Freel, at KevinFreel@c21be.com or call (727) 410-8599. This is more than a new home—it's a new beginning in a community designed for the discerning buyer who appreciates the finer things in life. Reach out today and take the first step towards owning a piece of this modern luxury in Tampa.</p>
+      </article>
+
+      <aside class="blog-sidebar">
+        <div class="sidebar-card">
+          <div class="sidebar-head">Related Articles</div>
+          <div class="sidebar-body">
+          <a class="sidebar-link" href="/blog/3openhouses">3 South Tampa Open Houses This Weekend</a>
+          <a class="sidebar-link" href="/blog/3223paxton">Just Listed: Custom South Tampa Home By BCL Homes</a>
+          <a class="sidebar-link" href="/blog/6closings">6 Real Estate Closings in 30 Days in South Tampa</a>
+          </div>
+        </div>
+        <div class="sidebar-cta">
+          <div class="sidebar-cta-title">Looking to Make a Move?</div>
+          <p>Kevin Freel has been guiding Tampa Bay families home since 1985. Real talk, real results.</p>
+          <a href="tel:7274108599" class="btn-primary">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+            Call Kevin
+          </a>
+          <a href="/contact" class="sidebar-cta-link">Send a message →</a>
+        </div>
+      </aside>
+    </div>
 
     <div class="blog-post-footer">
       <div class="blog-post-cta">
         <h3>Interested in Tampa Bay Real Estate?</h3>
         <p>Whether you're buying, selling, or just have questions — Kevin is here to help.</p>
         <a href="tel:7274108599" class="btn-primary">Call Kevin — 727-410-8599</a>
+        <a href="/contact" class="btn-outline">Send a Message</a>
       </div>
     </div>
 
   </main>
 
-  <!-- ── FOOTER ── -->
-  <footer class="footer">
-    <div class="footer-inner">
-      <a href="/" class="footer-logo">KEVIN <span>FREEL</span></a>
-      <p class="footer-copy">&copy; 2026 Kevin Freel Real Estate. All rights reserved.</p>
-      <div class="footer-social">
-        <a href="https://www.facebook.com/SellingTampa" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-        </a>
-        <a href="https://www.instagram.com/kevinsellstampabay/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
-        </a>
-      
-        <a href="https://www.linkedin.com/in/kevin-freel-b0363029/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.063 2.063 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-        </a>
-        <a href="https://x.com/Sellingtampa1" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231 5.45-6.231zm-1.161 17.52h1.833L7.084 4.126H5.117L17.083 19.77z"/></svg>
-        </a>
-        <a href="https://www.tiktok.com/@kevinfreel" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-5.2 1.74 2.89 2.89 0 012.31-4.64 2.93 2.93 0 01.88.13V9.4a6.84 6.84 0 00-1-.05A6.33 6.33 0 005.8 20.1a6.34 6.34 0 0010.86-4.43v-7a8.16 8.16 0 004.77 1.52v-3.4a4.85 4.85 0 01-1.84-.1z"/></svg>
-        </a>
-        <a href="https://share.google/KxNDtGpzlkBEwSXu2" target="_blank" rel="noopener noreferrer" aria-label="Google Business Profile">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84A10.997 10.997 0 0012 23z"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
-        </a>
-      </div>
+  <!-- BEGIN_FOOTER -->
+<!-- ── FOOTER ── -->
+<footer class="footer">
+  <div class="footer-inner">
+    <a href="/" class="footer-logo">KEVIN <span>FREEL</span></a>
+    <p class="footer-copy">&copy; 2026 Kevin Freel Real Estate. All rights reserved.</p>
+    <div class="footer-social">
+      <a href="https://www.facebook.com/SellingTampa" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+      </a>
+      <a href="https://www.instagram.com/kevinsellstampabay/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+      </a>
+      <a href="https://www.linkedin.com/in/kevin-freel-b0363029/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.063 2.063 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+      </a>
+      <a href="https://x.com/Sellingtampa1" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231 5.45-6.231zm-1.161 17.52h1.833L7.084 4.126H5.117L17.083 19.77z"/></svg>
+      </a>
+      <a href="https://www.tiktok.com/@kevinfreel" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-5.2 1.74 2.89 2.89 0 012.31-4.64 2.93 2.93 0 01.88.13V9.4a6.84 6.84 0 00-1-.05A6.33 6.33 0 005.8 20.1a6.34 6.34 0 0010.86-4.43v-7a8.16 8.16 0 004.77 1.52v-3.4a4.85 4.85 0 01-1.84-.1z"/></svg>
+      </a>
+      <a href="https://share.google/KxNDtGpzlkBEwSXu2" target="_blank" rel="noopener noreferrer" aria-label="Google Business Profile">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84A10.997 10.997 0 0012 23z"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+      </a>
     </div>
-  </footer>
+  </div>
+</footer>
+  <!-- END_FOOTER -->
 
 </body>
 </html>
