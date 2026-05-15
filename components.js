@@ -221,9 +221,11 @@ if (wizardForm) {
   });
 }
 
-/* ── Resource Lead Forms (inline success, no redirect) ── */
+/* ── Resource Lead Forms (via /api/lead-magnet → PDF or page redirect) ── */
+var RECAPTCHA_SITE_KEY = '6Lck8aQsAAAAALMA-T6nwfkSf7bv4K-mOhkszeKh';
+
 document.querySelectorAll('form[data-resource]').forEach(function (rForm) {
-  rForm.addEventListener('submit', function (e) {
+  rForm.addEventListener('submit', async function (e) {
     e.preventDefault();
     var btn = rForm.querySelector('button[type="submit"]');
     var status = rForm.querySelector('.resource-status');
@@ -235,38 +237,65 @@ document.querySelectorAll('form[data-resource]').forEach(function (rForm) {
     var data = {};
     new FormData(rForm).forEach(function (v, k) { data[k] = v; });
 
-    fetch('https://myaieditor.com/api/form-notify', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(data)
-    })
-    .then(function (res) { return res.json().catch(function () { return { success: true }; }); })
-    .then(function (json) {
-      if (json && json.success !== false) {
-        if (status) {
-          status.textContent = 'Thanks! Check your email — Kevin will send it shortly.';
-          status.className = 'resource-status success';
+    // reCAPTCHA token (best-effort; if grecaptcha fails, still submit)
+    try {
+      if (typeof grecaptcha !== 'undefined' && grecaptcha.execute) {
+        await new Promise(function (r) { grecaptcha.ready(r); });
+        data.recaptcha_token = await grecaptcha.execute(RECAPTCHA_SITE_KEY, { action: 'lead_magnet' });
+      }
+    } catch (err) { console.warn('reCAPTCHA error:', err); }
+
+    // PDF magnets: pre-open a tab synchronously so popup blockers don't fire
+    // (browsers only allow window.open during a user gesture chain)
+    var slug = rForm.getAttribute('data-resource');
+    var pdfMagnets = { 'buyers-guide': '/pdfs/What-To-Expect.pdf', 'mortgage-roadmap': '/pdfs/Mortgage-Financing-Roadmap.pdf' };
+    var pdfTab = pdfMagnets[slug] ? window.open('about:blank', '_blank') : null;
+
+    try {
+      var res = await fetch('/api/lead-magnet', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      });
+      var json = await res.json().catch(function () { return { success: true }; });
+
+      if (json && json.success !== false && json.accepted !== false) {
+        // GTM conversion event
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({ event: 'form_submission', form_type: 'resource-' + slug, form_location: window.location.pathname });
+
+        // Handle redirect / PDF open
+        if (json.next && pdfTab && pdfMagnets[slug]) {
+          // PDF magnet — point the pre-opened tab at the PDF
+          pdfTab.location.href = json.next;
+          if (status) { status.textContent = 'Your guide is opening in a new tab. Check your email too!'; status.className = 'resource-status success'; }
+        } else if (json.next && slug === 'home-valuation') {
+          // Home valuation — full-page redirect to the questionnaire
+          window.location.href = json.next;
+          return;
+        } else if (json.next) {
+          // Page magnets — open in a new tab so they don't lose context
+          window.open(json.next, '_blank');
+          if (status) { status.textContent = 'Sent! Opening your guide in a new tab.'; status.className = 'resource-status success'; }
+        } else {
+          if (status) { status.textContent = 'Thanks! Check your email — Kevin will send it shortly.'; status.className = 'resource-status success'; }
         }
-        rForm.querySelectorAll('input[type="email"], input[type="text"]').forEach(function (i) { i.value = ''; });
+
+        rForm.querySelectorAll('input[type="email"], input[type="text"]:not([type="hidden"])').forEach(function (i) { if (i.name !== '_honey') i.value = ''; });
         btn.textContent = 'Sent!';
         setTimeout(function () { btn.textContent = original; btn.disabled = false; }, 3500);
       } else {
-        if (status) {
-          status.textContent = 'Something went wrong. Please call 727-410-8599.';
-          status.className = 'resource-status error';
-        }
+        if (pdfTab) pdfTab.close();
+        if (status) { status.textContent = 'Something went wrong. Please call 727-410-8599.'; status.className = 'resource-status error'; }
         btn.disabled = false;
         btn.textContent = original;
       }
-    })
-    .catch(function () {
-      if (status) {
-        status.textContent = 'Something went wrong. Please call 727-410-8599.';
-        status.className = 'resource-status error';
-      }
+    } catch (err) {
+      if (pdfTab) pdfTab.close();
+      if (status) { status.textContent = 'Something went wrong. Please call 727-410-8599.'; status.className = 'resource-status error'; }
       btn.disabled = false;
       btn.textContent = original;
-    });
+    }
   });
 });
 

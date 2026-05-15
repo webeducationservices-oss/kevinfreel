@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Home Evaluation Questionnaire — Kevin Freel</title>
+  <meta name="description" content="Tell Kevin Freel about your home so he can prepare a custom Tampa Bay market valuation. Takes 3 minutes.">
+  <meta name="robots" content="noindex">
+  <link rel="canonical" href="https://kevinfreel.com/home-evaluation-questionnaire">
+
+  <meta property="og:title" content="Home Evaluation Questionnaire — Kevin Freel">
+  <meta property="og:description" content="Tell Kevin about your home so he can prepare a custom Tampa Bay market valuation.">
+  <meta property="og:image" content="https://kevinfreel.com/images/og-image.jpg">
+  <meta property="og:url" content="https://kevinfreel.com/home-evaluation-questionnaire">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Kevin Freel Real Estate">
+
+  <link rel="icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+  <link rel="preload" as="font" type="font/woff2" href="/fonts/playfair-display.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="/fonts/inter.woff2" crossorigin>
+
+  <link rel="stylesheet" href="/fonts/fonts.css">
+  <link rel="stylesheet" href="/styles.css">
+
+  <!-- reCAPTCHA v3 -->
+  <script src="https://www.google.com/recaptcha/api.js?render=6Lck8aQsAAAAALMA-T6nwfkSf7bv4K-mOhkszeKh"></script>
+
+  <style>
+    /* ── Page background ── */
+    body {
+      background: var(--bg-alt);
+    }
+
+    /* ── Top bar ── */
+    .q-topbar {
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+      padding: 1rem 0;
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+    .q-topbar-inner {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 0 clamp(1.25rem, 5vw, 2rem);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+    .q-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      transition: color 0.2s;
+    }
+    .q-back:hover { color: var(--gold); }
+    .q-back svg { width: 16px; height: 16px; }
+    .q-wordmark {
+      font-family: var(--font-serif);
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--navy);
+      letter-spacing: 0.04em;
+      line-height: 1.1;
+      text-align: right;
+    }
+    .q-wordmark .q-wordmark-name span { color: var(--gold); }
+    .q-wordmark .q-wordmark-tagline {
+      display: block;
+      font-family: var(--font-sans);
+      font-size: 0.625rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-top: 0.2rem;
+    }
+
+    /* ── Page wrap ── */
+    .q-wrap {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 2rem clamp(1.25rem, 5vw, 2rem) 4rem;
+    }
+
+    /* ── Cards ── */
+    .q-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: clamp(1.5rem, 4vw, 2rem);
+      margin-bottom: 1.5rem;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    }
+    .q-hero {
+      text-align: left;
+    }
+    .q-hero h1 {
+      font-family: var(--font-serif);
+      font-size: clamp(1.875rem, 4.5vw, 2.5rem);
+      font-weight: 600;
+      color: var(--navy);
+      line-height: 1.15;
+      margin-bottom: 0.75rem;
+    }
+    .q-hero p {
+      font-size: 1.0625rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    .q-step-label {
+      display: inline-block;
+      font-family: var(--font-sans);
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.6rem;
+    }
+    .q-step-heading {
+      font-family: var(--font-serif);
+      font-size: clamp(1.375rem, 3vw, 1.625rem);
+      font-weight: 600;
+      color: var(--navy);
+      line-height: 1.2;
+      margin-bottom: 1.5rem;
+    }
+    .q-step-heading + .q-helper {
+      margin-top: -1rem;
+      margin-bottom: 1.5rem;
+    }
+    .q-helper {
+      font-size: 0.9375rem;
+      color: var(--text-muted);
+      line-height: 1.55;
+      margin-bottom: 1rem;
+    }
+
+    /* ── Form layout (reuse .form-group from styles.css) ── */
+    .q-card .form-group { margin-bottom: 1.1rem; }
+    .q-card .form-group:last-child { margin-bottom: 0; }
+    .q-card .form-group label {
+      font-size: 0.8125rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+    .q-card .form-group input,
+    .q-card .form-group select,
+    .q-card .form-group textarea {
+      padding: 0.85rem 1rem;
+      font-size: 1rem;
+      background: var(--white);
+    }
+    .q-card .form-group input:focus,
+    .q-card .form-group select:focus,
+    .q-card .form-group textarea:focus {
+      border-color: var(--gold);
+      box-shadow: 0 0 0 3px rgba(196, 30, 42, 0.12);
+    }
+    .q-card .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-bottom: 1.1rem;
+    }
+    .q-card .form-row.thirds {
+      grid-template-columns: 2fr 1fr 1fr;
+    }
+    .q-card .form-row .form-group { margin-bottom: 0; }
+
+    /* ── Radio / checkbox groups ── */
+    .q-option-group {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 0.5rem;
+      margin-bottom: 0.5rem;
+    }
+    .q-option-group.cols-2 {
+      grid-template-columns: 1fr 1fr;
+    }
+    .q-option-group label {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.75rem 0.9rem;
+      border: 1.5px solid var(--border);
+      border-radius: 8px;
+      background: var(--white);
+      font-size: 0.9375rem;
+      font-weight: 500;
+      color: var(--text);
+      cursor: pointer;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .q-option-group label:hover {
+      border-color: var(--gold);
+      background: rgba(196, 30, 42, 0.03);
+    }
+    .q-option-group input[type="radio"],
+    .q-option-group input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+      accent-color: var(--gold);
+      flex-shrink: 0;
+    }
+    .q-option-group label:has(input:checked) {
+      border-color: var(--gold);
+      background: rgba(196, 30, 42, 0.06);
+    }
+
+    .q-field-label {
+      display: block;
+      font-size: 0.8125rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 0.6rem;
+    }
+    .q-field-label .q-optional {
+      font-weight: 400;
+      color: var(--text-light);
+      font-size: 0.75rem;
+      margin-left: 0.4rem;
+    }
+    .q-block { margin-bottom: 1.5rem; }
+    .q-block:last-child { margin-bottom: 0; }
+
+    /* ── Lot size with unit ── */
+    .q-lot-size {
+      display: grid;
+      grid-template-columns: 1fr 140px;
+      gap: 0.6rem;
+    }
+
+    /* ── Conditional reveal ── */
+    .q-conditional {
+      display: none;
+      margin-top: 1rem;
+      padding: 1rem;
+      background: var(--bg-alt);
+      border-radius: 8px;
+      border-left: 3px solid var(--gold);
+    }
+    .q-conditional.show { display: block; }
+    .q-conditional .q-field-label { margin-bottom: 0.5rem; }
+    .q-soft-note {
+      font-size: 0.9rem;
+      color: var(--text);
+      line-height: 1.55;
+      margin: 0;
+    }
+
+    /* ── Submit area ── */
+    .q-submit-card {
+      text-align: center;
+    }
+    .q-submit-btn {
+      width: 100%;
+      padding: 1.1rem 2rem;
+      background: var(--gold);
+      color: var(--white);
+      font-family: var(--font-sans);
+      font-weight: 700;
+      font-size: 1.0625rem;
+      letter-spacing: 0.02em;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.25s, transform 0.15s;
+    }
+    .q-submit-btn:hover:not(:disabled) {
+      background: var(--gold-hover);
+      transform: translateY(-1px);
+    }
+    .q-submit-btn:disabled {
+      opacity: 0.7;
+      cursor: not-allowed;
+    }
+    .q-submit-fineprint {
+      font-size: 0.8125rem;
+      color: var(--text-light);
+      margin-top: 1rem;
+      line-height: 1.5;
+    }
+
+    /* ── Success state ── */
+    .form-success {
+      display: none;
+      text-align: center;
+      padding: 1rem 0;
+    }
+    .form-success.show { display: block; }
+    .form-success .success-icon {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      background: var(--gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.25rem;
+      color: var(--white);
+    }
+    .form-success h2 {
+      font-family: var(--font-serif);
+      font-size: 1.75rem;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 0.75rem;
+    }
+    .form-success p {
+      font-size: 1.0625rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+    }
+    .form-success .q-phone-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.85rem 1.75rem;
+      background: var(--navy);
+      color: var(--white);
+      font-weight: 600;
+      font-size: 0.9375rem;
+      border-radius: 6px;
+      transition: background 0.2s;
+    }
+    .form-success .q-phone-cta:hover { background: var(--navy-light); }
+    .form-success .q-phone-cta svg { width: 18px; height: 18px; }
+
+    /* ── reCAPTCHA badge hide ── */
+    .grecaptcha-badge { visibility: hidden; }
+
+    .q-recaptcha-attrib {
+      font-size: 0.7rem;
+      color: var(--text-light);
+      text-align: center;
+      margin-top: 1.25rem;
+      line-height: 1.5;
+    }
+    .q-recaptcha-attrib a {
+      color: var(--text-light);
+      text-decoration: underline;
+    }
+
+    /* ── Mobile ── */
+    @media (max-width: 640px) {
+      .q-topbar { padding: 0.85rem 0; }
+      .q-wordmark { font-size: 0.875rem; }
+      .q-wordmark .q-wordmark-tagline { font-size: 0.56rem; letter-spacing: 0.18em; }
+      .q-wrap { padding: 1.25rem 1rem 3rem; }
+      .q-card { padding: 1.5rem 1.25rem; margin-bottom: 1rem; }
+      .q-card .form-row,
+      .q-card .form-row.thirds {
+        grid-template-columns: 1fr;
+        gap: 1.1rem;
+      }
+      .q-card .form-row .form-group { margin-bottom: 0; }
+      .q-option-group {
+        grid-template-columns: 1fr;
+      }
+      .q-option-group.cols-2 {
+        grid-template-columns: 1fr 1fr;
+      }
+      .q-lot-size {
+        grid-template-columns: 1fr 120px;
+      }
+      .q-hero h1 { font-size: 1.625rem; }
+      .q-hero p { font-size: 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── Top bar ── -->
+  <header class="q-topbar">
+    <div class="q-topbar-inner">
+      <a href="/resources" class="q-back">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+        Back to Resources
+      </a>
+      <div class="q-wordmark">
+        <span class="q-wordmark-name">KEVIN <span>FREEL</span></span>
+        <span class="q-wordmark-tagline">Realtor Since 1985</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="q-wrap">
+
+    <!-- ── Hero card ── -->
+    <section class="q-card q-hero">
+      <h1>Tell Us About Your Home</h1>
+      <p>Kevin will use this to prepare your custom market valuation. Takes 3 minutes.</p>
+    </section>
+
+    <!-- ── Form ── -->
+    <form id="evaluation-form" action="https://myaieditor.com/api/form-notify" method="POST" data-ajax>
+      <div class="form-fields">
+
+        <!-- Hidden config -->
+        <input type="hidden" name="site_slug" value="kevin-freel">
+        <input type="hidden" name="form_type" value="home-evaluation">
+        <input type="hidden" name="recaptcha_token" id="recaptcha_token">
+
+        <!-- Honeypot -->
+        <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+
+        <!-- ── STEP 1: Address ── -->
+        <section class="q-card">
+          <span class="q-step-label">Step 1 of 7</span>
+          <h2 class="q-step-heading">Your Home's Address</h2>
+
+          <div class="form-group">
+            <label for="f-street">Street Address *</label>
+            <input type="text" id="f-street" name="street_address" required autocomplete="street-address" placeholder="123 Main Street">
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="f-unit">Unit / Apt <span class="q-optional">optional</span></label>
+              <input type="text" id="f-unit" name="unit" autocomplete="address-line2">
+            </div>
+            <div class="form-group">
+              <label for="f-city">City *</label>
+              <input type="text" id="f-city" name="city" required value="Tampa" autocomplete="address-level2">
+            </div>
+          </div>
+
+          <div class="form-group" style="max-width: 220px;">
+            <label for="f-zip">ZIP *</label>
+            <input type="text" id="f-zip" name="zip" required inputmode="numeric" pattern="[0-9]{5}" maxlength="5" placeholder="33606" autocomplete="postal-code">
+          </div>
+        </section>
+
+        <!-- ── STEP 2: Property Basics ── -->
+        <section class="q-card">
+          <span class="q-step-label">Step 2 of 7</span>
+          <h2 class="q-step-heading">Property Basics</h2>
+
+          <div class="q-block">
+            <span class="q-field-label">Property Type *</span>
+            <div class="q-option-group">
+              <label><input type="radio" name="property_type" value="Single-family" required> Single-family</label>
+              <label><input type="radio" name="property_type" value="Townhome"> Townhome</label>
+              <label><input type="radio" name="property_type" value="Condo"> Condo</label>
+              <label><input type="radio" name="property_type" value="Multi-family"> Multi-family</label>
+              <label><input type="radio" name="property_type" value="Vacant lot"> Vacant lot</label>
+            </div>
+          </div>
+
+          <div class="form-row thirds">
+            <div class="form-group">
+              <label for="f-year-built">Year Built *</label>
+              <input type="number" id="f-year-built" name="year_built" required min="1800" max="2030" placeholder="1985">
+            </div>
+            <div class="form-group">
+              <label for="f-beds">Bedrooms *</label>
+              <select id="f-beds" name="bedrooms" required>
+                <option value="">Select…</option>
+                <option value="0">0 (Studio)</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7+">7+</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="f-baths">Full Baths *</label>
+              <select id="f-baths" name="full_baths" required>
+                <option value="">Select…</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7+">7+</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="f-half-baths">Half Baths <span class="q-optional">optional</span></label>
+              <select id="f-half-baths" name="half_baths">
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4+">4+</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="f-sqft">Total Living Sq Ft *</label>
+              <input type="number" id="f-sqft" name="living_sqft" required min="100" max="50000" placeholder="2,400">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="f-lot-size">Lot Size *</label>
+            <div class="q-lot-size">
+              <input type="number" id="f-lot-size" name="lot_size" required step="any" min="0" placeholder="7,500">
+              <select id="f-lot-unit" name="lot_size_unit" aria-label="Lot size unit">
+                <option value="sq ft">sq ft</option>
+                <option value="acres">acres</option>
+              </select>
+            </div>
+          </div>
+        </section>
+
+        <!-- ── STEP 3: Features & Condition ── -->
+        <section class="q-card">
+          <span class="q-step-label">Step 3 of 7</span>
+          <h2 class="q-step-heading">Features &amp; Condition</h2>
+
+          <div class="q-block">
+            <span class="q-field-label">Garage *</span>
+            <div class="q-option-group">
+              <label><input type="radio" name="garage" value="None" required> None</label>
+              <label><input type="radio" name="garage" value="1-car"> 1-car</label>
+              <label><input type="radio" name="garage" value="2-car"> 2-car</label>
+              <label><input type="radio" name="garage" value="3-car"> 3-car</label>
+              <label><input type="radio" name="garage" value="4+-car"> 4+-car</label>
+            </div>
+          </div>
+
+          <div class="q-block">
+            <span class="q-field-label">Pool? *</span>
+            <div class="q-option-group cols-2">
+              <label><input type="radio" name="pool" value="Yes" required> Yes</label>
+              <label><input type="radio" name="pool" value="No"> No</label>
+            </div>
+          </div>
+
+          <div class="q-block">
+            <span class="q-field-label">Waterfront? *</span>
+            <div class="q-option-group cols-2">
+              <label><input type="radio" name="waterfront" value="Yes" required id="waterfront-yes"> Yes</label>
+              <label><input type="radio" name="waterfront" value="No" id="waterfront-no"> No</label>
+            </div>
+            <div class="q-conditional" id="waterfront-detail">
+              <span class="q-field-label">Water Type</span>
+              <div class="q-option-group">
+                <label><input type="radio" name="water_type" value="Bay"> Bay</label>
+                <label><input type="radio" name="water_type" value="Gulf"> Gulf</label>
+                <label><input type="radio" name="water_type" value="Canal"> Canal</label>
+                <label><input type="radio" name="water_type" value="Pond"> Pond</label>
+                <label><input type="radio" name="water_type" value="Lake"> Lake</label>
+                <label><input type="radio" name="water_type" value="River"> River</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="q-block">
+            <span class="q-field-label">Overall Condition *</span>
+            <div class="q-option-group cols-2">
+              <label><input type="radio" name="condition" value="Move-in ready" required> Move-in ready</label>
+              <label><input type="radio" name="condition" value="Light updates needed"> Light updates needed</label>
+              <label><input type="radio" name="condition" value="Significant work needed"> Significant work needed</label>
+              <label><input type="radio" name="condition" value="Tear-down"> Tear-down</label>
+            </div>
+          </div>
+
+          <div class="form-row thirds">
+            <div class="form-group">
+              <label for="f-renovation">Last major renovation <span class="q-optional">optional</span></label>
+              <input type="number" id="f-renovation" name="last_renovation_year" min="1900" max="2030" placeholder="2018">
+            </div>
+            <div class="form-group">
+              <label for="f-hvac">HVAC age (years) <span class="q-optional">optional</span></label>
+              <input type="number" id="f-hvac" name="hvac_age" min="0" max="100" placeholder="5">
+            </div>
+            <div class="form-group">
+              <label for="f-roof">Roof age (years) <span class="q-optional">optional</span></label>
+              <input type="number" id="f-roof" name="roof_age" min="0" max="100" placeholder="8">
+            </div>
+          </div>
+        </section>
+
+        <!-- ── STEP 4: Recent Improvements ── -->
+        <section class="q-card">
+          <span class="q-step-label">Step 4 of 7</span>
+          <h2 class="q-step-heading">Recent Improvements</h2>
+          <p class="q-helper">Pick all that apply. Anything you've done in the last 5 years that adds value.</p>
+
+          <div class="q-option-group">
+            <label><input type="checkbox" name="improvements" value="New kitchen"> New kitchen</label>
+            <label><input type="checkbox" name="improvements" value="New bathrooms"> New bathrooms</label>
+            <label><input type="checkbox" name="improvements" value="New flooring"> New flooring</label>
+            <label><input type="checkbox" name="improvements" value="New windows"> New windows</label>
+            <label><input type="checkbox" name="improvements" value="New roof"> New roof</label>
+            <label><input type="checkbox" name="improvements" value="New HVAC"> New HVAC</label>
+            <label><input type="checkbox" name="improvements" value="New water heater"> New water heater</label>
+            <label><input type="checkbox" name="improvements" value="New plumbing"> New plumbing</label>
+            <label><input type="checkbox" name="improvements" value="Solar panels"> Solar panels</label>
+            <label><input type="checkbox" name="improvements" value="Hurricane impact windows/doors"> Hurricane impact windows/doors</label>
+            <label><input type="checkbox" name="improvements" value="Pool resurface"> Pool resurface</label>
+            <label><input type="checkbox" name="improvements" value="Landscaping"> Landscaping</label>
+            <label><input type="checkbox" name="improvements" value="Smart home tech"> Smart home tech</label>
+          </div>
+        </section>
+
+        <!-- ── STEP 5: Selling Timeline ── -->
+        <section class="q-card">
+          <span class="q-step-label">Step 5 of 7</span>
+          <h2 class="q-step-heading">Your Selling Timeline</h2>
+
+          <div class="q-block">
+            <span class="q-field-label">When are you thinking of selling? *</span>
+            <div class="q-option-group cols-2">
+              <label><input type="radio" name="timeline" value="ASAP" required> ASAP</label>
+              <label><input type="radio" name="timeline" value="Within 3 months"> Within 3 months</label>
+              <label><input type="radio" name="timeline" value="3–6 months"> 3–6 months</label>
+              <label><input type="radio" name="timeline" value="6–12 months"> 6–12 months</label>
+              <label><input type="radio" name="timeline" value="Just exploring options"> Just exploring options</label>
+            </div>
+          </div>
+
+          <div class="q-block">
+            <span class="q-field-label">What's most important to you? <span class="q-optional">pick all that apply</span></span>
+            <div class="q-option-group">
+              <label><input type="checkbox" name="priorities" value="Top dollar"> Top dollar</label>
+              <label><input type="checkbox" name="priorities" value="Quick sale"> Quick sale</label>
+              <label><input type="checkbox" name="priorities" value="Smooth process"> Smooth process</label>
+              <label><input type="checkbox" name="priorities" value="Discretion (off-market)"> Discretion (off-market)</label>
+              <label><input type="checkbox" name="priorities" value="Working with a 5-star agent"> Working with a 5-star agent</label>
+            </div>
+          </div>
+
+          <div class="q-block">
+            <span class="q-field-label">Are you currently working with another agent? *</span>
+            <div class="q-option-group cols-2">
+              <label><input type="radio" name="other_agent" value="Yes" required id="agent-yes"> Yes</label>
+              <label><input type="radio" name="other_agent" value="No" id="agent-no"> No</label>
+            </div>
+            <div class="q-conditional" id="agent-note">
+              <p class="q-soft-note">We respect your existing relationship — this evaluation is for informational use only.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- ── STEP 6: Anything else ── -->
+        <section class="q-card">
+          <span class="q-step-label">Step 6 of 7</span>
+          <h2 class="q-step-heading">Anything else Kevin should know?</h2>
+
+          <div class="form-group">
+            <label for="f-notes">Notes <span class="q-optional">optional</span></label>
+            <textarea id="f-notes" name="additional_notes" rows="5" placeholder="Renovations not listed, neighborhood quirks, urgent timeline, etc."></textarea>
+          </div>
+        </section>
+
+        <!-- ── STEP 7: Confirm contact ── -->
+        <section class="q-card">
+          <span class="q-step-label">Step 7 of 7</span>
+          <h2 class="q-step-heading">Confirm Your Contact</h2>
+          <p class="q-helper">We pulled this from the previous step — edit if needed.</p>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="f-first-name">First Name *</label>
+              <input type="text" id="f-first-name" name="first_name" required autocomplete="given-name">
+            </div>
+            <div class="form-group">
+              <label for="f-email">Email *</label>
+              <input type="email" id="f-email" name="email" required autocomplete="email">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="f-phone">Phone <span class="q-optional">optional, but helpful</span></label>
+            <input type="tel" id="f-phone" name="phone" autocomplete="tel" placeholder="(727) 555-0123">
+          </div>
+
+          <div class="q-block">
+            <span class="q-field-label">Best time to reach you</span>
+            <div class="q-option-group cols-2">
+              <label><input type="radio" name="best_time" value="Morning"> Morning</label>
+              <label><input type="radio" name="best_time" value="Afternoon"> Afternoon</label>
+              <label><input type="radio" name="best_time" value="Evening"> Evening</label>
+              <label><input type="radio" name="best_time" value="Anytime" checked> Anytime</label>
+            </div>
+          </div>
+        </section>
+
+        <!-- ── Submit card ── -->
+        <section class="q-card q-submit-card">
+          <button type="submit" class="q-submit-btn" id="submit-btn">Send My Home to Kevin</button>
+          <p class="q-submit-fineprint">Kevin personally reviews every submission and will reach out within 1 business day.</p>
+          <p class="q-recaptcha-attrib">
+            Protected by reCAPTCHA.
+            <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Privacy</a> ·
+            <a href="https://policies.google.com/terms" target="_blank" rel="noopener">Terms</a>
+          </p>
+        </section>
+
+      </div><!-- /.form-fields -->
+
+      <!-- ── Inline thank-you ── -->
+      <section class="q-card form-success" id="form-success" aria-live="polite">
+        <div class="success-icon">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <h2>We've got it.</h2>
+        <p>Kevin will personally review your home and reach out within 1 business day with your evaluation.</p>
+        <a href="tel:7274108599" class="q-phone-cta">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          Or call Kevin directly: 727-410-8599
+        </a>
+      </section>
+    </form>
+
+  </main>
+
+  <script>
+    (function () {
+      const RECAPTCHA_SITE_KEY = '6Lck8aQsAAAAALMA-T6nwfkSf7bv4K-mOhkszeKh';
+
+      // ── Prefill from query params ──
+      const params = new URLSearchParams(window.location.search);
+      const firstNameParam = (params.get('first_name') || '').trim();
+      const emailParam = (params.get('email') || '').trim();
+      if (firstNameParam) {
+        const el = document.getElementById('f-first-name');
+        if (el) el.value = firstNameParam;
+      }
+      if (emailParam) {
+        const el = document.getElementById('f-email');
+        if (el) el.value = emailParam;
+      }
+
+      // ── Conditional reveals ──
+      function bindConditional(triggerYesId, triggerNoId, panelId) {
+        const yes = document.getElementById(triggerYesId);
+        const no = document.getElementById(triggerNoId);
+        const panel = document.getElementById(panelId);
+        if (!yes || !no || !panel) return;
+        function update() {
+          if (yes.checked) panel.classList.add('show');
+          else panel.classList.remove('show');
+        }
+        yes.addEventListener('change', update);
+        no.addEventListener('change', update);
+      }
+      bindConditional('waterfront-yes', 'waterfront-no', 'waterfront-detail');
+      bindConditional('agent-yes', 'agent-no', 'agent-note');
+
+      // ── Form submit ──
+      const form = document.getElementById('evaluation-form');
+      form.addEventListener('submit', async function (e) {
+        e.preventDefault();
+
+        // Honeypot
+        const honey = form.querySelector('[name="_honey"]');
+        if (honey && honey.value) return;
+
+        const btn = document.getElementById('submit-btn');
+        const originalText = btn.textContent;
+        btn.disabled = true;
+        btn.textContent = 'Sending...';
+
+        // Build payload — collect all fields including arrays for checkboxes
+        const payload = { site_slug: 'kevin-freel', form_type: 'home-evaluation' };
+        const fd = new FormData(form);
+        // First, single-value fields
+        fd.forEach((value, key) => {
+          if (key === 'improvements' || key === 'priorities') return;
+          payload[key] = value;
+        });
+        // Then, multi-value fields (checkboxes) as comma-separated strings
+        const improvements = fd.getAll('improvements');
+        const priorities = fd.getAll('priorities');
+        if (improvements.length) payload.improvements = improvements.join(', ');
+        if (priorities.length) payload.priorities = priorities.join(', ');
+
+        // reCAPTCHA v3 token
+        try {
+          if (typeof grecaptcha !== 'undefined' && grecaptcha.execute) {
+            await new Promise((resolve) => grecaptcha.ready(resolve));
+            const token = await grecaptcha.execute(RECAPTCHA_SITE_KEY, { action: 'home_evaluation' });
+            payload.recaptcha_token = token;
+          }
+        } catch (err) {
+          console.error('reCAPTCHA error:', err);
+        }
+
+        try {
+          await fetch('https://myaieditor.com/api/form-notify', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+          });
+        } catch (err) {
+          console.error('Form submit error:', err);
+        }
+
+        // Show thank-you
+        const fields = form.querySelector('.form-fields');
+        const success = document.getElementById('form-success');
+        if (fields) fields.style.display = 'none';
+        if (success) success.classList.add('show');
+
+        // GTM dataLayer event
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({
+          event: 'form_submission',
+          form_type: 'home-evaluation',
+          form_location: window.location.pathname
+        });
+
+        // Scroll to top of the success card
+        if (success) {
+          window.scrollTo({ top: success.offsetTop - 80, behavior: 'smooth' });
+        }
+
+        // Reset button (in case fields are re-displayed)
+        btn.disabled = false;
+        btn.textContent = originalText;
+      });
+    })();
+  </script>
+
+</body>
+</html>

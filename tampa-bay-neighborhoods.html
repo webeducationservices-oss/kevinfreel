@@ -1,0 +1,1153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Tampa Bay Neighborhood Report — Kevin Freel</title>
+  <meta name="description" content="Honest deep-dive on 12 Tampa Bay neighborhoods — median prices, schools, commute, and what each area really feels like to live in. 40 years of local insight, refreshed monthly.">
+  <link rel="canonical" href="https://kevinfreel.com/tampa-bay-neighborhoods">
+
+  <meta property="og:title" content="Tampa Bay Neighborhood Report — Kevin Freel">
+  <meta property="og:description" content="Real-world guide to 12 Tampa Bay neighborhoods — pricing, schools, commute, and what each area actually feels like. Updated monthly.">
+  <meta property="og:image" content="https://kevinfreel.com/images/og-image.jpg">
+  <meta property="og:url" content="https://kevinfreel.com/tampa-bay-neighborhoods">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Kevin Freel Real Estate">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Tampa Bay Neighborhood Report — Kevin Freel">
+  <meta name="twitter:description" content="Honest deep-dive on 12 Tampa Bay neighborhoods. Live Zillow pricing, refreshed monthly.">
+  <meta name="twitter:image" content="https://kevinfreel.com/images/og-image.jpg">
+
+  <link rel="icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+  <link rel="preload" as="font" type="font/woff2" href="/fonts/playfair-display.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="/fonts/inter.woff2" crossorigin>
+
+  <link rel="stylesheet" href="/fonts/fonts.css">
+  <link rel="stylesheet" href="/styles.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Tampa Bay Neighborhood Report",
+    "description": "Deep-dive guide to 12 Tampa Bay neighborhoods — median prices, schools, commute, and honest vibe assessments from 40-year veteran realtor Kevin Freel.",
+    "image": "https://kevinfreel.com/images/og-image.jpg",
+    "datePublished": "2026-05-15",
+    "dateModified": "2026-05-15",
+    "author": {
+      "@type": "Person",
+      "name": "Kevin Freel",
+      "url": "https://kevinfreel.com/about"
+    },
+    "publisher": {
+      "@type": "RealEstateAgent",
+      "name": "Kevin Freel",
+      "url": "https://kevinfreel.com",
+      "telephone": "+1-727-410-8599"
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://kevinfreel.com/tampa-bay-neighborhoods"
+    },
+    "about": [
+      {"@type": "Place", "name": "South Tampa"},
+      {"@type": "Place", "name": "Hyde Park, Tampa"},
+      {"@type": "Place", "name": "Tampa Heights"},
+      {"@type": "Place", "name": "Seminole Heights"},
+      {"@type": "Place", "name": "Westchase"},
+      {"@type": "Place", "name": "Carrollwood"},
+      {"@type": "Place", "name": "Wesley Chapel"},
+      {"@type": "Place", "name": "St. Petersburg"},
+      {"@type": "Place", "name": "Clearwater Beach"},
+      {"@type": "Place", "name": "Indian Rocks Beach"},
+      {"@type": "Place", "name": "Odessa"},
+      {"@type": "Place", "name": "Dunedin"}
+    ]
+  }
+  </script>
+
+  <script src="/components.js" defer></script>
+  <!-- myaieditor inline-edit loader (no-op for real visitors) -->
+  <script src="/mae-edit-loader.js" async></script>
+
+  <style>
+    /* ── Page-specific styles ─────────────────────── */
+    .last-refreshed {
+      display: inline-block;
+      margin-top: 1.5rem;
+      padding: 0.4rem 0.9rem;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 999px;
+      font-size: 0.75rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.7);
+    }
+
+    /* Intro card */
+    .intro-card-section {
+      padding: clamp(2.5rem, 6vw, 4rem) clamp(1.25rem, 5vw, 2rem) 0;
+    }
+    .intro-card {
+      max-width: 880px;
+      margin: 0 auto;
+      padding: 2rem 2.25rem;
+      background: var(--white);
+      border-left: 4px solid var(--gold);
+      border-radius: 8px;
+      box-shadow: 0 6px 30px rgba(0,0,0,0.06);
+      font-size: 1.0625rem;
+      color: var(--text);
+      line-height: 1.75;
+    }
+    .intro-card strong { color: var(--navy); }
+    @media (max-width: 640px) {
+      .intro-card { padding: 1.5rem 1.25rem; font-size: 1rem; }
+    }
+
+    /* Sticky chip nav */
+    .neighborhood-chips {
+      position: sticky;
+      top: 64px;
+      z-index: 50;
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+      padding: 0.85rem clamp(1.25rem, 5vw, 2rem);
+      box-shadow: 0 2px 14px rgba(0,0,0,0.04);
+    }
+    .chips-track {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      display: flex;
+      gap: 0.5rem;
+      overflow-x: auto;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      padding-bottom: 0.15rem;
+    }
+    .chips-track::-webkit-scrollbar { display: none; }
+    .chip {
+      flex-shrink: 0;
+      padding: 0.5rem 1rem;
+      border-radius: 999px;
+      background: var(--cream);
+      color: var(--navy);
+      font-size: 0.8125rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      border: 1px solid transparent;
+      transition: background 0.2s, color 0.2s, border-color 0.2s;
+      white-space: nowrap;
+    }
+    .chip:hover {
+      background: var(--gold);
+      color: var(--white);
+    }
+
+    /* Neighborhood cards */
+    .neighborhood-grid-section {
+      padding: clamp(3rem, 6vw, 5rem) clamp(1.25rem, 5vw, 2rem);
+      background: var(--bg-alt);
+    }
+    .neighborhoods-list {
+      max-width: 1080px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 3rem;
+    }
+    .nbh-card {
+      background: var(--white);
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.06);
+      scroll-margin-top: 140px;
+    }
+    .nbh-hero {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      overflow: hidden;
+      background: var(--cream);
+    }
+    .nbh-hero img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .nbh-hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(0,0,0,0) 50%, rgba(0,0,0,0.45) 100%);
+      pointer-events: none;
+    }
+    .nbh-hero-label {
+      position: absolute;
+      bottom: 1.25rem;
+      left: 1.5rem;
+      color: var(--white);
+      font-family: var(--font-serif);
+      font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+      font-weight: 600;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+      letter-spacing: -0.01em;
+    }
+    .nbh-body {
+      padding: 1.75rem clamp(1.25rem, 4vw, 2.25rem) 2rem;
+    }
+    .nbh-tagline {
+      font-family: var(--font-serif);
+      font-style: italic;
+      color: var(--gold);
+      font-size: 1.0625rem;
+      margin-bottom: 1.5rem;
+    }
+    .nbh-stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.75rem;
+      padding: 1rem 0;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 1.5rem;
+    }
+    .nbh-stat {
+      text-align: center;
+      padding: 0.4rem 0.3rem;
+    }
+    .nbh-stat-label {
+      display: block;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 0.4rem;
+    }
+    .nbh-stat-value {
+      display: block;
+      font-family: var(--font-serif);
+      font-size: clamp(1.05rem, 2.2vw, 1.45rem);
+      font-weight: 600;
+      color: var(--navy);
+      line-height: 1.2;
+    }
+    .nbh-stat-value a {
+      color: var(--gold);
+      text-decoration: none;
+      border-bottom: 1px dashed transparent;
+      transition: border-color 0.2s;
+    }
+    .nbh-stat-value a:hover { border-bottom-color: var(--gold); }
+    .nbh-stat-value.trend-positive { color: #1d7a3a; }
+    @media (max-width: 640px) {
+      .nbh-stats { grid-template-columns: 1fr 1fr; gap: 1rem 0.5rem; padding: 1.25rem 0; }
+      .nbh-stat-value { font-size: 1.05rem; }
+    }
+
+    .nbh-meta-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem 1.5rem;
+      margin-bottom: 1.5rem;
+      font-size: 0.95rem;
+    }
+    .nbh-meta-row .meta-item {
+      display: flex;
+      gap: 0.5rem;
+      align-items: flex-start;
+    }
+    .meta-icon {
+      flex-shrink: 0;
+      width: 22px;
+      height: 22px;
+      color: var(--gold);
+      margin-top: 1px;
+    }
+    .meta-icon svg { width: 100%; height: 100%; }
+    .meta-content { color: var(--text); }
+    .meta-content strong { display: block; color: var(--navy); font-size: 0.78rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 0.2rem; }
+    @media (max-width: 540px) {
+      .nbh-meta-row { grid-template-columns: 1fr; gap: 1rem; }
+    }
+
+    .nbh-take {
+      padding-top: 0.25rem;
+    }
+    .nbh-take-heading {
+      font-family: var(--font-serif);
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 0.8rem;
+    }
+    .nbh-take p {
+      color: var(--text);
+      line-height: 1.75;
+      margin-bottom: 0.9rem;
+      font-size: 1rem;
+    }
+    .nbh-take p:last-child { margin-bottom: 0; }
+
+    .nbh-best-for {
+      margin-top: 1.5rem;
+      padding: 1rem 1.25rem;
+      background: var(--cream);
+      border-radius: 8px;
+      font-size: 0.95rem;
+      color: var(--text);
+    }
+    .nbh-best-for strong { color: var(--gold); margin-right: 0.4rem; }
+
+    .nbh-zillow-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: 1.5rem;
+      padding: 0.75rem 1.5rem;
+      background: var(--navy);
+      color: var(--white);
+      font-size: 0.9rem;
+      font-weight: 600;
+      border-radius: 8px;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .nbh-zillow-link:hover {
+      background: var(--gold);
+      color: var(--white);
+      transform: translateY(-1px);
+    }
+    .nbh-zillow-link svg { width: 14px; height: 14px; }
+
+    /* About-the-data footnote */
+    .data-note {
+      padding: 2.5rem clamp(1.25rem, 5vw, 2rem);
+      background: var(--white);
+      border-top: 1px solid var(--border);
+      text-align: center;
+    }
+    .data-note-inner {
+      max-width: 720px;
+      margin: 0 auto;
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+    .data-note strong { color: var(--navy); }
+  </style>
+</head>
+<body>
+
+  <!-- BEGIN_NAV -->
+<!-- ── NAV ── -->
+<nav class="nav scrolled" aria-label="Main navigation">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo" aria-label="Kevin Freel — Realtor Since 1985"><span class="nav-logo-name">KEVIN <span>FREEL</span></span><span class="nav-logo-tagline">Realtor Since 1985</span></a>
+    <ul class="nav-links">
+      <li><a href="/search" data-nav="search">Search</a></li>
+      <li><a href="/listings" data-nav="listings">Listings</a></li>
+      <li><a href="/about" data-nav="about">About</a></li>
+      <li><a href="/resources" data-nav="resources">Resources</a></li>
+      <li><a href="/sellers" data-nav="sellers">Sellers</a></li>
+      <li><a href="/buyers" data-nav="buyers">Buyers</a></li>
+      <li><a href="/photography" data-nav="photography">Photography</a></li>
+      <li><a href="/blog" data-nav="blog">Blog</a></li>
+      <li><a href="/contact" data-nav="contact">Contact</a></li>
+      <li>
+        <a href="tel:7274108599" class="nav-cta">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          727-410-8599
+        </a>
+      </li>
+    </ul>
+    <button id="menu-btn" aria-label="Open menu" aria-expanded="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+  </div>
+</nav>
+
+<!-- ── Mobile Menu ── -->
+<div id="menu-overlay" class="menu-overlay"></div>
+<div id="mobile-menu" class="mobile-menu" aria-label="Mobile navigation">
+  <a href="/" data-nav="home">Home</a>
+  <a href="/search" data-nav="search">Search</a>
+  <a href="/listings" data-nav="listings">Listings</a>
+  <a href="/about" data-nav="about">About</a>
+  <a href="/resources" data-nav="resources">Resources</a>
+  <a href="/sellers" data-nav="sellers">Sellers</a>
+  <a href="/buyers" data-nav="buyers">Buyers</a>
+  <a href="/photography" data-nav="photography">Photography</a>
+  <a href="/blog" data-nav="blog">Blog</a>
+  <a href="/contact" data-nav="contact">Contact</a>
+  <a href="tel:7274108599" class="nav-cta">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+    727-410-8599
+  </a>
+</div>
+  <!-- END_NAV -->
+
+  <main>
+
+    <!-- ── PAGE HERO ── -->
+    <section class="page-hero" aria-label="Tampa Bay Neighborhood Report">
+      <div class="page-hero-inner">
+        <p class="hero-label">Tampa Bay</p>
+        <h1>Tampa Bay Neighborhood Report</h1>
+        <p class="page-hero-sub">A real-world guide to 12+ Tampa Bay neighborhoods — pricing, schools, commute, and what each area actually feels like to live in. Updated monthly.</p>
+        <span class="last-refreshed" data-last-refreshed>Last refreshed: May 15, 2026</span>
+      </div>
+    </section>
+
+    <!-- ── INTRO CARD ── -->
+    <section class="intro-card-section" aria-label="Introduction">
+      <div class="intro-card reveal">
+        <p><strong>Kevin Freel has sold homes in every one of these neighborhoods over 40+ years.</strong> This isn't a list of marketing buzzwords — it's the honest take of someone who's lived through every Tampa Bay market cycle since 1985. The median prices link to live Zillow data, refreshed automatically on the 1st of every month.</p>
+      </div>
+    </section>
+
+    <!-- ── STICKY CHIP NAV ── -->
+    <nav class="neighborhood-chips" aria-label="Jump to neighborhood">
+      <div class="chips-track">
+        <a href="#south-tampa" class="chip">South Tampa</a>
+        <a href="#hyde-park" class="chip">Hyde Park / SoHo</a>
+        <a href="#tampa-heights" class="chip">Tampa Heights</a>
+        <a href="#seminole-heights" class="chip">Seminole Heights</a>
+        <a href="#westchase" class="chip">Westchase</a>
+        <a href="#carrollwood" class="chip">Carrollwood</a>
+        <a href="#wesley-chapel" class="chip">Wesley Chapel</a>
+        <a href="#st-petersburg" class="chip">St. Petersburg</a>
+        <a href="#clearwater-beach" class="chip">Clearwater Beach</a>
+        <a href="#indian-rocks-beach" class="chip">Indian Rocks Beach</a>
+        <a href="#odessa" class="chip">Odessa / Trinity</a>
+        <a href="#dunedin" class="chip">Dunedin</a>
+      </div>
+    </nav>
+
+    <!-- ── NEIGHBORHOODS ── -->
+    <section class="neighborhood-grid-section" aria-label="Neighborhood profiles">
+      <div class="neighborhoods-list">
+
+        <!-- 1. SOUTH TAMPA -->
+        <article class="nbh-card reveal" id="south-tampa" data-slug="south-tampa">
+          <div class="nbh-hero">
+            <img src="/images/neighborhoods/south-tampa.webp" alt="Downtown Tampa skyline viewed from Bayshore Boulevard in South Tampa" width="1200" height="900" loading="lazy">
+            <div class="nbh-hero-label">South Tampa</div>
+          </div>
+          <div class="nbh-body">
+            <p class="nbh-tagline">Bayshore Boulevard, Hyde Park, Davis Islands — the historic heart of Tampa.</p>
+
+            <div class="nbh-stats" aria-label="South Tampa quick stats">
+              <div class="nbh-stat">
+                <span class="nbh-stat-label">Median Price</span>
+                <span class="nbh-stat-value"><a href="https://www.zillow.com/homes/for_sale/south-tampa-tampa-fl/" target="_blank" rel="noopener">$850,000</a></span>
+              </div>
+              <div class="nbh-stat">
+                <span class="nbh-stat-label">5-Yr Trend</span>
+                <span class="nbh-stat-value trend-positive">+42% since 2021</span>
+              </div>
+              <div class="nbh-stat">
+                <span class="nbh-stat-label">Avg Days on Market</span>
+                <span class="nbh-stat-value">28 days</span>
+              </div>
+              <div class="nbh-stat">
+                <span class="nbh-stat-label">Avg Home Size</span>
+                <span class="nbh-stat-value">2,100 sq ft</span>
+              </div>
+            </div>
+
+            <div class="nbh-meta-row">
+              <div class="meta-item">
+                <div class="meta-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12l9-9 9 9"/><path d="M5 10v10a1 1 0 001 1h12a1 1 0 001-1V10"/></svg></div>
+                <div class="meta-content"><strong>School District</strong>Hillsborough County — 8/10. Plant High, Wilson Middle, Roosevelt Elementary are all A-rated.</div>
+              </div>
+              <div class="meta-item">
+                <div class="meta-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+                <div class="meta-content"><strong>Commute to Downtown</strong>10 minutes (no traffic) via Bayshore Blvd.</div>
+              </div>
+            </div>
+
+            <div class="nbh-take">
+              <h3 class="nbh-take-heading">Kevin's honest take</h3>
+              <p>South Tampa is who buys here: established families, executives at MacDill, doctors at Tampa General, and a steady flow of New Yorkers and Chicagoans cashing out and trading up. You'll see joggers on Bayshore at 6 AM, kids in school uniforms, and dogs in the back of every other SUV.</p>
+              <p>What you pay for is location and the public schools — Plant High is the closest thing Tampa has to a Beverly Hills 90210. What surprises people who move here is how walkable certain pockets are: you can grab coffee at Buddy Brew, walk your kid to school, and watch the Gasparilla parade from your front yard.</p>
+              <p>The drawback: insurance. Most of South Tampa sits in flood zones AE or VE, which means flood insurance is mandatory and rising fast. Some 1950s ranches are also coming down for new builds, so the streetscape is changing whether you like it or not.</p>
+            </div>
+
+            <div class="nbh-best-for"><strong>Best for:</strong> Buyers prioritizing top schools and walkable, established neighborhoods within 10 minutes of downtown.</div>
+
+            <a class="nbh-zillow-link" href="https://www.zillow.com/homes/for_sale/south-tampa-tampa-fl/" target="_blank" rel="noopener">View South Tampa homes on Zillow
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+          </div>
+        </article>
+
+        <!-- 2. HYDE PARK / SoHo -->
+        <article class="nbh-card reveal" id="hyde-park" data-slug="hyde-park">
+          <div class="nbh-hero">
+            <img src="/images/neighborhoods/hyde-park.webp" alt="Historic Mediterranean Revival home in the Hyde Park Historic District, Tampa" width="1200" height="900" loading="lazy">
+            <div class="nbh-hero-label">Hyde Park / SoHo</div>
+          </div>
+          <div class="nbh-body">
+            <p class="nbh-tagline">Brick streets, oak canopies, and Tampa's oldest money.</p>
+
+            <div class="nbh-stats" aria-label="Hyde Park quick stats">
+              <div class="nbh-stat">
+                <span class="nbh-stat-label">Median Price</span>
+                <span class="nbh-stat-value"><a href="https://www.zillow.com/homes/for_sale/hyde-park-tampa-fl/" target="_blank" rel="noopener">$950,000</a></span>
+              </div>
+              <div class="nbh-stat">
+                <span class="nbh-stat-label">5-Yr Trend</span>
+                <span class="nbh-stat-value trend-positive">+48% since 2021</span>
+              </div>
+              <div class="nbh-stat">
+                <span class="nbh-stat-label">Avg Days on Market</span>
+                <span class="nbh-stat-value">26 days</span>
+              </div>
+              <div class="nbh-stat">
+                <span class="nbh-stat-label">Avg Home Size</span>
+                <span class="nbh-stat-value">2,250 sq ft</span>
+              </div>
+            </div>
+
+            <div class="nbh-meta-row">
+              <div class="meta-item">
+                <div class="meta-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12l9-9 9 9"/><path d="M5 10v10a1 1 0 001 1h12a1 1 0 001-1V10"/></svg></div>
+                <div class="meta-content"><strong>School District</strong>Hillsborough County — 9/10. Same Plant High zone as South Tampa, with Mitchell Elementary an easy walk from most of Hyde Park.</div>
+              </div>
+              <div class="meta-item">
+                <div class="meta-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+                <div class="meta-content"><strong>Commute to Downtown</strong>8 minutes via Bayshore or Kennedy. You can also bike it in 15.</div>
+              </div>
+            </div>
+
+            <div class="nbh-take">
+              <h3 class="nbh-take-heading">Kevin's honest take</h3>
+              <p>Hyde Park and SoHo (South Howard Avenue) are two sides of the same coin. Hyde Park proper is the old-Tampa historic district — 1920s craftsman bungalows, Mediterranean Revival mansions, brick streets, and oaks that have seen everything since Teddy Roosevelt. SoHo is the dining-and-bar strip just east, where the under-40 crowd lives in 1990s townhomes and walks to dinner six nights a week.</p>
+              <p>You're paying a premium per square foot — sometimes $500+ — because nothing else in Tampa looks like this and they can't make more of it. People are usually shocked at how small the lots are and how close the houses sit; one neighbor's bedroom window is often 8 feet from yours.</p>
+              <p>The drawback: parking. Garages were built for Model Ts, and street parking on weekend nights when SoHo is packed can be a real test of patience.</p>
+            </div>
+
+            <div class="nbh-best-for"><strong>Best for:</strong> Buyers who want walkable old-Tampa character and don't mind paying for it.</div>
+
+            <a class="nbh-zillow-link" href="https://www.zillow.com/homes/for_sale/hyde-park-tampa-fl/" target="_blank" rel="noopener">View Hyde Park homes on Zillow
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+          </div>
+        </article>
+
+        <!-- 3. TAMPA HEIGHTS -->
+        <article class="nbh-card reveal" id="tampa-heights" data-slug="tampa-heights">
+          <div class="nbh-hero">
+            <img src="/images/neighborhoods/tampa-heights.webp" alt="Tampa Riverwalk along the Hillsborough River in Tampa Heights" width="1200" height="800" loading="lazy">
+            <div class="nbh-hero-label">Tampa Heights</div>
+          </div>
+          <div class="nbh-body">
+            <p class="nbh-tagline">Where the old industrial city meets the riverfront comeback.</p>
+
+            <div class="nbh-stats" aria-label="Tampa Heights quick stats">
+              <div class="nbh-stat">
+                <span class="nbh-stat-label">Median Price</span>
+                <span class="nbh-stat-value"><a href="https://www.zillow.com/homes/for_sale/tampa-heights-tampa-fl/" target="_blank" rel="noopener">$525,000</a></span>
+              </div>
+              <div class="nbh-stat">
+                <span class="nbh-stat-label">5-Yr Trend</span>
+                <span class="nbh-stat-value trend-positive">+64% since 2021</span>
+              </div>
+              <div class="nbh-stat">
+                <span class="nbh-stat-label">Avg Days on Market</span>
+                <span class="nbh-stat-value">24 days</span>
+              </div>
+              <div class="nbh-stat">
+                <span class="nbh-stat-label">Avg Home Size</span>
+                <span class="nbh-stat-value">1,750 sq ft</span>
+              </div>
+            </div>
+
+            <div class="nbh-meta-row">
+              <div class="meta-item">
+                <div class="meta-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12l9-9 9 9"/><path d="M5 10v10a1 1 0 001 1h12a1 1 0 001-1V10"/></svg></div>
+                <div class="meta-content"><strong>School District</strong>Hillsborough County — 6/10. Schools have improved with the neighborhood; many buyers with kids do private or magnet (Hillsborough High IB).</div>
+              </div>
+              <div class="meta-item">
+                <div class="meta-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+                <div class="meta-content"><strong>Commute to Downtown</strong>5–8 minutes. You can literally walk to Armature Works.</div>
+              </div>
+            </div>
+
+            <div class="nbh-take">
+              <h3 class="nbh-take-heading">Kevin's honest take</h3>
+              <p>Tampa Heights is the comeback story of the last 15 years. When I started selling here in the mid-2000s, it was mostly bungalows you bought for $90,000 cash and hoped to flip. Now Armature Works is the social hub of Tampa, the Riverwalk extends right through, and you've got young professionals, restaurant owners, and downtown lawyers buying restored craftsman houses for half a million.</p>
+              <p>You're paying for proximity — five minutes to downtown, walking distance to the river — and for getting in before the next wave of new builds finishes. What surprises people: it still feels gritty in pockets. Some blocks are gorgeous restorations, the next block has chain link fences and a 1950s duplex.</p>
+              <p>The drawback: construction noise and dust. There's a new project breaking ground every quarter. If you crave a finished, polished neighborhood, this isn't it yet — but in 5 years it will be.</p>
+            </div>
+
+            <div class="nbh-best-for"><strong>Best for:</strong> Younger buyers and investors who want walkable downtown access and don't mind being early.</div>
+
+            <a class="nbh-zillow-link" href="https://www.zillow.com/homes/for_sale/tampa-heights-tampa-fl/" target="_blank" rel="noopener">View Tampa Heights homes on Zillow
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+          </div>
+        </article>
+
+        <!-- 4. SEMINOLE HEIGHTS -->
+        <article class="nbh-card reveal" id="seminole-heights" data-slug="seminole-heights">
+          <div class="nbh-hero">
+            <img src="/images/neighborhoods/seminole-heights.webp" alt="Classic 1920s craftsman bungalow in the Seminole Heights Historic District" width="1200" height="800" loading="lazy">
+            <div class="nbh-hero-label">Seminole Heights</div>
+          </div>
+          <div class="nbh-body">
+            <p class="nbh-tagline">The original Tampa bungalow neighborhood, now with great beer.</p>
+
+            <div class="nbh-stats" aria-label="Seminole Heights quick stats">
+              <div class="nbh-stat">
+                <span class="nbh-stat-label">Median Price</span>
+                <span class="nbh-stat-value"><a href="https://www.zillow.com/homes/for_sale/seminole-heights-tampa-fl/" target="_blank" rel="noopener">$485,000</a></span>
+              </div>
+              <div class="nbh-stat">
+                <span class="nbh-stat-label">5-Yr Trend</span>
+                <span class="nbh-stat-value trend-positive">+58% since 2021</span>
+              </div>
+              <div class="nbh-stat">
+                <span class="nbh-stat-label">Avg Days on Market</span>
+                <span class="nbh-stat-value">22 days</span>
+              </div>
+              <div class="nbh-stat">
+                <span class="nbh-stat-label">Avg Home Size</span>
+                <span class="nbh-stat-value">1,650 sq ft</span>
+              </div>
+            </div>
+
+            <div class="nbh-meta-row">
+              <div class="meta-item">
+                <div class="meta-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12l9-9 9 9"/><path d="M5 10v10a1 1 0 001 1h12a1 1 0 001-1V10"/></svg></div>
+                <div class="meta-content"><strong>School District</strong>Hillsborough County — 6/10. Hillsborough High IB program is the magnet draw; Seminole Heights Elementary is solid.</div>
+              </div>
+              <div class="meta-item">
+                <div class="meta-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+                <div class="meta-content"><strong>Commute to Downtown</strong>12 minutes via I-275 or Florida Ave.</div>
+              </div>
+            </div>
+
+            <div class="nbh-take">
+              <h3 class="nbh-take-heading">Kevin's honest take</h3>
+              <p>Seminole Heights — Old, Southeast, and South — is where Tampa's creative class settled in the 2010s. Restaurant owners, tattoo artists, the guys who run the local breweries, plus a lot of teachers, nurses, and remote workers. The bungalows are gorgeous when they're done right; original heart pine floors, transom windows, deep porches you can put a rocking chair on.</p>
+              <p>What you pay for is character per dollar: you simply cannot get this much architectural soul anywhere else in Tampa under $500K. Buyers who move here from suburbia are usually surprised at how social the neighborhood is — Front Porch parties, food truck rallies on Florida Ave, and you'll know your neighbors' names within two weeks.</p>
+              <p>The drawback: many of these houses are 100 years old. If the prior owner didn't address the plumbing, electrical, or roof, you're inheriting some real bills. I've seen buyers in love with a 1923 bungalow get hit with a $30K plumbing surprise. Get the inspection. Then get a sewer scope. Then get a wind mit.</p>
+            </div>
+
+            <div class="nbh-best-for"><strong>Best for:</strong> Buyers who want craftsman character, can stomach an older house, and want a real neighborhood feel.</div>
+
+            <a class="nbh-zillow-link" href="https://www.zillow.com/homes/for_sale/seminole-heights-tampa-fl/" target="_blank" rel="noopener">View Seminole Heights homes on Zillow
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+          </div>
+        </article>
+
+        <!-- 5. WESTCHASE -->
+        <article class="nbh-card reveal" id="westchase" data-slug="westchase">
+          <div class="nbh-hero">
+            <img src="/images/neighborhoods/westchase.webp" alt="Aerial view of Westchase, a master-planned community in northwest Tampa" width="1200" height="900" loading="lazy">
+            <div class="nbh-hero-label">Westchase</div>
+          </div>
+          <div class="nbh-body">
+            <p class="nbh-tagline">Master-planned, family-friendly, and built around great schools.</p>
+
+            <div class="nbh-stats" aria-label="Westchase quick stats">
+              <div class="nbh-stat">
+                <span class="nbh-stat-label">Median Price</span>
+                <span class="nbh-stat-value"><a href="https://www.zillow.com/homes/for_sale/westchase-tampa-fl/" target="_blank" rel="noopener">$650,000</a></span>
+              </div>
+              <div class="nbh-stat">
+                <span class="nbh-stat-label">5-Yr Trend</span>
+                <span class="nbh-stat-value trend-positive">+36% since 2021</span>
+              </div>
+              <div class="nbh-stat">
+                <span class="nbh-stat-label">Avg Days on Market</span>
+                <span class="nbh-stat-value">18 days</span>
+              </div>
+              <div class="nbh-stat">
+                <span class="nbh-stat-label">Avg Home Size</span>
+                <span class="nbh-stat-value">2,400 sq ft</span>
+              </div>
+            </div>
+
+            <div class="nbh-meta-row">
+              <div class="meta-item">
+                <div class="meta-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12l9-9 9 9"/><path d="M5 10v10a1 1 0 001 1h12a1 1 0 001-1V10"/></svg></div>
+                <div class="meta-content"><strong>School District</strong>Hillsborough County — 9/10. Westchase Elementary, Davidsen Middle, and Sickles High are some of the best public schools in Tampa Bay.</div>
+              </div>
+              <div class="meta-item">
+                <div class="meta-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+                <div class="meta-content"><strong>Commute to Downtown</strong>25–30 minutes via Veterans Expressway.</div>
+              </div>
+            </div>
+
+            <div class="nbh-take">
+              <h3 class="nbh-take-heading">Kevin's honest take</h3>
+              <p>Westchase is a master-planned community that opened in the 1990s, and it does exactly what it set out to do: deliver a clean, safe, amenity-rich place to raise kids. Two community pools, tennis courts, a golf course, walking trails, and an actual village center with restaurants and shops. The buyers are families — most have at least one kid in the school system — plus a healthy mix of executives at the corporate parks along Veterans.</p>
+              <p>You pay for schools, predictability, and HOA-enforced curb appeal. Every lawn looks the same shade of green. What surprises out-of-town buyers is how genuinely community-driven it feels — there's a Westchase Facebook group with 20,000 members, neighborhood holiday parades, and an Independence Day fireworks show that draws families from three counties.</p>
+              <p>The drawback: HOA fees and rules. You can't park a work truck in your driveway overnight, you'll get a letter if your bushes are too tall, and the special assessments for amenities add up. Also, traffic at school drop-off is no joke.</p>
+            </div>
+
+            <div class="nbh-best-for"><strong>Best for:</strong> Families with school-age kids who want top public schools and don't mind HOA rules.</div>
+
+            <a class="nbh-zillow-link" href="https://www.zillow.com/homes/for_sale/westchase-tampa-fl/" target="_blank" rel="noopener">View Westchase homes on Zillow
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+          </div>
+        </article>
+
+        <!-- 6. CARROLLWOOD -->
+        <article class="nbh-card reveal" id="carrollwood" data-slug="carrollwood">
+          <div class="nbh-hero">
+            <img src="/images/neighborhoods/carrollwood.webp" alt="Carrollwood Square shopping plaza, a hub of the Carrollwood community in north Tampa" width="1200" height="675" loading="lazy">
+            <div class="nbh-hero-label">Carrollwood</div>
+          </div>
+          <div class="nbh-body">
+            <p class="nbh-tagline">Mature trees, lake views, and the original Tampa suburb that still works.</p>
+
+            <div class="nbh-stats" aria-label="Carrollwood quick stats">
+              <div class="nbh-stat">
+                <span class="nbh-stat-label">Median Price</span>
+                <span class="nbh-stat-value"><a href="https://www.zillow.com/homes/for_sale/carrollwood-tampa-fl/" target="_blank" rel="noopener">$485,000</a></span>
+              </div>
+              <div class="nbh-stat">
+                <span class="nbh-stat-label">5-Yr Trend</span>
+                <span class="nbh-stat-value trend-positive">+33% since 2021</span>
+              </div>
+              <div class="nbh-stat">
+                <span class="nbh-stat-label">Avg Days on Market</span>
+                <span class="nbh-stat-value">25 days</span>
+              </div>
+              <div class="nbh-stat">
+                <span class="nbh-stat-label">Avg Home Size</span>
+                <span class="nbh-stat-value">2,050 sq ft</span>
+              </div>
+            </div>
+
+            <div class="nbh-meta-row">
+              <div class="meta-item">
+                <div class="meta-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12l9-9 9 9"/><path d="M5 10v10a1 1 0 001 1h12a1 1 0 001-1V10"/></svg></div>
+                <div class="meta-content"><strong>School District</strong>Hillsborough County — 7/10. Carrollwood Elementary and Adams Middle are solid; Chamberlain High has a strong magnet program.</div>
+              </div>
+              <div class="meta-item">
+                <div class="meta-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+                <div class="meta-content"><strong>Commute to Downtown</strong>20 minutes via Dale Mabry Highway.</div>
+              </div>
+            </div>
+
+            <div class="nbh-take">
+              <h3 class="nbh-take-heading">Kevin's honest take</h3>
+              <p>Carrollwood is the suburb time forgot, in the best way. Built in the 1960s and 70s around Lake Carroll and Lake Magdalene, it has the kind of mature oak canopies and big lots you simply cannot replicate in a 2020s subdivision. The original Carrollwood Village is where you'll find ranch-style houses on quarter-acre lots, and the residents are a mix of retirees who never left, second-generation owners raising kids in the house they grew up in, and a steady arrival of young families priced out of South Tampa.</p>
+              <p>What you pay for is space and trees. A 2,000-square-foot ranch on a quarter acre in Carrollwood costs the same as a 1,200-square-foot bungalow in Seminole Heights. People moving from South Tampa are surprised at how much yard they get, and how quiet it is at night — no SoHo bar noise drifting in.</p>
+              <p>The drawback: it's not walkable. You drive everywhere, including to the grocery store. And many homes still have original 1970s electrical panels and roofs that need replacing — budget for renovation if you're buying anything that hasn't been recently updated.</p>
+            </div>
+
+            <div class="nbh-best-for"><strong>Best for:</strong> Buyers who want space, mature trees, and a quiet established neighborhood without paying South Tampa prices.</div>
+
+            <a class="nbh-zillow-link" href="https://www.zillow.com/homes/for_sale/carrollwood-tampa-fl/" target="_blank" rel="noopener">View Carrollwood homes on Zillow
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+          </div>
+        </article>
+
+        <!-- 7. WESLEY CHAPEL -->
+        <article class="nbh-card reveal" id="wesley-chapel" data-slug="wesley-chapel">
+          <div class="nbh-hero">
+            <img src="/images/neighborhoods/wesley-chapel.webp" alt="Wesley Chapel, a fast-growing master-planned community in Pasco County" width="1200" height="900" loading="lazy">
+            <div class="nbh-hero-label">Wesley Chapel</div>
+          </div>
+          <div class="nbh-body">
+            <p class="nbh-tagline">The new build capital of Tampa Bay — everything is shiny.</p>
+
+            <div class="nbh-stats" aria-label="Wesley Chapel quick stats">
+              <div class="nbh-stat">
+                <span class="nbh-stat-label">Median Price</span>
+                <span class="nbh-stat-value"><a href="https://www.zillow.com/homes/for_sale/wesley-chapel-fl/" target="_blank" rel="noopener">$465,000</a></span>
+              </div>
+              <div class="nbh-stat">
+                <span class="nbh-stat-label">5-Yr Trend</span>
+                <span class="nbh-stat-value trend-positive">+39% since 2021</span>
+              </div>
+              <div class="nbh-stat">
+                <span class="nbh-stat-label">Avg Days on Market</span>
+                <span class="nbh-stat-value">32 days</span>
+              </div>
+              <div class="nbh-stat">
+                <span class="nbh-stat-label">Avg Home Size</span>
+                <span class="nbh-stat-value">2,300 sq ft</span>
+              </div>
+            </div>
+
+            <div class="nbh-meta-row">
+              <div class="meta-item">
+                <div class="meta-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12l9-9 9 9"/><path d="M5 10v10a1 1 0 001 1h12a1 1 0 001-1V10"/></svg></div>
+                <div class="meta-content"><strong>School District</strong>Pasco County — 8/10. Wiregrass Ranch High is the standout; Cypress Creek Middle and several A-rated elementaries serve the newer subdivisions.</div>
+              </div>
+              <div class="meta-item">
+                <div class="meta-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+                <div class="meta-content"><strong>Commute to Downtown</strong>35 minutes via I-75. Closer to 50 in rush hour.</div>
+              </div>
+            </div>
+
+            <div class="nbh-take">
+              <h3 class="nbh-take-heading">Kevin's honest take</h3>
+              <p>Wesley Chapel exploded over the last decade. What was cattle pasture in 2010 is now Wiregrass Mall, The Grove, two hospitals, a Premium Outlets, and roughly 20 new subdivisions. The buyers are young families relocating from out of state — Ohio, New Jersey, Long Island — plus locals trading their Tampa starter home for more square footage. Everyone you meet seems to have a kid under 10.</p>
+              <p>You pay for new everything: new roof, new HVAC, new appliances, new schools. People are surprised at how much house they get for the money — a 2,400-square-foot, four-bedroom home with a two-car garage and lanai for under $500,000 is still doable here.</p>
+              <p>The drawback: traffic and CDDs. SR-54 backs up something fierce in the afternoon. And most new subdivisions have Community Development District fees on top of HOA — usually $1,500 to $3,000 a year for 30 years. Always ask the CDD bond balance before you buy.</p>
+            </div>
+
+            <div class="nbh-best-for"><strong>Best for:</strong> Families wanting new construction, good schools, and more house for the money — and willing to commute.</div>
+
+            <a class="nbh-zillow-link" href="https://www.zillow.com/homes/for_sale/wesley-chapel-fl/" target="_blank" rel="noopener">View Wesley Chapel homes on Zillow
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+          </div>
+        </article>
+
+        <!-- 8. ST PETERSBURG -->
+        <article class="nbh-card reveal" id="st-petersburg" data-slug="st-petersburg">
+          <div class="nbh-hero">
+            <img src="/images/neighborhoods/st-petersburg.webp" alt="The historic Vinoy Renaissance Resort in downtown St. Petersburg, Florida" width="1200" height="564" loading="lazy">
+            <div class="nbh-hero-label">St. Petersburg</div>
+          </div>
+          <div class="nbh-body">
+            <p class="nbh-tagline">Tampa Bay's arts capital, with waterfront everything.</p>
+
+            <div class="nbh-stats" aria-label="St Petersburg quick stats">
+              <div class="nbh-stat">
+                <span class="nbh-stat-label">Median Price</span>
+                <span class="nbh-stat-value"><a href="https://www.zillow.com/homes/for_sale/downtown-st-petersburg-st-petersburg-fl/" target="_blank" rel="noopener">$575,000</a></span>
+              </div>
+              <div class="nbh-stat">
+                <span class="nbh-stat-label">5-Yr Trend</span>
+                <span class="nbh-stat-value trend-positive">+51% since 2021</span>
+              </div>
+              <div class="nbh-stat">
+                <span class="nbh-stat-label">Avg Days on Market</span>
+                <span class="nbh-stat-value">23 days</span>
+              </div>
+              <div class="nbh-stat">
+                <span class="nbh-stat-label">Avg Home Size</span>
+                <span class="nbh-stat-value">1,850 sq ft</span>
+              </div>
+            </div>
+
+            <div class="nbh-meta-row">
+              <div class="meta-item">
+                <div class="meta-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12l9-9 9 9"/><path d="M5 10v10a1 1 0 001 1h12a1 1 0 001-1V10"/></svg></div>
+                <div class="meta-content"><strong>School District</strong>Pinellas County — 7/10. North Shore Elementary and St. Pete High are well-regarded; many downtown buyers use the IB and Center for Wealth Management programs at St. Pete High.</div>
+              </div>
+              <div class="meta-item">
+                <div class="meta-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+                <div class="meta-content"><strong>Commute to Downtown Tampa</strong>30 minutes via the Howard Frankland Bridge.</div>
+              </div>
+            </div>
+
+            <div class="nbh-take">
+              <h3 class="nbh-take-heading">Kevin's honest take</h3>
+              <p>St. Pete has its own gravity. Downtown St. Pete and the Old Northeast — those quiet brick streets lined with 1920s Mediterranean and Tudor homes — feel more like Savannah or Charleston than Florida. The buyers are an interesting mix: empty nesters trading suburbia for walkable urban life, artists and chefs, plus a growing remote-work crowd that picked St. Pete over Tampa specifically for the vibe.</p>
+              <p>What you pay for is culture per dollar — the Dali Museum, the Vinoy, the Pier, weekly art walks, dozens of independent restaurants, and a waterfront park system better than Tampa's. People moving from Tampa are usually shocked at how genuinely walkable downtown St. Pete is; you can live without a car if you live within 10 blocks of Central Avenue.</p>
+              <p>The drawback: getting back to Tampa. The bridges are a real commitment — Howard Frankland, Gandy, or Courtney Campbell — and any one of them can turn 25 minutes into 75. Plan your job around it.</p>
+            </div>
+
+            <div class="nbh-best-for"><strong>Best for:</strong> Buyers wanting walkable urban living, arts and culture, and either work in Pinellas County or remote.</div>
+
+            <a class="nbh-zillow-link" href="https://www.zillow.com/homes/for_sale/downtown-st-petersburg-st-petersburg-fl/" target="_blank" rel="noopener">View St. Petersburg homes on Zillow
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+          </div>
+        </article>
+
+        <!-- 9. CLEARWATER BEACH -->
+        <article class="nbh-card reveal" id="clearwater-beach" data-slug="clearwater-beach">
+          <div class="nbh-hero">
+            <img src="/images/neighborhoods/clearwater-beach.webp" alt="Sunset over Clearwater Beach on the Gulf of Mexico" width="1200" height="675" loading="lazy">
+            <div class="nbh-hero-label">Clearwater Beach / Sand Key</div>
+          </div>
+          <div class="nbh-body">
+            <p class="nbh-tagline">Year-round vacation, with a view that never gets old.</p>
+
+            <div class="nbh-stats" aria-label="Clearwater Beach quick stats">
+              <div class="nbh-stat">
+                <span class="nbh-stat-label">Median Price</span>
+                <span class="nbh-stat-value"><a href="https://www.zillow.com/homes/for_sale/clearwater-beach-clearwater-fl/" target="_blank" rel="noopener">$725,000</a></span>
+              </div>
+              <div class="nbh-stat">
+                <span class="nbh-stat-label">5-Yr Trend</span>
+                <span class="nbh-stat-value trend-positive">+44% since 2021</span>
+              </div>
+              <div class="nbh-stat">
+                <span class="nbh-stat-label">Avg Days on Market</span>
+                <span class="nbh-stat-value">35 days</span>
+              </div>
+              <div class="nbh-stat">
+                <span class="nbh-stat-label">Avg Home Size</span>
+                <span class="nbh-stat-value">1,500 sq ft</span>
+              </div>
+            </div>
+
+            <div class="nbh-meta-row">
+              <div class="meta-item">
+                <div class="meta-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12l9-9 9 9"/><path d="M5 10v10a1 1 0 001 1h12a1 1 0 001-1V10"/></svg></div>
+                <div class="meta-content"><strong>School District</strong>Pinellas County — 7/10. Sand Key Elementary feeds into Clearwater High; most beachfront owners with school-age kids opt for nearby private schools.</div>
+              </div>
+              <div class="meta-item">
+                <div class="meta-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+                <div class="meta-content"><strong>Commute to Downtown Tampa</strong>45 minutes via the Courtney Campbell Causeway.</div>
+              </div>
+            </div>
+
+            <div class="nbh-take">
+              <h3 class="nbh-take-heading">Kevin's honest take</h3>
+              <p>Clearwater Beach and Sand Key are mostly condos. We're talking 70s and 80s high-rises right on the Gulf, plus a handful of single-family homes on Island Estates and along the channel. Buyers are split roughly three ways: retirees who finally pulled the trigger after years of vacationing here, second-home owners who fly down from Toronto and Chicago, and short-term rental investors counting nightly rates.</p>
+              <p>What you pay for is the view. Period. A 1,200-square-foot condo with a Gulf-facing balcony costs the same as a 3,000-square-foot house in Wesley Chapel. People are usually surprised at how good the white sand actually is — Clearwater consistently ranks in the top 10 beaches in America, and you'll feel it every morning.</p>
+              <p>The drawback: tourist crowds, traffic on the bridge to the mainland during spring break, and condo associations that can be aggressive about special assessments. Always — always — read the latest financials and reserve study before buying. A new roof or seawall replacement can trigger a $40K assessment overnight.</p>
+            </div>
+
+            <div class="nbh-best-for"><strong>Best for:</strong> Retirees, second-home buyers, and investors who want Gulf-front living and don't need to be in Tampa daily.</div>
+
+            <a class="nbh-zillow-link" href="https://www.zillow.com/homes/for_sale/clearwater-beach-clearwater-fl/" target="_blank" rel="noopener">View Clearwater Beach homes on Zillow
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+          </div>
+        </article>
+
+        <!-- 10. INDIAN ROCKS BEACH -->
+        <article class="nbh-card reveal" id="indian-rocks-beach" data-slug="indian-rocks-beach">
+          <div class="nbh-hero">
+            <img src="/images/neighborhoods/indian-rocks-beach.webp" alt="Indian Rocks Beach City Hall, library, and auditorium — the small-town hub of this Pinellas County beach community" width="1200" height="900" loading="lazy">
+            <div class="nbh-hero-label">Indian Rocks Beach / Belleair</div>
+          </div>
+          <div class="nbh-body">
+            <p class="nbh-tagline">The beach town that resisted high-rises — and feels like 1985.</p>
+
+            <div class="nbh-stats" aria-label="Indian Rocks Beach quick stats">
+              <div class="nbh-stat">
+                <span class="nbh-stat-label">Median Price</span>
+                <span class="nbh-stat-value"><a href="https://www.zillow.com/homes/for_sale/indian-rocks-beach-fl/" target="_blank" rel="noopener">$795,000</a></span>
+              </div>
+              <div class="nbh-stat">
+                <span class="nbh-stat-label">5-Yr Trend</span>
+                <span class="nbh-stat-value trend-positive">+47% since 2021</span>
+              </div>
+              <div class="nbh-stat">
+                <span class="nbh-stat-label">Avg Days on Market</span>
+                <span class="nbh-stat-value">38 days</span>
+              </div>
+              <div class="nbh-stat">
+                <span class="nbh-stat-label">Avg Home Size</span>
+                <span class="nbh-stat-value">1,700 sq ft</span>
+              </div>
+            </div>
+
+            <div class="nbh-meta-row">
+              <div class="meta-item">
+                <div class="meta-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12l9-9 9 9"/><path d="M5 10v10a1 1 0 001 1h12a1 1 0 001-1V10"/></svg></div>
+                <div class="meta-content"><strong>School District</strong>Pinellas County — 8/10. Anona Elementary, Largo Middle, and Largo High serve most of IRB; Belleair feeds Mildred Helms and Largo High.</div>
+              </div>
+              <div class="meta-item">
+                <div class="meta-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+                <div class="meta-content"><strong>Commute to Downtown Tampa</strong>50 minutes — and you'll feel every one of them.</div>
+              </div>
+            </div>
+
+            <div class="nbh-take">
+              <h3 class="nbh-take-heading">Kevin's honest take</h3>
+              <p>Indian Rocks Beach is the most authentic beach town left in Pinellas County. The city ordinance caps building heights, so you don't have high-rises blocking the sun like in Clearwater. Most homes are 1950s and 60s ranches and bungalows, plus a growing crop of beautifully rebuilt elevated homes after Hurricane Helene reshaped a lot of the older stock. Buyers are typically empty nesters who summered here as kids and finally moved down, plus families who want their kids growing up walking to the beach.</p>
+              <p>What you pay for is the lifestyle: you can ride a bike to the Gulf, eat at the Crabby Bills, and watch the dolphins from your back deck. Belleair adds another layer — Pelican Golf Club, the Pelican Club, and big estate lots that sell for $2M+. People are usually shocked at how genuinely small-town it still feels. The same shop owners have been there for 30 years.</p>
+              <p>The drawback: after Helene and Milton in 2024, flood insurance and elevation requirements got serious. Many homes need to be elevated, and the insurance market is brutal for ground-level houses. Budget accordingly, and look very carefully at elevation certificates and any post-hurricane repairs.</p>
+            </div>
+
+            <div class="nbh-best-for"><strong>Best for:</strong> Buyers who want a small-town beach lifestyle, with eyes wide open on insurance and flood elevation.</div>
+
+            <a class="nbh-zillow-link" href="https://www.zillow.com/homes/for_sale/indian-rocks-beach-fl/" target="_blank" rel="noopener">View Indian Rocks Beach homes on Zillow
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+          </div>
+        </article>
+
+        <!-- 11. ODESSA / TRINITY -->
+        <article class="nbh-card reveal" id="odessa" data-slug="odessa">
+          <div class="nbh-hero">
+            <img src="/images/neighborhoods/odessa.webp" alt="The Suncoast Parkway running through the rural-meets-suburban Odessa area in northwest Hillsborough and Pasco counties" width="1200" height="810" loading="lazy">
+            <div class="nbh-hero-label">Odessa / Trinity</div>
+          </div>
+          <div class="nbh-body">
+            <p class="nbh-tagline">Where you trade commute time for acreage, lakes, and golf.</p>
+
+            <div class="nbh-stats" aria-label="Odessa quick stats">
+              <div class="nbh-stat">
+                <span class="nbh-stat-label">Median Price</span>
+                <span class="nbh-stat-value"><a href="https://www.zillow.com/homes/for_sale/odessa-fl/" target="_blank" rel="noopener">$595,000</a></span>
+              </div>
+              <div class="nbh-stat">
+                <span class="nbh-stat-label">5-Yr Trend</span>
+                <span class="nbh-stat-value trend-positive">+41% since 2021</span>
+              </div>
+              <div class="nbh-stat">
+                <span class="nbh-stat-label">Avg Days on Market</span>
+                <span class="nbh-stat-value">30 days</span>
+              </div>
+              <div class="nbh-stat">
+                <span class="nbh-stat-label">Avg Home Size</span>
+                <span class="nbh-stat-value">2,750 sq ft</span>
+              </div>
+            </div>
+
+            <div class="nbh-meta-row">
+              <div class="meta-item">
+                <div class="meta-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12l9-9 9 9"/><path d="M5 10v10a1 1 0 001 1h12a1 1 0 001-1V10"/></svg></div>
+                <div class="meta-content"><strong>School District</strong>Hillsborough &amp; Pasco County — 8/10. Bryant Elementary and Steinbrenner High are top-rated; Trinity sits in Pasco's Mitchell High zone.</div>
+              </div>
+              <div class="meta-item">
+                <div class="meta-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+                <div class="meta-content"><strong>Commute to Downtown Tampa</strong>30 minutes via Suncoast Parkway and Veterans.</div>
+              </div>
+            </div>
+
+            <div class="nbh-take">
+              <h3 class="nbh-take-heading">Kevin's honest take</h3>
+              <p>I've lived in Odessa, so this one I know personally. Odessa and Trinity — the area along the Hillsborough-Pasco line, anchored by the Suncoast Parkway — is where Tampa Bay families go when they want a real yard, a pool, and maybe a private dock on a lake. The buyers are established families, executives, and a lot of pilots and flight attendants thanks to the Tampa Executive Airport. Steinbrenner High pulls a lot of South Tampa families up here for the schools without the price tag.</p>
+              <p>What you pay for is acreage and amenities — half-acre to multi-acre lots are common, and gated golf communities like Cheval and Eagles run from the high $700s to multi-million. People moving from Westchase or South Tampa are surprised at how rural it still feels just two miles off Veterans; you'll see deer, the occasional sandhill crane, and almost no traffic at night.</p>
+              <p>The drawback: you'll drive everywhere, and groceries are not next door. If you forget eggs, that's a 15-minute round trip. Also, well water and septic are still common on the larger lots, which means a different maintenance routine than city water.</p>
+            </div>
+
+            <div class="nbh-best-for"><strong>Best for:</strong> Families wanting big lots, lake views, top schools, and quiet without giving up airport access.</div>
+
+            <a class="nbh-zillow-link" href="https://www.zillow.com/homes/for_sale/odessa-fl/" target="_blank" rel="noopener">View Odessa homes on Zillow
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+          </div>
+        </article>
+
+        <!-- 12. DUNEDIN -->
+        <article class="nbh-card reveal" id="dunedin" data-slug="dunedin">
+          <div class="nbh-hero">
+            <img src="/images/neighborhoods/dunedin.webp" alt="The waterfront bandstand and marina in downtown Dunedin, Florida" width="1200" height="900" loading="lazy">
+            <div class="nbh-hero-label">Dunedin</div>
+          </div>
+          <div class="nbh-body">
+            <p class="nbh-tagline">Scottish heritage, craft beer, and the best small-town downtown in Tampa Bay.</p>
+
+            <div class="nbh-stats" aria-label="Dunedin quick stats">
+              <div class="nbh-stat">
+                <span class="nbh-stat-label">Median Price</span>
+                <span class="nbh-stat-value"><a href="https://www.zillow.com/homes/for_sale/dunedin-fl/" target="_blank" rel="noopener">$525,000</a></span>
+              </div>
+              <div class="nbh-stat">
+                <span class="nbh-stat-label">5-Yr Trend</span>
+                <span class="nbh-stat-value trend-positive">+45% since 2021</span>
+              </div>
+              <div class="nbh-stat">
+                <span class="nbh-stat-label">Avg Days on Market</span>
+                <span class="nbh-stat-value">21 days</span>
+              </div>
+              <div class="nbh-stat">
+                <span class="nbh-stat-label">Avg Home Size</span>
+                <span class="nbh-stat-value">1,700 sq ft</span>
+              </div>
+            </div>
+
+            <div class="nbh-meta-row">
+              <div class="meta-item">
+                <div class="meta-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12l9-9 9 9"/><path d="M5 10v10a1 1 0 001 1h12a1 1 0 001-1V10"/></svg></div>
+                <div class="meta-content"><strong>School District</strong>Pinellas County — 7/10. Garrison-Jones Elementary and Dunedin Highland Middle feed Dunedin High; lots of buyers also use Dunedin's strong charter and IB programs.</div>
+              </div>
+              <div class="meta-item">
+                <div class="meta-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+                <div class="meta-content"><strong>Commute to Downtown Tampa</strong>40 minutes via the Courtney Campbell Causeway.</div>
+              </div>
+            </div>
+
+            <div class="nbh-take">
+              <h3 class="nbh-take-heading">Kevin's honest take</h3>
+              <p>Dunedin is the most under-rated town in Tampa Bay. The downtown is genuinely walkable — independent restaurants, the Honeymoon Island ferry, a brewery on every corner (Dunedin has more breweries per capita than just about anywhere in Florida), and the Pinellas Trail running right through. The buyers are a great mix: retirees who fell for the small-town feel, young professionals working remote from Pinellas, and Toronto Blue Jays fans who time their move to spring training.</p>
+              <p>What you pay for is character without crushing price. You can still buy a 1950s Florida ranch a few blocks from downtown under $500,000, and the energy in town is unmatched on weekend mornings. People moving from larger metros are surprised at how friendly Dunedin actually is — neighbors talk, the police chief shows up at the farmers market, and the Mardi Gras parade is a real event.</p>
+              <p>The drawback: a lot of Dunedin sits on the water, and post-Helene flood insurance and elevation requirements bit hard. Make sure you understand the flood zone, the elevation certificate, and recent claims history before you sign anything near the Gulf side of US-19.</p>
+            </div>
+
+            <div class="nbh-best-for"><strong>Best for:</strong> Buyers who want a walkable, charming small-town feel — close to the beach, but not on the beach.</div>
+
+            <a class="nbh-zillow-link" href="https://www.zillow.com/homes/for_sale/dunedin-fl/" target="_blank" rel="noopener">View Dunedin homes on Zillow
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ── CLOSING CTA ── -->
+    <section class="cta" aria-label="Contact Kevin about a Tampa Bay neighborhood">
+      <div class="cta-inner reveal">
+        <p class="section-label">Local Expertise</p>
+        <h2 class="cta-heading">Thinking About Buying or Selling in One of These Neighborhoods?</h2>
+        <p>Kevin has sold homes in every one of these areas. Real local knowledge, not a Google search. Call for a no-pressure conversation about your situation and what's actually happening on the ground in your target neighborhood.</p>
+        <a href="tel:7274108599" class="cta-phone">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          727-410-8599
+        </a>
+        <div class="cta-links">
+          <a href="/contact">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            Send a Message
+          </a>
+          <a href="https://www.facebook.com/SellingTampa" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            Facebook
+          </a>
+          <a href="https://www.instagram.com/kevinsellstampabay/" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+            Instagram
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── ABOUT THE DATA ── -->
+    <section class="data-note" aria-label="About the data">
+      <div class="data-note-inner">
+        <strong>About the data.</strong> Median prices and trends linked from Zillow are live and refresh on the 1st of each month. Neighborhood vibe assessments are Kevin's personal opinion based on 40 years of local experience and over 1,200 sales.
+      </div>
+    </section>
+
+  </main>
+
+  <!-- BEGIN_FOOTER -->
+<!-- ── FOOTER ── -->
+<footer class="footer">
+  <div class="footer-inner">
+    <a href="/" class="footer-logo">KEVIN <span>FREEL</span></a>
+    <p class="footer-copy">&copy; 2026 Kevin Freel Real Estate. All rights reserved.</p>
+    <div class="footer-social">
+      <a href="https://www.facebook.com/SellingTampa" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+      </a>
+      <a href="https://www.instagram.com/kevinsellstampabay/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+      </a>
+      <a href="https://www.linkedin.com/in/kevin-freel-b0363029/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.063 2.063 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+      </a>
+      <a href="https://x.com/Sellingtampa1" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231 5.45-6.231zm-1.161 17.52h1.833L7.084 4.126H5.117L17.083 19.77z"/></svg>
+      </a>
+      <a href="https://www.tiktok.com/@kevinfreel" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-5.2 1.74 2.89 2.89 0 012.31-4.64 2.93 2.93 0 01.88.13V9.4a6.84 6.84 0 00-1-.05A6.33 6.33 0 005.8 20.1a6.34 6.34 0 0010.86-4.43v-7a8.16 8.16 0 004.77 1.52v-3.4a4.85 4.85 0 01-1.84-.1z"/></svg>
+      </a>
+      <a href="https://share.google/KxNDtGpzlkBEwSXu2" target="_blank" rel="noopener noreferrer" aria-label="Google Business Profile">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84A10.997 10.997 0 0012 23z"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+      </a>
+    </div>
+  </div>
+</footer>
+  <!-- END_FOOTER -->
+
+</body>
+</html>

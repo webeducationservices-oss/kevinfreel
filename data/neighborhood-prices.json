@@ -1,0 +1,90 @@
+{
+  "updated_at": "2026-05-15",
+  "source": "Initial values based on Zillow + Redfin + Realtor.com market research, May 2026. Refreshed monthly by scripts/refresh_neighborhood_data.py — see that script for the data source (Zillow ZHVI public CSV).",
+  "neighborhoods": {
+    "south-tampa": {
+      "median_price": 850000,
+      "trend_pct_5yr": 42,
+      "avg_days_on_market": 28,
+      "avg_sqft": 2100,
+      "zillow_url": "https://www.zillow.com/homes/for_sale/south-tampa-tampa-fl/"
+    },
+    "hyde-park": {
+      "median_price": 950000,
+      "trend_pct_5yr": 48,
+      "avg_days_on_market": 26,
+      "avg_sqft": 2250,
+      "zillow_url": "https://www.zillow.com/homes/for_sale/hyde-park-tampa-fl/"
+    },
+    "tampa-heights": {
+      "median_price": 525000,
+      "trend_pct_5yr": 64,
+      "avg_days_on_market": 24,
+      "avg_sqft": 1750,
+      "zillow_url": "https://www.zillow.com/homes/for_sale/tampa-heights-tampa-fl/"
+    },
+    "seminole-heights": {
+      "median_price": 485000,
+      "trend_pct_5yr": 58,
+      "avg_days_on_market": 22,
+      "avg_sqft": 1650,
+      "zillow_url": "https://www.zillow.com/homes/for_sale/seminole-heights-tampa-fl/"
+    },
+    "westchase": {
+      "median_price": 650000,
+      "trend_pct_5yr": 36,
+      "avg_days_on_market": 18,
+      "avg_sqft": 2400,
+      "zillow_url": "https://www.zillow.com/homes/for_sale/westchase-tampa-fl/"
+    },
+    "carrollwood": {
+      "median_price": 485000,
+      "trend_pct_5yr": 33,
+      "avg_days_on_market": 25,
+      "avg_sqft": 2050,
+      "zillow_url": "https://www.zillow.com/homes/for_sale/carrollwood-tampa-fl/"
+    },
+    "wesley-chapel": {
+      "median_price": 465000,
+      "trend_pct_5yr": 39,
+      "avg_days_on_market": 32,
+      "avg_sqft": 2300,
+      "zillow_url": "https://www.zillow.com/homes/for_sale/wesley-chapel-fl/"
+    },
+    "st-petersburg": {
+      "median_price": 575000,
+      "trend_pct_5yr": 51,
+      "avg_days_on_market": 23,
+      "avg_sqft": 1850,
+      "zillow_url": "https://www.zillow.com/homes/for_sale/downtown-st-petersburg-st-petersburg-fl/"
+    },
+    "clearwater-beach": {
+      "median_price": 725000,
+      "trend_pct_5yr": 44,
+      "avg_days_on_market": 35,
+      "avg_sqft": 1500,
+      "zillow_url": "https://www.zillow.com/homes/for_sale/clearwater-beach-clearwater-fl/"
+    },
+    "indian-rocks-beach": {
+      "median_price": 795000,
+      "trend_pct_5yr": 47,
+      "avg_days_on_market": 38,
+      "avg_sqft": 1700,
+      "zillow_url": "https://www.zillow.com/homes/for_sale/indian-rocks-beach-fl/"
+    },
+    "odessa": {
+      "median_price": 595000,
+      "trend_pct_5yr": 41,
+      "avg_days_on_market": 30,
+      "avg_sqft": 2750,
+      "zillow_url": "https://www.zillow.com/homes/for_sale/odessa-fl/"
+    },
+    "dunedin": {
+      "median_price": 525000,
+      "trend_pct_5yr": 45,
+      "avg_days_on_market": 21,
+      "avg_sqft": 1700,
+      "zillow_url": "https://www.zillow.com/homes/for_sale/dunedin-fl/"
+    }
+  }
+}

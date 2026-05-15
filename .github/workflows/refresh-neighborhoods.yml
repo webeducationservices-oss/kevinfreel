@@ -1,0 +1,52 @@
+name: Refresh Neighborhood Data
+
+on:
+  schedule:
+    # 10:00 UTC on the 1st of every month = 6 AM EDT / 5 AM EST
+    - cron: "0 10 1 * *"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: refresh-neighborhoods
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Check out repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Run refresh_neighborhood_data.py
+        id: refresh
+        run: python scripts/refresh_neighborhood_data.py
+        # Exit codes:
+        #   0 = success
+        #   2 = data file missing (fail loudly)
+        #   3 = remote fetch / parse failure (fail loudly, don't blank file)
+
+      - name: Commit and push changes
+        if: success()
+        run: |
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+
+          if [ -n "$(git status --porcelain data/neighborhood-prices.json)" ]; then
+            DATE=$(date -u +"%Y-%m-%d")
+            git add data/neighborhood-prices.json
+            git commit -m "Auto-refresh neighborhood pricing data — ${DATE}"
+            git push origin HEAD:main
+            echo "Pushed updated neighborhood-prices.json"
+          else
+            echo "No changes to commit."
+          fi

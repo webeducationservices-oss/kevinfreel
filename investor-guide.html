@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Tampa Bay Investor's Guide — Kevin Freel</title>
+  <meta name="description" content="Tampa Bay rental property investor's guide: top cap-rate ZIP codes, STR rules by city, SFH vs. multi-family, and first-time investor mistakes. Updated quarterly.">
+  <link rel="canonical" href="https://kevinfreel.com/investor-guide">
+
+  <meta property="og:title" content="Tampa Bay Investor's Guide — Kevin Freel">
+  <meta property="og:description" content="Honest analysis of Tampa Bay rental property: top cap-rate ZIPs, STR rules by city, and Kevin's first-time investor playbook. 40+ years of local market experience.">
+  <meta property="og:image" content="https://kevinfreel.com/images/og-image.jpg">
+  <meta property="og:url" content="https://kevinfreel.com/investor-guide">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Kevin Freel Real Estate">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Tampa Bay Investor's Guide — Kevin Freel">
+  <meta name="twitter:description" content="Top cap-rate ZIPs, STR rules by city, and Kevin's first-time investor playbook. 40+ years of Tampa Bay market experience.">
+  <meta name="twitter:image" content="https://kevinfreel.com/images/og-image.jpg">
+
+  <link rel="icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+  <link rel="preload" as="font" type="font/woff2" href="/fonts/playfair-display.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="/fonts/inter.woff2" crossorigin>
+
+  <link rel="stylesheet" href="/fonts/fonts.css">
+  <link rel="stylesheet" href="/styles.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Tampa Bay Investor's Guide",
+    "description": "Top cap-rate ZIP codes, STR rules by city, single-family vs. multi-family, and a first-time investor playbook for Tampa Bay rental properties.",
+    "author": {
+      "@type": "Person",
+      "name": "Kevin Freel",
+      "url": "https://kevinfreel.com/about"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Kevin Freel Real Estate",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://kevinfreel.com/apple-touch-icon.png"
+      }
+    },
+    "datePublished": "2026-05-15",
+    "dateModified": "2026-05-15",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://kevinfreel.com/investor-guide"
+    },
+    "image": "https://kevinfreel.com/images/og-image.jpg",
+    "about": {
+      "@type": "Place",
+      "name": "Tampa Bay, Florida"
+    }
+  }
+  </script>
+
+  <style>
+    /* ── Investor Guide page-specific styles ── */
+
+    /* Quick stats bar (light variant) */
+    .investor-stats {
+      background: var(--cream);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .investor-stats-inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+    }
+    .investor-stat {
+      padding: 2.25rem 1.25rem;
+      text-align: center;
+      border-right: 1px solid var(--border);
+    }
+    .investor-stat:last-child { border-right: none; }
+    .investor-stat-num {
+      font-family: var(--font-serif);
+      font-size: clamp(1.75rem, 3vw, 2.5rem);
+      font-weight: 600;
+      color: var(--gold);
+      line-height: 1;
+      margin-bottom: 0.5rem;
+    }
+    .investor-stat-label {
+      font-size: 0.8125rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      line-height: 1.4;
+    }
+
+    /* Intro card */
+    .intro-card-section {
+      padding: clamp(3rem, 6vw, 5rem) clamp(1.25rem, 5vw, 2rem) 0;
+    }
+    .intro-card {
+      max-width: 880px;
+      margin: 0 auto;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--gold);
+      border-radius: 0 10px 10px 0;
+      padding: clamp(1.75rem, 3vw, 2.5rem);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+    }
+    .intro-card p {
+      font-size: 1.0625rem;
+      color: var(--text);
+      line-height: 1.75;
+      margin: 0;
+    }
+
+    /* Data tables */
+    .data-table-wrap {
+      margin-top: 2.5rem;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+    }
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      background: var(--white);
+      font-size: 0.9375rem;
+      min-width: 760px;
+    }
+    .data-table thead th {
+      background: var(--gold);
+      color: var(--white);
+      font-family: var(--font-sans);
+      font-size: 0.8125rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      text-align: left;
+      padding: 1rem 1.1rem;
+      white-space: nowrap;
+    }
+    .data-table tbody td {
+      padding: 0.95rem 1.1rem;
+      border-bottom: 1px solid var(--border);
+      color: var(--text);
+      vertical-align: top;
+      line-height: 1.55;
+    }
+    .data-table tbody tr:nth-child(odd) td { background: #fafafa; }
+    .data-table tbody tr:last-child td { border-bottom: none; }
+    .data-table tbody tr:hover td { background: rgba(196,30,42,0.04); }
+    .data-table td strong { color: var(--navy); }
+    .data-table .zip-col,
+    .data-table .price-col,
+    .data-table .rate-col {
+      font-family: var(--font-serif);
+      font-weight: 600;
+      color: var(--navy);
+      white-space: nowrap;
+    }
+    .data-table .rate-col { color: var(--gold); }
+
+    /* Kevin's Take / Caution / Recommendation callout */
+    .kevin-callout {
+      margin-top: 2.5rem;
+      background: rgba(196,30,42,0.05);
+      border-left: 4px solid var(--gold);
+      border-radius: 0 10px 10px 0;
+      padding: 1.75rem clamp(1.5rem, 3vw, 2.25rem);
+    }
+    .kevin-callout .kevin-callout-label {
+      font-family: var(--font-sans);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.5rem;
+      font-style: normal;
+    }
+    .kevin-callout h3 {
+      font-family: var(--font-serif);
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 0.75rem;
+      font-style: italic;
+    }
+    .kevin-callout p {
+      font-size: 0.9875rem;
+      color: var(--text);
+      line-height: 1.75;
+      margin-bottom: 0.85rem;
+    }
+    .kevin-callout p:last-child { margin-bottom: 0; }
+    .kevin-callout strong { color: var(--navy); }
+
+    /* SFH vs Multi-Family two-column comparison */
+    .compare-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.75rem;
+      margin-top: 2.5rem;
+    }
+    .compare-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 2rem;
+      transition: box-shadow 0.3s, transform 0.25s;
+    }
+    .compare-card:hover {
+      box-shadow: 0 8px 30px rgba(0,0,0,0.07);
+      transform: translateY(-2px);
+    }
+    .compare-card h3 {
+      font-family: var(--font-serif);
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 0.5rem;
+    }
+    .compare-card-tag {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.25rem;
+    }
+    .compare-section { margin-bottom: 1.25rem; }
+    .compare-section:last-child { margin-bottom: 0; }
+    .compare-section h4 {
+      font-family: var(--font-sans);
+      font-size: 0.875rem;
+      font-weight: 700;
+      color: var(--navy);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.65rem;
+    }
+    .compare-section ul {
+      padding-left: 1.1rem;
+      list-style: disc;
+    }
+    .compare-section li {
+      font-size: 0.9375rem;
+      color: var(--text-muted);
+      line-height: 1.65;
+      margin-bottom: 0.4rem;
+    }
+    .compare-section p {
+      font-size: 0.9375rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+    .compare-pros h4 { color: #1b7a32; }
+    .compare-cons h4 { color: var(--gold); }
+
+    /* Numbered steps (first-time investor walkthrough) */
+    .walkthrough-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+      margin-top: 2.5rem;
+    }
+    .walkthrough-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 2rem;
+      position: relative;
+      transition: box-shadow 0.3s, transform 0.25s;
+    }
+    .walkthrough-card:hover {
+      box-shadow: 0 8px 30px rgba(0,0,0,0.07);
+      transform: translateY(-2px);
+    }
+    .walkthrough-num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      background: var(--gold);
+      color: var(--white);
+      font-family: var(--font-serif);
+      font-size: 1.15rem;
+      font-weight: 700;
+      border-radius: 10px;
+      margin-bottom: 1.1rem;
+    }
+    .walkthrough-card h3 {
+      font-family: var(--font-serif);
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 0.65rem;
+    }
+    .walkthrough-card p {
+      font-size: 0.9375rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    /* Mistakes — mistake/fix split cards */
+    .mistakes-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.25rem;
+      margin-top: 2.5rem;
+    }
+    .mistake-card {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .mistake-side, .fix-side {
+      padding: 1.75rem 1.85rem;
+    }
+    .mistake-side {
+      background: rgba(196,30,42,0.05);
+      border-right: 1px solid var(--border);
+    }
+    .mistake-side-label, .fix-side-label {
+      font-family: var(--font-sans);
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin-bottom: 0.65rem;
+    }
+    .mistake-side-label { color: var(--gold); }
+    .fix-side-label { color: #1b7a32; }
+    .mistake-card h3 {
+      font-family: var(--font-serif);
+      font-size: 1.0625rem;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 0.5rem;
+      line-height: 1.3;
+    }
+    .mistake-card p {
+      font-size: 0.9375rem;
+      color: var(--text-muted);
+      line-height: 1.65;
+    }
+
+    /* CTA dual-button */
+    .cta-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+    .cta-buttons .btn-primary {
+      font-size: 1rem;
+      padding: 1rem 2.25rem;
+    }
+    .cta-buttons .btn-outline {
+      font-size: 1rem;
+      padding: 1rem 2.25rem;
+    }
+
+    /* Mobile responsiveness */
+    @media (max-width: 900px) {
+      .compare-grid { grid-template-columns: 1fr; }
+      .walkthrough-grid { grid-template-columns: 1fr; }
+      .mistake-card { grid-template-columns: 1fr; }
+      .mistake-side { border-right: none; border-bottom: 1px solid var(--border); }
+      .investor-stats-inner { grid-template-columns: repeat(2, 1fr); }
+      .investor-stat:nth-child(2) { border-right: none; }
+      .investor-stat:nth-child(-n+2) { border-bottom: 1px solid var(--border); }
+    }
+    @media (max-width: 560px) {
+      .data-table-wrap { border-radius: 8px; }
+      .data-table { font-size: 0.875rem; }
+      .data-table thead th { padding: 0.85rem 0.85rem; font-size: 0.75rem; }
+      .data-table tbody td { padding: 0.8rem 0.85rem; }
+      .kevin-callout { padding: 1.5rem 1.25rem; }
+    }
+  </style>
+
+  <script src="/components.js" defer></script>
+  <!-- myaieditor inline-edit loader (no-op for real visitors) -->
+  <script src="/mae-edit-loader.js" async></script>
+</head>
+<body>
+
+  <!-- BEGIN_NAV -->
+<!-- ── NAV ── -->
+<nav class="nav scrolled" aria-label="Main navigation">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo" aria-label="Kevin Freel — Realtor Since 1985"><span class="nav-logo-name">KEVIN <span>FREEL</span></span><span class="nav-logo-tagline">Realtor Since 1985</span></a>
+    <ul class="nav-links">
+      <li><a href="/search" data-nav="search">Search</a></li>
+      <li><a href="/listings" data-nav="listings">Listings</a></li>
+      <li><a href="/about" data-nav="about">About</a></li>
+      <li><a href="/resources" data-nav="resources">Resources</a></li>
+      <li><a href="/sellers" data-nav="sellers">Sellers</a></li>
+      <li><a href="/buyers" data-nav="buyers">Buyers</a></li>
+      <li><a href="/photography" data-nav="photography">Photography</a></li>
+      <li><a href="/blog" data-nav="blog">Blog</a></li>
+      <li><a href="/contact" data-nav="contact">Contact</a></li>
+      <li>
+        <a href="tel:7274108599" class="nav-cta">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          727-410-8599
+        </a>
+      </li>
+    </ul>
+    <button id="menu-btn" aria-label="Open menu" aria-expanded="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+  </div>
+</nav>
+
+<!-- ── Mobile Menu ── -->
+<div id="menu-overlay" class="menu-overlay"></div>
+<div id="mobile-menu" class="mobile-menu" aria-label="Mobile navigation">
+  <a href="/" data-nav="home">Home</a>
+  <a href="/search" data-nav="search">Search</a>
+  <a href="/listings" data-nav="listings">Listings</a>
+  <a href="/about" data-nav="about">About</a>
+  <a href="/resources" data-nav="resources">Resources</a>
+  <a href="/sellers" data-nav="sellers">Sellers</a>
+  <a href="/buyers" data-nav="buyers">Buyers</a>
+  <a href="/photography" data-nav="photography">Photography</a>
+  <a href="/blog" data-nav="blog">Blog</a>
+  <a href="/contact" data-nav="contact">Contact</a>
+  <a href="tel:7274108599" class="nav-cta">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+    727-410-8599
+  </a>
+</div>
+  <!-- END_NAV -->
+
+  <main>
+
+    <!-- ── PAGE HERO ── -->
+    <section class="page-hero" aria-label="Tampa Bay Investor's Guide">
+      <div class="page-hero-inner">
+        <p class="hero-label">For Investors</p>
+        <h1>Tampa Bay Investor's Guide</h1>
+        <p class="page-hero-sub">Where the best cap rates are, which neighborhoods are heating up, and the realities of investing in Tampa Bay rental properties. Updated quarterly.</p>
+      </div>
+    </section>
+
+    <!-- ── INTRO CARD ── -->
+    <section class="intro-card-section" aria-label="Kevin's positioning">
+      <div class="intro-card reveal">
+        <p>Tampa Bay investors don't need another spreadsheet. They need someone who can tell them which ZIP codes the population is actually moving to. I've tracked this market for 40+ years and helped dozens of investors build rental portfolios — from first-time landlords to 50-door operators. This guide is the same advice I give clients sitting across from me at the kitchen table.</p>
+      </div>
+    </section>
+
+    <!-- ── QUICK STATS BAR ── -->
+    <section class="investor-stats" aria-label="Tampa Bay investment stats">
+      <div class="investor-stats-inner">
+        <div class="investor-stat">
+          <div class="investor-stat-num">+12%</div>
+          <div class="investor-stat-label">Tampa MSA Population Growth (2020–2026)</div>
+        </div>
+        <div class="investor-stat">
+          <div class="investor-stat-num">+38%</div>
+          <div class="investor-stat-label">Average Rent Growth (Last 5 Years)</div>
+        </div>
+        <div class="investor-stat">
+          <div class="investor-stat-num">~7.5%</div>
+          <div class="investor-stat-label">Best Cap-Rate ZIP (33610 Area)</div>
+        </div>
+        <div class="investor-stat">
+          <div class="investor-stat-num">200+</div>
+          <div class="investor-stat-label">Investor Closings Kevin Has Guided</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── SECTION 1: BEST ZIP CODES FOR RENTAL YIELD ── -->
+    <section class="content-section" aria-label="Best ZIP codes for rental yield">
+      <div class="content-inner">
+        <div class="content-intro reveal">
+          <p class="section-label">Cap-Rate Hotspots</p>
+          <h2 class="section-heading">Where the Cap Rates Actually Are</h2>
+          <p class="section-sub">Tampa Bay isn't one market — it's about thirty. A duplex in Brandon and a beach condo in Madeira run on completely different economics. Here are the eight ZIPs where the rent-to-price math currently makes the most sense for buy-and-hold investors.</p>
+        </div>
+
+        <div class="data-table-wrap reveal">
+          <table class="data-table" aria-label="Top Tampa Bay ZIP codes for rental yield">
+            <thead>
+              <tr>
+                <th scope="col">ZIP</th>
+                <th scope="col">Neighborhood</th>
+                <th scope="col">Median Price</th>
+                <th scope="col">Median Rent</th>
+                <th scope="col">Cap Rate</th>
+                <th scope="col">Why It's Hot</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="zip-col">33610</td>
+                <td>Town N' Country</td>
+                <td class="price-col">$295k</td>
+                <td class="price-col">$2,200</td>
+                <td class="rate-col">7.5%</td>
+                <td>Working-class rental demand, close to airport &amp; jobs</td>
+              </tr>
+              <tr>
+                <td class="zip-col">33619</td>
+                <td>Brandon East</td>
+                <td class="price-col">$285k</td>
+                <td class="price-col">$2,150</td>
+                <td class="rate-col">7.4%</td>
+                <td>I-75 corridor, Amazon &amp; logistics employers nearby</td>
+              </tr>
+              <tr>
+                <td class="zip-col">33614</td>
+                <td>Westchase North</td>
+                <td class="price-col">$325k</td>
+                <td class="price-col">$2,400</td>
+                <td class="rate-col">7.1%</td>
+                <td>Family renters, strong schools, quiet streets</td>
+              </tr>
+              <tr>
+                <td class="zip-col">33621</td>
+                <td>MacDill Area</td>
+                <td class="price-col">$370k</td>
+                <td class="price-col">$2,700</td>
+                <td class="rate-col">6.9%</td>
+                <td>Steady military rental demand, BAH-backed tenants</td>
+              </tr>
+              <tr>
+                <td class="zip-col">33617</td>
+                <td>USF Area</td>
+                <td class="price-col">$315k</td>
+                <td class="price-col">$2,250</td>
+                <td class="rate-col">6.7%</td>
+                <td>Student housing — high turnover, screen carefully</td>
+              </tr>
+              <tr>
+                <td class="zip-col">33706</td>
+                <td>Madeira Beach</td>
+                <td class="price-col">$675k</td>
+                <td class="price-col">$4,200</td>
+                <td class="rate-col">5.8%</td>
+                <td>STR-friendly, weekly rentals double the annual yield</td>
+              </tr>
+              <tr>
+                <td class="zip-col">33773</td>
+                <td>Largo</td>
+                <td class="price-col">$385k</td>
+                <td class="price-col">$2,500</td>
+                <td class="rate-col">6.4%</td>
+                <td>Mid-county, retirees &amp; young families, low vacancy</td>
+              </tr>
+              <tr>
+                <td class="zip-col">33625</td>
+                <td>Carrollwood South</td>
+                <td class="price-col">$445k</td>
+                <td class="price-col">$2,800</td>
+                <td class="rate-col">6.0%</td>
+                <td>Appreciation play more than cashflow — long-hold</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="kevin-callout reveal">
+          <p class="kevin-callout-label">Kevin's Take</p>
+          <h3>Cap rate isn't everything — and the highest one isn't always the right one.</h3>
+          <p>On paper, 33610 looks like the winner. In practice, the spread between 33610 and 33614 is half a point of yield — and you'll pay for that half-point in turnover, evictions, and maintenance calls. Town N' Country is a legitimate working-class market with real rental demand, but it isn't beginner territory. If this is your first property, I'd rather see you in 33614 or 33773 paying a slightly lower cap rate with a tenant who stays four years.</p>
+          <p>The MacDill area (33621) is the most underrated yield on this list. Military families on housing allowance are some of the most reliable tenants in Tampa Bay — they don't bounce checks, they don't squat, and the BAH gets paid like clockwork. The cap rate looks middling at 6.9%, but the effective yield after you subtract vacancy and screening costs is usually higher than what you'd net in the so-called hotter ZIPs.</p>
+          <p>One thing I tell every investor: <strong>don't chase last year's hot ZIP.</strong> By the time a neighborhood shows up on a national list, the spread has been arbitraged away. Carrollwood South used to be a 7% cap market five years ago. Today it's a 6%-cap appreciation play. That's still a fine investment — it's just a different investment than it was, and you need to underwrite it accordingly.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── SECTION 2: SFH vs MULTI-FAMILY ── -->
+    <section class="content-section alt" aria-label="Single-family vs. multi-family comparison">
+      <div class="content-inner">
+        <div class="content-intro reveal">
+          <p class="section-label">Strategy</p>
+          <h2 class="section-heading">SFH vs. Multi-Family — Which Should You Buy First?</h2>
+          <p class="section-sub">Both work in Tampa Bay. The right answer depends on what you want out of the investment — cashflow now, or wealth in fifteen years.</p>
+        </div>
+
+        <div class="compare-grid reveal">
+          <!-- Single-Family Card -->
+          <div class="compare-card">
+            <span class="compare-card-tag">Option A</span>
+            <h3>Single-Family Home</h3>
+
+            <div class="compare-section compare-pros">
+              <h4>Pros</h4>
+              <ul>
+                <li>Easier to finance — same conventional 25%-down loan as a homeowner</li>
+                <li>Tenants stay longer (3–5 years average vs. 1–2 in multi-family)</li>
+                <li>Lower maintenance load — one roof, one HVAC, one tenant</li>
+                <li>Strongest appreciation in Tampa Bay over the last decade</li>
+              </ul>
+            </div>
+
+            <div class="compare-section compare-cons">
+              <h4>Cons</h4>
+              <ul>
+                <li>One vacancy = 100% vacant, no other units covering the mortgage</li>
+                <li>Lower cashflow per dollar invested than small multi</li>
+                <li>Harder to scale — one closing per door</li>
+              </ul>
+            </div>
+
+            <div class="compare-section">
+              <h4>Best For</h4>
+              <p>First-time investors, long-term hold, appreciation-focused investors who want a tenant they almost never hear from.</p>
+            </div>
+
+            <div class="compare-section">
+              <h4>Tampa Bay Specifics</h4>
+              <p>Plenty of inventory under $400k in Brandon, Town N' Country, Largo, and Riverview. Conventional financing is straightforward. Most property managers will take a single SFH at 8–10% of rents.</p>
+            </div>
+          </div>
+
+          <!-- Multi-Family Card -->
+          <div class="compare-card">
+            <span class="compare-card-tag">Option B</span>
+            <h3>Multi-Family (2–4 Units)</h3>
+
+            <div class="compare-section compare-pros">
+              <h4>Pros</h4>
+              <ul>
+                <li>Stronger cashflow — more rent collected per purchase dollar</li>
+                <li>Vacancy risk spread across multiple units</li>
+                <li>Same residential financing rules apply (2–4 units = conventional)</li>
+                <li>House-hacking option: live in one unit, rent the others</li>
+              </ul>
+            </div>
+
+            <div class="compare-section compare-cons">
+              <h4>Cons</h4>
+              <ul>
+                <li>Higher tenant turnover and management intensity</li>
+                <li>Less inventory in Tampa Bay than SFH</li>
+                <li>Often older buildings — more deferred maintenance to inherit</li>
+              </ul>
+            </div>
+
+            <div class="compare-section">
+              <h4>Best For</h4>
+              <p>Cashflow-focused investors, anyone trying to scale fast, house-hackers using FHA to live in one unit and rent the rest.</p>
+            </div>
+
+            <div class="compare-section">
+              <h4>Tampa Bay Specifics</h4>
+              <p>Most 2–4 unit stock sits in Brandon, Town N' Country, Seminole Heights, and the older Hyde Park duplexes. Financing through 4 units is residential — once you hit 5+ doors, you're in commercial loan territory (25–30% down, shorter amortization, DSCR-driven underwriting).</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="kevin-callout reveal">
+          <p class="kevin-callout-label">Kevin's Recommendation</p>
+          <h3>Start with a single-family if you've never been a landlord. Move to small multi once you've collected rent for a year.</h3>
+          <p>I've watched too many first-timers buy a 1920s Seminole Heights duplex because the spreadsheet looked great and then quit being a landlord by month six. Old multi-family is a business, not a passive investment. Plumbing under those houses is original, the roofs were done twenty years ago, and the tenants in the cheap unit will test you. None of that is a reason to avoid them — it's a reason to learn on something simpler first. Buy one SFH in Brandon or Westchase, manage it for a year, then go shop a triplex. You'll know what to look for, and lenders will treat you like an experienced investor.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── SECTION 3: STR RULES BY CITY ── -->
+    <section class="content-section" aria-label="Short-term rental rules by city">
+      <div class="content-inner">
+        <div class="content-intro reveal">
+          <p class="section-label">Short-Term Rentals</p>
+          <h2 class="section-heading">STR Rules — What's Allowed Where</h2>
+          <p class="section-sub">If you're buying for Airbnb or weekly rentals, the city — and sometimes the HOA — decides what you can actually do with the property. Here's where Tampa Bay stands as of May 2026.</p>
+        </div>
+
+        <div class="data-table-wrap reveal">
+          <table class="data-table" aria-label="Tampa Bay short-term rental rules by city">
+            <thead>
+              <tr>
+                <th scope="col">City</th>
+                <th scope="col">STR Allowed?</th>
+                <th scope="col">Minimum Rental</th>
+                <th scope="col">Permit Required?</th>
+                <th scope="col">Notes</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Tampa</strong> (city limits)</td>
+                <td>Yes — select zones</td>
+                <td>None</td>
+                <td>Yes — STR permit + lodging tax</td>
+                <td>Strict in residential zones; verify zoning before you buy</td>
+              </tr>
+              <tr>
+                <td><strong>St. Petersburg</strong></td>
+                <td>Yes</td>
+                <td>None</td>
+                <td>Yes — Short-Term Vacation Rental Permit</td>
+                <td>Permitting is straightforward but enforcement is strict</td>
+              </tr>
+              <tr>
+                <td><strong>Clearwater Beach</strong></td>
+                <td>Yes (limits in residential)</td>
+                <td>None city-wide</td>
+                <td>Yes — Resort dwelling registration</td>
+                <td>Tons of STR-friendly condos and resort-zoned units</td>
+              </tr>
+              <tr>
+                <td><strong>Indian Rocks Beach</strong></td>
+                <td>Yes</td>
+                <td>None</td>
+                <td>Yes</td>
+                <td>STR-heavy market, very investor-friendly</td>
+              </tr>
+              <tr>
+                <td><strong>Madeira Beach</strong></td>
+                <td>Yes</td>
+                <td>None</td>
+                <td>Yes — Resort Dwelling License</td>
+                <td>One of the best STR markets in all of Tampa Bay</td>
+              </tr>
+              <tr>
+                <td><strong>Treasure Island</strong></td>
+                <td>Yes</td>
+                <td>None</td>
+                <td>Yes</td>
+                <td>Heavy STR ownership, established short-term economy</td>
+              </tr>
+              <tr>
+                <td><strong>St. Pete Beach</strong></td>
+                <td>Yes</td>
+                <td>None</td>
+                <td>Yes</td>
+                <td>Strong STR market — competitive but consistent</td>
+              </tr>
+              <tr>
+                <td><strong>Largo</strong></td>
+                <td>Yes (some zones)</td>
+                <td>7 days in some areas</td>
+                <td>Yes</td>
+                <td>Zoning varies by parcel — check carefully</td>
+              </tr>
+              <tr>
+                <td><strong>Brandon</strong> (Hillsborough Co.)</td>
+                <td>Yes</td>
+                <td>None</td>
+                <td>County permit only</td>
+                <td>More relaxed county rules, fewer hoops to clear</td>
+              </tr>
+              <tr>
+                <td><strong>Dunedin</strong></td>
+                <td>No (30+ days only)</td>
+                <td>30 days</td>
+                <td>N/A — long-term only</td>
+                <td><strong>NOT STR-friendly</strong> — long-term rentals only</td>
+              </tr>
+              <tr>
+                <td><strong>Safety Harbor</strong></td>
+                <td>No (30+ days only)</td>
+                <td>30 days</td>
+                <td>N/A — long-term only</td>
+                <td><strong>NOT STR-friendly</strong> — long-term rentals only</td>
+              </tr>
+              <tr>
+                <td><strong>Palm Harbor</strong></td>
+                <td>Yes</td>
+                <td>None</td>
+                <td>County</td>
+                <td>HOA rules vary widely — read the docs before you buy</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="kevin-callout reveal">
+          <p class="kevin-callout-label">Kevin's Caution</p>
+          <h3>The city says yes, the HOA says no — and the HOA wins.</h3>
+          <p>I've had clients close on condos in Clearwater Beach and Madeira Beach assuming they could rent weekly — and then find out the HOA enforces a 30-day or 90-day minimum, even though the city is wide open. The condo association's covenants override the city ordinance every time. <strong>Before you write an offer on anything you intend to use as an STR, get the HOA docs and read the rental restriction section in writing.</strong> Not the listing agent's summary — the actual recorded docs.</p>
+          <p>The other one that catches people: rules change. A condo board can vote in a minimum-stay restriction next year, and your STR investment becomes a long-term rental overnight. Build your underwriting with both scenarios. If the deal still works as a 30-day or annual rental, you're insulated. If it only works at $300 a night for two-night stays, you're one HOA vote away from a problem.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── SECTION 4: FIRST-TIME WALKTHROUGH ── -->
+    <section class="content-section alt" aria-label="First-time investor walkthrough">
+      <div class="content-inner">
+        <div class="content-intro reveal">
+          <p class="section-label">The Playbook</p>
+          <h2 class="section-heading">Your First Tampa Bay Investment Property — Step by Step</h2>
+          <p class="section-sub">Six steps. None of them involve buying a course. This is the order I walk every first-time investor through.</p>
+        </div>
+
+        <div class="walkthrough-grid reveal">
+          <div class="walkthrough-card">
+            <div class="walkthrough-num">1</div>
+            <h3>Get Pre-Approved for an Investor Loan</h3>
+            <p>Investor financing is different from owner-occupied. Expect 25% down, a quarter-point higher rate, and slightly tighter debt-to-income limits. Ask your lender about DSCR loans too — they qualify based on the property's rent instead of your W-2 income, which matters if you're self-employed or already have a few properties.</p>
+          </div>
+          <div class="walkthrough-card">
+            <div class="walkthrough-num">2</div>
+            <h3>Pick Your Strategy First</h3>
+            <p>Long-term rent, short-term rental, or flip? These three strategies don't shop in the same ZIP codes, don't underwrite to the same numbers, and don't use the same financing. Pick one before you start looking — otherwise you'll talk yourself into a property that doesn't actually fit any of them.</p>
+          </div>
+          <div class="walkthrough-card">
+            <div class="walkthrough-num">3</div>
+            <h3>Build a Buy Box</h3>
+            <p>Write down the criteria: ZIP code, price range, condition (turnkey vs. light rehab vs. heavy), minimum bed/bath count, and property type. Anything outside the box, you don't look at. This is the single biggest difference between investors who close in 90 days and ones who shop for two years.</p>
+          </div>
+          <div class="walkthrough-card">
+            <div class="walkthrough-num">4</div>
+            <h3>Walk the Neighborhood at Night</h3>
+            <p>The MLS photos were taken at 10am on a Tuesday. Your tenant will live there at 10pm on a Saturday. Drive the block after dark. Listen. Watch how many cars are parked on lawns. If the daytime version doesn't match the nighttime version, you're underwriting the wrong neighborhood.</p>
+          </div>
+          <div class="walkthrough-card">
+            <div class="walkthrough-num">5</div>
+            <h3>Run the Numbers Conservatively</h3>
+            <p>Assume 8% vacancy. Assume 1% of purchase price annually for maintenance and capex. Assume 8% management even if you plan to self-manage — your time isn't free. If the deal still cashflows after those three haircuts, it's a real deal. If it only works at 0% vacancy and zero maintenance, it isn't.</p>
+          </div>
+          <div class="walkthrough-card">
+            <div class="walkthrough-num">6</div>
+            <h3>Close, Then Optimize</h3>
+            <p>Don't wait until closing to find a property manager and a handyman — line them up two weeks out. I keep a short list of property managers and contractors I've personally seen do good work for investor clients. After you close, I'll send you the numbers so you can start interviewing immediately.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── SECTION 5: COMMON MISTAKES ── -->
+    <section class="content-section" aria-label="Common first-time investor mistakes">
+      <div class="content-inner">
+        <div class="content-intro reveal">
+          <p class="section-label">Avoid These</p>
+          <h2 class="section-heading">The 5 Mistakes Kevin Sees First-Time Investors Make</h2>
+          <p class="section-sub">After helping 200+ investor clients close, the same five mistakes show up every year. Here's what they look like and how to dodge them.</p>
+        </div>
+
+        <div class="mistakes-grid reveal">
+          <div class="mistake-card">
+            <div class="mistake-side">
+              <p class="mistake-side-label">Mistake 1</p>
+              <h3>Buying the prettiest house, not the highest-cashflow one</h3>
+              <p>You fall in love with the kitchen at the open house. The cap rate is 4.8%. You buy it anyway because "it'll appreciate."</p>
+            </div>
+            <div class="fix-side">
+              <p class="fix-side-label">Kevin's Fix</p>
+              <h3>Underwrite to cashflow, let appreciation be a bonus</h3>
+              <p>The pretty house works for an owner-occupant. As a rental, the math has to clear first — appreciation is the upside, not the thesis. If you wouldn't buy it for the cashflow alone, don't buy it.</p>
+            </div>
+          </div>
+
+          <div class="mistake-card">
+            <div class="mistake-side">
+              <p class="mistake-side-label">Mistake 2</p>
+              <h3>Forgetting Florida-specific costs</h3>
+              <p>Hurricane insurance is a real line item. Wind mitigation inspections aren't optional. Flood zones double your insurance overnight. None of this shows up on Zillow.</p>
+            </div>
+            <div class="fix-side">
+              <p class="fix-side-label">Kevin's Fix</p>
+              <h3>Get a wind mit and an insurance quote before you go under contract</h3>
+              <p>Insurance is now the second-largest line item after the mortgage on most Tampa Bay rentals. Quote it during due diligence — not after you've closed. Older roofs and pre-2001 builds will get the biggest premiums.</p>
+            </div>
+          </div>
+
+          <div class="mistake-card">
+            <div class="mistake-side">
+              <p class="mistake-side-label">Mistake 3</p>
+              <h3>No exit plan</h3>
+              <p>"I'll just hold it forever." Forever has a way of showing up at five years when life changes. If you don't know who buys this property from you, you don't have a plan.</p>
+            </div>
+            <div class="fix-side">
+              <p class="fix-side-label">Kevin's Fix</p>
+              <h3>Know your buyer before you close</h3>
+              <p>Is this a future owner-occupant home in a nice neighborhood? An investor sale because of the cashflow? A 1031 exchange target? Each exit means a different property. Write your exit on the same page as your purchase price.</p>
+            </div>
+          </div>
+
+          <div class="mistake-card">
+            <div class="mistake-side">
+              <p class="mistake-side-label">Mistake 4</p>
+              <h3>Self-managing from an hour away</h3>
+              <p>You live in Sarasota. The property is in Brandon. You'll save the 8% management fee by handling it yourself. Two months in, you've made seven trips up I-75 to deal with a stuck garbage disposal.</p>
+            </div>
+            <div class="fix-side">
+              <p class="fix-side-label">Kevin's Fix</p>
+              <h3>Hire a manager for anything over 30 minutes from your home</h3>
+              <p>The 8% fee buys you nights and weekends back. If you really want to self-manage, buy within a thirty-minute drive of where you live. Otherwise, build the manager into the numbers from day one.</p>
+            </div>
+          </div>
+
+          <div class="mistake-card">
+            <div class="mistake-side">
+              <p class="mistake-side-label">Mistake 5</p>
+              <h3>Underestimating tenant screening</h3>
+              <p>You take the first applicant because the property has been vacant three weeks. You skip the income verification because they "seem nice." Six months later, you're filing for eviction.</p>
+            </div>
+            <div class="fix-side">
+              <p class="fix-side-label">Kevin's Fix</p>
+              <h3>Screen like the next two years depend on it — because they do</h3>
+              <p>Income at 3x the monthly rent, verified. Two prior landlord references, called personally. A real background and credit check. A bad tenant costs more in lost rent and legal fees than three vacant months. Hold the line on screening, every time.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── CTA ── -->
+    <section class="cta" aria-label="Get Kevin's help on a specific property">
+      <div class="cta-inner reveal">
+        <p class="section-label">Looking at a Property?</p>
+        <h2 class="cta-heading">Looking at a specific Tampa Bay property?</h2>
+        <p>Kevin will run the numbers with you for free — cap rate, cash-on-cash return, projected 5-year IRR. No spreadsheets. Just an honest sit-down with someone who's done this 200 times.</p>
+        <a href="tel:7274108599" class="cta-phone">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          727-410-8599
+        </a>
+        <div class="cta-buttons">
+          <a href="tel:7274108599" class="btn-primary">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+            Call Kevin
+          </a>
+          <a href="/contact" class="btn-outline">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            Send a Message
+          </a>
+        </div>
+        <div class="cta-links">
+          <a href="https://www.facebook.com/SellingTampa" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            Facebook
+          </a>
+          <a href="https://www.instagram.com/kevinsellstampabay/" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+            Instagram
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- BEGIN_FOOTER -->
+<!-- ── FOOTER ── -->
+<footer class="footer">
+  <div class="footer-inner">
+    <a href="/" class="footer-logo">KEVIN <span>FREEL</span></a>
+    <p class="footer-copy">&copy; 2026 Kevin Freel Real Estate. All rights reserved.</p>
+    <div class="footer-social">
+      <a href="https://www.facebook.com/SellingTampa" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+      </a>
+      <a href="https://www.instagram.com/kevinsellstampabay/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+      </a>
+      <a href="https://www.linkedin.com/in/kevin-freel-b0363029/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.063 2.063 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+      </a>
+      <a href="https://x.com/Sellingtampa1" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231 5.45-6.231zm-1.161 17.52h1.833L7.084 4.126H5.117L17.083 19.77z"/></svg>
+      </a>
+      <a href="https://www.tiktok.com/@kevinfreel" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-5.2 1.74 2.89 2.89 0 012.31-4.64 2.93 2.93 0 01.88.13V9.4a6.84 6.84 0 00-1-.05A6.33 6.33 0 005.8 20.1a6.34 6.34 0 0010.86-4.43v-7a8.16 8.16 0 004.77 1.52v-3.4a4.85 4.85 0 01-1.84-.1z"/></svg>
+      </a>
+      <a href="https://share.google/KxNDtGpzlkBEwSXu2" target="_blank" rel="noopener noreferrer" aria-label="Google Business Profile">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84A10.997 10.997 0 0012 23z"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+      </a>
+    </div>
+  </div>
+</footer>
+  <!-- END_FOOTER -->
+
+</body>
+</html>
