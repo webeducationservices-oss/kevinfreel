@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://kevinfreel.com/sitemap.xml
+Sitemap: https://www.kevinfreel.com/sitemap.xml

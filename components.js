@@ -252,7 +252,7 @@ document.querySelectorAll('form[data-resource]').forEach(function (rForm) {
     var pdfTab = pdfMagnets[slug] ? window.open('about:blank', '_blank') : null;
 
     try {
-      var res = await fetch('/api/lead-magnet', {
+      var res = await fetch('/api/lead-magnet/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data)
