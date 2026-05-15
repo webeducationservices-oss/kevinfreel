@@ -377,9 +377,14 @@ async function sendMarketingEmail({ email, template }) {
     }
   }
 
+  // BCC justin@webeducationservices.com on every marketing email so the
+  // WES team has visibility into what Kevin's leads are receiving.
+  // (form-notify already CCs both Kevin and Justin on every lead capture
+  // via site_access; this BCC covers the visitor-facing email side.)
   const payload = {
     from: FROM_ADDRESS,
     to: [email],
+    bcc: ['justin@webeducationservices.com'],
     reply_to: REPLY_TO,
     subject: template.subject,
     html: template.html,
