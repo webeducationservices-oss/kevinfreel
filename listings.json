@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-05-19T12:30:49Z",
+  "updated_at": "2026-05-19T12:44:08Z",
   "count": 8,
   "listings": [
     {
@@ -41,17 +41,17 @@
       "city": "Indian Rocks Beach",
       "state": "FL",
       "zip": "33785",
-      "price_display": "$1,199,900",
-      "price": 1199900,
-      "beds": 0,
-      "baths": 2,
-      "sqft_or_acres": "0.15 Acres",
-      "mls_number": "TB8486575",
+      "price_display": "$1,125,000",
+      "price": 1125000,
+      "beds": 2,
+      "baths": 0,
+      "sqft_or_acres": "1,410 sq. ft.",
+      "mls_number": "TB8486560",
       "status": "Active",
       "c21_url": "https://www.century21.com/homes/detail/fl/indian-rocks-beach/419-12th-ave/lid-P00800000H7jSQMU8l9TlfTE0qn9i8jIYu8YTGsS",
       "hero_photo_url": "https://images-listings.century21.com/MFRMLS/TB/84/86/57/5/_P/TB8486575_P00.jpg",
-      "local_hero": "/images/listings/TB8486575.webp",
-      "local_thumb": "/images/listings/TB8486575-sm.webp"
+      "local_hero": "/images/listings/TB8486560.webp",
+      "local_thumb": "/images/listings/TB8486560-sm.webp"
     },
     {
       "address": "2204 N Central Avenue #1",

@@ -57,12 +57,14 @@ USER_AGENT = (
 )
 
 # Century 21 returns HTTP 403 to datacenter IP ranges (GitHub Actions, Vercel,
-# AWS, etc.). A residential-IP proxy is required for the daily cron to work.
-# When SCRAPER_API_KEY is set, the C21 page fetch is routed through ScraperAPI
-# (https://www.scraperapi.com — free tier is 1,000 req/month, far more than a
-# daily run needs). Run it locally without the key — residential ISPs aren't
-# blocked, so a direct fetch works fine from a normal machine.
-SCRAPER_API_KEY = os.environ.get("SCRAPER_API_KEY", "").strip()
+# AWS, etc.), so the daily cron can't fetch the page directly. When
+# FIRECRAWL_API_KEY is set, the C21 page fetch is routed through Firecrawl
+# (https://firecrawl.dev) — it renders the page in a real browser from a
+# residential-grade IP and returns the fully-rendered HTML. Firecrawl's free
+# tier is 1,000 scrapes/month; a daily run uses ~30. Run the script locally
+# WITHOUT the key — residential ISPs aren't blocked, so a direct fetch works.
+FIRECRAWL_API_KEY = os.environ.get("FIRECRAWL_API_KEY", "").strip()
+FIRECRAWL_ENDPOINT = "https://api.firecrawl.dev/v2/scrape"
 
 # Track download bytes for reporting
 _stats = {"bytes_downloaded": 0, "photos_downloaded": 0, "photos_cached": 0}
@@ -72,25 +74,50 @@ _stats = {"bytes_downloaded": 0, "photos_downloaded": 0, "photos_cached": 0}
 #  Fetch helpers
 # ────────────────────────────────────────────────────────────────────
 
+def _fetch_via_firecrawl(url: str) -> bytes:
+    """Fetch a page through Firecrawl's browser renderer.
+
+    Firecrawl loads the URL in a headless browser (so C21's React SPA fully
+    renders and the listing data lands in the DOM) and returns the rendered
+    HTML. This bypasses C21's datacenter-IP 403 block — required for the
+    GitHub Actions daily cron.
+    """
+    body = json.dumps({
+        "url": url,
+        "formats": ["rawHtml"],
+        "waitFor": 4000,  # let the SPA render the listing cards
+    }).encode("utf-8")
+    req = urllib.request.Request(
+        FIRECRAWL_ENDPOINT,
+        data=body,
+        method="POST",
+        headers={
+            "Authorization": f"Bearer {FIRECRAWL_API_KEY}",
+            "Content-Type": "application/json",
+        },
+    )
+    with urllib.request.urlopen(req, timeout=180) as resp:
+        payload = json.loads(resp.read().decode("utf-8"))
+    if not payload.get("success"):
+        raise RuntimeError(f"Firecrawl scrape failed: {str(payload)[:300]}")
+    html = (payload.get("data") or {}).get("rawHtml", "")
+    if not html:
+        raise RuntimeError("Firecrawl returned empty rawHtml")
+    return html.encode("utf-8")
+
+
 def fetch(url: str, *, timeout: int = 30, allow_proxy: bool = False) -> bytes:
     """Fetch a URL with browser-like headers. Returns bytes.
 
-    When allow_proxy=True and SCRAPER_API_KEY is set, the request is routed
-    through ScraperAPI's residential proxy so C21's datacenter-IP 403 block is
-    bypassed. Photo downloads from the C21 image CDN are NOT proxied (they are
-    not IP-blocked, and proxying them would waste the request quota).
+    When allow_proxy=True and FIRECRAWL_API_KEY is set, the request is routed
+    through Firecrawl's renderer so C21's datacenter-IP 403 block is bypassed.
+    Photo downloads from the C21 image CDN are NOT proxied (they aren't
+    IP-blocked, and proxying them would waste the Firecrawl quota).
     """
-    fetch_url = url
-    effective_timeout = timeout
-    if allow_proxy and SCRAPER_API_KEY:
-        fetch_url = "https://api.scraperapi.com/?" + urllib.parse.urlencode({
-            "api_key": SCRAPER_API_KEY,
-            "url": url,
-            "keep_headers": "true",  # pass our Googlebot UA through to C21
-        })
-        effective_timeout = max(timeout, 70)  # residential proxies are slower
+    if allow_proxy and FIRECRAWL_API_KEY:
+        return _fetch_via_firecrawl(url)
     req = urllib.request.Request(
-        fetch_url,
+        url,
         headers={
             "User-Agent": USER_AGENT,
             "Accept": (
@@ -102,7 +129,7 @@ def fetch(url: str, *, timeout: int = 30, allow_proxy: bool = False) -> bytes:
             "Connection": "close",
         },
     )
-    with urllib.request.urlopen(req, timeout=effective_timeout) as resp:
+    with urllib.request.urlopen(req, timeout=timeout) as resp:
         return resp.read()
 
 
