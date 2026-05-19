@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-04-24T12:36:30Z",
+  "updated_at": "2026-05-19T11:34:08Z",
   "count": 8,
   "listings": [
     {
@@ -24,8 +24,8 @@
       "city": "Tampa",
       "state": "FL",
       "zip": "33611",
-      "price_display": "$1,274,232",
-      "price": 1274232,
+      "price_display": "$1,264,355",
+      "price": 1264355,
       "beds": 5,
       "baths": 4,
       "sqft_or_acres": "3,315 sq. ft.",
@@ -43,15 +43,15 @@
       "zip": "33785",
       "price_display": "$1,199,900",
       "price": 1199900,
-      "beds": 2,
+      "beds": 0,
       "baths": 2,
-      "sqft_or_acres": "1,410 sq. ft.",
-      "mls_number": "TB8486560",
+      "sqft_or_acres": "0.15 Acres",
+      "mls_number": "TB8486575",
       "status": "Active",
       "c21_url": "https://www.century21.com/homes/detail/fl/indian-rocks-beach/419-12th-ave/lid-P00800000H7jSQMU8l9TlfTE0qn9i8jIYu8YTGsS",
       "hero_photo_url": "https://images-listings.century21.com/MFRMLS/TB/84/86/57/5/_P/TB8486575_P00.jpg",
-      "local_hero": "/images/listings/TB8486560.webp",
-      "local_thumb": "/images/listings/TB8486560-sm.webp"
+      "local_hero": "/images/listings/TB8486575.webp",
+      "local_thumb": "/images/listings/TB8486575-sm.webp"
     },
     {
       "address": "2204 N Central Avenue #1",
@@ -105,6 +105,23 @@
       "local_thumb": "/images/listings/TB8472783-sm.webp"
     },
     {
+      "address": "606 S Glen Avenue #10",
+      "city": "Tampa",
+      "state": "FL",
+      "zip": "33609",
+      "price_display": "$450,000",
+      "price": 450000,
+      "beds": 2,
+      "baths": 3,
+      "sqft_or_acres": "1,360 sq. ft.",
+      "mls_number": "TB8506425",
+      "status": "Active",
+      "c21_url": "https://www.century21.com/homes/detail/fl/tampa/606-s-glen-ave-unit-10/lid-P00800000HAZuWUtUj5IUE6S3qYDzy0SDWaK383F",
+      "hero_photo_url": "https://images-listings.century21.com/MFRMLS/TB/85/06/42/5/_P/TB8506425_P00.jpg",
+      "local_hero": "/images/listings/TB8506425.webp",
+      "local_thumb": "/images/listings/TB8506425-sm.webp"
+    },
+    {
       "address": "3823 N Oak Drive #K11",
       "city": "Tampa",
       "state": "FL",
@@ -120,23 +137,6 @@
       "hero_photo_url": "https://images-listings.century21.com/MFRMLS/TB/84/65/08/0/_P/TB8465080_P00.jpg",
       "local_hero": "/images/listings/TB8465080.webp",
       "local_thumb": "/images/listings/TB8465080-sm.webp"
-    },
-    {
-      "address": "2600 E 25th Avenue",
-      "city": "Tampa",
-      "state": "FL",
-      "zip": "33605",
-      "price_display": "$116,500",
-      "price": 116500,
-      "beds": 0,
-      "baths": 0,
-      "sqft_or_acres": "0.14 Acres",
-      "mls_number": "TB8448317",
-      "status": "Active",
-      "c21_url": "https://www.century21.com/homes/detail/fl/tampa/2600-e-25th-ave/lid-P00800000H1ZLTZYbuOBIax0iwq7dcCgHxqggBIy",
-      "hero_photo_url": "https://images-listings.century21.com/MFRMLS/TB/84/48/31/7/_P/TB8448317_P00.jpg",
-      "local_hero": "/images/listings/TB8448317.webp",
-      "local_thumb": "/images/listings/TB8448317-sm.webp"
     }
   ]
 }

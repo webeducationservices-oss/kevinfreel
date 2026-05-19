@@ -31,7 +31,7 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install beautifulsoup4 Pillow
+          pip install -r requirements.txt
 
       - name: Run sync_listings.py
         id: sync
@@ -44,8 +44,10 @@ jobs:
       - name: Commit and push changes
         if: success()
         run: |
-          git config user.name "GitHub Actions"
-          git config user.email "actions@github.com"
+          # Use the Web Education Services committer email so Vercel does not
+          # block the auto-deploy with COMMIT_AUTHOR_REQUIRED.
+          git config user.name "Web Education Services"
+          git config user.email "webeducationservices@gmail.com"
 
           if [ -n "$(git status --porcelain)" ]; then
             DATE=$(date -u +"%Y-%m-%d")

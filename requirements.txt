@@ -1,0 +1,4 @@
+# Python dependencies for the GitHub Actions automation workflows.
+# sync_listings.py — scrapes Century 21 listings, optimizes hero photos.
+beautifulsoup4>=4.12
+Pillow>=10.0
