@@ -35,6 +35,12 @@ jobs:
 
       - name: Run sync_listings.py
         id: sync
+        env:
+          # Century 21 returns 403 to GitHub's datacenter IPs. The script
+          # routes the C21 page fetch through ScraperAPI's residential proxy
+          # when this secret is present. Add it under repo Settings →
+          # Secrets and variables → Actions → New repository secret.
+          SCRAPER_API_KEY: ${{ secrets.SCRAPER_API_KEY }}
         run: python scripts/sync_listings.py
         # Exit codes:
         #   0 = success

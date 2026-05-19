@@ -22,6 +22,7 @@ import re
 import sys
 import time
 import urllib.error
+import urllib.parse
 import urllib.request
 from datetime import datetime, timezone
 from pathlib import Path
@@ -55,6 +56,14 @@ USER_AGENT = (
     "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)"
 )
 
+# Century 21 returns HTTP 403 to datacenter IP ranges (GitHub Actions, Vercel,
+# AWS, etc.). A residential-IP proxy is required for the daily cron to work.
+# When SCRAPER_API_KEY is set, the C21 page fetch is routed through ScraperAPI
+# (https://www.scraperapi.com — free tier is 1,000 req/month, far more than a
+# daily run needs). Run it locally without the key — residential ISPs aren't
+# blocked, so a direct fetch works fine from a normal machine.
+SCRAPER_API_KEY = os.environ.get("SCRAPER_API_KEY", "").strip()
+
 # Track download bytes for reporting
 _stats = {"bytes_downloaded": 0, "photos_downloaded": 0, "photos_cached": 0}
 
@@ -63,10 +72,25 @@ _stats = {"bytes_downloaded": 0, "photos_downloaded": 0, "photos_cached": 0}
 #  Fetch helpers
 # ────────────────────────────────────────────────────────────────────
 
-def fetch(url: str, *, timeout: int = 30) -> bytes:
-    """Fetch a URL with browser-like headers. Returns bytes."""
+def fetch(url: str, *, timeout: int = 30, allow_proxy: bool = False) -> bytes:
+    """Fetch a URL with browser-like headers. Returns bytes.
+
+    When allow_proxy=True and SCRAPER_API_KEY is set, the request is routed
+    through ScraperAPI's residential proxy so C21's datacenter-IP 403 block is
+    bypassed. Photo downloads from the C21 image CDN are NOT proxied (they are
+    not IP-blocked, and proxying them would waste the request quota).
+    """
+    fetch_url = url
+    effective_timeout = timeout
+    if allow_proxy and SCRAPER_API_KEY:
+        fetch_url = "https://api.scraperapi.com/?" + urllib.parse.urlencode({
+            "api_key": SCRAPER_API_KEY,
+            "url": url,
+            "keep_headers": "true",  # pass our Googlebot UA through to C21
+        })
+        effective_timeout = max(timeout, 70)  # residential proxies are slower
     req = urllib.request.Request(
-        url,
+        fetch_url,
         headers={
             "User-Agent": USER_AGENT,
             "Accept": (
@@ -78,7 +102,7 @@ def fetch(url: str, *, timeout: int = 30) -> bytes:
             "Connection": "close",
         },
     )
-    with urllib.request.urlopen(req, timeout=timeout) as resp:
+    with urllib.request.urlopen(req, timeout=effective_timeout) as resp:
         return resp.read()
 
 
@@ -91,7 +115,7 @@ def fetch_agent_page() -> str:
     attempts: list[str] = []
     for url in (C21_FALLBACK, C21_PRIMARY):
         try:
-            data = fetch(url, timeout=45)
+            data = fetch(url, timeout=45, allow_proxy=True)
             if data:
                 text = data.decode("utf-8", errors="replace")
                 attempts.append(f"{url}: {len(text):,} chars")
