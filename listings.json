@@ -1,7 +1,24 @@
 {
-  "updated_at": "2026-05-20T12:28:53Z",
-  "count": 8,
+  "updated_at": "2026-05-21T12:48:47Z",
+  "count": 9,
   "listings": [
+    {
+      "address": "1715 W Carmen Street",
+      "city": "Tampa",
+      "state": "FL",
+      "zip": "33606",
+      "price_display": "$1,800,000",
+      "price": 1800000,
+      "beds": 3,
+      "baths": 2,
+      "sqft_or_acres": "1,286 sq. ft.",
+      "mls_number": "TB8510373",
+      "status": "Active",
+      "c21_url": "https://www.century21.com/homes/detail/fl/tampa/1715-w-carmen-st/lid-P00800000HBCC1OzgfmfG7Eh7BFkOlCyEKlD4uSc",
+      "hero_photo_url": "https://images-listings.century21.com/MFRMLS/TB/85/10/37/3/_P/TB8510373_P00.jpg",
+      "local_hero": "/images/listings/TB8510373.webp",
+      "local_thumb": "/images/listings/TB8510373-sm.webp"
+    },
     {
       "address": "16315 Mcglamery Road",
       "city": "Odessa",
@@ -43,15 +60,15 @@
       "zip": "33785",
       "price_display": "$1,125,000",
       "price": 1125000,
-      "beds": 2,
+      "beds": 0,
       "baths": 0,
-      "sqft_or_acres": "1,410 sq. ft.",
-      "mls_number": "TB8486560",
+      "sqft_or_acres": "0.15 Acres",
+      "mls_number": "TB8486575",
       "status": "Active",
       "c21_url": "https://www.century21.com/homes/detail/fl/indian-rocks-beach/419-12th-ave/lid-P00800000H7jSQMU8l9TlfTE0qn9i8jIYu8YTGsS",
       "hero_photo_url": "https://images-listings.century21.com/MFRMLS/TB/84/86/57/5/_P/TB8486575_P00.jpg",
-      "local_hero": "/images/listings/TB8486560.webp",
-      "local_thumb": "/images/listings/TB8486560-sm.webp"
+      "local_hero": "/images/listings/TB8486575.webp",
+      "local_thumb": "/images/listings/TB8486575-sm.webp"
     },
     {
       "address": "2204 N Central Avenue #1",
@@ -75,8 +92,8 @@
       "city": "Tampa",
       "state": "FL",
       "zip": "33647",
-      "price_display": "$645,000",
-      "price": 645000,
+      "price_display": "$618,500",
+      "price": 618500,
       "beds": 4,
       "baths": 3,
       "sqft_or_acres": "2,236 sq. ft.",
