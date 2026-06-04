@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-06-03T14:47:38Z",
-  "count": 7,
+  "updated_at": "2026-06-04T12:47:08Z",
+  "count": 6,
   "listings": [
     {
       "address": "1715 W Carmen Street",
@@ -41,8 +41,8 @@
       "city": "Tampa",
       "state": "FL",
       "zip": "33602",
-      "price_display": "$749,000",
-      "price": 749000,
+      "price_display": "$735,000",
+      "price": 735000,
       "beds": 3,
       "baths": 3,
       "sqft_or_acres": "1,848 sq. ft.",
@@ -103,23 +103,6 @@
       "hero_photo_url": "https://images-listings.century21.com/MFRMLS/TB/85/06/42/5/_P/TB8506425_P00.jpg",
       "local_hero": "/images/listings/TB8506425.webp",
       "local_thumb": "/images/listings/TB8506425-sm.webp"
-    },
-    {
-      "address": "3823 N Oak Drive #K11",
-      "city": "Tampa",
-      "state": "FL",
-      "zip": "33611",
-      "price_display": "$225,000",
-      "price": 225000,
-      "beds": 2,
-      "baths": 2,
-      "sqft_or_acres": "1,010 sq. ft.",
-      "mls_number": "TB8465080",
-      "status": "Active",
-      "c21_url": "https://www.century21.com/homes/detail/fl/tampa/3823-n-oak-dr-unit-k11/lid-P00800000H4mRSXisKzMySqNq4AXQYxawxuL30OA",
-      "hero_photo_url": "https://images-listings.century21.com/MFRMLS/TB/84/65/08/0/_P/TB8465080_P00.jpg",
-      "local_hero": "/images/listings/TB8465080.webp",
-      "local_thumb": "/images/listings/TB8465080-sm.webp"
     }
   ]
 }
