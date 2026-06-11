@@ -16,3 +16,4 @@ scripts/_debug_c21.html
 .vscode/
 *.swp
 .vercel
+.claude/
