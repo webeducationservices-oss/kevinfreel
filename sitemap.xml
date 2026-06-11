@@ -70,7 +70,13 @@
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
-    <url>
+      <url>
+    <loc>https://www.kevinfreel.com/blog/3223-w-paxton-ave-open-house</loc>
+    <lastmod>2026-06-11</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+<url>
     <loc>https://www.kevinfreel.com/blog/606glen</loc>
     <lastmod>2026-05-14</lastmod>
     <changefreq>yearly</changefreq>
