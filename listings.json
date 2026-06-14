@@ -1,14 +1,14 @@
 {
-  "updated_at": "2026-06-13T11:56:38Z",
-  "count": 6,
+  "updated_at": "2026-06-14T12:01:45Z",
+  "count": 8,
   "listings": [
     {
       "address": "1715 W Carmen Street",
       "city": "Tampa",
       "state": "FL",
       "zip": "33606",
-      "price_display": "$1,800,000",
-      "price": 1800000,
+      "price_display": "$1,750,000",
+      "price": 1750000,
       "beds": 3,
       "baths": 2,
       "sqft_or_acres": "1,286 sq. ft.",
@@ -18,6 +18,23 @@
       "hero_photo_url": "https://images-listings.century21.com/MFRMLS/TB/85/10/37/3/_P/TB8510373_P00.jpg",
       "local_hero": "/images/listings/TB8510373.webp",
       "local_thumb": "/images/listings/TB8510373-sm.webp"
+    },
+    {
+      "address": "6705 S Himes Avenue",
+      "city": "Tampa",
+      "state": "FL",
+      "zip": "33611",
+      "price_display": "$1,349,000",
+      "price": 1349000,
+      "beds": 4,
+      "baths": 4,
+      "sqft_or_acres": "3,162 sq. ft.",
+      "mls_number": "TB8518724",
+      "status": "Active",
+      "c21_url": "https://www.century21.com/homes/detail/fl/tampa/6705-s-himes-ave/lid-P00800000HCQpphswOSrbKDBkbPTUQOxLu7Adknl",
+      "hero_photo_url": "https://images-listings.century21.com/MFRMLS/TB/85/18/72/4/_P/TB8518724_P00.jpg",
+      "local_hero": "/images/listings/TB8518724.webp",
+      "local_thumb": "/images/listings/TB8518724-sm.webp"
     },
     {
       "address": "3223 W Paxton Avenue",
@@ -103,6 +120,23 @@
       "hero_photo_url": "https://images-listings.century21.com/MFRMLS/TB/85/06/42/5/_P/TB8506425_P00.jpg",
       "local_hero": "/images/listings/TB8506425.webp",
       "local_thumb": "/images/listings/TB8506425-sm.webp"
+    },
+    {
+      "address": "10265 Gandy Boulevard N #1006",
+      "city": "St Petersburg",
+      "state": "FL",
+      "zip": "33702",
+      "price_display": "$160,000",
+      "price": 160000,
+      "beds": 2,
+      "baths": 2,
+      "sqft_or_acres": "1,028 sq. ft.",
+      "mls_number": "TB8518477",
+      "status": "Active",
+      "c21_url": "https://www.century21.com/homes/detail/fl/st-petersburg/10265-gandy-blvd-apt-1006/lid-P00800000HCOMGpQloTFUdr1eoWbqfRZEvFhBXJl",
+      "hero_photo_url": "https://images-listings.century21.com/MFRMLS/TB/85/18/47/7/_P/TB8518477_P00.jpg",
+      "local_hero": "/images/listings/TB8518477.webp",
+      "local_thumb": "/images/listings/TB8518477-sm.webp"
     }
   ]
 }
