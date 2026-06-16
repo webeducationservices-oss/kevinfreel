@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-06-15T15:50:07Z",
-  "count": 8,
+  "updated_at": "2026-06-16T15:13:24Z",
+  "count": 7,
   "listings": [
     {
       "address": "1715 W Carmen Street",
@@ -52,23 +52,6 @@
       "hero_photo_url": "https://images-listings.century21.com/MFRMLS/TB/84/48/41/6/_P/TB8448416_P00.jpg",
       "local_hero": "/images/listings/TB8448416.webp",
       "local_thumb": "/images/listings/TB8448416-sm.webp"
-    },
-    {
-      "address": "2204 N Central Avenue #1",
-      "city": "Tampa",
-      "state": "FL",
-      "zip": "33602",
-      "price_display": "$735,000",
-      "price": 735000,
-      "beds": 3,
-      "baths": 3,
-      "sqft_or_acres": "1,848 sq. ft.",
-      "mls_number": "TB8497958",
-      "status": "Active",
-      "c21_url": "https://www.century21.com/homes/detail/fl/tampa/2204-n-central-ave--1/lid-P00800000H9Qcn4XnJci6hT3zTvwiAIBU0yNWJjU",
-      "hero_photo_url": "https://images-listings.century21.com/MFRMLS/TB/84/97/95/8/_P/TB8497958_P00.jpg",
-      "local_hero": "/images/listings/TB8497958.webp",
-      "local_thumb": "/images/listings/TB8497958-sm.webp"
     },
     {
       "address": "8613 Herons Cove Place",
