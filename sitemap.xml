@@ -868,4 +868,10 @@
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
+  <url>
+    <loc>https://www.kevinfreel.com/blog/ten-closings-for-the-month-of-june-a-new-breaking-record-so-blessed-so-grateful</loc>
+    <lastmod>2026-07-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
 </urlset>
