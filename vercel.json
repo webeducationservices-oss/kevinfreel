@@ -15,7 +15,12 @@
     { "source": "/subscribe/", "destination": "/contact/", "permanent": true },
     { "source": "/rsvp/", "destination": "/contact/", "permanent": true },
     { "source": "/building-inquiry/", "destination": "/contact/", "permanent": true },
-    { "source": "/new-page-1/", "destination": "/", "permanent": true }
+    { "source": "/new-page-1/", "destination": "/", "permanent": true },
+    { "source": "/contact-us/", "destination": "/contact/", "permanent": true },
+    { "source": "/blog/", "has": [{ "type": "query", "key": "format", "value": "rss" }], "destination": "/blog/", "permanent": true },
+    { "source": "/blog/", "has": [{ "type": "query", "key": "author" }], "destination": "/blog/", "permanent": true },
+    { "source": "/blog/", "has": [{ "type": "query", "key": "category" }], "destination": "/blog/", "permanent": true },
+    { "source": "/blog/", "has": [{ "type": "query", "key": "tag" }], "destination": "/blog/", "permanent": true }
   ],
   "headers": [
     {
