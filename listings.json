@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-07-18T11:07:39Z",
-  "count": 6,
+  "updated_at": "2026-07-19T11:12:43Z",
+  "count": 7,
   "listings": [
     {
       "address": "1715 W Carmen Street",
@@ -35,6 +35,23 @@
       "hero_photo_url": "https://images-listings.century21.com/MFRMLS/TB/85/18/72/4/_P/TB8518724_P00.jpg",
       "local_hero": "/images/listings/TB8518724.webp",
       "local_thumb": "/images/listings/TB8518724-sm.webp"
+    },
+    {
+      "address": "16315 Mcglamery Road",
+      "city": "Odessa",
+      "state": "FL",
+      "zip": "33556",
+      "price_display": "$1,300,000",
+      "price": 1300000,
+      "beds": 0,
+      "baths": 0,
+      "sqft_or_acres": "5.06 Acres",
+      "mls_number": "TB8366062",
+      "status": "Active",
+      "c21_url": "https://www.century21.com/homes/detail/fl/odessa/16315-mcglamery-rd/lid-P00800000GpTDzMsMEy962WmdgTIOpoRd2fl09WN",
+      "hero_photo_url": "https://images-listings.century21.com/MFRMLS/TB/83/66/06/2/_P/TB8366062_P00.jpg",
+      "local_hero": "/images/listings/TB8366062.webp",
+      "local_thumb": "/images/listings/TB8366062-sm.webp"
     },
     {
       "address": "3223 W Paxton Avenue",
