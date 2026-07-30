@@ -145,7 +145,7 @@
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
           Back to Blog
         </a>
-        <span class="blog-post-cat">Just Sold</span>
+        <span class="blog-post-cat">Just Listed</span>
         <h1>Brand New South Tampa Home: 4 Bed + Loft, Move-In Ready</h1>
         <div class="post-meta">
       <span>Kevin Freel Real Estate</span>
@@ -159,7 +159,7 @@
 
     <div class="blog-post-wrap">
       <article class="blog-article">
-      <p style="text-align: center; margin: 25px 0;"><a href="https://www.youtube.com/watch?v=g8Pka2wfp-o" target="_blank" rel="noopener" style="display: inline-block; max-width: 100%;"><img src="https://img.youtube.com/vi/g8Pka2wfp-o/maxresdefault.jpg" alt="Watch on YouTube" style="max-width: 100%; height: auto; border-radius: 8px; display: block; margin: 0 auto;" /></a></p><p style="text-align: center; font-size: 14px;"><a href="https://www.youtube.com/watch?v=g8Pka2wfp-o" target="_blank" rel="noopener" style="color: #cc0000; text-decoration: none; font-weight: 600;">▶ Watch on YouTube</a></p><h2>Brand New South Four Bedroom Plus An Open Loft, Ready in August</h2>
+      <p style="text-align: center; margin: 25px 0;"><a href="https://www.youtube.com/watch?v=zdHAZ-T_q9w" target="_blank" rel="noopener" style="display: inline-block; max-width: 100%;"><img src="https://img.youtube.com/vi/zdHAZ-T_q9w/maxresdefault.jpg" alt="Watch on YouTube" style="max-width: 100%; height: auto; border-radius: 8px; display: block; margin: 0 auto;" /></a></p><p style="text-align: center; font-size: 14px;"><a href="https://www.youtube.com/watch?v=zdHAZ-T_q9w" target="_blank" rel="noopener" style="color: #cc0000; text-decoration: none; font-weight: 600;">▶ Watch on YouTube</a></p><h2>Brand New South Four Bedroom Plus An Open Loft, Ready in August</h2>
 
 <p>Imagine this: You've been dreaming of a new home in vibrant South Tampa, a place that perfectly fits your lifestyle without demanding endless weekends of renovations or unexpected repair bills. You scour listings, visit open houses, and what do you find? Properties that need a complete overhaul, a fresh coat of paint here, a kitchen remodel there, or a backyard landscaping project that feels more like a full-time job. The dream of a truly move-in ready home, where the only thing you need to worry about is arranging your furniture, often feels out of reach in a market filled with fixer-uppers or homes that just don't quite hit the mark. What if we told you that your search for a brand new, pristine residence, ready for you to simply unpack and enjoy, is finally over? Welcome to a home where you don't have to fix, you don't have to flip - you just need to find the furniture.</p>
 
@@ -216,7 +216,68 @@
 
 <p><strong>Schedule a private showing today and take the first step toward making this stunning residence your own.</strong></p>
 
-<p><strong>{{CONTACT_FORM_HERE}}</strong></p>
+<div class="listing-showing-form">
+  <div class="listing-showing-head">
+    <span class="listing-showing-eyebrow">Private Showing</span>
+    <h3>Schedule a Showing — 6705 S Himes Ave</h3>
+    <p>Tell Kevin when works for you. He'll confirm within a few hours and walk the property with you personally.</p>
+  </div>
+  <form action="https://myaieditor.com/api/form-notify" method="POST" data-ajax class="listing-showing">
+    <input type="hidden" name="site_slug" value="kevin-freel">
+    <input type="hidden" name="form_type" value="schedule-showing">
+    <input type="hidden" name="property" value="6705 S Himes Ave — Brand New South Tampa Home, 4 Bed + Loft">
+    <input type="hidden" name="source_page" value="/blog/brand-new-south-tampa-home-4-bed-loft-move-in-ready/">
+    <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+
+    <div class="form-row">
+      <div class="form-group">
+        <label for="showing-first-name">First Name</label>
+        <input type="text" id="showing-first-name" name="first_name" required>
+      </div>
+      <div class="form-group">
+        <label for="showing-last-name">Last Name</label>
+        <input type="text" id="showing-last-name" name="last_name" required>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label for="showing-email">Email</label>
+        <input type="email" id="showing-email" name="email" required>
+      </div>
+      <div class="form-group">
+        <label for="showing-phone">Phone</label>
+        <input type="tel" id="showing-phone" name="phone" required>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label for="showing-date">Preferred Day</label>
+        <input type="date" id="showing-date" name="preferred_date">
+      </div>
+      <div class="form-group">
+        <label for="showing-time">Preferred Time</label>
+        <select id="showing-time" name="preferred_time">
+          <option value="">Anytime</option>
+          <option value="Morning (9am – 12pm)">Morning (9am – 12pm)</option>
+          <option value="Early Afternoon (12pm – 3pm)">Early Afternoon (12pm – 3pm)</option>
+          <option value="Late Afternoon (3pm – 6pm)">Late Afternoon (3pm – 6pm)</option>
+          <option value="Evening (6pm – 8pm)">Evening (6pm – 8pm)</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="showing-message">Anything Kevin should know?</label>
+      <textarea id="showing-message" name="message" rows="3" placeholder="Optional — timeline, financing status, questions about the home…"></textarea>
+    </div>
+
+    <button type="submit" class="form-submit">Request a Showing</button>
+    <p id="form-status" class="form-status"></p>
+    <p class="listing-showing-fineprint">Prefer to talk? Call Kevin directly at <a href="tel:7274108599">727-410-8599</a>.</p>
+  </form>
+</div>
     </article>
 
       <aside class="blog-sidebar">
