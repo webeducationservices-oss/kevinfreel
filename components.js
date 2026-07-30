@@ -15,6 +15,41 @@
   });
 })();
 
+/* ── reCAPTCHA v3 loader ──
+   Injects the Google reCAPTCHA v3 script whenever a form is on the page.
+   Exposes waitForRecaptchaToken(action) which resolves to the token, or
+   '' if grecaptcha never becomes available (10s cap so we don't hang forever).
+   Without this loader, form-notify silently rejects every submission with
+   `missing_recaptcha_token`. */
+var RECAPTCHA_SITE_KEY = '6Lck8aQsAAAAALMA-T6nwfkSf7bv4K-mOhkszeKh';
+(function () {
+  if (!document.querySelector('form[data-ajax], form[data-resource]')) return;
+  if (document.querySelector('script[src*="recaptcha/api.js"]')) return;
+  var s = document.createElement('script');
+  s.src = 'https://www.google.com/recaptcha/api.js?render=' + RECAPTCHA_SITE_KEY;
+  s.async = true;
+  s.defer = true;
+  document.head.appendChild(s);
+})();
+function waitForRecaptchaToken(action) {
+  return new Promise(function (resolve) {
+    var deadline = Date.now() + 10000;
+    function tryOnce() {
+      if (typeof grecaptcha !== 'undefined' && grecaptcha.execute && grecaptcha.ready) {
+        grecaptcha.ready(function () {
+          grecaptcha.execute(RECAPTCHA_SITE_KEY, { action: action })
+            .then(resolve, function () { resolve(''); });
+        });
+      } else if (Date.now() < deadline) {
+        setTimeout(tryOnce, 150);
+      } else {
+        resolve('');
+      }
+    }
+    tryOnce();
+  });
+}
+
 /* ── Mobile Menu ── */
 const menuBtn = document.getElementById('menu-btn');
 const mobileMenu = document.getElementById('mobile-menu');
@@ -222,8 +257,6 @@ if (wizardForm) {
 }
 
 /* ── Resource Lead Forms (via /api/lead-magnet → PDF or page redirect) ── */
-var RECAPTCHA_SITE_KEY = '6Lck8aQsAAAAALMA-T6nwfkSf7bv4K-mOhkszeKh';
-
 document.querySelectorAll('form[data-resource]').forEach(function (rForm) {
   rForm.addEventListener('submit', async function (e) {
     e.preventDefault();
@@ -237,13 +270,8 @@ document.querySelectorAll('form[data-resource]').forEach(function (rForm) {
     var data = {};
     new FormData(rForm).forEach(function (v, k) { data[k] = v; });
 
-    // reCAPTCHA token (best-effort; if grecaptcha fails, still submit)
-    try {
-      if (typeof grecaptcha !== 'undefined' && grecaptcha.execute) {
-        await new Promise(function (r) { grecaptcha.ready(r); });
-        data.recaptcha_token = await grecaptcha.execute(RECAPTCHA_SITE_KEY, { action: 'lead_magnet' });
-      }
-    } catch (err) { console.warn('reCAPTCHA error:', err); }
+    // reCAPTCHA v3 token — form-notify rejects without it (loader is at top of file)
+    data.recaptcha_token = await waitForRecaptchaToken('lead_magnet');
 
     // PDF magnets: pre-open a tab synchronously so popup blockers don't fire
     // (browsers only allow window.open during a user gesture chain)
@@ -459,7 +487,7 @@ document.querySelectorAll('form[data-resource]').forEach(function (rForm) {
 /* ── Contact Form (AJAX submit) ── */
 var form = document.querySelector('form[data-ajax]');
 if (form) {
-  form.addEventListener('submit', function (e) {
+  form.addEventListener('submit', async function (e) {
     e.preventDefault();
     var btn = form.querySelector('.form-submit');
     var status = document.getElementById('form-status');
@@ -470,25 +498,27 @@ if (form) {
     var data = {};
     new FormData(form).forEach(function (v, k) { data[k] = v; });
 
-    fetch(form.action, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(data)
-    })
-    .then(function (res) { return res.json(); })
-    .then(function (json) {
+    // reCAPTCHA v3 token — form-notify rejects without it (loader is at top of file)
+    data.recaptcha_token = await waitForRecaptchaToken('contact');
+
+    try {
+      var res = await fetch(form.action, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      });
+      var json = await res.json();
       if (json.success) {
-        window.location.href = '/thank-you';
+        window.location.href = '/thank-you/';
       } else {
         if (status) { status.textContent = 'Something went wrong. Please call 727-410-8599.'; status.className = 'form-status error'; }
         btn.disabled = false;
         btn.textContent = 'Send Message';
       }
-    })
-    .catch(function () {
+    } catch (err) {
       if (status) { status.textContent = 'Something went wrong. Please call 727-410-8599.'; status.className = 'form-status error'; }
       btn.disabled = false;
       btn.textContent = 'Send Message';
-    });
+    }
   });
 }
