@@ -180,6 +180,10 @@ def market_for(n: dict, prices: dict) -> dict | None:
         "trend_pct_5yr": round(sum(trends) / len(trends)) if trends else None,
         "zips": zips,
         "as_of": prices.get("updated_at"),
+        # ZIPs come from City of Tampa GIS boundaries intersected with the
+        # official address-point layer. A few informal names have no city
+        # polygon and straddle a line; say so rather than implying precision.
+        "zip_confidence": n.get("zip_confidence", "high"),
     }
 
 
@@ -567,13 +571,24 @@ def build_detail(slug: str, n: dict, data: dict, prices: dict) -> str:
         if mkt.get("trend_pct_5yr") is not None:
             trend = f"""        <div class="nb-mstat"><span class="k">5-Year Trend</span><span class="v pos">+{mkt['trend_pct_5yr']}%</span></div>
 """
+        straddle = ""
+        if len(mkt["zips"]) > 1:
+            straddle = (
+                f" {esc(n['name'])} straddles both ZIPs, so this averages them."
+            )
+        soft = ""
+        if mkt.get("zip_confidence") == "low":
+            soft = (
+                " Worth knowing: this is an informal name with no official City"
+                " boundary, so even the ZIP is approximate here."
+            )
         out.append(f"""      <section class="nb-section">
         <h2>What the market looks like here</h2>
         <div class="nb-market">
           <div class="nb-mstat"><span class="k">Median Value</span><span class="v">${mkt['median_price']:,}</span></div>
 {trend}          <div class="nb-mstat"><span class="k">ZIP{"s" if len(mkt['zips'])>1 else ""}</span><span class="v">{", ".join(mkt['zips'])}</span></div>
         </div>
-        <p class="nb-caveat">Zillow Home Value Index for ZIP {", ".join(mkt['zips'])}, updated {esc(mkt.get('as_of') or 'monthly')}. This is <strong>area context, not a valuation</strong>. {esc(n['name'])} shares its ZIP with several other neighborhoods, and in South Tampa a single block can swing the number substantially. For what your specific street is doing, <a href="/home-evaluation-questionnaire/">ask Kevin for a CMA</a>.</p>
+        <p class="nb-caveat">Zillow Home Value Index for ZIP {", ".join(mkt['zips'])}, updated {esc(mkt.get('as_of') or 'monthly')}. This is <strong>area context, not a valuation</strong>.{straddle} In South Tampa a single block can swing the number substantially, and this ZIP covers several other neighborhoods too.{soft} For what your specific street is doing, <a href="/home-evaluation-questionnaire/">ask Kevin for a CMA</a>.</p>
       </section>
 """)
 

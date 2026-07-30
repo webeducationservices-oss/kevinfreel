@@ -98,7 +98,8 @@
       "tier": 1,
       "zips": [
         "33606"
-      ]
+      ],
+      "zip_confidence": "high"
     },
     "hyde-park-village": {
       "name": "Hyde Park Village",
@@ -112,7 +113,8 @@
       "is_commercial": true,
       "zips": [
         "33606"
-      ]
+      ],
+      "zip_confidence": "high"
     },
     "soho": {
       "name": "SoHo",
@@ -124,8 +126,10 @@
       ],
       "tier": 1,
       "zips": [
-        "33606"
-      ]
+        "33606",
+        "33609"
+      ],
+      "zip_confidence": "high"
     },
     "hyde-park-spanishtown-creek": {
       "name": "Hyde Park Spanishtown Creek",
@@ -137,7 +141,8 @@
       "tier": 2,
       "zips": [
         "33606"
-      ]
+      ],
+      "zip_confidence": "high"
     },
     "bayshore-gardens": {
       "name": "Bayshore Gardens",
@@ -148,8 +153,10 @@
       ],
       "tier": 2,
       "zips": [
+        "33629",
         "33606"
-      ]
+      ],
+      "zip_confidence": "high"
     },
     "dobyville-west-hyde-park": {
       "name": "Dobyville / West Hyde Park",
@@ -162,7 +169,8 @@
       "tier": 2,
       "zips": [
         "33606"
-      ]
+      ],
+      "zip_confidence": "high"
     },
     "courier-city-oscawana": {
       "name": "Courier City-Oscawana",
@@ -174,8 +182,10 @@
       ],
       "tier": 2,
       "zips": [
-        "33606"
-      ]
+        "33606",
+        "33609"
+      ],
+      "zip_confidence": "high"
     },
     "davis-islands": {
       "name": "Davis Islands",
@@ -188,7 +198,8 @@
       "tier": 1,
       "zips": [
         "33606"
-      ]
+      ],
+      "zip_confidence": "high"
     },
     "harbour-island": {
       "name": "Harbour Island",
@@ -201,7 +212,8 @@
       "tier": 1,
       "zips": [
         "33602"
-      ]
+      ],
+      "zip_confidence": "high"
     },
     "palma-ceia": {
       "name": "Palma Ceia",
@@ -215,7 +227,8 @@
       "tier": 1,
       "zips": [
         "33629"
-      ]
+      ],
+      "zip_confidence": "high"
     },
     "palma-ceia-pines": {
       "name": "Palma Ceia Pines",
@@ -227,7 +240,8 @@
       "tier": 2,
       "zips": [
         "33609"
-      ]
+      ],
+      "zip_confidence": "high"
     },
     "palma-ceia-west": {
       "name": "Palma Ceia West",
@@ -238,8 +252,9 @@
       ],
       "tier": 2,
       "zips": [
-        "33609"
-      ]
+        "33629"
+      ],
+      "zip_confidence": "high"
     },
     "virginia-park": {
       "name": "Virginia Park",
@@ -251,7 +266,8 @@
       "tier": 1,
       "zips": [
         "33629"
-      ]
+      ],
+      "zip_confidence": "high"
     },
     "golfview": {
       "name": "Golfview",
@@ -263,8 +279,10 @@
       ],
       "tier": 1,
       "zips": [
-        "33629"
-      ]
+        "33629",
+        "33609"
+      ],
+      "zip_confidence": "high"
     },
     "parkland-estates": {
       "name": "Parkland Estates",
@@ -276,8 +294,9 @@
       ],
       "tier": 1,
       "zips": [
-        "33629"
-      ]
+        "33609"
+      ],
+      "zip_confidence": "high"
     },
     "new-suburb-beautiful": {
       "name": "New Suburb Beautiful",
@@ -290,7 +309,8 @@
       "tier": 1,
       "zips": [
         "33629"
-      ]
+      ],
+      "zip_confidence": "high"
     },
     "swann-estates": {
       "name": "Swann Estates",
@@ -302,7 +322,8 @@
       "tier": 2,
       "zips": [
         "33609"
-      ]
+      ],
+      "zip_confidence": "high"
     },
     "culbreath-heights": {
       "name": "Culbreath Heights",
@@ -314,8 +335,9 @@
       ],
       "tier": 2,
       "zips": [
-        "33609"
-      ]
+        "33629"
+      ],
+      "zip_confidence": "high"
     },
     "san-rafael-place": {
       "name": "San Rafael Place",
@@ -327,7 +349,8 @@
       "tier": 2,
       "zips": [
         "33629"
-      ]
+      ],
+      "zip_confidence": "high"
     },
     "palma-ceia-commercial-district": {
       "name": "Palma Ceia Commercial District",
@@ -340,7 +363,8 @@
       "is_commercial": true,
       "zips": [
         "33629"
-      ]
+      ],
+      "zip_confidence": "medium"
     },
     "bayshore-beautiful": {
       "name": "Bayshore Beautiful",
@@ -352,8 +376,10 @@
       ],
       "tier": 1,
       "zips": [
+        "33611",
         "33629"
-      ]
+      ],
+      "zip_confidence": "high"
     },
     "ballast-point": {
       "name": "Ballast Point",
@@ -366,7 +392,8 @@
       "tier": 1,
       "zips": [
         "33611"
-      ]
+      ],
+      "zip_confidence": "high"
     },
     "fair-oaks-manhattan-manor": {
       "name": "Fair Oaks-Manhattan Manor",
@@ -379,7 +406,8 @@
       "tier": 2,
       "zips": [
         "33611"
-      ]
+      ],
+      "zip_confidence": "high"
     },
     "belmar-gardens": {
       "name": "Belmar Gardens",
@@ -390,8 +418,9 @@
       ],
       "tier": 2,
       "zips": [
-        "33611"
-      ]
+        "33629"
+      ],
+      "zip_confidence": "high"
     },
     "bel-mar-shores": {
       "name": "Bel Mar Shores",
@@ -402,8 +431,9 @@
       ],
       "tier": 2,
       "zips": [
-        "33611"
-      ]
+        "33629"
+      ],
+      "zip_confidence": "high"
     },
     "bayside-west": {
       "name": "Bayside West",
@@ -415,7 +445,8 @@
       "tier": 2,
       "zips": [
         "33611"
-      ]
+      ],
+      "zip_confidence": "high"
     },
     "interbay": {
       "name": "Interbay",
@@ -427,8 +458,10 @@
       ],
       "tier": 2,
       "zips": [
-        "33611"
-      ]
+        "33611",
+        "33616"
+      ],
+      "zip_confidence": "medium"
     },
     "interbay-south-of-gandy": {
       "name": "Interbay-South of Gandy",
@@ -441,7 +474,8 @@
       "tier": 2,
       "zips": [
         "33611"
-      ]
+      ],
+      "zip_confidence": "high"
     },
     "gandy-sun-bay-south": {
       "name": "Gandy-Sun Bay South",
@@ -453,8 +487,10 @@
       ],
       "tier": 2,
       "zips": [
+        "33616",
         "33611"
-      ]
+      ],
+      "zip_confidence": "high"
     },
     "south-gandy": {
       "name": "South Gandy",
@@ -465,8 +501,10 @@
       ],
       "tier": 1,
       "zips": [
-        "33611"
-      ]
+        "33611",
+        "33616"
+      ],
+      "zip_confidence": "low"
     },
     "southtown-park": {
       "name": "Southtown Park",
@@ -477,8 +515,9 @@
       ],
       "tier": 2,
       "zips": [
-        "33611"
-      ]
+        "33616"
+      ],
+      "zip_confidence": "high"
     },
     "rembrandt-gardens": {
       "name": "Rembrandt Gardens",
@@ -489,8 +528,9 @@
       ],
       "tier": 2,
       "zips": [
-        "33611"
-      ]
+        "33616"
+      ],
+      "zip_confidence": "high"
     },
     "rattlesnake": {
       "name": "Rattlesnake",
@@ -503,7 +543,8 @@
       "tier": 2,
       "zips": [
         "33611"
-      ]
+      ],
+      "zip_confidence": "high"
     },
     "macdill-air-force-base-area": {
       "name": "MacDill Air Force Base Area",
@@ -516,7 +557,8 @@
       "is_commercial": true,
       "zips": [
         "33621"
-      ]
+      ],
+      "zip_confidence": "high"
     },
     "beach-park": {
       "name": "Beach Park",
@@ -529,7 +571,8 @@
       "tier": 1,
       "zips": [
         "33609"
-      ]
+      ],
+      "zip_confidence": "high"
     },
     "beach-park-isles": {
       "name": "Beach Park Isles",
@@ -542,7 +585,8 @@
       "tier": 1,
       "zips": [
         "33629"
-      ]
+      ],
+      "zip_confidence": "high"
     },
     "sunset-park": {
       "name": "Sunset Park",
@@ -555,7 +599,8 @@
       "tier": 1,
       "zips": [
         "33629"
-      ]
+      ],
+      "zip_confidence": "high"
     },
     "sunset-park-isles": {
       "name": "Sunset Park Isles",
@@ -567,7 +612,8 @@
       "tier": 2,
       "zips": [
         "33629"
-      ]
+      ],
+      "zip_confidence": "high"
     },
     "culbreath-isles": {
       "name": "Culbreath Isles",
@@ -580,7 +626,8 @@
       "tier": 1,
       "zips": [
         "33629"
-      ]
+      ],
+      "zip_confidence": "high"
     },
     "culbreath-bayou": {
       "name": "Culbreath Bayou",
@@ -593,7 +640,8 @@
       "tier": 2,
       "zips": [
         "33629"
-      ]
+      ],
+      "zip_confidence": "high"
     },
     "south-westshore": {
       "name": "South Westshore",
@@ -605,8 +653,10 @@
       ],
       "tier": 2,
       "zips": [
-        "33616"
-      ]
+        "33611",
+        "33629"
+      ],
+      "zip_confidence": "high"
     },
     "stoney-point": {
       "name": "Stoney Point",
@@ -618,7 +668,8 @@
       "tier": 2,
       "zips": [
         "33629"
-      ]
+      ],
+      "zip_confidence": "high"
     },
     "westshore-marina-district": {
       "name": "Westshore Marina District",
@@ -630,8 +681,10 @@
       ],
       "tier": 1,
       "zips": [
+        "33611",
         "33616"
-      ]
+      ],
+      "zip_confidence": "high"
     },
     "port-tampa-city": {
       "name": "Port Tampa City",
@@ -644,7 +697,8 @@
       "tier": 1,
       "zips": [
         "33616"
-      ]
+      ],
+      "zip_confidence": "high"
     },
     "port-tampa": {
       "name": "Port Tampa",
@@ -657,7 +711,8 @@
       "tier": 2,
       "zips": [
         "33616"
-      ]
+      ],
+      "zip_confidence": "high"
     },
     "picnic-island-area": {
       "name": "Picnic Island Area",
@@ -671,7 +726,8 @@
       "is_commercial": true,
       "zips": [
         "33616"
-      ]
+      ],
+      "zip_confidence": "high"
     },
     "north-hyde-park": {
       "name": "North Hyde Park",
@@ -682,8 +738,10 @@
       ],
       "tier": 2,
       "zips": [
+        "33606",
         "33607"
-      ]
+      ],
+      "zip_confidence": "high"
     },
     "westshore-palms": {
       "name": "Westshore Palms",
@@ -695,8 +753,9 @@
       ],
       "tier": 2,
       "zips": [
-        "33607"
-      ]
+        "33609"
+      ],
+      "zip_confidence": "high"
     },
     "bon-air": {
       "name": "Bon Air",
@@ -708,7 +767,8 @@
       "tier": 2,
       "zips": [
         "33609"
-      ]
+      ],
+      "zip_confidence": "high"
     },
     "gray-gables": {
       "name": "Gray Gables",
@@ -720,7 +780,8 @@
       "tier": 2,
       "zips": [
         "33609"
-      ]
+      ],
+      "zip_confidence": "high"
     },
     "oakford-park": {
       "name": "Oakford Park",
@@ -732,8 +793,9 @@
       ],
       "tier": 2,
       "zips": [
-        "33607"
-      ]
+        "33609"
+      ],
+      "zip_confidence": "high"
     },
     "westshore-business-district": {
       "name": "Westshore Business District",
@@ -745,8 +807,10 @@
       "tier": 2,
       "is_commercial": true,
       "zips": [
-        "33607"
-      ]
+        "33607",
+        "33609"
+      ],
+      "zip_confidence": "high"
     }
   }
 }
