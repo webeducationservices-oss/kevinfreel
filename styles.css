@@ -3205,7 +3205,8 @@ ul { list-style: none; }
   .result-grid { grid-template-columns: 1fr; }
   .marketing-features { grid-template-columns: 1fr; }
   .partner-logos { gap: 1.25rem; }
-  .resource-grid { grid-template-columns: 1fr; }
+  /* .two-up needs the matching specificity or it stays 2-col and overflows */
+  .resource-grid, .resource-grid.two-up { grid-template-columns: 1fr; }
   .photography-features { grid-template-columns: 1fr; }
   .gallery-grid { grid-template-columns: 1fr; }
   .mp-category-head h2 { font-size: 1.5rem; }

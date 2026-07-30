@@ -1,0 +1,752 @@
+{
+  "_comment": "Single source of truth for the South Tampa neighborhood catalog and detail pages. Personality copy is Kevin-supplied. `draft` fields are AI-written and marked unreviewed until Kevin confirms them through the weekly review form (see scripts/email_neighborhood_review.py and /neighborhood-review/). Run scripts/build_neighborhoods.py after any edit.",
+  "updated_at": "2026-07-30",
+  "review_cadence": "weekly",
+  "districts": [
+    {
+      "id": "hyde-park",
+      "name": "Hyde Park & Northeast South Tampa",
+      "blurb": "The oldest, densest and most walkable corner of South Tampa. Brick streets, front porches, and the closest thing Tampa has to a genuine urban village."
+    },
+    {
+      "id": "palma-ceia",
+      "name": "Palma Ceia & Central South Tampa",
+      "blurb": "The residential heart. Oak canopies, brick streets, A-rated schools and quiet prestige. This is what most people picture when they say South Tampa."
+    },
+    {
+      "id": "bayshore",
+      "name": "Bayshore & Southeast South Tampa",
+      "blurb": "From the stately homes lining Bayshore Boulevard down through Ballast Point and the fast-changing Gandy corridor."
+    },
+    {
+      "id": "western",
+      "name": "Western & Waterfront South Tampa",
+      "blurb": "Big lots, mature landscaping and canal frontage. Where South Tampa gets quiet, private and boat-accessible."
+    },
+    {
+      "id": "port-tampa",
+      "name": "Port Tampa",
+      "blurb": "Old Florida, geographically and culturally its own thing. It started as a separate town and it still feels like one."
+    },
+    {
+      "id": "adjacent",
+      "name": "South Tampa-Adjacent",
+      "blurb": "Frequently marketed as South Tampa, though locals will tell you these are northern-edge neighborhoods or separate areas entirely. Worth knowing before you tour."
+    }
+  ],
+  "vibes": [
+    {
+      "id": "historic-walkable",
+      "label": "Historic & walkable",
+      "icon": "landmark"
+    },
+    {
+      "id": "young-social",
+      "label": "Young & social",
+      "icon": "sparkle"
+    },
+    {
+      "id": "classic-family",
+      "label": "Classic family",
+      "icon": "home"
+    },
+    {
+      "id": "quiet-prestige",
+      "label": "Quiet prestige",
+      "icon": "leaf"
+    },
+    {
+      "id": "large-lot-luxury",
+      "label": "Large-lot luxury",
+      "icon": "trees"
+    },
+    {
+      "id": "private-waterfront",
+      "label": "Private waterfront",
+      "icon": "anchor"
+    },
+    {
+      "id": "relaxed-waterfront",
+      "label": "Relaxed waterfront",
+      "icon": "waves"
+    },
+    {
+      "id": "new-urbanizing",
+      "label": "New & urbanizing",
+      "icon": "building"
+    },
+    {
+      "id": "old-florida",
+      "label": "Old Florida",
+      "icon": "palm"
+    },
+    {
+      "id": "approachable",
+      "label": "Approachable",
+      "icon": "handshake"
+    }
+  ],
+  "neighborhoods": {
+    "historic-hyde-park": {
+      "name": "Historic Hyde Park",
+      "district": "hyde-park",
+      "personality": "Classic, polished and walkable. Historic homes, shaded streets, front porches and a strong sense of old Tampa, with upscale shopping and dining nearby.",
+      "vibes": [
+        "historic-walkable",
+        "quiet-prestige"
+      ],
+      "tier": 1,
+      "zips": [
+        "33606"
+      ]
+    },
+    "hyde-park-village": {
+      "name": "Hyde Park Village",
+      "district": "hyde-park",
+      "personality": "Stylish, manicured and social. Boutique shopping, brunch, fitness studios, events and a luxury lifestyle atmosphere. It is technically a commercial district within Hyde Park rather than a separate residential neighborhood.",
+      "vibes": [
+        "young-social",
+        "historic-walkable"
+      ],
+      "tier": 2,
+      "is_commercial": true,
+      "zips": [
+        "33606"
+      ]
+    },
+    "soho": {
+      "name": "SoHo",
+      "district": "hyde-park",
+      "personality": "Young, energetic and restaurant-driven. Popular with professionals who want nightlife and walkability, but not necessarily peace and quiet.",
+      "vibes": [
+        "young-social",
+        "historic-walkable"
+      ],
+      "tier": 1,
+      "zips": [
+        "33606"
+      ]
+    },
+    "hyde-park-spanishtown-creek": {
+      "name": "Hyde Park Spanishtown Creek",
+      "district": "hyde-park",
+      "personality": "Historic, tucked away and slightly more eclectic than central Hyde Park. It feels like a hidden transition between downtown-oriented living and traditional residential streets.",
+      "vibes": [
+        "historic-walkable"
+      ],
+      "tier": 2,
+      "zips": [
+        "33606"
+      ]
+    },
+    "bayshore-gardens": {
+      "name": "Bayshore Gardens",
+      "district": "hyde-park",
+      "personality": "Compact, central and convenient. A mixture of older homes, apartments, condominiums and townhomes close to Bayshore, Hyde Park and downtown.",
+      "vibes": [
+        "approachable"
+      ],
+      "tier": 2,
+      "zips": [
+        "33606"
+      ]
+    },
+    "dobyville-west-hyde-park": {
+      "name": "Dobyville / West Hyde Park",
+      "district": "hyde-park",
+      "personality": "Historically significant, urban and rapidly changing. It has deeper cultural roots and more architectural variety than the polished sections of Hyde Park.",
+      "vibes": [
+        "historic-walkable",
+        "new-urbanizing"
+      ],
+      "tier": 2,
+      "zips": [
+        "33606"
+      ]
+    },
+    "courier-city-oscawana": {
+      "name": "Courier City-Oscawana",
+      "district": "hyde-park",
+      "personality": "Dense, lively and urban. Apartments, townhomes, restaurants and older homes create a more active, less suburban version of South Tampa. Portions are included in District 4.",
+      "vibes": [
+        "young-social",
+        "new-urbanizing"
+      ],
+      "tier": 2,
+      "zips": [
+        "33606"
+      ]
+    },
+    "davis-islands": {
+      "name": "Davis Islands",
+      "district": "hyde-park",
+      "personality": "Friendly, self-contained and waterfront-oriented. It has a small-town island personality, a neighborhood business district and a strong outdoor lifestyle despite being minutes from downtown.",
+      "vibes": [
+        "relaxed-waterfront",
+        "historic-walkable"
+      ],
+      "tier": 1,
+      "zips": [
+        "33606"
+      ]
+    },
+    "harbour-island": {
+      "name": "Harbour Island",
+      "district": "hyde-park",
+      "personality": "Polished, controlled and downtown-adjacent. More condominiums, townhomes and gated living than traditional neighborhood streets. Many people group it with South Tampa, although it feels more connected to downtown.",
+      "vibes": [
+        "new-urbanizing",
+        "relaxed-waterfront"
+      ],
+      "tier": 1,
+      "zips": [
+        "33602"
+      ]
+    },
+    "palma-ceia": {
+      "name": "Palma Ceia",
+      "district": "palma-ceia",
+      "personality": "Quintessential South Tampa. Brick streets, mature oak trees, established homes and quiet prestige without feeling excessively flashy.",
+      "vibes": [
+        "historic-walkable",
+        "quiet-prestige",
+        "classic-family"
+      ],
+      "tier": 1,
+      "zips": [
+        "33629"
+      ]
+    },
+    "palma-ceia-pines": {
+      "name": "Palma Ceia Pines",
+      "district": "palma-ceia",
+      "personality": "Eclectic, connected and urban-residential. It mixes houses, apartments, businesses, schools and churches, creating a more varied atmosphere than traditional Palma Ceia.",
+      "vibes": [
+        "approachable"
+      ],
+      "tier": 2,
+      "zips": [
+        "33609"
+      ]
+    },
+    "palma-ceia-west": {
+      "name": "Palma Ceia West",
+      "district": "palma-ceia",
+      "personality": "Comfortable, residential and family-oriented. It is central and established, but generally quieter and less formal than the streets surrounding the Palma Ceia Golf and Country Club.",
+      "vibes": [
+        "classic-family"
+      ],
+      "tier": 2,
+      "zips": [
+        "33609"
+      ]
+    },
+    "virginia-park": {
+      "name": "Virginia Park",
+      "district": "palma-ceia",
+      "personality": "Neighborly, active and family-focused. Older homes sit beside substantial new construction, giving it a traditional neighborhood structure with a continually updated appearance.",
+      "vibes": [
+        "classic-family"
+      ],
+      "tier": 1,
+      "zips": [
+        "33629"
+      ]
+    },
+    "golfview": {
+      "name": "Golfview",
+      "district": "palma-ceia",
+      "personality": "Refined, quiet and established. It has an understated estate-home personality and feels closely connected to Palma Ceia's country-club side.",
+      "vibes": [
+        "quiet-prestige",
+        "large-lot-luxury"
+      ],
+      "tier": 1,
+      "zips": [
+        "33629"
+      ]
+    },
+    "parkland-estates": {
+      "name": "Parkland Estates",
+      "district": "palma-ceia",
+      "personality": "Elegant, intimate and highly polished. Historic architecture, mature landscaping and limited through traffic give it a secluded feeling despite its central location.",
+      "vibes": [
+        "quiet-prestige",
+        "historic-walkable"
+      ],
+      "tier": 1,
+      "zips": [
+        "33629"
+      ]
+    },
+    "new-suburb-beautiful": {
+      "name": "New Suburb Beautiful",
+      "district": "palma-ceia",
+      "personality": "Charming, discreet and historically upscale. It offers leafy residential streets near SoHo without feeling like part of the nightlife district.",
+      "vibes": [
+        "historic-walkable",
+        "quiet-prestige"
+      ],
+      "tier": 1,
+      "zips": [
+        "33629"
+      ]
+    },
+    "swann-estates": {
+      "name": "Swann Estates",
+      "district": "palma-ceia",
+      "personality": "Practical, central and residential. It has a mixture of traditional homes and newer rebuilds, with less ceremony than Golfview or Parkland Estates.",
+      "vibes": [
+        "classic-family"
+      ],
+      "tier": 2,
+      "zips": [
+        "33609"
+      ]
+    },
+    "culbreath-heights": {
+      "name": "Culbreath Heights",
+      "district": "palma-ceia",
+      "personality": "Hidden, quiet and conveniently located. It feels like a small residential pocket surrounded by better-known neighborhoods.",
+      "vibes": [
+        "approachable",
+        "classic-family"
+      ],
+      "tier": 2,
+      "zips": [
+        "33609"
+      ]
+    },
+    "san-rafael-place": {
+      "name": "San Rafael Place",
+      "district": "palma-ceia",
+      "personality": "Tiny, private and enclave-like. This is one of those micro-neighborhood names that many Tampa residents have heard but could not easily point to on a map.",
+      "vibes": [
+        "quiet-prestige"
+      ],
+      "tier": 2,
+      "zips": [
+        "33629"
+      ]
+    },
+    "palma-ceia-commercial-district": {
+      "name": "Palma Ceia Commercial District",
+      "district": "palma-ceia",
+      "personality": "Local, independent and community-oriented. Small restaurants, professional offices and neighborhood businesses give it more of a traditional main-street personality than a shopping-center atmosphere.",
+      "vibes": [
+        "historic-walkable"
+      ],
+      "tier": 2,
+      "is_commercial": true,
+      "zips": [
+        "33629"
+      ]
+    },
+    "bayshore-beautiful": {
+      "name": "Bayshore Beautiful",
+      "district": "bayshore",
+      "personality": "Stately, calm and traditionally upscale. It feels closely connected to Bayshore Boulevard while remaining more residential than Hyde Park. The City describes it as containing some of Tampa's most elegant homes.",
+      "vibes": [
+        "quiet-prestige",
+        "large-lot-luxury"
+      ],
+      "tier": 1,
+      "zips": [
+        "33629"
+      ]
+    },
+    "ballast-point": {
+      "name": "Ballast Point",
+      "district": "bayshore",
+      "personality": "Laid-back, historic and waterfront-focused. Old Florida porches, newer construction, mature trees and Ballast Point Park give it a relaxed personality.",
+      "vibes": [
+        "relaxed-waterfront",
+        "old-florida"
+      ],
+      "tier": 1,
+      "zips": [
+        "33611"
+      ]
+    },
+    "fair-oaks-manhattan-manor": {
+      "name": "Fair Oaks-Manhattan Manor",
+      "district": "bayshore",
+      "personality": "Down-to-earth, neighborly and centrally located. It has a more modest, mid-century residential feel and less of the formal luxury atmosphere associated with northern South Tampa.",
+      "vibes": [
+        "approachable",
+        "classic-family"
+      ],
+      "tier": 2,
+      "zips": [
+        "33611"
+      ]
+    },
+    "belmar-gardens": {
+      "name": "Belmar Gardens",
+      "district": "bayshore",
+      "personality": "Small, quiet and low-key. It feels more like an everyday residential neighborhood than a recognizable lifestyle district.",
+      "vibes": [
+        "approachable"
+      ],
+      "tier": 2,
+      "zips": [
+        "33611"
+      ]
+    },
+    "bel-mar-shores": {
+      "name": "Bel Mar Shores",
+      "district": "bayshore",
+      "personality": "Waterfront-oriented, relaxed and varied. Canal homes and boating access give portions of it a coastal personality, while interior streets feel more traditionally suburban.",
+      "vibes": [
+        "relaxed-waterfront"
+      ],
+      "tier": 2,
+      "zips": [
+        "33611"
+      ]
+    },
+    "bayside-west": {
+      "name": "Bayside West",
+      "district": "bayshore",
+      "personality": "Practical, mixed-density and convenient. Condominiums, townhomes and single-family homes make it less visually uniform than Palma Ceia or Virginia Park.",
+      "vibes": [
+        "approachable"
+      ],
+      "tier": 2,
+      "zips": [
+        "33611"
+      ]
+    },
+    "interbay": {
+      "name": "Interbay",
+      "district": "bayshore",
+      "personality": "Evolving, unpretentious and strategically located. Residential streets mix with commercial and industrial edges, giving it a younger and more transitional personality.",
+      "vibes": [
+        "new-urbanizing",
+        "approachable"
+      ],
+      "tier": 2,
+      "zips": [
+        "33611"
+      ]
+    },
+    "interbay-south-of-gandy": {
+      "name": "Interbay-South of Gandy",
+      "district": "bayshore",
+      "personality": "Outdoorsy, convenient and increasingly residential. Access to Gadsden Park and the Greenway adds an active lifestyle component.",
+      "vibes": [
+        "new-urbanizing",
+        "approachable"
+      ],
+      "tier": 2,
+      "zips": [
+        "33611"
+      ]
+    },
+    "gandy-sun-bay-south": {
+      "name": "Gandy-Sun Bay South",
+      "district": "bayshore",
+      "personality": "Broad, varied and fast-changing. Older ranch homes, apartments, townhomes and new infill create several different personalities within one large area.",
+      "vibes": [
+        "new-urbanizing",
+        "approachable"
+      ],
+      "tier": 2,
+      "zips": [
+        "33611"
+      ]
+    },
+    "south-gandy": {
+      "name": "South Gandy",
+      "district": "bayshore",
+      "personality": "Urbanizing, convenient and development-heavy. It appeals more to people seeking newer apartments, townhomes and quick transportation access than historic architecture.",
+      "vibes": [
+        "new-urbanizing"
+      ],
+      "tier": 1,
+      "zips": [
+        "33611"
+      ]
+    },
+    "southtown-park": {
+      "name": "Southtown Park",
+      "district": "bayshore",
+      "personality": "Planned, newer and low-maintenance. It has more of an HOA or townhome-community personality than a traditional Tampa neighborhood.",
+      "vibes": [
+        "new-urbanizing"
+      ],
+      "tier": 2,
+      "zips": [
+        "33611"
+      ]
+    },
+    "rembrandt-gardens": {
+      "name": "Rembrandt Gardens",
+      "district": "bayshore",
+      "personality": "Quiet, modest and tucked away. It feels like a small residential subdivision within the larger South Gandy area.",
+      "vibes": [
+        "approachable"
+      ],
+      "tier": 2,
+      "zips": [
+        "33611"
+      ]
+    },
+    "rattlesnake": {
+      "name": "Rattlesnake",
+      "district": "bayshore",
+      "personality": "Casual, funky and unmistakably local. The informal name is commonly associated with the western Gandy area, marinas, boating and an older, slightly gritty version of South Tampa.",
+      "vibes": [
+        "old-florida",
+        "relaxed-waterfront"
+      ],
+      "tier": 2,
+      "zips": [
+        "33611"
+      ]
+    },
+    "macdill-air-force-base-area": {
+      "name": "MacDill Air Force Base Area",
+      "district": "bayshore",
+      "personality": "Military-centered, active and highly practical. It influences commuting patterns, businesses and the personality of many neighborhoods south of Gandy, but the base itself is not a conventional residential neighborhood.",
+      "vibes": [
+        "approachable"
+      ],
+      "tier": 2,
+      "is_commercial": true,
+      "zips": [
+        "33621"
+      ]
+    },
+    "beach-park": {
+      "name": "Beach Park",
+      "district": "western",
+      "personality": "Polished, spacious and car-oriented. Mature landscaping, larger lots and a mix of historic homes and luxury construction give it a private residential feeling close to Westshore and the airport.",
+      "vibes": [
+        "large-lot-luxury",
+        "quiet-prestige"
+      ],
+      "tier": 1,
+      "zips": [
+        "33609"
+      ]
+    },
+    "beach-park-isles": {
+      "name": "Beach Park Isles",
+      "district": "western",
+      "personality": "Private, boating-oriented and upscale. Canals and waterfront properties create more of a secluded coastal-suburb atmosphere than traditional Beach Park.",
+      "vibes": [
+        "private-waterfront",
+        "large-lot-luxury"
+      ],
+      "tier": 1,
+      "zips": [
+        "33629"
+      ]
+    },
+    "sunset-park": {
+      "name": "Sunset Park",
+      "district": "western",
+      "personality": "Leafy, spacious and quietly affluent. Mature trees, residential streets and Old Tampa Bay sunsets give it a peaceful, established personality.",
+      "vibes": [
+        "large-lot-luxury",
+        "quiet-prestige"
+      ],
+      "tier": 1,
+      "zips": [
+        "33629"
+      ]
+    },
+    "sunset-park-isles": {
+      "name": "Sunset Park Isles",
+      "district": "western",
+      "personality": "Secluded, waterfront and boating-focused. This is the more private, canal-oriented side of Sunset Park.",
+      "vibes": [
+        "private-waterfront"
+      ],
+      "tier": 2,
+      "zips": [
+        "33629"
+      ]
+    },
+    "culbreath-isles": {
+      "name": "Culbreath Isles",
+      "district": "western",
+      "personality": "Gated, exclusive and estate-like. Large waterfront homes, boating access and controlled entrances give it one of South Tampa's most private personalities.",
+      "vibes": [
+        "private-waterfront",
+        "large-lot-luxury"
+      ],
+      "tier": 1,
+      "zips": [
+        "33629"
+      ]
+    },
+    "culbreath-bayou": {
+      "name": "Culbreath Bayou",
+      "district": "western",
+      "personality": "Lush, secluded and waterfront-oriented. It feels slightly less formal than Culbreath Isles while still offering an established upscale atmosphere.",
+      "vibes": [
+        "private-waterfront",
+        "quiet-prestige"
+      ],
+      "tier": 2,
+      "zips": [
+        "33629"
+      ]
+    },
+    "south-westshore": {
+      "name": "South Westshore",
+      "district": "western",
+      "personality": "Relaxed, residential and slightly removed. It offers proximity to the water, MacDill and Gandy without the busy personality of Hyde Park or SoHo.",
+      "vibes": [
+        "approachable",
+        "relaxed-waterfront"
+      ],
+      "tier": 2,
+      "zips": [
+        "33616"
+      ]
+    },
+    "stoney-point": {
+      "name": "Stoney Point",
+      "district": "western",
+      "personality": "Private, coastal and enclave-like. It has a tucked-away waterfront personality that many residents outside South Tampa rarely encounter.",
+      "vibes": [
+        "private-waterfront"
+      ],
+      "tier": 2,
+      "zips": [
+        "33629"
+      ]
+    },
+    "westshore-marina-district": {
+      "name": "Westshore Marina District",
+      "district": "western",
+      "personality": "New, polished and resort-inspired. Apartments, condominiums, restaurants, walking areas and marina access create a master-planned waterfront lifestyle rather than an old neighborhood feeling.",
+      "vibes": [
+        "new-urbanizing",
+        "relaxed-waterfront"
+      ],
+      "tier": 1,
+      "zips": [
+        "33616"
+      ]
+    },
+    "port-tampa-city": {
+      "name": "Port Tampa City",
+      "district": "port-tampa",
+      "personality": "Historic, independent and Old Florida. It began as its own town and still feels geographically and culturally separate from central South Tampa. Picnic Island and its railroad and maritime history contribute to the small-town personality.",
+      "vibes": [
+        "old-florida",
+        "approachable"
+      ],
+      "tier": 1,
+      "zips": [
+        "33616"
+      ]
+    },
+    "port-tampa": {
+      "name": "Port Tampa",
+      "district": "port-tampa",
+      "personality": "The broader name people use for Port Tampa City and its surroundings. Casual, water-oriented, military-adjacent and less polished than northern South Tampa.",
+      "vibes": [
+        "old-florida",
+        "approachable"
+      ],
+      "tier": 2,
+      "zips": [
+        "33616"
+      ]
+    },
+    "picnic-island-area": {
+      "name": "Picnic Island Area",
+      "district": "port-tampa",
+      "personality": "Recreational, coastal and outdoorsy. It is more of a destination and geographic reference point than a formal residential neighborhood.",
+      "vibes": [
+        "old-florida",
+        "relaxed-waterfront"
+      ],
+      "tier": 2,
+      "is_commercial": true,
+      "zips": [
+        "33616"
+      ]
+    },
+    "north-hyde-park": {
+      "name": "North Hyde Park",
+      "district": "adjacent",
+      "personality": "Urban, transitional and development-driven, with older homes, former industrial buildings and substantial new construction.",
+      "vibes": [
+        "new-urbanizing"
+      ],
+      "tier": 2,
+      "zips": [
+        "33607"
+      ]
+    },
+    "westshore-palms": {
+      "name": "Westshore Palms",
+      "district": "adjacent",
+      "personality": "Convenient, apartment-friendly and business-district adjacent.",
+      "vibes": [
+        "new-urbanizing",
+        "approachable"
+      ],
+      "tier": 2,
+      "zips": [
+        "33607"
+      ]
+    },
+    "bon-air": {
+      "name": "Bon Air",
+      "district": "adjacent",
+      "personality": "Modest, central and residential, with easy access to Kennedy Boulevard and Westshore.",
+      "vibes": [
+        "approachable"
+      ],
+      "tier": 2,
+      "zips": [
+        "33609"
+      ]
+    },
+    "gray-gables": {
+      "name": "Gray Gables",
+      "district": "adjacent",
+      "personality": "Small, quiet and centrally located between several better-known neighborhoods.",
+      "vibes": [
+        "approachable"
+      ],
+      "tier": 2,
+      "zips": [
+        "33609"
+      ]
+    },
+    "oakford-park": {
+      "name": "Oakford Park",
+      "district": "adjacent",
+      "personality": "Urban-residential, varied and increasingly redeveloped.",
+      "vibes": [
+        "new-urbanizing",
+        "approachable"
+      ],
+      "tier": 2,
+      "zips": [
+        "33607"
+      ]
+    },
+    "westshore-business-district": {
+      "name": "Westshore Business District",
+      "district": "adjacent",
+      "personality": "Corporate, convenient and transportation-oriented. It is an employment and shopping district rather than a traditional neighborhood.",
+      "vibes": [
+        "new-urbanizing"
+      ],
+      "tier": 2,
+      "is_commercial": true,
+      "zips": [
+        "33607"
+      ]
+    }
+  }
+}

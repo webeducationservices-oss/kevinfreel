@@ -1,0 +1,67 @@
+name: Weekly Neighborhood Review
+
+# Drafts the next unreviewed South Tampa neighborhood with Claude, commits the
+# draft, and emails Kevin a link to the review form. His submitted answers are
+# merged back in with scripts/apply_neighborhood_review.py (run by a human, so
+# the corrections get read before they go live).
+
+on:
+  schedule:
+    # 13:00 UTC Tuesdays = 9 AM EDT / 8 AM EST
+    - cron: "0 13 * * 2"
+  workflow_dispatch:
+    inputs:
+      slug:
+        description: "Specific neighborhood slug (blank = next unreviewed)"
+        required: false
+        type: string
+
+permissions:
+  contents: write
+
+concurrency:
+  group: neighborhood-review
+  cancel-in-progress: false
+
+jobs:
+  review:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Check out repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install --quiet anthropic pydantic
+
+      - name: Draft and send
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+        run: |
+          if [ -n "${{ inputs.slug }}" ]; then
+            python scripts/email_neighborhood_review.py --slug "${{ inputs.slug }}"
+          else
+            python scripts/email_neighborhood_review.py
+          fi
+
+      - name: Commit the draft
+        if: success()
+        run: |
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+
+          if [ -n "$(git status --porcelain data/south-tampa-neighborhoods.json)" ]; then
+            git add data/south-tampa-neighborhoods.json
+            git commit -m "Draft neighborhood review for the week of $(date -u +%Y-%m-%d)"
+            git push origin HEAD:main
+            echo "Draft committed — the review form can now load it."
+          else
+            echo "No draft change to commit."
+          fi
