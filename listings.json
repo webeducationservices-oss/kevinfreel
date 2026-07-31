@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-30T11:55:00Z",
+  "updated_at": "2026-07-31T12:04:17Z",
   "count": 6,
   "listings": [
     {
@@ -75,8 +75,8 @@
       "city": "Tampa",
       "state": "FL",
       "zip": "33609",
-      "price_display": "$435,000",
-      "price": 435000,
+      "price_display": "$425,000",
+      "price": 425000,
       "beds": 2,
       "baths": 3,
       "sqft_or_acres": "1,360 sq. ft.",
