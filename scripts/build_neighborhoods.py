@@ -324,7 +324,7 @@ def build_catalog(data: dict, prices: dict) -> str:
             tags = "".join(
                 vibe_chip(vibes[v]) for v in n.get("vibes", []) if v in vibes
             )
-            has_page = n.get("tier") == 1
+            has_page = bool(n.get("draft") or n.get("kevin"))
             name_html = (
                 f'<a href="/neighborhoods/{slug}/">{esc(n["name"])}</a>'
                 if has_page
@@ -536,9 +536,9 @@ def build_detail(slug: str, n: dict, data: dict, prices: dict) -> str:
   .nb-mstat .v.pos{color:#2a6d3b}
   .nb-caveat{font-size:.8125rem;color:var(--text-light);line-height:1.6;margin:0}
 
-  .nb-pending{background:var(--bg-alt);border:1px dashed var(--border);border-radius:10px;padding:1.75rem;text-align:center}
-  .nb-pending h2{font-family:var(--font-serif);font-size:1.25rem;color:var(--navy);margin:0 0 .5rem;font-weight:600}
-  .nb-pending p{color:var(--text-muted);font-size:.9375rem;line-height:1.65;margin:0 0 1rem;max-width:56ch;margin-left:auto;margin-right:auto}
+  .nb-byline{font-size:.875rem;color:var(--text-muted);font-style:italic;margin:0;padding-top:.5rem;border-top:1px solid var(--border)}
+  .nb-byline-box{background:var(--bg-alt);border:1px dashed var(--border);border-radius:10px;padding:1.5rem 1.75rem;text-align:center}
+  .nb-byline-box p{color:var(--text-muted);font-size:.875rem;line-height:1.65;margin:0 auto 1.15rem;max-width:60ch}
 
   .nb-nearby{display:flex;flex-wrap:wrap;gap:.5rem}
   .nb-nearby a{font-size:.8125rem;font-weight:500;color:var(--navy);background:var(--bg-alt);border:1px solid var(--border);border-radius:999px;padding:.4rem .85rem;text-decoration:none;transition:all .18s}
@@ -592,50 +592,64 @@ def build_detail(slug: str, n: dict, data: dict, prices: dict) -> str:
       </section>
 """)
 
-    # Kevin's own words — ONLY if he has actually written them
-    if kevin.get("take"):
-        paras = "\n        ".join(
-            f"<p>{esc(p)}</p>" for p in kevin["take"].split("\n\n") if p.strip()
+    # Body copy. Kevin's reviewed words always win and carry his byline. The
+    # baseline framing publishes under neutral headings with NO byline, because
+    # attributing AI-written copy to a licensed agent would be dishonest.
+    draft = n.get("draft") or {}
+    reviewed = bool(kevin.get("take"))
+
+    def paras_of(text: str) -> str:
+        return "\n        ".join(
+            f"<p>{esc(p)}</p>" for p in text.split("\n\n") if p.strip()
         )
+
+    SECTIONS = [
+        # (key, heading when Kevin wrote it, heading for the baseline framing)
+        ("take", "Kevin&rsquo;s take", f"About {esc(n['name'])}"),
+        ("expect", "What to expect", "What to expect"),
+        ("investment", "The investment angle", "The investment angle"),
+    ]
+
+    for key, kevin_heading, neutral_heading in SECTIONS:
+        text = kevin.get(key) or draft.get(key)
+        if not text:
+            continue
+        is_kevin = bool(kevin.get(key))
         out.append(f"""      <section class="nb-section">
-        <h2>Kevin&rsquo;s take</h2>
-        {paras}
+        <h2>{kevin_heading if is_kevin else neutral_heading}</h2>
+        {paras_of(text)}
       </section>
 """)
 
-    if kevin.get("expect"):
-        paras = "\n        ".join(
-            f"<p>{esc(p)}</p>" for p in kevin["expect"].split("\n\n") if p.strip()
-        )
+    best = kevin.get("best_for") or draft.get("best_for")
+    if best:
         out.append(f"""      <section class="nb-section">
-        <h2>What to expect</h2>
-        {paras}
+        <div class="nbh-best-for"><strong>Best for:</strong> {esc(best)}</div>
       </section>
 """)
 
-    if kevin.get("investment"):
-        paras = "\n        ".join(
-            f"<p>{esc(p)}</p>" for p in kevin["investment"].split("\n\n") if p.strip()
-        )
-        out.append(f"""      <section class="nb-section">
-        <h2>The investment angle</h2>
-        {paras}
+    # Say plainly whose words these are. Kevin can review partially (he might
+    # rewrite the take but leave the market sections alone), so the byline must
+    # claim exactly what he actually wrote and no more.
+    narrative = ("take", "expect", "investment")
+    his = [k for k in narrative if kevin.get(k)]
+    theirs = [k for k in narrative if not kevin.get(k) and draft.get(k)]
+
+    if his and not theirs:
+        out.append("""      <section class="nb-section">
+        <p class="nb-byline">Written by Kevin Freel, selling South Tampa since 1985.</p>
       </section>
 """)
-
-    if kevin.get("best_for"):
-        out.append(f"""      <section class="nb-section">
-        <div class="nbh-best-for"><strong>Best for:</strong> {esc(kevin['best_for'])}</div>
+    elif his:
+        out.append("""      <section class="nb-section">
+        <p class="nb-byline">The sections above under Kevin&rsquo;s name are his own words. The rest is the guide&rsquo;s research summary, which he is still working through.</p>
       </section>
 """)
-
-    # Honest placeholder when Kevin hasn't written it up yet
-    if not kevin.get("take"):
+    else:
         out.append(f"""      <section class="nb-section">
-        <div class="nb-pending">
-          <h2>Kevin is writing this one up</h2>
-          <p>He adds a full neighborhood profile every week: the streets he would actually steer a buyer toward, what the insurance really runs, and where the value is hiding. {esc(n['name'])} is in the queue.</p>
-          <a href="/contact/" class="btn-primary">Ask him about {esc(n['name'])} now</a>
+        <div class="nb-byline-box">
+          <p>This profile is the guide&rsquo;s research summary, not Kevin&rsquo;s personal write-up. He is rewriting these one at a time in his own words, from forty years of actually selling these streets. {esc(n['name'])} is in the queue.</p>
+          <a href="/contact/" class="btn-primary">Ask Kevin about {esc(n['name'])}</a>
         </div>
       </section>
 """)
@@ -650,7 +664,7 @@ def build_detail(slug: str, n: dict, data: dict, prices: dict) -> str:
         links = "\n          ".join(
             (
                 f'<a href="/neighborhoods/{s}/">{esc(x["name"])}</a>'
-                if x.get("tier") == 1
+                if (x.get("draft") or x.get("kevin"))
                 else f'<a href="/south-tampa-neighborhoods/#{s}">{esc(x["name"])}</a>'
             )
             for s, x in siblings
@@ -732,8 +746,9 @@ def main():
         OUT_CATALOG.write_text(catalog)
     written.append(str(OUT_CATALOG.relative_to(ROOT)))
 
+    # Every neighborhood with published content gets its own page.
     for slug, n in data["neighborhoods"].items():
-        if n.get("tier") != 1:
+        if not (n.get("draft") or n.get("kevin")):
             continue
         page = build_detail(slug, n, data, prices)
         target = OUT_DIR / f"{slug}.html"

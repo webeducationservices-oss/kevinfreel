@@ -84,7 +84,7 @@
       <form id="revForm" hidden>
         <p class="rev-eyebrow">This week&rsquo;s neighborhood</p>
         <h1 id="revName">&nbsp;</h1>
-        <p class="rev-sub">Here&rsquo;s my draft, Kevin. Fix whatever I got wrong, add what I missed, and hit submit. Your words go on the page, not mine. Anything you leave blank just won&rsquo;t be published.</p>
+        <p class="rev-sub">This is what&rsquo;s live on the site right now, Kevin. It&rsquo;s a research summary, not your voice. Rewrite any section in your own words and it replaces the summary under your name. Anything you leave blank stays as-is.</p>
 
         <div class="rev-meta" id="revMeta"></div>
 
@@ -100,7 +100,7 @@
           <div class="rev-draft">
             <div class="rev-draft-lbl">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 100 20 10 10 0 000-20z"/><path d="M12 16v-4M12 8h.01"/></svg>
-              What I think. Replace or edit
+              Currently live. Rewrite in your voice
             </div>
             <div id="draftTake"></div>
           </div>
@@ -118,7 +118,7 @@
           <div class="rev-draft">
             <div class="rev-draft-lbl">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 100 20 10 10 0 000-20z"/><path d="M12 16v-4M12 8h.01"/></svg>
-              What I think. Replace or edit
+              Currently live. Rewrite in your voice
             </div>
             <div id="draftExpect"></div>
           </div>
@@ -136,7 +136,7 @@
           <div class="rev-draft">
             <div class="rev-draft-lbl">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 100 20 10 10 0 000-20z"/><path d="M12 16v-4M12 8h.01"/></svg>
-              What I think. Replace or edit
+              Currently live. Rewrite in your voice
             </div>
             <div id="draftInvestment"></div>
           </div>
@@ -154,7 +154,7 @@
           <div class="rev-draft">
             <div class="rev-draft-lbl">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 100 20 10 10 0 000-20z"/><path d="M12 16v-4M12 8h.01"/></svg>
-              What I think. Replace or edit
+              Currently live. Rewrite in your voice
             </div>
             <div id="draftBestFor"></div>
           </div>
@@ -209,7 +209,7 @@
       });
       if (!el.children.length) {
         var n = document.createElement('p');
-        n.textContent = 'No draft for this one — it is all yours.';
+        n.textContent = 'Nothing live for this one yet. It is all yours.';
         n.style.fontStyle = 'italic';
         el.appendChild(n);
       }
@@ -221,7 +221,7 @@
         var n = data.neighborhoods && data.neighborhoods[slug];
         if (!n) { loading.hidden = true; errBox.hidden = false; return; }
 
-        document.title = n.name + ' — Neighborhood Review';
+        document.title = n.name + ' | Neighborhood Review';
         document.getElementById('revName').textContent = n.name;
         document.getElementById('revPersonality').textContent = n.personality || '';
 
@@ -295,7 +295,7 @@
         _honey: form.querySelector('[name="_honey"]').value
       };
 
-      // reCAPTCHA v3 — components.js exposes this loader
+      // reCAPTCHA v3. components.js exposes this loader
       try {
         if (typeof waitForRecaptchaToken === 'function') {
           payload.recaptcha_token = await waitForRecaptchaToken('neighborhood_review');
