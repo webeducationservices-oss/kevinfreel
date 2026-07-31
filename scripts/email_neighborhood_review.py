@@ -26,9 +26,11 @@ the form is rendered on the public site — see scripts/build_neighborhoods.py.
 from __future__ import annotations
 
 import argparse
+import html
 import json
 import os
 import sys
+import urllib.error
 import urllib.request
 from pathlib import Path
 
@@ -41,6 +43,12 @@ PRICES = ROOT / "data" / "neighborhood-prices.json"
 SITE = "https://www.kevinfreel.com"
 FROM = "Kevin Freel Neighborhoods <forms@sitenotifications.org>"
 DEFAULT_TO = "kevinfreel@c21be.com"
+
+# Justin is CC'd on every send so the weekly email doubles as a heartbeat: if it
+# stops arriving, something broke. That only works if EVERY outcome produces an
+# email, so "all 52 done" and "the run failed" both notify him too. Silence
+# should only ever mean the machine was off.
+ADMIN = "justin@webeducationservices.com"
 
 MODEL = "claude-opus-5"
 
@@ -190,7 +198,8 @@ def draft_with_claude(slug: str, n: dict, data: dict, prices: dict) -> dict:
     return response.parsed_output.model_dump()
 
 
-def pick_next(data: dict, slug: str | None) -> tuple[str, dict]:
+def pick_next(data: dict, slug: str | None) -> tuple[str, dict] | None:
+    """Next neighborhood needing Kevin's voice, or None when all 52 are done."""
     nbhs = data["neighborhoods"]
     if slug:
         if slug not in nbhs:
@@ -202,29 +211,108 @@ def pick_next(data: dict, slug: str | None) -> tuple[str, dict]:
         for s, n in nbhs.items():
             if n.get("tier") == tier and not n.get("kevin"):
                 return s, n
-    raise SystemExit("Every neighborhood has Kevin's notes. Nothing to send.")
+    return None
 
 
-def send_email(to: str, slug: str, n: dict, draft: dict, remaining: int) -> None:
+def resend(payload: dict) -> str:
+    """
+    POST to Resend and return the message id.
+
+    The User-Agent is load-bearing: Resend sits behind Cloudflare, which 403s
+    the default "Python-urllib/3.x" agent. Identical payloads succeed from curl
+    and fail from urllib without it.
+    """
     key = os.environ.get("RESEND_API_KEY")
     if not key:
         raise SystemExit("RESEND_API_KEY not set")
+    req = urllib.request.Request(
+        "https://api.resend.com/emails",
+        data=json.dumps(payload).encode(),
+        headers={
+            "Authorization": f"Bearer {key}",
+            "Content-Type": "application/json",
+            "User-Agent": "KevinFreelRealEstate/1.0 (https://kevinfreel.com)",
+        },
+        method="POST",
+    )
+    try:
+        with urllib.request.urlopen(req, timeout=30) as r:
+            return json.loads(r.read()).get("id", "?")
+    except urllib.error.HTTPError as e:
+        # Surface Resend's actual message instead of a bare status code.
+        detail = e.read().decode(errors="replace")[:500]
+        raise RuntimeError(f"Resend {e.code}: {detail}") from None
 
-    link = f"{SITE}/neighborhood-review/?n={slug}"
-    preview = (draft.get("take") or "").split("\n\n")[0][:320]
 
-    html = f"""<!DOCTYPE html>
+def shell(title: str, body: str) -> str:
+    """Shared branded email wrapper."""
+    return f"""<!DOCTYPE html>
 <html><body style="margin:0;padding:0;background:#f5f5f5;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;">
   <div style="max-width:600px;margin:0 auto;padding:32px 24px;">
     <div style="border-bottom:3px solid #c41e2a;padding-bottom:14px;margin-bottom:28px;">
       <div style="font-size:20px;font-weight:700;letter-spacing:.5px;color:#111;">KEVIN <span style="color:#c41e2a;">FREEL</span></div>
-      <div style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#6b7280;margin-top:3px;">Neighborhood of the Week</div>
+      <div style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#6b7280;margin-top:3px;">{title}</div>
+    </div>
+{body}
+  </div>
+</body></html>"""
+
+
+def send_completion(to: str) -> None:
+    """
+    All 52 reviewed. Justin is CC'd on every weekly send and uses its absence as
+    a failure signal, so finishing has to announce itself. Otherwise "done"
+    looks exactly like "broken".
+    """
+    body = f"""    <h1 style="font-family:Georgia,serif;font-size:30px;line-height:1.2;color:#111;margin:0 0 16px;">All 52. Done.</h1>
+
+    <p style="font-size:15px;line-height:1.65;color:#4a4a4a;margin:0 0 20px;">
+      Kevin, you have now written up every single neighborhood in South Tampa in
+      your own words. Hyde Park to Port Tampa, Culbreath Isles to Rattlesnake.
+      Fifty-two of them.
+    </p>
+
+    <p style="font-size:15px;line-height:1.65;color:#4a4a4a;margin:0 0 20px;">
+      There is not another agent in Tampa with this. Most sites have a paragraph
+      about "South Tampa" and a stock photo. You have forty years of actually
+      selling these streets, written down, one neighborhood at a time.
+    </p>
+
+    <div style="background:#fff;border-left:3px solid #c41e2a;border-radius:0 6px 6px 0;padding:16px 20px;margin:0 0 24px;">
+      <p style="font-size:14px;line-height:1.65;color:#4a4a4a;margin:0;">
+        The weekly emails stop here. If you ever want to revise one, just say
+        which and Justin will send it back over.
+      </p>
     </div>
 
-    <h1 style="font-family:Georgia,serif;font-size:28px;line-height:1.2;color:#111;margin:0 0 14px;">{n['name']}</h1>
+    <a href="{SITE}/south-tampa-neighborhoods/" style="display:inline-block;background:#c41e2a;color:#fff;text-decoration:none;font-size:15px;font-weight:600;padding:14px 28px;border-radius:6px;">See the finished guide &rarr;</a>
+
+    <p style="font-size:13px;line-height:1.6;color:#9ca3af;margin:30px 0 0;padding-top:18px;border-top:1px solid #e5e7eb;">
+      Nicely done.
+    </p>"""
+
+    mid = resend({
+        "from": FROM,
+        "to": [to],
+        "cc": [ADMIN],
+        "reply_to": ADMIN,
+        "subject": "All 52 neighborhoods. You finished it.",
+        "html": shell("Guide Complete", body),
+    })
+    print(f"  completion email sent to {to} (cc {ADMIN}) [{mid}]")
+
+
+def send_email(to: str, slug: str, n: dict, draft: dict, remaining: int) -> None:
+
+    link = f"{SITE}/neighborhood-review/?n={slug}"
+    preview = (draft.get("take") or "").split("\n\n")[0][:320]
+
+    done = 52 - remaining
+    body = f"""    <h1 style="font-family:Georgia,serif;font-size:28px;line-height:1.2;color:#111;margin:0 0 14px;">{n['name']}</h1>
 
     <p style="font-size:15px;line-height:1.6;color:#4a4a4a;margin:0 0 22px;">
-      Kevin, I took a swing at writing up {n['name']}. Here's how my draft opens:
+      Kevin, this is what is live on the site for {n['name']} right now. It is a
+      research summary, not your voice. Here is how it opens:
     </p>
 
     <div style="background:#fff;border-left:3px solid #c41e2a;border-radius:0 6px 6px 0;padding:16px 20px;margin:0 0 24px;">
@@ -232,42 +320,27 @@ def send_email(to: str, slug: str, n: dict, draft: dict, remaining: int) -> None
     </div>
 
     <p style="font-size:15px;line-height:1.6;color:#4a4a4a;margin:0 0 26px;">
-      Tell me what I got wrong. Whatever you write replaces my draft word for word
-      on the page, so it ends up in your voice, not mine. Takes about five minutes.
+      Rewrite any of it in your own words and it goes up under your name instead,
+      with your byline on it. The stuff only you know: which streets actually
+      flood, who really buys there, what you would tell a friend. Five minutes.
     </p>
 
-    <a href="{link}" style="display:inline-block;background:#c41e2a;color:#fff;text-decoration:none;font-size:15px;font-weight:600;padding:14px 28px;border-radius:6px;">Review {n['name']} &rarr;</a>
+    <a href="{link}" style="display:inline-block;background:#c41e2a;color:#fff;text-decoration:none;font-size:15px;font-weight:600;padding:14px 28px;border-radius:6px;">Make {n['name']} yours &rarr;</a>
 
     <p style="font-size:13px;line-height:1.6;color:#9ca3af;margin:30px 0 0;padding-top:18px;border-top:1px solid #e5e7eb;">
-      {remaining} South Tampa {'neighborhood' if remaining == 1 else 'neighborhoods'} still waiting on your notes.
-      Every one you finish goes live at
+      {done} of 52 now in your voice. See them at
       <a href="{SITE}/south-tampa-neighborhoods/" style="color:#c41e2a;">kevinfreel.com/south-tampa-neighborhoods</a>.
-    </p>
-  </div>
-</body></html>"""
+    </p>"""
 
-    payload = json.dumps(
-        {
-            "from": FROM,
-            "to": [to],
-            "reply_to": "justin@webeducationservices.com",
-            "subject": f"Neighborhood of the week: {n['name']}",
-            "html": html,
-        }
-    ).encode()
-
-    req = urllib.request.Request(
-        "https://api.resend.com/emails",
-        data=payload,
-        headers={
-            "Authorization": f"Bearer {key}",
-            "Content-Type": "application/json",
-        },
-        method="POST",
-    )
-    with urllib.request.urlopen(req, timeout=30) as r:
-        body = json.loads(r.read())
-    print(f"  sent to {to} (resend id {body.get('id')})")
+    mid = resend({
+        "from": FROM,
+        "to": [to],
+        "cc": [ADMIN],
+        "reply_to": ADMIN,
+        "subject": f"Neighborhood of the week: {n['name']}",
+        "html": shell("Neighborhood of the Week", body),
+    })
+    print(f"  sent to {to} (cc {ADMIN}) [{mid}]")
 
 
 def draft_all(data: dict, prices: dict, *, force: bool = False, workers: int = 6) -> int:
@@ -327,31 +400,73 @@ def main() -> int:
     if args.all:
         return draft_all(data, prices, force=args.force, workers=args.workers)
 
-    slug, n = pick_next(data, args.slug)
-    remaining = sum(1 for x in data["neighborhoods"].values() if not x.get("kevin"))
-    print(f"Drafting {n['name']} ({slug}) — {remaining} still unreviewed")
+    to = os.environ.get("REVIEW_TO", DEFAULT_TO)
+    nxt = pick_next(data, args.slug)
 
-    draft = draft_with_claude(slug, n, data, prices)
-
-    print()
-    for k, v in draft.items():
-        print(f"  ── {k} ──")
-        for line in v.split("\n\n"):
-            print(f"     {line.strip()[:150]}")
-        print()
-
-    if args.dry_run:
-        print("(dry run — nothing saved, nothing sent)")
+    # Every neighborhood is in Kevin's voice. Congratulate him and stop.
+    if nxt is None:
+        print("All 52 reviewed.")
+        if args.dry_run:
+            print("(dry run: would send the completion email)")
+            return 0
+        send_completion(to)
         return 0
 
-    data["neighborhoods"][slug]["draft"] = draft
-    DATA.write_text(json.dumps(data, indent=2, ensure_ascii=False) + "\n")
-    print(f"  saved draft to {DATA.relative_to(ROOT)}")
+    slug, n = nxt
+    remaining = sum(1 for x in data["neighborhoods"].values() if not x.get("kevin"))
+    print(f"{n['name']} ({slug}) is next. {remaining} still in the guide's voice.")
 
-    send_email(os.environ.get("REVIEW_TO", DEFAULT_TO), slug, n, draft, remaining)
-    print("\nDone. Commit the updated data file so the review form can load the draft.")
+    # The framing already exists for all 52, so only draft when one is missing
+    # (a newly added neighborhood, or --force).
+    draft = n.get("draft")
+    if not draft:
+        print("  no framing yet, drafting one")
+        draft = draft_with_claude(slug, n, data, prices)
+        if args.dry_run:
+            print("(dry run: nothing saved, nothing sent)")
+            return 0
+        data["neighborhoods"][slug]["draft"] = draft
+        DATA.write_text(json.dumps(data, indent=2, ensure_ascii=False) + "\n")
+        print(f"  saved to {DATA.relative_to(ROOT)}")
+
+    if args.dry_run:
+        print(f"(dry run: would email {to}, cc {ADMIN})")
+        return 0
+
+    send_email(to, slug, n, draft, remaining)
     return 0
 
 
+def notify_failure(err: BaseException) -> None:
+    """
+    Justin treats the weekly email as a heartbeat, so a crash has to speak up.
+    Best effort: if this send also fails there is nothing left to do but exit
+    non-zero and let the log carry it.
+    """
+    try:
+        resend({
+            "from": FROM,
+            "to": [ADMIN],
+            "subject": "Neighborhood review run FAILED",
+            "html": shell(
+                "Automation Failure",
+                f"""    <h1 style="font-family:Georgia,serif;font-size:24px;color:#111;margin:0 0 14px;">The weekly run did not go out</h1>
+    <p style="font-size:15px;line-height:1.6;color:#4a4a4a;margin:0 0 18px;">Kevin did not get an email this week. The error was:</p>
+    <pre style="background:#fff;border-left:3px solid #c41e2a;padding:14px 18px;font-size:13px;line-height:1.5;color:#4a4a4a;overflow-x:auto;white-space:pre-wrap;">{html.escape(f'{type(err).__name__}: {err}')}</pre>
+    <p style="font-size:13px;color:#9ca3af;margin:22px 0 0;">Full log: ~/Library/Logs/kevinfreel-neighborhood-review.log</p>""",
+            ),
+        })
+        print("  failure notification sent to admin", file=sys.stderr)
+    except Exception as e:
+        print(f"  could not send failure notification: {e}", file=sys.stderr)
+
+
 if __name__ == "__main__":
-    sys.exit(main())
+    try:
+        sys.exit(main())
+    except SystemExit:
+        raise
+    except BaseException as exc:
+        print(f"FAILED: {type(exc).__name__}: {exc}", file=sys.stderr)
+        notify_failure(exc)
+        sys.exit(1)
