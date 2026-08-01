@@ -298,6 +298,19 @@
       margin-top: 1rem;
       line-height: 1.5;
     }
+    .q-submit-error {
+      margin-top: 1rem;
+      padding: 0.85rem 1rem;
+      border: 1px solid #c41e2a;
+      border-radius: 8px;
+      background: rgba(196, 30, 42, 0.06);
+      color: #a3161f;
+      font-size: 0.9375rem;
+      line-height: 1.5;
+      text-align: left;
+    }
+    .q-submit-error[hidden] { display: none; }
+    .q-submit-error a { color: #a3161f; font-weight: 700; }
 
     /* ── Success state ── */
     .form-success {
@@ -729,6 +742,7 @@
         <!-- ── Submit card ── -->
         <section class="q-card q-submit-card">
           <button type="submit" class="q-submit-btn" id="submit-btn">Send My Home to Kevin</button>
+          <p class="q-submit-error" id="submit-error" role="alert" aria-live="assertive" hidden></p>
           <p class="q-submit-fineprint">Kevin personally reviews every submission and will reach out within 1 business day.</p>
           <p class="q-recaptcha-attrib">
             Protected by reCAPTCHA.
@@ -798,9 +812,11 @@
         if (honey && honey.value) return;
 
         const btn = document.getElementById('submit-btn');
+        const errorBox = document.getElementById('submit-error');
         const originalText = btn.textContent;
         btn.disabled = true;
         btn.textContent = 'Sending...';
+        if (errorBox) { errorBox.hidden = true; errorBox.textContent = ''; }
 
         // Build payload — collect all fields including arrays for checkboxes
         const payload = { site_slug: 'kevin-freel', form_type: 'home-evaluation' };
@@ -816,25 +832,60 @@
         if (improvements.length) payload.improvements = improvements.join(', ');
         if (priorities.length) payload.priorities = priorities.join(', ');
 
-        // reCAPTCHA v3 token
+        // reCAPTCHA v3 token. Deliberately non-fatal AND time-capped: if the
+        // script is blocked by an ad blocker, or the site key is wrong,
+        // grecaptcha.ready/execute can hang forever and the visitor would sit
+        // on a dead button. We give it 8s, then post without a token.
+        // form-notify records that as `missing_recaptcha_token`, which is
+        // recoverable from the Spam tab. A hang loses the lead outright.
         try {
-          if (typeof grecaptcha !== 'undefined' && grecaptcha.execute) {
-            await new Promise((resolve) => grecaptcha.ready(resolve));
-            const token = await grecaptcha.execute(RECAPTCHA_SITE_KEY, { action: 'home_evaluation' });
-            payload.recaptcha_token = token;
+          if (typeof grecaptcha !== 'undefined' && grecaptcha.execute && grecaptcha.ready) {
+            const token = await Promise.race([
+              new Promise((resolve, reject) => {
+                try {
+                  grecaptcha.ready(function () {
+                    try {
+                      grecaptcha.execute(RECAPTCHA_SITE_KEY, { action: 'home_evaluation' })
+                        .then(resolve, reject);
+                    } catch (err) { reject(err); }
+                  });
+                } catch (err) { reject(err); }
+              }),
+              new Promise((resolve) => setTimeout(() => resolve(''), 8000))
+            ]);
+            if (typeof token === 'string') payload.recaptcha_token = token;
           }
         } catch (err) {
           console.error('reCAPTCHA error:', err);
         }
 
+        // The thank-you state is gated on the server actually accepting the
+        // lead. form-notify can answer 200 with { accepted: false }, so res.ok
+        // alone is not enough.
+        let accepted = false;
         try {
-          await fetch('https://myaieditor.com/api/form-notify', {
+          const res = await fetch('https://myaieditor.com/api/form-notify', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(payload)
           });
+          const json = await res.json().catch(() => ({}));
+          accepted = res.ok && json.success !== false && json.accepted !== false;
         } catch (err) {
           console.error('Form submit error:', err);
+        }
+
+        if (!accepted) {
+          // Do NOT fake a thank-you. Keep the answers on screen and give the
+          // visitor a real way to reach Kevin so the lead is not lost.
+          if (errorBox) {
+            errorBox.innerHTML = 'We couldn\'t send that just now. Your answers are still here, so please try again, or call Kevin directly at <a href="tel:7274108599">727-410-8599</a>.';
+            errorBox.hidden = false;
+            errorBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          }
+          btn.disabled = false;
+          btn.textContent = originalText;
+          return;
         }
 
         // Show thank-you

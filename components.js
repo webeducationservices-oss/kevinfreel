@@ -33,17 +33,34 @@ var RECAPTCHA_SITE_KEY = '6Lck8aQsAAAAALMA-T6nwfkSf7bv4K-mOhkszeKh';
 })();
 function waitForRecaptchaToken(action) {
   return new Promise(function (resolve) {
-    var deadline = Date.now() + 10000;
+    var settled = false;
+    function done(token) {
+      if (settled) return;
+      settled = true;
+      resolve(typeof token === 'string' ? token : '');
+    }
+    // Hard cap. If the reCAPTCHA script is blocked (ad blockers), the key is
+    // wrong, or grecaptcha.ready/execute never resolves, we MUST fall through
+    // and post without a token rather than leave the visitor on a dead button.
+    // form-notify records a tokenless post as `missing_recaptcha_token`, so the
+    // lead is still recoverable from the Spam tab. A hang loses it outright.
+    setTimeout(function () { done(''); }, 8000);
+    var deadline = Date.now() + 8000;
     function tryOnce() {
+      if (settled) return;
       if (typeof grecaptcha !== 'undefined' && grecaptcha.execute && grecaptcha.ready) {
-        grecaptcha.ready(function () {
-          grecaptcha.execute(RECAPTCHA_SITE_KEY, { action: action })
-            .then(resolve, function () { resolve(''); });
-        });
+        try {
+          grecaptcha.ready(function () {
+            try {
+              grecaptcha.execute(RECAPTCHA_SITE_KEY, { action: action })
+                .then(done, function () { done(''); });
+            } catch (err) { done(''); }
+          });
+        } catch (err) { done(''); }
       } else if (Date.now() < deadline) {
         setTimeout(tryOnce, 150);
       } else {
-        resolve('');
+        done('');
       }
     }
     tryOnce();
@@ -285,9 +302,12 @@ document.querySelectorAll('form[data-resource]').forEach(function (rForm) {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data)
       });
-      var json = await res.json().catch(function () { return { success: true }; });
+      // Never assume success. A non-2xx response, or a body we cannot parse,
+      // means the lead may not have been recorded, so show the fallback.
+      var json = await res.json().catch(function () { return {}; });
+      var accepted = res.ok && json.success !== false && json.accepted !== false;
 
-      if (json && json.success !== false && json.accepted !== false) {
+      if (accepted) {
         // GTM conversion event
         window.dataLayer = window.dataLayer || [];
         window.dataLayer.push({ event: 'form_submission', form_type: 'resource-' + slug, form_location: window.location.pathname });
@@ -314,13 +334,13 @@ document.querySelectorAll('form[data-resource]').forEach(function (rForm) {
         setTimeout(function () { btn.textContent = original; btn.disabled = false; }, 3500);
       } else {
         if (pdfTab) pdfTab.close();
-        if (status) { status.textContent = 'Something went wrong. Please call 727-410-8599.'; status.className = 'resource-status error'; }
+        if (status) { status.textContent = "We couldn't send that just now. Please call Kevin at 727-410-8599."; status.className = 'resource-status error'; }
         btn.disabled = false;
         btn.textContent = original;
       }
     } catch (err) {
       if (pdfTab) pdfTab.close();
-      if (status) { status.textContent = 'Something went wrong. Please call 727-410-8599.'; status.className = 'resource-status error'; }
+      if (status) { status.textContent = "We couldn't send that just now. Please call Kevin at 727-410-8599."; status.className = 'resource-status error'; }
       btn.disabled = false;
       btn.textContent = original;
     }
@@ -491,6 +511,7 @@ if (form) {
     e.preventDefault();
     var btn = form.querySelector('.form-submit');
     var status = document.getElementById('form-status');
+    var originalLabel = btn.textContent;
     btn.disabled = true;
     btn.textContent = 'Sending...';
     if (status) { status.textContent = ''; status.className = 'form-status'; }
@@ -507,18 +528,20 @@ if (form) {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data)
       });
-      var json = await res.json();
-      if (json.success) {
+      // Only redirect to the thank-you page once the server has actually
+      // accepted the lead. form-notify can return 200 with accepted:false.
+      var json = await res.json().catch(function () { return {}; });
+      if (res.ok && json.success !== false && json.accepted !== false) {
         window.location.href = '/thank-you/';
       } else {
-        if (status) { status.textContent = 'Something went wrong. Please call 727-410-8599.'; status.className = 'form-status error'; }
+        if (status) { status.textContent = "We couldn't send that just now. Please call Kevin at 727-410-8599."; status.className = 'form-status error'; }
         btn.disabled = false;
-        btn.textContent = 'Send Message';
+        btn.textContent = originalLabel;
       }
     } catch (err) {
-      if (status) { status.textContent = 'Something went wrong. Please call 727-410-8599.'; status.className = 'form-status error'; }
+      if (status) { status.textContent = "We couldn't send that just now. Please call Kevin at 727-410-8599."; status.className = 'form-status error'; }
       btn.disabled = false;
-      btn.textContent = 'Send Message';
+      btn.textContent = originalLabel;
     }
   });
 }

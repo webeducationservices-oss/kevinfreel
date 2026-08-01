@@ -23,6 +23,11 @@
   <link rel="stylesheet" href="/fonts/fonts.css">
   <link rel="stylesheet" href="/styles.css">
   <script src="/components.js" defer></script>
+  <!-- reCAPTCHA v3. components.js only auto-injects this for forms carrying
+       data-ajax / data-resource, and #revForm carries neither. Without this
+       tag waitForRecaptchaToken() times out and the review posts with NO
+       token, so form-notify buries it as missing_recaptcha_token. -->
+  <script src="https://www.google.com/recaptcha/api.js?render=6Lck8aQsAAAAALMA-T6nwfkSf7bv4K-mOhkszeKh" async defer></script>
 
   <style>
   .rev-wrap{max-width:780px;margin:0 auto;padding:7rem clamp(1.25rem,4vw,2rem) 5rem}
@@ -308,8 +313,10 @@
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(payload)
         });
-        var json = await res.json();
-        if (json.success) {
+        // form-notify can answer 200 with { accepted: false } (blocked), so
+        // res.ok alone is not proof the review was recorded.
+        var json = await res.json().catch(function () { return {}; });
+        if (res.ok && json.success !== false && json.accepted !== false) {
           form.hidden = true;
           doneBox.hidden = false;
           window.scrollTo({ top: 0, behavior: 'smooth' });

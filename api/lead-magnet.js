@@ -1,7 +1,7 @@
 /**
  * Kevin Freel — Lead Magnet API
  * -----------------------------
- * Vercel serverless Node.js function (ES modules, Node 20+). Handles all 6
+ * Vercel serverless Node.js function (ES modules, Node 20+). Handles all 7
  * lead-magnet form submissions on kevinfreel.com. For each submission it:
  *
  *   1. Forwards the lead to https://myaieditor.com/api/form-notify so Kevin
@@ -83,6 +83,14 @@ const MAGNET_CONFIG = {
   'investors-guide': {
     next: () => '/investor-guide',
     email: 'investors',
+  },
+  // Marketing playbook (marketing-plan.html). Email-only: there is no PDF
+  // asset for this one yet, so `next` is null and the emailed link points
+  // back at the full playbook page. Without this entry the form 400s with
+  // "Unknown form_type" and the lead is lost entirely.
+  'marketing-plan-pdf': {
+    next: () => null,
+    email: 'marketing',
   },
 };
 
@@ -284,12 +292,34 @@ function buildInvestorsGuideEmail(firstName) {
   };
 }
 
+function buildMarketingPlanEmail(firstName) {
+  const url = `${SITE_ORIGIN}/marketing-plan`;
+  const content = `
+    <h1 style="font-family:Georgia,serif;font-size:22px;margin:0 0 16px;color:#111;">Kevin's Marketing Playbook</h1>
+    <p style="margin:0 0 14px;">Hi ${firstName}, here's the full <strong>marketing playbook</strong> Kevin runs on every listing: professional photography, pricing strategy built on real comparable sales and days-on-market data, and the paid campaigns that put your home in front of Tampa Bay buyers.</p>
+    ${button('Open the Playbook →', url)}
+    <p style="margin:0 0 14px;">Every listing gets the full system. No shortcuts, no delegation.</p>
+    ${ABOUT_KEVIN}
+    ${STATS_BLOCK}
+    <p style="margin:0 0 8px;">Thinking about listing? Reply to this email or call <strong><a href="tel:+17274108599" style="color:#c41e2a;text-decoration:none;">727-410-8599</a></strong> and Kevin will walk you through it in person.</p>
+    <p style="margin:18px 0 0;">— Kevin Freel</p>
+  `;
+  return {
+    subject: `${firstName}, here's Kevin's marketing playbook`,
+    preheader: 'Photography, pricing strategy, and the ads Kevin runs on every listing.',
+    html: shell({ preheader: 'Photography, pricing strategy, and the ads Kevin runs on every listing.', content }),
+    pdfPath: null,
+    pdfFilename: null,
+  };
+}
+
 const TEMPLATE_BUILDERS = {
   buyers: buildBuyersGuideEmail,
   mortgage: buildMortgageRoadmapEmail,
   neighborhoods: buildNeighborhoodReportEmail,
   checklist: buildPrepChecklistEmail,
   investors: buildInvestorsGuideEmail,
+  marketing: buildMarketingPlanEmail,
 };
 
 // --- Helpers ---------------------------------------------------------------
