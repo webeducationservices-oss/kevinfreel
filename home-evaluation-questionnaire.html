@@ -859,6 +859,14 @@
           console.error('reCAPTCHA error:', err);
         }
 
+        // Traffic source. Spread LAST so a same-named form field can't clobber
+        // it. getSourceAttribution() lives in components.js.
+        try {
+          if (typeof getSourceAttribution === 'function') {
+            Object.assign(payload, getSourceAttribution());
+          }
+        } catch (err) { console.warn('source-attr:', err); }
+
         // The thank-you state is gated on the server actually accepting the
         // lead. form-notify can answer 200 with { accepted: false }, so res.ok
         // alone is not enough.
