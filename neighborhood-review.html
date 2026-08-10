@@ -45,17 +45,12 @@
   .rev-field{margin-bottom:2.25rem}
   .rev-field > label{display:block;font-family:var(--font-serif);font-size:1.25rem;color:var(--navy);font-weight:600;margin-bottom:.35rem}
   .rev-hint{font-size:.875rem;color:var(--text-muted);line-height:1.55;margin:0 0 .85rem;max-width:62ch}
-  .rev-draft{position:relative;background:#fbfaf7;border:1px solid var(--border);border-radius:8px 8px 0 0;padding:1rem 1.15rem;border-bottom:0}
-  .rev-draft-lbl{display:flex;align-items:center;gap:.4rem;font-size:.625rem;letter-spacing:.14em;text-transform:uppercase;color:#8a6d3b;font-weight:700;margin-bottom:.5rem}
-  .rev-draft-lbl svg{width:13px;height:13px}
-  .rev-draft p{margin:0 0 .65rem;color:var(--text-muted);font-size:.875rem;line-height:1.65}
-  .rev-draft p:last-child{margin-bottom:0}
-  .rev-actions{display:flex;gap:.5rem;padding:.6rem 1.15rem;background:#fbfaf7;border:1px solid var(--border);border-bottom:0;border-top:1px dashed #e5e0d5}
-  .rev-btn-sm{font-family:inherit;font-size:.75rem;font-weight:600;padding:.35rem .75rem;border-radius:5px;border:1px solid var(--border);background:var(--white);color:var(--text);cursor:pointer;transition:all .15s}
-  .rev-btn-sm:hover{border-color:var(--gold);color:var(--gold)}
-  .rev-btn-sm.good{border-color:#2a6d3b;color:#2a6d3b}
-  .rev-btn-sm.good:hover{background:#2a6d3b;color:#fff}
-  textarea.rev-input{width:100%;min-height:140px;padding:1rem 1.15rem;border:1px solid var(--border);border-radius:0 0 8px 8px;font-family:inherit;font-size:.9375rem;line-height:1.7;color:var(--text);resize:vertical;background:var(--white)}
+  .rev-current{background:#fbfaf7;border:1px solid var(--border);border-radius:10px;padding:1.35rem 1.6rem;margin-bottom:2.75rem;max-height:340px;overflow-y:auto}
+  .rev-current-lbl{font-size:.625rem;letter-spacing:.14em;text-transform:uppercase;color:#8a6d3b;font-weight:700;margin-bottom:.75rem}
+  .rev-current-h{font-size:.6875rem;letter-spacing:.1em;text-transform:uppercase;color:var(--text-light);font-weight:700;margin:1rem 0 .35rem}
+  .rev-current-h:first-of-type{margin-top:0}
+  .rev-current p{margin:0 0 .6rem;color:var(--text-muted);font-size:.875rem;line-height:1.65}
+  textarea.rev-input{width:100%;min-height:120px;padding:1rem 1.15rem;border:1px solid var(--border);border-radius:8px;font-family:inherit;font-size:.9375rem;line-height:1.7;color:var(--text);resize:vertical;background:var(--white)}
   textarea.rev-input:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 3px rgba(196,30,42,.1)}
   input.rev-input{width:100%;padding:.85rem 1.15rem;border:1px solid var(--border);border-radius:8px;font-family:inherit;font-size:.9375rem;color:var(--text)}
   input.rev-input:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 3px rgba(196,30,42,.1)}
@@ -89,7 +84,7 @@
       <form id="revForm" hidden>
         <p class="rev-eyebrow">This week&rsquo;s neighborhood</p>
         <h1 id="revName">&nbsp;</h1>
-        <p class="rev-sub">This is what&rsquo;s live on the site right now, Kevin. It&rsquo;s a research summary, not your voice. Rewrite any section in your own words and it replaces the summary under your name. Anything you leave blank stays as-is.</p>
+        <p class="rev-sub">Read what is live below, then tell us what you actually know, Kevin. <strong>Do not write prose.</strong> Bullet points, half sentences, whatever comes out. We turn your notes into the page and put your name on it. Answer only what you have something to say about.</p>
 
         <div class="rev-meta" id="revMeta"></div>
 
@@ -98,93 +93,43 @@
           <p id="revPersonality"></p>
         </div>
 
-        <!-- Kevin's take -->
-        <div class="rev-field">
-          <label for="take">Your honest take</label>
-          <p class="rev-hint">Who actually buys here, what it feels like on a Saturday morning, and the drawback you&rsquo;d tell a friend about. This is the section people read.</p>
-          <div class="rev-draft">
-            <div class="rev-draft-lbl">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 100 20 10 10 0 000-20z"/><path d="M12 16v-4M12 8h.01"/></svg>
-              Currently live. Rewrite in your voice
-            </div>
-            <div id="draftTake"></div>
-          </div>
-          <div class="rev-actions">
-            <button type="button" class="rev-btn-sm good" data-use="take">Use this as-is</button>
-            <button type="button" class="rev-btn-sm" data-clear="take">Start blank</button>
-          </div>
-          <textarea class="rev-input" id="take" name="take" placeholder="Type your version here…"></textarea>
+        <div class="rev-current">
+          <div class="rev-current-lbl">What is on the page right now</div>
+          <div id="liveCopy"></div>
         </div>
 
-        <!-- What to expect -->
         <div class="rev-field">
-          <label for="expect">What to expect</label>
-          <p class="rev-hint">Practical stuff: parking, flood zone and insurance reality, traffic, noise, schools, what the HOA is like, how long things sit.</p>
-          <div class="rev-draft">
-            <div class="rev-draft-lbl">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 100 20 10 10 0 000-20z"/><path d="M12 16v-4M12 8h.01"/></svg>
-              Currently live. Rewrite in your voice
-            </div>
-            <div id="draftExpect"></div>
-          </div>
-          <div class="rev-actions">
-            <button type="button" class="rev-btn-sm good" data-use="expect">Use this as-is</button>
-            <button type="button" class="rev-btn-sm" data-clear="expect">Start blank</button>
-          </div>
-          <textarea class="rev-input" id="expect" name="expect" placeholder="Type your version here…"></textarea>
+          <label for="wrong">What did we get wrong?</label>
+          <p class="rev-hint">Anything above that is inaccurate, out of date, or just not how people who live there would put it. Be blunt.</p>
+          <textarea class="rev-input solo" id="wrong" name="wrong" placeholder="e.g. Nobody calls it that. The flooding is mostly south of Morrison, not the whole area."></textarea>
         </div>
 
-        <!-- Investment -->
         <div class="rev-field">
-          <label for="investment">The investment angle</label>
-          <p class="rev-hint">Is it appreciating, flat, or overheated? Teardown territory? Good rental? Who&rsquo;s buying and why? What would you tell an investor to watch out for?</p>
-          <div class="rev-draft">
-            <div class="rev-draft-lbl">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 100 20 10 10 0 000-20z"/><path d="M12 16v-4M12 8h.01"/></svg>
-              Currently live. Rewrite in your voice
-            </div>
-            <div id="draftInvestment"></div>
-          </div>
-          <div class="rev-actions">
-            <button type="button" class="rev-btn-sm good" data-use="investment">Use this as-is</button>
-            <button type="button" class="rev-btn-sm" data-clear="investment">Start blank</button>
-          </div>
-          <textarea class="rev-input" id="investment" name="investment" placeholder="Type your version here…"></textarea>
+          <label for="missing">What are we missing?</label>
+          <p class="rev-hint">The things you know from actually selling there. Which streets are the good ones, what the insurance really runs, what buyers always ask you, what surprises people at closing.</p>
+          <textarea class="rev-input solo" id="missing" name="missing" placeholder="e.g. Everyone wants north of Bay to Bay. The 1950s ranches on the south end are teardowns now, going for lot value around..."></textarea>
         </div>
 
-        <!-- Best for -->
         <div class="rev-field">
-          <label for="best_for">Best for &hellip;</label>
-          <p class="rev-hint">One sentence. &ldquo;Buyers who want X without giving up Y.&rdquo;</p>
-          <div class="rev-draft">
-            <div class="rev-draft-lbl">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 100 20 10 10 0 000-20z"/><path d="M12 16v-4M12 8h.01"/></svg>
-              Currently live. Rewrite in your voice
-            </div>
-            <div id="draftBestFor"></div>
-          </div>
-          <div class="rev-actions">
-            <button type="button" class="rev-btn-sm good" data-use="best_for">Use this as-is</button>
-            <button type="button" class="rev-btn-sm" data-clear="best_for">Start blank</button>
-          </div>
-          <input type="text" class="rev-input" id="best_for" name="best_for" placeholder="Best for…">
+          <label for="buyers">Who actually buys here?</label>
+          <p class="rev-hint">And who ends up disappointed. This is the part no one can write without having done the showings.</p>
+          <textarea class="rev-input solo" id="buyers" name="buyers" placeholder="e.g. Young families trading up from Seminole Heights, and MacDill officers. Not a good fit for anyone who wants a big yard."></textarea>
         </div>
 
-        <!-- Corrections -->
         <div class="rev-field">
-          <label for="corrections">Anything I got flat-out wrong?</label>
-          <p class="rev-hint">Boundaries, ZIP, a name locals don&rsquo;t actually use, a fact that&rsquo;s out of date. Tell me and I&rsquo;ll fix the data, not just the copy.</p>
-          <textarea class="rev-input" id="corrections" name="corrections" style="border-radius:8px;min-height:100px" placeholder="Optional…"></textarea>
+          <label for="guidance">Anything else</label>
+          <p class="rev-hint">A story, a comp you remember, how you would change the page, or what you would tell a friend over coffee.</p>
+          <textarea class="rev-input solo" id="guidance" name="guidance" placeholder="Optional"></textarea>
         </div>
 
         <input class="hp-field" type="text" name="_honey" tabindex="-1" autocomplete="off">
-        <button type="submit" class="rev-submit" id="revSubmit">Send it to Justin</button>
+        <button type="submit" class="rev-submit" id="revSubmit">Send my notes</button>
         <div class="rev-status" id="revStatus" aria-live="polite"></div>
       </form>
 
       <div id="revDone" class="rev-done" hidden>
         <h2>Got it. Thanks, Kevin.</h2>
-        <p>Your notes are on their way to Justin. The neighborhood page will go live with your words on it, usually within a day.</p>
+        <p>Your notes are on their way. We will work them into the page and put it up under your name, usually within a day.</p>
         <a href="/south-tampa-neighborhoods/" class="btn-primary">See the neighborhood guide</a>
       </div>
 
@@ -201,24 +146,6 @@
     var doneBox = document.getElementById('revDone');
 
     if (!slug) { loading.hidden = true; errBox.hidden = false; return; }
-
-    var DRAFTS = {};
-
-    function paras(el, text) {
-      el.innerHTML = '';
-      (text || '').split('\n\n').forEach(function (p) {
-        if (!p.trim()) return;
-        var n = document.createElement('p');
-        n.textContent = p.trim();
-        el.appendChild(n);
-      });
-      if (!el.children.length) {
-        var n = document.createElement('p');
-        n.textContent = 'Nothing live for this one yet. It is all yours.';
-        n.style.fontStyle = 'italic';
-        el.appendChild(n);
-      }
-    }
 
     fetch('/data/south-tampa-neighborhoods.json')
       .then(function (r) { return r.json(); })
@@ -247,33 +174,43 @@
           meta.appendChild(s);
         });
 
-        DRAFTS = n.draft || {};
-        paras(document.getElementById('draftTake'), DRAFTS.take);
-        paras(document.getElementById('draftExpect'), DRAFTS.expect);
-        paras(document.getElementById('draftInvestment'), DRAFTS.investment);
-        paras(document.getElementById('draftBestFor'), DRAFTS.best_for);
+        // Show what is currently published so Kevin is reacting to something
+        // concrete rather than recalling the neighborhood cold.
+        var live = document.getElementById('liveCopy');
+        var d = n.kevin || n.draft || {};
+        var SECTIONS = [
+          ['take', 'Overview'],
+          ['expect', 'What to expect'],
+          ['investment', 'The investment angle'],
+          ['best_for', 'Best for']
+        ];
+        var wrote = false;
+        SECTIONS.forEach(function (pair) {
+          var text = d[pair[0]];
+          if (!text) return;
+          wrote = true;
+          var h = document.createElement('div');
+          h.className = 'rev-current-h';
+          h.textContent = pair[1];
+          live.appendChild(h);
+          text.split('\n\n').forEach(function (para) {
+            if (!para.trim()) return;
+            var el = document.createElement('p');
+            el.textContent = para.trim();
+            live.appendChild(el);
+          });
+        });
+        if (!wrote) {
+          var none = document.createElement('p');
+          none.textContent = 'Nothing published for this one yet.';
+          none.style.fontStyle = 'italic';
+          live.appendChild(none);
+        }
 
         loading.hidden = true;
         form.hidden = false;
       })
       .catch(function () { loading.hidden = true; errBox.hidden = false; });
-
-    // Use-as-is / start-blank
-    document.addEventListener('click', function (e) {
-      var use = e.target.closest('[data-use]');
-      if (use) {
-        var k = use.getAttribute('data-use');
-        var el = document.getElementById(k);
-        if (el) { el.value = DRAFTS[k] || ''; el.focus(); }
-        return;
-      }
-      var clr = e.target.closest('[data-clear]');
-      if (clr) {
-        var k2 = clr.getAttribute('data-clear');
-        var el2 = document.getElementById(k2);
-        if (el2) { el2.value = ''; el2.focus(); }
-      }
-    });
 
     form.addEventListener('submit', async function (e) {
       e.preventDefault();
@@ -292,11 +229,10 @@
         first_name: 'Kevin',
         last_name: 'Freel',
         email: 'kevinfreel@c21be.com',
-        take: document.getElementById('take').value,
-        expect: document.getElementById('expect').value,
-        investment: document.getElementById('investment').value,
-        best_for: document.getElementById('best_for').value,
-        corrections: document.getElementById('corrections').value,
+        wrong: document.getElementById('wrong').value,
+        missing: document.getElementById('missing').value,
+        buyers: document.getElementById('buyers').value,
+        guidance: document.getElementById('guidance').value,
         _honey: form.querySelector('[name="_honey"]').value
       };
 

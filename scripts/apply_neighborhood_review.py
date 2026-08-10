@@ -1,21 +1,26 @@
 #!/usr/bin/env python3
 """
-apply_neighborhood_review.py — Merge Kevin's submitted review into the data file.
+apply_neighborhood_review.py — Read Kevin's notes on a neighborhood.
 
-Reads pending `neighborhood-review` submissions from the shared Supabase `leads`
-table, writes them into data/south-tampa-neighborhoods.json under the
-neighborhood's `kevin` key, and marks each lead applied so it isn't reapplied.
+Kevin sends NOTES, not finished copy: corrections, the things only he knows from
+selling there, who really buys. This surfaces them so they can be written up
+into the page. It deliberately does NOT paste his notes onto the site, because
+they arrive as fragments and bullet points.
 
-    python3 scripts/apply_neighborhood_review.py            # list what's pending
-    python3 scripts/apply_neighborhood_review.py --apply    # merge them in
-    python3 scripts/apply_neighborhood_review.py --apply --slug palma-ceia
+    python3 scripts/apply_neighborhood_review.py             # read pending notes
+    python3 scripts/apply_neighborhood_review.py --slug soho # just one
+    python3 scripts/apply_neighborhood_review.py --done soho # mark handled
 
-Then rebuild and deploy:
+The flow:
+    1. Run this to read what he sent.
+    2. Write his knowledge into that neighborhood's `kevin` block in
+       data/south-tampa-neighborhoods.json (take / expect / investment /
+       best_for), in his voice, using his facts.
+    3. python3 scripts/build_neighborhoods.py
+    4. Mark it handled with --done <slug>, then commit and push.
 
-    python3 scripts/build_neighborhoods.py && git add -A && git commit && git push
-
-Only the fields Kevin actually filled in are written. A blank field is left
-absent, which means that section simply doesn't render — see build_neighborhoods.py.
+The page then renders those sections under "Kevin's take" with his byline. That
+is honest: the expertise, the claims and the local knowledge are his.
 """
 from __future__ import annotations
 
@@ -33,7 +38,15 @@ DATA = ROOT / "data" / "south-tampa-neighborhoods.json"
 SUPABASE = "https://sqeegvibwqkiugiwomqd.supabase.co"
 SITE_ID = "e52c801e-cbb7-41a2-ab62-090a210572d4"  # kevin-freel
 
-FIELDS = ("take", "expect", "investment", "best_for")
+NOTE_FIELDS = ("wrong", "missing", "buyers", "guidance")
+PAGE_FIELDS = ("take", "expect", "investment", "best_for")
+
+PROMPTS = {
+    "wrong": "What we got wrong",
+    "missing": "What we were missing",
+    "buyers": "Who actually buys here",
+    "guidance": "Anything else",
+}
 
 
 def service_key() -> str:
@@ -79,8 +92,9 @@ def fetch_reviews() -> list[dict]:
 
 def main() -> int:
     ap = argparse.ArgumentParser()
-    ap.add_argument("--apply", action="store_true", help="write the changes")
-    ap.add_argument("--slug", help="only apply this neighborhood")
+    ap.add_argument("--slug", help="only this neighborhood")
+    ap.add_argument("--done", metavar="SLUG",
+                    help="mark this neighborhood's notes as handled")
     args = ap.parse_args()
 
     data = json.loads(DATA.read_text())
@@ -92,17 +106,30 @@ def main() -> int:
         slug = raw.get("neighborhood_slug")
         if not slug or slug not in data["neighborhoods"]:
             continue
-        if args.slug and slug != args.slug:
-            continue
-        if (row.get("notes") or "").startswith("applied:"):
+        if (row.get("notes") or "").startswith("handled:"):
             continue
         pending.append((row, slug, raw))
 
-    if not pending:
-        print("Nothing pending.")
+    if args.done:
+        marked = 0
+        for row, slug, _ in pending:
+            if slug != args.done:
+                continue
+            api(f"leads?id=eq.{row['id']}", method="PATCH",
+                body={"notes": f"handled:{slug}", "status": "won"})
+            marked += 1
+        print(f"Marked {marked} submission(s) handled for {args.done}."
+              if marked else f"Nothing pending for {args.done}.")
         return 0
 
-    # Newest submission per neighborhood wins.
+    if args.slug:
+        pending = [x for x in pending if x[1] == args.slug]
+
+    if not pending:
+        print("No notes waiting.")
+        return 0
+
+    # Newest per neighborhood wins.
     seen: set[str] = set()
     latest = []
     for row, slug, raw in pending:
@@ -111,41 +138,30 @@ def main() -> int:
         seen.add(slug)
         latest.append((row, slug, raw))
 
-    print(f"{len(latest)} review(s) pending:\n")
+    print(f"{len(latest)} neighborhood(s) with notes from Kevin\n")
     for row, slug, raw in latest:
         n = data["neighborhoods"][slug]
-        filled = [f for f in FIELDS if (raw.get(f) or "").strip()]
-        print(f"  {n['name']}  ({row['created_at'][:10]})")
-        print(f"    fields: {', '.join(filled) if filled else '(none — nothing to publish)'}")
-        if (raw.get("corrections") or "").strip():
-            print(f"    ⚠ corrections: {raw['corrections'].strip()[:200]}")
+        print("=" * 72)
+        print(f"{n['name']}   ({slug})   submitted {row['created_at'][:16]}")
+        print("=" * 72)
+        said_something = False
+        for f in NOTE_FIELDS:
+            v = (raw.get(f) or "").strip()
+            if not v:
+                continue
+            said_something = True
+            print(f"\n  ── {PROMPTS[f]} ──")
+            for line in v.splitlines():
+                print(f"     {line}")
+        if not said_something:
+            print("\n  (submitted with every field blank)")
         print()
-
-    if not args.apply:
-        print("Re-run with --apply to write these in.")
-        return 0
-
-    applied = 0
-    for row, slug, raw in latest:
-        kevin = {f: raw[f].strip() for f in FIELDS if (raw.get(f) or "").strip()}
-        if not kevin:
-            print(f"  skipped {slug}: every field blank")
-            continue
-        data["neighborhoods"][slug]["kevin"] = kevin
-        # Once Kevin has written it up, it deserves its own page.
-        data["neighborhoods"][slug]["tier"] = 1
-        api(
-            f"leads?id=eq.{row['id']}",
-            method="PATCH",
-            body={"notes": f"applied:{slug}", "status": "won"},
-        )
-        print(f"  applied {data['neighborhoods'][slug]['name']} ({len(kevin)} field(s))")
-        applied += 1
-
-    if applied:
-        DATA.write_text(json.dumps(data, indent=2, ensure_ascii=False) + "\n")
-        print(f"\nWrote {DATA.relative_to(ROOT)}")
-        print("Next: python3 scripts/build_neighborhoods.py && git add -A && git commit && git push")
+        print(f"  Currently published: {'Kevin' if n.get('kevin') else 'baseline framing'}")
+        print(f"  Write into: data/south-tampa-neighborhoods.json -> "
+              f"neighborhoods.{slug}.kevin")
+        print(f"  Then: python3 scripts/build_neighborhoods.py && "
+              f"python3 scripts/apply_neighborhood_review.py --done {slug}")
+        print()
     return 0
 
 

@@ -2,26 +2,28 @@
 """
 email_neighborhood_review.py — The weekly loop.
 
-Picks the next South Tampa neighborhood Kevin hasn't written up, drafts a take
-with Claude, saves that draft into data/south-tampa-neighborhoods.json, and
-emails Kevin a link to the review form.
+Emails Kevin the next South Tampa neighborhood he hasn't weighed in on yet,
+linking to /neighborhood-review/?n=<slug>.
 
-Kevin edits the draft at /neighborhood-review/?n=<slug> and submits. His answers
-land in Supabase `leads` as form_type `neighborhood-review`, and
-scripts/apply_neighborhood_review.py merges them back in as the published copy.
+Kevin sends NOTES, not finished copy: what we got wrong, what we're missing, who
+actually buys there. Those land in Supabase `leads` as form_type
+`neighborhood-review`. Read them with scripts/apply_neighborhood_review.py, write
+his knowledge into the neighborhood's `kevin` block, and rebuild. The page then
+carries his byline, because the expertise in it is genuinely his.
 
-    python3 scripts/email_neighborhood_review.py            # draft + send
-    python3 scripts/email_neighborhood_review.py --dry-run  # draft + print, no email
+    python3 scripts/email_neighborhood_review.py            # send this week's
+    python3 scripts/email_neighborhood_review.py --dry-run  # print, send nothing
     python3 scripts/email_neighborhood_review.py --slug palma-ceia
+    python3 scripts/email_neighborhood_review.py --all      # backfill framing
 
 Environment:
-    ANTHROPIC_API_KEY   drafting
+    ANTHROPIC_API_KEY   drafting the baseline framing (--all, or a new
+                        neighborhood with none yet)
     RESEND_API_KEY      delivery
     REVIEW_TO           override recipient (default kevinfreel@c21be.com)
 
-IMPORTANT: the draft this writes is never published as-is. It exists so Kevin has
-something to react to instead of a blank page. Only text Kevin submits through
-the form is rendered on the public site — see scripts/build_neighborhoods.py.
+Scheduled weekly by launchd. See scripts/launchd/README.md, and note the macOS
+Full Disk Access gotcha documented there.
 """
 from __future__ import annotations
 
@@ -55,8 +57,9 @@ MODEL = "claude-opus-5"
 
 class NeighborhoodDraft(BaseModel):
     """
-    The baseline framing that publishes immediately, and that Kevin later
-    rewrites in his own voice through the weekly review form.
+    The baseline framing that publishes immediately, under neutral headings and
+    with no byline. Kevin's notes later get written up into a `kevin` block that
+    supersedes it and carries his name.
     """
 
     take: str = Field(
@@ -91,8 +94,8 @@ class NeighborhoodDraft(BaseModel):
 SYSTEM = """You write neighborhood framing for a South Tampa real estate guide. This \
 copy publishes immediately as the site's baseline description, so it must be \
 accurate and defensible on a licensed agent's website. Kevin Freel, who has sold \
-here since 1985, later rewrites each one in his own first-person voice; your job is \
-to make the page genuinely useful before he gets to it.
+here since 1985, later sends notes that get written up over the top of it; your \
+job is to make the page genuinely useful before that happens.
 
 VOICE: neutral, editorial, third person. This is the guide speaking, not Kevin. \
 Never write "I", "me", "my", and never attribute an opinion to Kevin. Write "the \
@@ -311,24 +314,30 @@ def send_email(to: str, slug: str, n: dict, draft: dict, remaining: int) -> None
     body = f"""    <h1 style="font-family:Georgia,serif;font-size:28px;line-height:1.2;color:#111;margin:0 0 14px;">{n['name']}</h1>
 
     <p style="font-size:15px;line-height:1.6;color:#4a4a4a;margin:0 0 22px;">
-      Kevin, this is what is live on the site for {n['name']} right now. It is a
-      research summary, not your voice. Here is how it opens:
+      Kevin, this is what is live on the site for {n['name']} right now. Here is
+      how it opens:
     </p>
 
     <div style="background:#fff;border-left:3px solid #c41e2a;border-radius:0 6px 6px 0;padding:16px 20px;margin:0 0 24px;">
       <p style="font-size:14px;line-height:1.65;color:#4a4a4a;margin:0;font-style:italic;">{preview}&hellip;</p>
     </div>
 
-    <p style="font-size:15px;line-height:1.6;color:#4a4a4a;margin:0 0 26px;">
-      Rewrite any of it in your own words and it goes up under your name instead,
-      with your byline on it. The stuff only you know: which streets actually
-      flood, who really buys there, what you would tell a friend. Five minutes.
+    <p style="font-size:15px;line-height:1.6;color:#4a4a4a;margin:0 0 18px;">
+      Tell us what we got wrong and what we are missing. Which streets are the
+      good ones, what the insurance really runs, who actually buys there, who
+      ends up disappointed. The things you only know from doing the showings.
     </p>
 
-    <a href="{link}" style="display:inline-block;background:#c41e2a;color:#fff;text-decoration:none;font-size:15px;font-weight:600;padding:14px 28px;border-radius:6px;">Make {n['name']} yours &rarr;</a>
+    <p style="font-size:15px;line-height:1.6;color:#4a4a4a;margin:0 0 26px;">
+      <strong>Do not write it up.</strong> Bullet points and half sentences are
+      perfect. We will turn your notes into the page and put your name on it.
+      Five minutes, and you can talk it into your phone if that is easier.
+    </p>
+
+    <a href="{link}" style="display:inline-block;background:#c41e2a;color:#fff;text-decoration:none;font-size:15px;font-weight:600;padding:14px 28px;border-radius:6px;">Send notes on {n['name']} &rarr;</a>
 
     <p style="font-size:13px;line-height:1.6;color:#9ca3af;margin:30px 0 0;padding-top:18px;border-top:1px solid #e5e7eb;">
-      {done} of 52 now in your voice. See them at
+      {done} of 52 done so far. See them at
       <a href="{SITE}/south-tampa-neighborhoods/" style="color:#c41e2a;">kevinfreel.com/south-tampa-neighborhoods</a>.
     </p>"""
 
