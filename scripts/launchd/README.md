@@ -23,6 +23,17 @@ Two fixes, both needed:
    System Settings > Privacy & Security > Full Disk Access > `+` > Cmd-Shift-G >
    `/bin/bash`. This is the part a human has to do; it cannot be scripted.
 
+3. **TCC is granted per BINARY, and children do NOT inherit it.** Granting bash
+   FDA got bash into the repo, and then python died with the same
+   "Operation not permitted" opening its own `.py` file. Granting the Homebrew
+   python FDA too would work but its path is version-pinned
+   (`.../python@3.14/3.14.5/...`), so a `brew upgrade` would silently break the
+   job again. Instead `run_neighborhood_review.sh` has bash do every Desktop
+   read and write, stages the three files python needs into
+   `~/Library/Application Support/WES/stage` (not TCC-protected), and runs
+   python there. Keys are sourced by bash and inherited via the environment, so
+   the keys file is never copied out of the Desktop.
+
 Then verify:
 
     launchctl kickstart -k gui/$(id -u)/com.wes.kevinfreel-neighborhood-review
