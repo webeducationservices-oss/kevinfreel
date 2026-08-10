@@ -3169,6 +3169,21 @@ ul { list-style: none; }
   .mp-award-card .mp-award-badge { margin: 0 auto; }
 }
 
+/* Ten nav items plus the phone CTA do not fit at laptop widths with the full
+   2rem gap: at 1024px the bar ran 103px past the viewport. Tighten the spacing
+   between the mobile breakpoint and 1200px rather than dropping a link. */
+@media (max-width: 1200px) {
+  .nav-links { gap: 1rem; }
+  .nav-cta { padding: 0.6rem 1rem; }
+}
+/* Below 960px even the tightened bar clips, so hand off to the hamburger here
+   rather than at 768px. That band was already clipping with nine items; a clean
+   drawer beats a cut-off nav. */
+@media (max-width: 960px) {
+  .nav-links { display: none; }
+  #menu-btn { display: flex; }
+}
+
 @media (max-width: 768px) {
   .nav-links { display: none; }
   #menu-btn { display: flex; }
