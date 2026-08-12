@@ -668,6 +668,12 @@ def optimize_photo(mls: str, photo_url: str) -> tuple[Path | None, Path | None]:
 # time anyone noticed they were missing the Listings and Neighborhoods links and
 # still used pre-trailingSlash hrefs, and because this script runs DAILY it kept
 # reintroducing them into listings/index.html after every fix.
+#
+# The generated page wraps both partials in BEGIN_/END_ markers, exactly as
+# build_neighborhoods.py does. Without them, the next build_partials.py run
+# would fall back to its legacy regex, which stops at the FIRST </div> inside
+# the mobile menu. That was harmless when the drawer was a flat list of links;
+# the accordion groups nest divs, so the fallback would now shred the page.
 def _partial(name: str) -> str:
     f = Path(__file__).resolve().parent.parent / "partials" / f"{name}.html"
     try:
@@ -813,7 +819,9 @@ def render_listings_page(listings: list[dict[str, Any]], updated_at: str) -> str
 </head>
 <body>
 
+  <!-- BEGIN_NAV -->
 {NAV_HTML}
+  <!-- END_NAV -->
   <main>
 
     <!-- ── PAGE HERO ── -->
@@ -848,7 +856,9 @@ def render_listings_page(listings: list[dict[str, Any]], updated_at: str) -> str
 
   </main>
 
+  <!-- BEGIN_FOOTER -->
 {FOOTER_HTML}
+  <!-- END_FOOTER -->
 </body>
 </html>
 """

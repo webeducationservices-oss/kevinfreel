@@ -123,6 +123,7 @@ ul { list-style: none; }
   gap: 2rem;
   align-items: center;
 }
+.nav-links > li { display: flex; align-items: center; }
 .nav-links a {
   font-size: 0.875rem;
   font-weight: 500;
@@ -131,6 +132,18 @@ ul { list-style: none; }
   letter-spacing: 0.02em;
 }
 .nav-links a:hover { color: var(--gold); }
+
+/* Keyboard focus. White on the dark bar so the ring is always visible;
+   the red accent does not carry enough contrast against near-black. */
+.nav-links > li > a:focus-visible,
+.nav-trigger:focus-visible,
+#menu-btn:focus-visible,
+.nav-logo:focus-visible {
+  outline: 2px solid var(--white);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
 .nav-cta {
   display: inline-flex;
   align-items: center;
@@ -146,6 +159,205 @@ ul { list-style: none; }
 }
 .nav-cta:hover { background: var(--gold-hover); color: var(--navy) !important; }
 .nav-cta svg { width: 16px; height: 16px; }
+
+/* ────────────────────────────────────
+   MEGA MENU (desktop jumbo nav)
+   Panels hang from the right edge of .nav-inner, so they sit under the link
+   cluster instead of drifting to the middle of a 1920 screen. That means
+   .nav-inner is the containing block: leave .nav-item unpositioned or the
+   panel will re-anchor to the trigger and can then run off screen.
+──────────────────────────────────── */
+.nav-inner { position: relative; }
+.nav-item.has-mega { position: static; }
+
+.nav-trigger {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-family: inherit;
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: rgba(255,255,255,0.8);
+  padding: 0;
+  transition: color 0.25s;
+}
+.nav-item.has-mega:hover > .nav-trigger,
+.nav-trigger:hover,
+.nav-item.has-mega.open > .nav-trigger { color: var(--gold); }
+
+.nav-caret {
+  width: 12px;
+  height: 12px;
+  transition: transform 0.25s ease;
+}
+.nav-item.has-mega:hover .nav-caret,
+.nav-item.has-mega.open .nav-caret { transform: rotate(180deg); }
+
+/* Hover bridge. Fills the dead gap between the trigger row and the panel so
+   the menu does not snap shut while the cursor travels down to it. It only
+   exists while the item is open, and it sits below the trigger row, so it can
+   never swallow clicks on a sibling link. */
+.nav-trigger::before {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: -2.5rem;
+  right: -2.5rem;
+  height: 38px;
+  display: none;
+}
+.nav-item.has-mega:hover .nav-trigger::before,
+.nav-item.has-mega.open .nav-trigger::before { display: block; }
+
+/* The panel. Pinned to the right edge of the container and capped at the
+   viewport, so it grows leftwards and can never push the layout sideways no
+   matter how wide the columns get. */
+.mega {
+  position: absolute;
+  top: 100%;
+  right: clamp(1.25rem, 5vw, 2rem);
+  /* .nav-inner ends above the bar's bottom padding, so add it back. The bar
+     switches padding on scroll and this tracks it. */
+  margin-top: 1.25rem;
+  width: max-content;
+  max-width: calc(100vw - 2.5rem);
+  transform: translateY(10px);
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  box-shadow: 0 24px 60px rgba(0,0,0,0.18);
+  padding: 1.75rem 2rem;
+  opacity: 0;
+  /* visibility, not display, so the panel is out of the tab order and out of
+     the a11y tree when closed. Hiding is delayed by the length of the fade so
+     the panel does not blink out; showing is instant, which matters because a
+     hidden element cannot take focus and the keyboard path focuses the first
+     link in the same tick that opens the panel. */
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.24s ease, transform 0.24s ease, visibility 0s linear 0.24s;
+  z-index: 120;
+}
+.nav.scrolled .mega { margin-top: 0.75rem; }
+.nav-item.has-mega:hover > .mega,
+.nav-item.has-mega.open > .mega {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateY(0);
+  transition: opacity 0.24s ease, transform 0.24s ease, visibility 0s linear 0s;
+}
+/* Escape sets .mega-suppressed on the bar so a panel opened by hover really
+   does close, even when the cursor has not moved off the trigger yet. Moving
+   off the item clears it again. */
+.nav.mega-suppressed .nav-item.has-mega:not(.open):hover > .mega {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(10px);
+  transition: opacity 0.24s ease, transform 0.24s ease, visibility 0s linear 0.24s;
+}
+
+.mega-inner {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2.5rem;
+}
+.mega-col {
+  display: flex;
+  flex-direction: column;
+  min-width: 178px;
+  max-width: 230px;
+}
+.mega-heading {
+  font-family: var(--font-sans);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.5rem;
+}
+/* Beat `.nav-links a` (white on dark) for links inside the light panel. */
+.nav-links .mega a {
+  font-size: 0.9375rem;
+  font-weight: 500;
+  letter-spacing: 0;
+  color: var(--text);
+  padding: 0.55rem 0;
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+  transition: color 0.2s ease, padding-left 0.2s ease;
+}
+.nav-links .mega-col a:last-child { border-bottom: none; }
+.nav-links .mega a:hover { color: var(--gold); padding-left: 0.25rem; }
+.nav-links .mega a:focus-visible,
+.nav-links .mega .mega-cta-btn:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+/* The current page inside a panel: red is the active colour everywhere else
+   on this site, so reuse it and add weight rather than a second cue. */
+.nav-links .mega a.nav-active { color: var(--gold); font-weight: 600; }
+
+/* CTA card */
+.mega-cta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 260px;
+  flex-shrink: 0;
+  background: var(--cream);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 1.25rem;
+}
+.mega-cta-title {
+  font-family: var(--font-serif);
+  font-size: 1.0625rem;
+  font-weight: 600;
+  line-height: 1.25;
+  color: var(--navy);
+}
+.mega-cta-text {
+  font-size: 0.8125rem;
+  line-height: 1.55;
+  /* --text, not --text-muted: the muted grey clears 4.5:1 on white but only
+     reaches 4.43:1 on the cream card. Size and the card fill carry the
+     hierarchy instead of colour. */
+  color: var(--text);
+  margin: 0.4rem 0 0.9rem;
+}
+.nav-links .mega .mega-cta-btn {
+  display: inline-block;
+  background: var(--gold);
+  color: var(--white);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  padding: 0.6rem 1.1rem;
+  border-radius: 4px;
+  border-bottom: none;
+  transition: background 0.25s ease;
+}
+.nav-links .mega .mega-cta-btn:hover {
+  background: var(--gold-hover);
+  color: var(--white);
+  padding-left: 1.1rem;
+}
+.nav-links .mega .mega-cta-link {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--text);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+  padding: 0.7rem 0 0;
+  border-bottom: none;
+}
+.nav-links .mega .mega-cta-link:hover { color: var(--gold); padding-left: 0; }
 
 #menu-btn {
   display: none;
@@ -168,14 +380,25 @@ ul { list-style: none; }
 .mobile-menu {
   position: fixed;
   top: 0; right: 0;
-  width: 280px; height: 100%;
+  width: min(320px, 88vw); height: 100%;
   background: var(--navy);
   z-index: 99;
-  padding: 5rem 2rem 2rem;
+  padding: 5rem 1.75rem 2.5rem;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
   transform: translateX(100%);
-  transition: transform 0.35s ease;
+  /* visibility keeps the drawer out of the tab order while it is off canvas.
+     transform alone leaves every link focusable, which on desktop meant
+     tabbing off the phone CTA into an invisible menu. */
+  visibility: hidden;
+  transition: transform 0.35s ease, visibility 0s linear 0.35s;
 }
-.mobile-menu.open { transform: translateX(0); }
+.mobile-menu.open {
+  transform: translateX(0);
+  visibility: visible;
+  transition: transform 0.35s ease, visibility 0s linear 0s;
+}
 .mobile-menu a {
   display: block;
   padding: 0.85rem 0;
@@ -186,11 +409,75 @@ ul { list-style: none; }
   transition: color 0.2s;
 }
 .mobile-menu a:hover { color: var(--gold); }
+.mobile-menu a:focus-visible,
+.mobile-menu button:focus-visible {
+  outline: 2px solid var(--white);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
 .mobile-menu .nav-cta {
   margin-top: 1.5rem;
   justify-content: center;
   width: 100%;
 }
+
+/* ── Mobile accordions (the mega groups, collapsed) ── */
+.m-acc { display: block; }
+.m-acc-trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  width: 100%;
+  padding: 0.85rem 0;
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 500;
+  text-align: left;
+  color: rgba(255,255,255,0.85);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  transition: color 0.2s;
+}
+.m-acc-trigger:hover,
+.m-acc.open > .m-acc-trigger { color: var(--gold); }
+.m-acc-caret {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+}
+.m-acc.open > .m-acc-trigger .m-acc-caret { transform: rotate(180deg); }
+
+.m-acc-panel {
+  max-height: 0;
+  overflow: hidden;
+  visibility: hidden;
+  transition: max-height 0.32s ease, visibility 0s linear 0.32s;
+}
+.m-acc.open > .m-acc-panel {
+  visibility: visible;
+  transition: max-height 0.32s ease, visibility 0s linear 0s;
+}
+.m-acc-heading {
+  display: block;
+  font-size: 0.625rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  /* Muted grey, not the brand red: #c41e2a on near black is only 3.2:1, which
+     fails for label-sized text. Red stays on the light desktop panels. */
+  color: var(--text-light);
+  padding: 0.9rem 0 0.3rem;
+}
+.mobile-menu .m-acc-panel a {
+  padding: 0.6rem 0 0.6rem 0.85rem;
+  font-size: 0.9375rem;
+  font-weight: 400;
+  color: rgba(255,255,255,0.72);
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+.mobile-menu .m-acc-panel a:last-child { border-bottom: none; }
+.m-acc-panel a.nav-active { color: var(--gold); font-weight: 600; }
 
 /* ────────────────────────────────────
    HERO
@@ -1992,7 +2279,7 @@ ul { list-style: none; }
 .resource-form .hp-field { position: absolute; left: -9999px; opacity: 0; }
 
 /* ────────────────────────────────────
-   MARKETING PLAN — DETAILED
+   MARKETING PLAN: DETAILED
 ──────────────────────────────────── */
 .mp-intro {
   text-align: center;
@@ -2196,7 +2483,7 @@ ul { list-style: none; }
 }
 
 /* ────────────────────────────────────
-   PHOTOGRAPHY PAGE — GALLERY + LIGHTBOX
+   PHOTOGRAPHY PAGE: GALLERY + LIGHTBOX
 ──────────────────────────────────── */
 .photo-hero-image {
   position: relative;
@@ -2794,7 +3081,7 @@ ul { list-style: none; }
   display: block;
 }
 
-/* ── Blog feature/stat card grids — replace inline <ul> blocks ── */
+/* ── Blog feature/stat card grids: replace inline <ul> blocks ── */
 .blog-article .feature-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -2888,7 +3175,7 @@ ul { list-style: none; }
 .blog-cta-pill:hover { background: var(--gold); color: var(--white); transform: translateY(-1px); }
 .blog-cta-pill span { font-size: 1.05em; }
 
-/* Article-card override — when used inside .blog-article */
+/* Article-card override: when used inside .blog-article */
 .blog-article .article-card {
   background: var(--bg-alt);
   border: 1px solid var(--border);
@@ -3169,19 +3456,42 @@ ul { list-style: none; }
   .mp-award-card .mp-award-badge { margin: 0 auto; }
 }
 
-/* Ten nav items plus the phone CTA do not fit at laptop widths with the full
-   2rem gap: at 1024px the bar ran 103px past the viewport. Tighten the spacing
-   between the mobile breakpoint and 1200px rather than dropping a link. */
+/* The bar is five items plus the phone CTA now, so it fits with room to spare,
+   but the tightened spacing is kept for the 961px to 1200px band where the
+   logo, the five labels and the CTA would otherwise crowd each other. */
 @media (max-width: 1200px) {
-  .nav-links { gap: 1rem; }
+  .nav-links { gap: 1.35rem; }
   .nav-cta { padding: 0.6rem 1rem; }
 }
-/* Below 960px even the tightened bar clips, so hand off to the hamburger here
-   rather than at 768px. That band was already clipping with nine items; a clean
-   drawer beats a cut-off nav. */
+/* Hand off to the hamburger at 960px. The mega panels need real horizontal
+   room; below this the drawer accordions are the better experience. */
 @media (max-width: 960px) {
   .nav-links { display: none; }
   #menu-btn { display: flex; }
+}
+
+/* Respect reduced motion: the fade, the slide, the caret spin and the
+   accordion height animation all collapse to instant state changes. */
+@media (prefers-reduced-motion: reduce) {
+  .mega {
+    transform: none;
+    transition: none;
+  }
+  /* The open-state rules carry their own transition shorthand, and they are
+     more specific than a bare .mega, so each one has to be cleared by name or
+     the fade survives. */
+  .nav-item.has-mega:hover > .mega,
+  .nav-item.has-mega.open > .mega { transform: none; transition: none; }
+  .nav.mega-suppressed .nav-item.has-mega:not(.open):hover > .mega { transform: none; transition: none; }
+  .nav-caret,
+  .m-acc-caret,
+  .m-acc-panel,
+  .mobile-menu,
+  .menu-overlay,
+  .nav-links .mega a { transition: none; }
+  .m-acc.open > .m-acc-panel,
+  .mobile-menu.open { transition: none; }
+  .nav-links .mega a:hover { padding-left: 0; }
 }
 
 @media (max-width: 768px) {

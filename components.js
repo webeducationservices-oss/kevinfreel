@@ -11,7 +11,207 @@
   else slug = path.replace(/^\//, '').split('/')[0];
 
   document.querySelectorAll('[data-nav="' + slug + '"]').forEach(function (a) {
+    // The ten neighborhood links in the jumbo panel all share
+    // data-nav="neighborhoods", which is what lights the group up on any of the
+    // 52 neighborhood pages. Matching them on the slug alone would turn all ten
+    // red at once, so a link whose href has more than one path segment has to
+    // match the whole path before it counts as the current page.
+    var href = (a.getAttribute('href') || '').replace(/\/+$/, '');
+    if (href.split('/').length > 2 && href !== path) return;
     a.classList.add('nav-active');
+  });
+
+  /* megaActive: light up a top-level jumbo item when ANY page inside its group
+     is the current page. The group is read from the [data-nav] values the item
+     actually contains, so adding a link to a panel needs no second edit here.
+     data-nav-extra on the trigger covers a destination that is only reachable
+     from that panel's CTA button: those buttons deliberately carry no data-nav,
+     because .nav-active paints text red and the button is already red. */
+  function megaActive(group, trigger) {
+    if (!trigger) return;
+    var slugs = [];
+    group.querySelectorAll('[data-nav]').forEach(function (el) {
+      slugs.push(el.getAttribute('data-nav'));
+    });
+    (trigger.getAttribute('data-nav-extra') || '').split(',').forEach(function (s) {
+      s = s.trim();
+      if (s) slugs.push(s);
+    });
+    if (slugs.indexOf(slug) !== -1) trigger.classList.add('nav-active');
+  }
+
+  document.querySelectorAll('.nav-item.has-mega').forEach(function (item) {
+    megaActive(item, item.querySelector('.nav-trigger'));
+  });
+  document.querySelectorAll('#mobile-menu .m-acc').forEach(function (acc) {
+    megaActive(acc, acc.querySelector('.m-acc-trigger'));
+  });
+})();
+
+/* ── Jumbo (mega) menu ── Desktop panels.
+   Hover is pure CSS so the menu still works with JS disabled. This layer adds
+   what CSS cannot do: click/keyboard opening, aria-expanded, and Escape.
+   Escape also sets .mega-suppressed on the bar, which is the only way to close
+   a panel the pointer is still hovering; moving off the item clears it. */
+(function () {
+  var bar = document.querySelector('.nav');
+  var items = document.querySelectorAll('.nav-item.has-mega');
+  if (!bar || !items.length) return;
+
+  function setOpen(item, isOpen) {
+    item.classList.toggle('open', isOpen);
+    var trigger = item.querySelector('.nav-trigger');
+    if (trigger) trigger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  }
+
+  function closeAll() {
+    items.forEach(function (item) { setOpen(item, false); });
+  }
+
+  // Set while Escape hands focus back to a trigger, so the focus handler below
+  // does not immediately reopen the panel Escape was asked to close.
+  var escaping = false;
+
+  items.forEach(function (item) {
+    var trigger = item.querySelector('.nav-trigger');
+    if (!trigger) return;
+
+    // Tabbing onto a trigger opens its panel, so a keyboard user sees the same
+    // thing a mouse user sees on hover. Gated on :focus-visible because a mouse
+    // click also focuses the button, and opening here would make the click
+    // handler below read it as already open and toggle it straight shut.
+    trigger.addEventListener('focus', function () {
+      if (escaping) return;
+      if (!trigger.matches(':focus-visible')) return;
+      items.forEach(function (other) { if (other !== item) setOpen(other, false); });
+      bar.classList.remove('mega-suppressed');
+      setOpen(item, true);
+    });
+
+    trigger.addEventListener('click', function () {
+      var isOpen = item.classList.contains('open');
+      closeAll();
+      bar.classList.remove('mega-suppressed');
+      if (!isOpen) setOpen(item, true);
+    });
+
+    // Down arrow opens the panel and steps into it, the usual disclosure idiom.
+    trigger.addEventListener('keydown', function (e) {
+      if (e.key !== 'ArrowDown' && e.key !== 'Down') return;
+      e.preventDefault();
+      closeAll();
+      bar.classList.remove('mega-suppressed');
+      setOpen(item, true);
+      var panel = item.querySelector('.mega');
+      var first = panel && panel.querySelector('a');
+      if (!first) return;
+      // Force the style recalc first. The panel is visibility:hidden until the
+      // .open class lands, and a hidden element cannot take focus, so calling
+      // focus() in the same tick would silently do nothing.
+      void panel.offsetHeight;
+      first.focus();
+    });
+
+    // Tabbing out of the group closes it. relatedTarget is where focus is
+    // going, so moving between two links inside the same panel is ignored.
+    item.addEventListener('focusout', function (e) {
+      if (!e.relatedTarget || !item.contains(e.relatedTarget)) setOpen(item, false);
+    });
+
+    // Hovering an item must not leave a keyboard-opened panel behind it. If
+    // focus was sitting in the panel being closed, take it back to that
+    // trigger rather than stranding it on something now hidden.
+    item.addEventListener('mouseenter', function () {
+      var stranded = null;
+      items.forEach(function (other) {
+        if (other === item) return;
+        if (other.contains(document.activeElement)) stranded = other;
+        setOpen(other, false);
+      });
+      if (stranded) {
+        var back = stranded.querySelector('.nav-trigger');
+        if (back) back.focus();
+      }
+    });
+    item.addEventListener('mouseleave', function () {
+      bar.classList.remove('mega-suppressed');
+    });
+  });
+
+  // Escape has to be caught on the document: a panel opened by hover alone has
+  // no focus inside the bar, so a listener on .nav would never hear the key.
+  document.addEventListener('keydown', function (e) {
+    if (e.key !== 'Escape' && e.key !== 'Esc') return;
+    var openItem = null;
+    items.forEach(function (item) {
+      if (item.classList.contains('open')) openItem = item;
+    });
+    var hovered = bar.querySelector('.nav-item.has-mega:hover');
+    if (!openItem && !hovered) return;
+    closeAll();
+    bar.classList.add('mega-suppressed');
+    // Never strand focus on a panel we just hid.
+    if (openItem && openItem.contains(document.activeElement)) {
+      var trigger = openItem.querySelector('.nav-trigger');
+      if (trigger) {
+        escaping = true;
+        trigger.focus();
+        escaping = false;
+      }
+    }
+  });
+
+  document.addEventListener('click', function (e) {
+    if (!bar.contains(e.target)) closeAll();
+  });
+})();
+
+/* ── Jumbo menu, mobile ── The same groups as accordions in the drawer.
+   One open at a time, matching the desktop panels and keeping the drawer
+   short enough to stay oriented in. */
+(function () {
+  var accs = document.querySelectorAll('#mobile-menu .m-acc');
+  if (!accs.length) return;
+
+  function collapse(acc) {
+    var trigger = acc.querySelector('.m-acc-trigger');
+    var panel = acc.querySelector('.m-acc-panel');
+    acc.classList.remove('open');
+    if (trigger) trigger.setAttribute('aria-expanded', 'false');
+    if (panel) panel.style.maxHeight = '';
+  }
+
+  function expand(acc) {
+    var trigger = acc.querySelector('.m-acc-trigger');
+    var panel = acc.querySelector('.m-acc-panel');
+    acc.classList.add('open');
+    if (trigger) trigger.setAttribute('aria-expanded', 'true');
+    // Animate to the panel's real height rather than a guessed max, so a long
+    // group is never clipped and a short one does not crawl open.
+    if (panel) panel.style.maxHeight = panel.scrollHeight + 'px';
+  }
+
+  accs.forEach(function (acc) {
+    var trigger = acc.querySelector('.m-acc-trigger');
+    if (!trigger || !acc.querySelector('.m-acc-panel')) return;
+    trigger.addEventListener('click', function () {
+      var wasOpen = acc.classList.contains('open');
+      accs.forEach(collapse);
+      if (!wasOpen) expand(acc);
+    });
+  });
+
+  // Re-measure on resize: a rotated phone changes how many lines each label
+  // wraps to, and a stale pixel height would clip the group.
+  window.addEventListener('resize', function () {
+    accs.forEach(function (acc) {
+      if (!acc.classList.contains('open')) return;
+      var panel = acc.querySelector('.m-acc-panel');
+      if (!panel) return;
+      panel.style.maxHeight = 'none';
+      var h = panel.scrollHeight;
+      panel.style.maxHeight = h + 'px';
+    });
   });
 })();
 
@@ -154,6 +354,20 @@ menuOverlay.addEventListener('click', closeMenu);
 document.querySelectorAll('.mobile-menu a').forEach(function (a) {
   a.addEventListener('click', closeMenu);
 });
+/* Escape closes the drawer and hands focus back to the button that opened it.
+   The accordion triggers are buttons, not links, so they are untouched by the
+   close-on-click above and can expand a group without dismissing the drawer. */
+document.addEventListener('keydown', function (e) {
+  if (e.key !== 'Escape' && e.key !== 'Esc') return;
+  if (!mobileMenu.classList.contains('open')) return;
+  closeMenu();
+  menuBtn.focus();
+});
+/* Resizing up to the desktop bar with the drawer open would otherwise leave the
+   page scroll locked behind a drawer that is no longer reachable. */
+window.addEventListener('resize', function () {
+  if (window.innerWidth > 960 && mobileMenu.classList.contains('open')) closeMenu();
+});
 
 /* ── Sticky Nav Background ── */
 const nav = document.querySelector('.nav');
@@ -274,22 +488,22 @@ if (wizardForm) {
     foodie: [
       { name: 'Bern\'s Steak House', desc: 'Iconic Tampa steakhouse famous for dry-aged beef and a legendary wine cellar.', area: 'South Tampa' },
       { name: 'Ulele', desc: 'Native-inspired Florida cuisine on the Tampa Riverwalk with a spring-fed waterway.', area: 'Tampa Heights' },
-      { name: 'Mise en Place', desc: 'Fine dining with seasonal menus — a Tampa institution since 1986.', area: 'Downtown Tampa' }
+      { name: 'Mise en Place', desc: 'Fine dining with seasonal menus, a Tampa institution since 1986.', area: 'Downtown Tampa' }
     ],
     waterfront: [
       { name: 'Hula Bay Club', desc: 'Waterfront dining with tiki vibes and one of the best sunset views in Tampa Bay.', area: 'Rocky Point' },
-      { name: 'The Don CeSar', desc: 'The pink palace — historic beachfront hotel and landmark on St. Pete Beach.', area: 'St. Pete Beach' },
-      { name: 'Clearwater Beach', desc: 'Powder-white sand and turquoise water — consistently ranked top US beach.', area: 'Clearwater' }
+      { name: 'The Don CeSar', desc: 'The pink palace, the historic beachfront hotel and landmark on St. Pete Beach.', area: 'St. Pete Beach' },
+      { name: 'Clearwater Beach', desc: 'Powder-white sand and turquoise water, consistently ranked top US beach.', area: 'Clearwater' }
     ],
     outdoorsy: [
       { name: 'Bayshore Boulevard', desc: 'The world\'s longest continuous sidewalk (4.5 miles) along Tampa Bay.', area: 'South Tampa' },
-      { name: 'Honeymoon Island State Park', desc: 'Pristine beach, nature trails, and osprey sanctuary — ferry access to Caladesi.', area: 'Dunedin' },
+      { name: 'Honeymoon Island State Park', desc: 'Pristine beach, nature trails, and osprey sanctuary, with ferry access to Caladesi.', area: 'Dunedin' },
       { name: 'Tampa Riverwalk', desc: '2.6-mile scenic path connecting parks, museums, and restaurants.', area: 'Downtown Tampa' }
     ],
     family: [
       { name: 'Busch Gardens', desc: 'Thrill rides and African-themed zoo attractions for the whole family.', area: 'Tampa' },
       { name: 'Florida Aquarium', desc: 'Home to 7,000+ sea creatures plus outdoor splash pad and dolphin cruises.', area: 'Downtown Tampa' },
-      { name: 'Glazer Children\'s Museum', desc: 'Interactive hands-on exhibits — a rainy-day staple for families.', area: 'Downtown Tampa' }
+      { name: 'Glazer Children\'s Museum', desc: 'Interactive hands-on exhibits, a rainy-day staple for families.', area: 'Downtown Tampa' }
     ],
     nightlife: [
       { name: 'Ybor City', desc: 'Historic cigar district with craft cocktail bars, live music, and Cuban flair.', area: 'Ybor City' },
@@ -299,7 +513,7 @@ if (wizardForm) {
     artsy: [
       { name: 'Dali Museum', desc: 'World\'s most comprehensive collection of Salvador Dali\'s work, in a stunning building.', area: 'St. Petersburg' },
       { name: 'Tampa Museum of Art', desc: 'Modern and contemporary art along the Hillsborough River.', area: 'Downtown Tampa' },
-      { name: 'Central Avenue', desc: 'St. Pete\'s arts district — galleries, murals, and monthly ArtWalk.', area: 'St. Petersburg' }
+      { name: 'Central Avenue', desc: 'St. Pete\'s arts district: galleries, murals, and monthly ArtWalk.', area: 'St. Petersburg' }
     ]
   };
 
@@ -348,7 +562,7 @@ document.querySelectorAll('form[data-resource]').forEach(function (rForm) {
     var data = {};
     new FormData(rForm).forEach(function (v, k) { data[k] = v; });
 
-    // reCAPTCHA v3 token — form-notify rejects without it (loader is at top of file)
+    // reCAPTCHA v3 token: form-notify rejects without it (loader is at top of file)
     data.recaptcha_token = await waitForRecaptchaToken('lead_magnet');
 
     // Spread LAST so a same-named form field can't clobber the attribution.
@@ -378,19 +592,19 @@ document.querySelectorAll('form[data-resource]').forEach(function (rForm) {
 
         // Handle redirect / PDF open
         if (json.next && pdfTab && pdfMagnets[slug]) {
-          // PDF magnet — point the pre-opened tab at the PDF
+          // PDF magnet: point the pre-opened tab at the PDF
           pdfTab.location.href = json.next;
           if (status) { status.textContent = 'Your guide is opening in a new tab. Check your email too!'; status.className = 'resource-status success'; }
         } else if (json.next && slug === 'home-valuation') {
-          // Home valuation — full-page redirect to the questionnaire
+          // Home valuation: full-page redirect to the questionnaire
           window.location.href = json.next;
           return;
         } else if (json.next) {
-          // Page magnets — open in a new tab so they don't lose context
+          // Page magnets: open in a new tab so they don't lose context
           window.open(json.next, '_blank');
           if (status) { status.textContent = 'Sent! Opening your guide in a new tab.'; status.className = 'resource-status success'; }
         } else {
-          if (status) { status.textContent = 'Thanks! Check your email — Kevin will send it shortly.'; status.className = 'resource-status success'; }
+          if (status) { status.textContent = 'Thanks! Check your email, Kevin will send it shortly.'; status.className = 'resource-status success'; }
         }
 
         rForm.querySelectorAll('input[type="email"], input[type="text"]:not([type="hidden"])').forEach(function (i) { if (i.name !== '_honey') i.value = ''; });
@@ -583,7 +797,7 @@ if (form) {
     var data = {};
     new FormData(form).forEach(function (v, k) { data[k] = v; });
 
-    // reCAPTCHA v3 token — form-notify rejects without it (loader is at top of file)
+    // reCAPTCHA v3 token: form-notify rejects without it (loader is at top of file)
     data.recaptcha_token = await waitForRecaptchaToken('contact');
 
     // Spread LAST so a same-named form field can't clobber the attribution.
