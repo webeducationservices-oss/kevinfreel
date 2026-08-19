@@ -277,7 +277,7 @@ function waitForRecaptchaToken(action) {
 function getSourceAttribution() {
   var KEY = 'wes_first_touch_source';
   var p = new URLSearchParams(window.location.search);
-  var hasFresh = p.has('utm_source') || p.has('gclid') || p.has('fbclid') || p.has('msclkid');
+  var hasFresh = p.has('utm_source') || p.has('gclid') || p.has('gbraid') || p.has('wbraid') || p.has('fbclid') || p.has('msclkid');
   if (!hasFresh) {
     try {
       var cached = JSON.parse(sessionStorage.getItem(KEY) || 'null');
@@ -288,7 +288,7 @@ function getSourceAttribution() {
   var utm_medium = (p.get('utm_medium') || '').toLowerCase();
   var utm_campaign = p.get('utm_campaign') || '';
   var utm_term = p.get('utm_term') || '';
-  var gclid = p.get('gclid'), fbclid = p.get('fbclid'), msclkid = p.get('msclkid');
+  var gclid = p.get('gclid') || p.get('gbraid') || p.get('wbraid'), fbclid = p.get('fbclid'), msclkid = p.get('msclkid');
   var ref = document.referrer || '';
   var refHost = ''; try { refHost = ref ? new URL(ref).hostname : ''; } catch (e) {}
   var offSite = ref && refHost && refHost !== window.location.hostname;
@@ -322,6 +322,13 @@ function getSourceAttribution() {
   try { sessionStorage.setItem(KEY, JSON.stringify(result)); } catch (e) {}
   return result;
 }
+
+/* First-touch must be captured on the LANDING page, not at submit. Running the
+   classifier once at load caches the ad click ID while it is still in the URL;
+   at submit the cached first touch wins. Fleet bug: 22 of 26 Millennium paid
+   leads logged as DIRECT_TRAFFIC because nothing ran until the form page. */
+try { getSourceAttribution(); } catch (e) {}
+
 
 /* Capture on EVERY page load, not just the one with the form. Landing pages are
    usually a blog post; the form is two clicks later, by which point the referrer
