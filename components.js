@@ -354,33 +354,44 @@ function closeMenu() {
   menuBtn.setAttribute('aria-expanded', 'false');
 }
 
-menuBtn.addEventListener('click', function () {
-  mobileMenu.classList.contains('open') ? closeMenu() : openMenu();
-});
-menuOverlay.addEventListener('click', closeMenu);
-document.querySelectorAll('.mobile-menu a').forEach(function (a) {
-  a.addEventListener('click', closeMenu);
-});
+/* Pages that ship without site chrome (the questionnaire, the neighborhood
+   review form, 404, thank-you) have no #menu-btn, so these lookups are null.
+   This used to throw here, which silently aborted the REST of this file. That
+   crash was load-bearing by accident: it also stopped the sticky-nav scroll
+   handler below from binding, and stopped the form[data-ajax] handler at the
+   bottom from double-binding on pages that run their own submit script.
+   Guard the chrome explicitly instead, so the rest of the file runs. */
+if (menuBtn && mobileMenu && menuOverlay) {
+  menuBtn.addEventListener('click', function () {
+    mobileMenu.classList.contains('open') ? closeMenu() : openMenu();
+  });
+  menuOverlay.addEventListener('click', closeMenu);
+  document.querySelectorAll('.mobile-menu a').forEach(function (a) {
+    a.addEventListener('click', closeMenu);
+  });
 /* Escape closes the drawer and hands focus back to the button that opened it.
    The accordion triggers are buttons, not links, so they are untouched by the
    close-on-click above and can expand a group without dismissing the drawer. */
-document.addEventListener('keydown', function (e) {
-  if (e.key !== 'Escape' && e.key !== 'Esc') return;
-  if (!mobileMenu.classList.contains('open')) return;
-  closeMenu();
-  menuBtn.focus();
-});
-/* Resizing up to the desktop bar with the drawer open would otherwise leave the
-   page scroll locked behind a drawer that is no longer reachable. */
-window.addEventListener('resize', function () {
-  if (window.innerWidth > 960 && mobileMenu.classList.contains('open')) closeMenu();
-});
+  document.addEventListener('keydown', function (e) {
+    if (e.key !== 'Escape' && e.key !== 'Esc') return;
+    if (!mobileMenu.classList.contains('open')) return;
+    closeMenu();
+    menuBtn.focus();
+  });
+  /* Resizing up to the desktop bar with the drawer open would otherwise leave
+     the page scroll locked behind a drawer that is no longer reachable. */
+  window.addEventListener('resize', function () {
+    if (window.innerWidth > 960 && mobileMenu.classList.contains('open')) closeMenu();
+  });
+}
 
 /* ── Sticky Nav Background ── */
 const nav = document.querySelector('.nav');
-window.addEventListener('scroll', function () {
-  nav.classList.toggle('scrolled', window.scrollY > 60);
-});
+if (nav) {
+  window.addEventListener('scroll', function () {
+    nav.classList.toggle('scrolled', window.scrollY > 60);
+  });
+}
 
 /* ── Scroll Reveal ── */
 const reveals = document.querySelectorAll('.reveal');
