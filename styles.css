@@ -5,6 +5,9 @@
   --navy: #111111;
   --navy-light: #1a1a1a;
   --gold: #c41e2a;
+  /* Brand red is only 3.21:1 on --navy, which fails WCAG AA. Use this
+     lightened, same-hue red for accents on dark backgrounds (5.45:1). */
+  --gold-on-dark: #e65b65;
   --gold-hover: #a8171f;
   --cream: #f5f5f5;
   --white: #ffffff;
@@ -3178,6 +3181,11 @@ ul { list-style: none; }
   transition: background 0.2s, transform 0.2s;
 }
 .blog-cta-pill:hover { background: var(--gold); color: var(--white); transform: translateY(-1px); }
+/* .blog-article a sets color: var(--gold) at (0,1,1) and outranks the pill's
+   own (0,1,0) rule, so the pill's white text lost the cascade and rendered
+   red on near-black. Match on both classes to win it back without !important. */
+.blog-article a.blog-cta-pill,
+.blog-article a.blog-cta-pill:hover { color: var(--white); }
 .blog-cta-pill span { font-size: 1.05em; }
 
 /* Article-card override: when used inside .blog-article */
@@ -3322,7 +3330,7 @@ ul { list-style: none; }
 .sidebar-cta-link {
   display: inline-block;
   margin-top: 0.85rem;
-  color: var(--gold);
+  color: var(--gold-on-dark);
   font-size: 0.85rem;
   font-weight: 600;
   text-decoration: none;
