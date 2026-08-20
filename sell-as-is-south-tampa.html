@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Sell a Teardown or As-Is Home in South Tampa | Kevin Freel</title>
+  <meta name="description" content="Selling an as-is or teardown home in South Tampa? What builders actually pay, why insurance quietly removes retail buyers, and how to tell if your value is in the land.">
+  <link rel="canonical" href="https://www.kevinfreel.com/sell-as-is-south-tampa/">
+
+  <meta property="og:title" content="Sell a Teardown or As-Is Home in South Tampa">
+  <meta property="og:description" content="What builders actually pay for a South Tampa lot, why insurance quietly removes retail buyers, and how to tell if your value is in the land.">
+  <meta property="og:image" content="https://www.kevinfreel.com/images/og-image.jpg">
+  <meta property="og:url" content="https://www.kevinfreel.com/sell-as-is-south-tampa/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Kevin Freel Real Estate">
+  <!-- BEGIN_FAVICONS -->
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <meta name="theme-color" content="#c41e2a">
+  <!-- END_FAVICONS -->
+
+  <link rel="preload" as="font" type="font/woff2" href="/fonts/playfair-display.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="/fonts/inter.woff2" crossorigin>
+
+  <link rel="stylesheet" href="/fonts/fonts.css">
+  <link rel="stylesheet" href="/styles.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {"@type":"Question","name":"What does selling a house as-is mean in South Tampa?","acceptedAnswer":{"@type":"Answer","text":"Selling as-is means you are not making repairs and not offering repair credits. You still have to disclose known material defects under Florida law. As-is changes who your buyer is, not what you have to tell them."}},
+      {"@type":"Question","name":"How much less do cash buyers pay for an as-is house?","acceptedAnswer":{"@type":"Answer","text":"Local cash investors and flippers generally pay about 80 to 88 percent of market value because they need resale margin. iBuyers sit closer to 93 to 97 percent but deduct a service fee near 5 percent plus repair credits after inspection. A builder buying for land value underwrites the finished home instead, which is a different and often better calculation for the seller."}},
+      {"@type":"Question","name":"Is my South Tampa house a teardown?","acceptedAnswer":{"@type":"Answer","text":"It depends far more on the lot than the house. Lot dimensions decide what a builder can put up, and what can be built decides what they can pay. Location then adjusts that number, because builders price off what a new home sells for on your specific street."}},
+      {"@type":"Question","name":"Can I sell a teardown myself without a realtor?","acceptedAnswer":{"@type":"Answer","text":"You can, but most builders will not buy directly from homeowners. They buy through agents they already trust, because they need clean title work, a predictable closing, and someone who understands their build timeline. For sale by owner sellers in this niche usually reach wholesalers instead, and wholesalers pay less."}},
+      {"@type":"Question","name":"Should I fix up my old house or sell it as-is?","acceptedAnswer":{"@type":"Answer","text":"On older South Tampa homes insurance often decides this. Florida insurers require a four point inspection on homes 20 years and older, shingle roofs past 20 years are broadly uninsurable, and pre-1950s knob and tube wiring is a hard stop for most carriers. A house a buyer cannot insure is usually a house they cannot finance, which removes most retail buyers no matter how much you spend on cosmetics."}}
+    ]
+  }
+  </script>
+
+
+  <script src="/components.js" defer></script>
+  <!-- myaieditor inline-edit loader (no-op for real visitors) -->
+  <script src="/mae-edit-loader.js" async></script>
+  <!-- BEGIN_GTM -->
+  <!-- Google Consent Mode (must be set before GTM loads) -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('consent', 'default', {
+      'analytics_storage': 'granted',
+      'ad_storage': 'denied',
+      'ad_user_data': 'denied',
+      'ad_personalization': 'denied'
+    });
+  </script>
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-5PP6R6HL');</script>
+  <!-- END_GTM -->
+  <style>
+    /* ── As-is / teardown scorecard (scoped to this page) ── */
+    .ai-tool { background: var(--bg-alt); }
+    .ai-card {
+      background: #fff; border: 1px solid var(--border); border-radius: 14px;
+      padding: clamp(1.5rem, 4vw, 2.25rem); box-shadow: 0 2px 10px rgba(0,0,0,.05);
+      max-width: 780px; margin: 0 auto;
+    }
+    .ai-q { margin-bottom: 1.5rem; }
+    .ai-qlabel {
+      display: block; font-family: var(--font-sans); font-size: .8125rem; font-weight: 700;
+      letter-spacing: .05em; text-transform: uppercase; color: var(--navy); margin-bottom: .6rem;
+    }
+    .ai-opts { display: grid; grid-template-columns: repeat(auto-fit, minmax(148px, 1fr)); gap: .5rem; }
+    .ai-opts label {
+      display: flex; align-items: center; gap: .5rem; padding: .7rem .85rem;
+      border: 1px solid var(--border); border-radius: 9px; cursor: pointer;
+      font-size: .9375rem; line-height: 1.3; transition: border-color .15s, background .15s;
+    }
+    .ai-opts label:hover { border-color: var(--navy); }
+    .ai-opts input { accent-color: #c41e2a; flex-shrink: 0; }
+    .ai-opts label:has(input:checked) { border-color: #c41e2a; background: rgba(196,30,42,.045); }
+    .ai-opts label:has(input:checked) span { font-weight: 600; color: var(--navy); }
+    .ai-opts input:focus-visible { outline: 2px solid #c41e2a; outline-offset: 2px; }
+    .ai-actions { margin-top: 1.75rem; display: flex; flex-wrap: wrap; gap: .85rem; align-items: center; }
+    .ai-run {
+      padding: .9rem 1.75rem; background: var(--navy); color: #fff; border: 1px solid var(--navy);
+      border-radius: 9px; font-family: var(--font-sans); font-weight: 600; font-size: 1rem; cursor: pointer;
+      transition: background .15s;
+    }
+    .ai-run:hover { background: var(--navy-light); }
+    .ai-note { font-size: .8125rem; color: var(--text-light); }
+    .ai-result { display: none; margin-top: 1.75rem; padding-top: 1.75rem; border-top: 2px solid var(--border); }
+    .ai-result.show { display: block; animation: ai-fade .3s ease both; }
+    @keyframes ai-fade { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+    .ai-verdict-label {
+      font-family: var(--font-sans); font-size: .75rem; font-weight: 700; letter-spacing: .1em;
+      text-transform: uppercase; color: #c41e2a; margin-bottom: .4rem;
+    }
+    .ai-verdict {
+      font-family: var(--font-serif); font-size: clamp(1.35rem, 3.5vw, 1.8rem);
+      color: var(--navy); line-height: 1.2; margin: 0 0 .9rem;
+    }
+    .ai-why { margin: 0 0 1.25rem; padding: 0; list-style: none; }
+    .ai-why li {
+      position: relative; padding-left: 1.4rem; margin-bottom: .55rem;
+      font-size: .9688rem; line-height: 1.55; color: var(--text);
+    }
+    .ai-why li::before {
+      content: ""; position: absolute; left: 0; top: .55em;
+      width: 7px; height: 7px; border-radius: 50%; background: #c41e2a;
+    }
+    .ai-caveat { font-size: .875rem; color: var(--text-light); font-style: italic; margin-bottom: 1.35rem; }
+    .ai-result .btn-primary, .ai-result .btn-outline { margin-right: .6rem; margin-bottom: .5rem; }
+    .content-intro h3 {
+      font-family: var(--font-serif); color: var(--navy);
+      font-size: 1.25rem; margin: 1.75rem 0 .75rem;
+    }
+    @media (prefers-reduced-motion: reduce) { .ai-result.show { animation: none; } }
+  </style>
+</head>
+<body>
+  <!-- BEGIN_GTM_NOSCRIPT --><noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5PP6R6HL" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript><!-- END_GTM_NOSCRIPT -->
+
+  <!-- BEGIN_NAV -->
+<!-- ── NAV ── -->
+<nav class="nav scrolled" aria-label="Main navigation">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo" aria-label="Kevin Freel, Realtor Since 1985"><span class="nav-logo-name">KEVIN <span>FREEL</span></span><span class="nav-logo-tagline">Realtor Since 1985</span></a>
+    <ul class="nav-links">
+
+      <!-- BUYING -->
+      <li class="nav-item has-mega">
+        <button type="button" class="nav-trigger" id="trig-buying" aria-expanded="false" aria-controls="mega-buying">
+          Buying
+          <svg class="nav-caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="mega" id="mega-buying" aria-labelledby="trig-buying">
+          <div class="mega-inner">
+            <div class="mega-col">
+              <span class="mega-heading">Start Your Search</span>
+              <a href="/search/" data-nav="search">Search All Homes</a>
+              <a href="/listings/" data-nav="listings">Kevin&rsquo;s Listings</a>
+            </div>
+            <div class="mega-col">
+              <span class="mega-heading">Know The Process</span>
+              <a href="/buyers/" data-nav="buyers">The Buying Process</a>
+              <a href="/mortgage-advice/" data-nav="mortgage-advice">Mortgage &amp; Financing</a>
+              <a href="/investor-guide/" data-nav="investor-guide">Tampa Bay Investor&rsquo;s Guide</a>
+            </div>
+            <div class="mega-cta">
+              <span class="mega-cta-title">New to Tampa Bay?</span>
+              <p class="mega-cta-text">Start with Kevin&rsquo;s free guide: neighborhoods, timelines and what to expect at every step.</p>
+              <a class="mega-cta-btn" href="/resources/">Free Buyers Guide</a>
+            </div>
+          </div>
+        </div>
+      </li>
+
+      <!-- SELLING -->
+      <li class="nav-item has-mega">
+        <button type="button" class="nav-trigger" id="trig-selling" aria-expanded="false" aria-controls="mega-selling">
+          Selling
+          <svg class="nav-caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="mega" id="mega-selling" aria-labelledby="trig-selling">
+          <div class="mega-inner">
+            <div class="mega-col">
+              <span class="mega-heading">Start Here</span>
+              <a href="/home-evaluation-questionnaire/" data-nav="home-evaluation-questionnaire">What&rsquo;s My Home Worth</a>
+              <a href="/sellers/" data-nav="sellers">How Kevin Sells</a>
+              <a href="/sell-as-is-south-tampa/" data-nav="sell-as-is-south-tampa">Selling As-Is or a Teardown</a>
+            </div>
+            <div class="mega-col">
+              <span class="mega-heading">Get Ready</span>
+              <a href="/marketing-plan/" data-nav="marketing-plan">The Marketing Plan</a>
+              <a href="/home-prep-checklist/" data-nav="home-prep-checklist">74-Point Prep Checklist</a>
+              <a href="/photography/" data-nav="photography">Listing Photography</a>
+            </div>
+            <div class="mega-cta">
+              <span class="mega-cta-title">Thinking of selling?</span>
+              <p class="mega-cta-text">Get a real number for your home in today&rsquo;s Tampa Bay market, with no obligation.</p>
+              <a class="mega-cta-btn" href="/home-evaluation-questionnaire/">Free Home Valuation</a>
+            </div>
+          </div>
+        </div>
+      </li>
+
+      <!-- NEIGHBORHOODS -->
+      <li class="nav-item has-mega">
+        <button type="button" class="nav-trigger" id="trig-neighborhoods" aria-expanded="false" aria-controls="mega-neighborhoods" data-nav-extra="south-tampa-neighborhoods">
+          Neighborhoods
+          <svg class="nav-caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="mega" id="mega-neighborhoods" aria-labelledby="trig-neighborhoods">
+          <div class="mega-inner">
+            <div class="mega-col">
+              <span class="mega-heading">South Tampa</span>
+              <a href="/neighborhoods/historic-hyde-park/" data-nav="neighborhoods">Historic Hyde Park</a>
+              <a href="/neighborhoods/palma-ceia/" data-nav="neighborhoods">Palma Ceia</a>
+              <a href="/neighborhoods/davis-islands/" data-nav="neighborhoods">Davis Islands</a>
+              <a href="/neighborhoods/beach-park/" data-nav="neighborhoods">Beach Park</a>
+              <a href="/neighborhoods/soho/" data-nav="neighborhoods">SoHo</a>
+            </div>
+            <div class="mega-col">
+              <span class="mega-heading">More</span>
+              <a href="/neighborhoods/bayshore-beautiful/" data-nav="neighborhoods">Bayshore Beautiful</a>
+              <a href="/neighborhoods/ballast-point/" data-nav="neighborhoods">Ballast Point</a>
+              <a href="/neighborhoods/sunset-park/" data-nav="neighborhoods">Sunset Park</a>
+              <a href="/neighborhoods/culbreath-isles/" data-nav="neighborhoods">Culbreath Isles</a>
+              <a href="/neighborhoods/westshore-marina-district/" data-nav="neighborhoods">Westshore Marina District</a>
+            </div>
+            <div class="mega-cta">
+              <span class="mega-cta-title">All 52 South Tampa neighborhoods</span>
+              <p class="mega-cta-text">Median prices, boundaries and the feel of each pocket, block by block.</p>
+              <a class="mega-cta-btn" href="/south-tampa-neighborhoods/">Browse All Neighborhoods</a>
+              <a class="mega-cta-link" href="/tampa-bay-neighborhoods/" data-nav="tampa-bay-neighborhoods">Greater Tampa Bay</a>
+            </div>
+          </div>
+        </div>
+      </li>
+
+      <!-- ABOUT -->
+      <li class="nav-item has-mega">
+        <button type="button" class="nav-trigger" id="trig-about" aria-expanded="false" aria-controls="mega-about">
+          About
+          <svg class="nav-caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="mega mega-2col" id="mega-about" aria-labelledby="trig-about">
+          <div class="mega-inner">
+            <div class="mega-col">
+              <span class="mega-heading">Kevin</span>
+              <a href="/about/" data-nav="about">About Kevin</a>
+              <a href="/blog/" data-nav="blog">Blog</a>
+            </div>
+            <div class="mega-col">
+              <span class="mega-heading">Local Knowledge</span>
+              <a href="/resources/" data-nav="resources">Free Guides &amp; Tools</a>
+              <a href="/tampa-bay-recommendations/" data-nav="tampa-bay-recommendations">Tampa Bay Recommendations</a>
+            </div>
+          </div>
+        </div>
+      </li>
+
+      <li><a href="/contact/" data-nav="contact">Contact</a></li>
+
+      <li>
+        <a href="tel:7274108599" class="nav-cta">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          727-410-8599
+        </a>
+      </li>
+    </ul>
+    <button id="menu-btn" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+  </div>
+</nav>
+
+<!-- ── Mobile Menu ── -->
+<div id="menu-overlay" class="menu-overlay"></div>
+<div id="mobile-menu" class="mobile-menu" role="navigation" aria-label="Mobile navigation">
+  <a href="/" class="m-link" data-nav="home">Home</a>
+
+  <div class="m-acc">
+    <button type="button" class="m-acc-trigger" aria-expanded="false" aria-controls="m-buying">
+      Buying
+      <svg class="m-acc-caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polyline points="6 9 12 15 18 9"/></svg>
+    </button>
+    <div class="m-acc-panel" id="m-buying">
+      <span class="m-acc-heading">Start Your Search</span>
+      <a href="/search/" data-nav="search">Search All Homes</a>
+      <a href="/listings/" data-nav="listings">Kevin&rsquo;s Listings</a>
+      <span class="m-acc-heading">Know The Process</span>
+      <a href="/buyers/" data-nav="buyers">The Buying Process</a>
+      <a href="/mortgage-advice/" data-nav="mortgage-advice">Mortgage &amp; Financing</a>
+      <a href="/investor-guide/" data-nav="investor-guide">Tampa Bay Investor&rsquo;s Guide</a>
+    </div>
+  </div>
+
+  <div class="m-acc">
+    <button type="button" class="m-acc-trigger" aria-expanded="false" aria-controls="m-selling">
+      Selling
+      <svg class="m-acc-caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polyline points="6 9 12 15 18 9"/></svg>
+    </button>
+    <div class="m-acc-panel" id="m-selling">
+      <span class="m-acc-heading">Start Here</span>
+      <a href="/home-evaluation-questionnaire/" data-nav="home-evaluation-questionnaire">What&rsquo;s My Home Worth</a>
+      <a href="/sellers/" data-nav="sellers">How Kevin Sells</a>
+      <span class="m-acc-heading">Get Ready</span>
+      <a href="/marketing-plan/" data-nav="marketing-plan">The Marketing Plan</a>
+      <a href="/home-prep-checklist/" data-nav="home-prep-checklist">74-Point Prep Checklist</a>
+      <a href="/photography/" data-nav="photography">Listing Photography</a>
+    </div>
+  </div>
+
+  <div class="m-acc">
+    <button type="button" class="m-acc-trigger" aria-expanded="false" aria-controls="m-neighborhoods">
+      Neighborhoods
+      <svg class="m-acc-caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polyline points="6 9 12 15 18 9"/></svg>
+    </button>
+    <div class="m-acc-panel" id="m-neighborhoods">
+      <span class="m-acc-heading">South Tampa</span>
+      <a href="/neighborhoods/historic-hyde-park/" data-nav="neighborhoods">Historic Hyde Park</a>
+      <a href="/neighborhoods/palma-ceia/" data-nav="neighborhoods">Palma Ceia</a>
+      <a href="/neighborhoods/davis-islands/" data-nav="neighborhoods">Davis Islands</a>
+      <a href="/neighborhoods/beach-park/" data-nav="neighborhoods">Beach Park</a>
+      <a href="/neighborhoods/soho/" data-nav="neighborhoods">SoHo</a>
+      <span class="m-acc-heading">More</span>
+      <a href="/neighborhoods/bayshore-beautiful/" data-nav="neighborhoods">Bayshore Beautiful</a>
+      <a href="/neighborhoods/ballast-point/" data-nav="neighborhoods">Ballast Point</a>
+      <a href="/neighborhoods/sunset-park/" data-nav="neighborhoods">Sunset Park</a>
+      <a href="/neighborhoods/culbreath-isles/" data-nav="neighborhoods">Culbreath Isles</a>
+      <a href="/neighborhoods/westshore-marina-district/" data-nav="neighborhoods">Westshore Marina District</a>
+      <span class="m-acc-heading">Guides</span>
+      <a href="/south-tampa-neighborhoods/" data-nav="south-tampa-neighborhoods">All 52 South Tampa Neighborhoods</a>
+      <a href="/tampa-bay-neighborhoods/" data-nav="tampa-bay-neighborhoods">Greater Tampa Bay</a>
+    </div>
+  </div>
+
+  <div class="m-acc">
+    <button type="button" class="m-acc-trigger" aria-expanded="false" aria-controls="m-about">
+      About
+      <svg class="m-acc-caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polyline points="6 9 12 15 18 9"/></svg>
+    </button>
+    <div class="m-acc-panel" id="m-about">
+      <span class="m-acc-heading">Kevin</span>
+      <a href="/about/" data-nav="about">About Kevin</a>
+      <a href="/blog/" data-nav="blog">Blog</a>
+      <span class="m-acc-heading">Local Knowledge</span>
+      <a href="/resources/" data-nav="resources">Free Guides &amp; Tools</a>
+      <a href="/tampa-bay-recommendations/" data-nav="tampa-bay-recommendations">Tampa Bay Recommendations</a>
+    </div>
+  </div>
+
+  <a href="/contact/" class="m-link" data-nav="contact">Contact</a>
+
+  <a href="tel:7274108599" class="nav-cta">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+    727-410-8599
+  </a>
+</div>
+  <!-- END_NAV -->
+
+  <main>
+
+    <section class="page-hero" aria-label="Selling as-is in South Tampa">
+      <div class="page-hero-inner">
+        <p class="hero-label">For As-Is &amp; Teardown Sellers</p>
+        <h1>Selling a Teardown or As-Is Home in South Tampa</h1>
+        <p class="page-hero-sub">If your house is older, tired, or hard to insure, you have more options than the postcards in your mailbox suggest. Here is how these sales actually work, what moves your number up, and what quietly drags it down.</p>
+      </div>
+    </section>
+
+    <!-- ── Scorecard ── -->
+    <section class="content-section ai-tool" aria-label="As-is position scorecard">
+      <div class="content-inner">
+        <div class="content-intro reveal">
+          <p class="section-label">Start Here</p>
+          <h2 class="section-heading">Is Your Value in the House, or in the Land?</h2>
+          <p class="section-sub">Seven questions, answered right here on this page. No form, no waiting on a callback, no obligation. Most sites in this space make you hand over your address before they tell you anything. This one tells you first.</p>
+        </div>
+
+        <div class="ai-card reveal">
+          <form id="ai-form" novalidate>
+            <div class="ai-q">
+              <span class="ai-qlabel">1. When was the house built?</span>
+              <div class="ai-opts">
+                <label><input type="radio" name="era" value="pre60"><span>Before 1960</span></label>
+                <label><input type="radio" name="era" value="60to89"><span>1960 to 1989</span></label>
+                <label><input type="radio" name="era" value="post90"><span>1990 or newer</span></label>
+              </div>
+            </div>
+
+            <div class="ai-q">
+              <span class="ai-qlabel">2. How old is the roof?</span>
+              <div class="ai-opts">
+                <label><input type="radio" name="roof" value="new"><span>10 years or less</span></label>
+                <label><input type="radio" name="roof" value="mid"><span>11 to 15 years</span></label>
+                <label><input type="radio" name="roof" value="old"><span>16 to 20 years</span></label>
+                <label><input type="radio" name="roof" value="veryold"><span>Over 20, or unsure</span></label>
+              </div>
+            </div>
+
+            <div class="ai-q">
+              <span class="ai-qlabel">3. Roughly how big is the lot?</span>
+              <div class="ai-opts">
+                <label><input type="radio" name="lot" value="small"><span>Under 5,000 sq ft</span></label>
+                <label><input type="radio" name="lot" value="mid"><span>5,000 to 7,499</span></label>
+                <label><input type="radio" name="lot" value="good"><span>7,500 to 9,999</span></label>
+                <label><input type="radio" name="lot" value="big"><span>10,000+ sq ft</span></label>
+              </div>
+            </div>
+
+            <div class="ai-q">
+              <span class="ai-qlabel">4. What condition is it in honestly?</span>
+              <div class="ai-opts">
+                <label><input type="radio" name="cond" value="good"><span>Move-in ready</span></label>
+                <label><input type="radio" name="cond" value="dated"><span>Dated but livable</span></label>
+                <label><input type="radio" name="cond" value="major"><span>Needs major work</span></label>
+                <label><input type="radio" name="cond" value="rough"><span>Not livable as-is</span></label>
+              </div>
+            </div>
+
+            <div class="ai-q">
+              <span class="ai-qlabel">5. Any trouble with insurance?</span>
+              <div class="ai-opts">
+                <label><input type="radio" name="ins" value="none"><span>No, insured normally</span></label>
+                <label><input type="radio" name="ins" value="pricey"><span>Premium jumped hard</span></label>
+                <label><input type="radio" name="ins" value="denied"><span>Non-renewed or declined</span></label>
+              </div>
+            </div>
+
+            <div class="ai-q">
+              <span class="ai-qlabel">6. Where is it?</span>
+              <div class="ai-opts">
+                <label><input type="radio" name="zip" value="core"><span>33606 / 33609 / 33611 / 33629</span></label>
+                <label><input type="radio" name="zip" value="other"><span>Elsewhere in Tampa Bay</span></label>
+              </div>
+            </div>
+
+            <div class="ai-q">
+              <span class="ai-qlabel">7. What is your timeline?</span>
+              <div class="ai-opts">
+                <label><input type="radio" name="time" value="fast"><span>As soon as possible</span></label>
+                <label><input type="radio" name="time" value="months"><span>Next few months</span></label>
+                <label><input type="radio" name="time" value="explore"><span>Just exploring</span></label>
+              </div>
+            </div>
+
+            <div class="ai-actions">
+              <button type="submit" class="ai-run">Show My Position</button>
+              <span class="ai-note" id="ai-hint">Nothing is sent anywhere. This runs in your browser.</span>
+            </div>
+          </form>
+
+          <div class="ai-result" id="ai-result" aria-live="polite">
+            <p class="ai-verdict-label" id="ai-vlabel"></p>
+            <h3 class="ai-verdict" id="ai-verdict"></h3>
+            <ul class="ai-why" id="ai-why"></ul>
+            <p class="ai-caveat" id="ai-caveat"></p>
+            <a href="tel:7274108599" class="btn-primary">Call Kevin: 727-410-8599</a>
+            <a href="/home-evaluation-questionnaire/" class="btn-outline">Get a written valuation</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── What as-is means ── -->
+    <section class="content-section" aria-label="What as-is means">
+      <div class="content-inner">
+        <div class="content-intro reveal">
+          <p class="section-label">The Basics</p>
+          <h2 class="section-heading">What "As-Is" Actually Means Here</h2>
+        </div>
+        <div class="content-intro reveal">
+          <p>Selling as-is means you are not making repairs and not handing out repair credits. That is the whole of it. It does not mean the buyer skips an inspection, and it does not mean you stop disclosing.</p>
+          <p>Florida still requires you to disclose known material defects that are not readily observable. As-is changes <em>who your buyer is</em>. It does not change what you have to tell them. Anyone who suggests otherwise is setting you up for a problem after closing.</p>
+          <p>The real decision is not whether to sell as-is. It is which of three very different buyers you are selling to, because they value your property in three completely different ways.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Three buyers ── -->
+    <section class="content-section ai-tool" aria-label="Three types of buyers">
+      <div class="content-inner">
+        <div class="content-intro reveal">
+          <p class="section-label">Know Your Buyer</p>
+          <h2 class="section-heading">Three Buyers, Three Very Different Numbers</h2>
+          <p class="section-sub">The same house can be worth noticeably different amounts depending on who is buying it and what they plan to do next.</p>
+        </div>
+        <div class="steps-grid">
+          <div class="step-card reveal">
+            <div class="step-num">1</div>
+            <h3>The Builder</h3>
+            <p>Buys the lot, takes the house down, and builds new. Prices off what a finished new home sells for on your street, minus build cost and profit. When the lot supports what they want to build, this is usually the strongest number available to an as-is seller in South Tampa.</p>
+          </div>
+          <div class="step-card reveal">
+            <div class="step-num">2</div>
+            <h3>The Flipper</h3>
+            <p>Buys, renovates, resells. Needs resale margin, so local cash investors generally land around 80 to 88 percent of market value. Fast and certain, and a legitimate answer when the house is worth saving but you are not the one to save it.</p>
+          </div>
+          <div class="step-card reveal">
+            <div class="step-num">3</div>
+            <h3>The Retail Buyer</h3>
+            <p>A family who will live there. Pays the most on paper, but needs a mortgage, and a mortgage needs insurance. On an older home that is exactly where these deals fall apart, which is the part most sellers never see coming.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Insurance ── -->
+    <section class="content-section" aria-label="Insurance and older homes">
+      <div class="content-inner">
+        <div class="content-intro reveal">
+          <p class="section-label">The Part Nobody Warns You About</p>
+          <h2 class="section-heading">Insurance Decides More Than You Think</h2>
+        </div>
+        <div class="content-intro reveal">
+          <p>If you own an older South Tampa home, insurance may already be making this decision for you.</p>
+          <ul class="ai-why">
+            <li>Florida carriers require a four point inspection on homes 20 years and older, covering roof, electrical, plumbing and HVAC.</li>
+            <li>Shingle roofs over 20 years are broadly uninsurable. Roofs in the 15 to 20 year range commonly fail a four point even when nothing is leaking.</li>
+            <li>Knob and tube wiring, common before the 1950s, is a hard stop for most standard carriers.</li>
+            <li>A failed four point can mean declined coverage, repairs required before binding, or non-renewal.</li>
+          </ul>
+          <p>Here is why that matters more than any kitchen upgrade: <strong>a house a buyer cannot insure is a house they usually cannot finance.</strong> When coverage gets hard, your retail buyer pool shrinks to people paying cash, and cash buyers expect a discount for the privilege.</p>
+          <p>So the honest question is not "should I fix it up." It is "can I fix the things that are actually blocking a buyer, and would that spend come back to me?" Sometimes a roof pays for itself. Often, on a house a builder is going to take down anyway, it does not.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Up / down ── -->
+    <section class="content-section ai-tool" aria-label="What raises and lowers your price">
+      <div class="content-inner">
+        <div class="content-intro reveal">
+          <p class="section-label">Your Number</p>
+          <h2 class="section-heading">What Moves It Up, What Drags It Down</h2>
+        </div>
+        <div class="content-intro reveal">
+          <h3>Raises your number</h3>
+          <ul class="ai-why">
+            <li><strong>Lot dimensions that work.</strong> Width and depth decide what can be built, and that decides what a builder can pay. This is the single biggest lever and you cannot change it.</li>
+            <li><strong>A street where new homes are already selling well.</strong> Builders underwrite the finished product, so recent nearby builds lift your land value directly.</li>
+            <li><strong>Clean, clear title.</strong> Probate, liens, unpermitted additions and boundary problems all cost you money or kill deals. Sorting these early is worth real dollars.</li>
+            <li><strong>Flexibility on closing.</strong> Builders juggle crews and capital. Letting them close on their timeline is often worth more than squeezing the price.</li>
+            <li><strong>More than one buyer at the table.</strong> One offer is a price. Several offers is a market.</li>
+          </ul>
+          <h3>Drags it down</h3>
+          <ul class="ai-why">
+            <li><strong>Cosmetic money spent on a house that is coming down.</strong> New counters do not move land value. I have talked sellers out of this more than once.</li>
+            <li><strong>Sitting on market too long.</strong> Days on market reads as a problem even when the house is fine, and every buyer type starts subtracting.</li>
+            <li><strong>Only talking to whoever mailed you a postcard.</strong> That is one buyer's opinion, and they chose you precisely because you had no comparison.</li>
+            <li><strong>Surprises found late.</strong> An issue discovered in inspection costs far more than the same issue disclosed up front, because now it is leverage.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── FSBO ── -->
+    <section class="content-section" aria-label="Selling it yourself">
+      <div class="content-inner">
+        <div class="content-intro reveal">
+          <p class="section-label">Going It Alone</p>
+          <h2 class="section-heading">Why Selling It Yourself Usually Falls Short</h2>
+        </div>
+        <div class="content-intro reveal">
+          <p>You are allowed to sell it yourself, and on paper it looks like the obvious way to keep more. In this particular niche it usually does not work out that way, for a reason that has nothing to do with your ability.</p>
+          <p><strong>Most builders will not buy directly from a homeowner.</strong> It is not personal. A builder needs clean title work, a closing that happens when they were told it would happen, and someone on the other side who understands their financing and their build schedule. They have agents they already trust for that, and they would rather pay a commission than take on an unpredictable transaction.</p>
+          <p>So when you go it alone, the builders mostly do not show up. The people who <em>do</em> show up are wholesalers, who watch for-sale-by-owner listings closely. They will put your house under contract and then sell that contract to an actual buyer, and the spread they collect comes out of your side. You saved a commission and paid it to someone else, quietly.</p>
+          <p>The other half is simply not knowing your own number. If you have never seen what the lot two streets over traded for, any offer sounds reasonable. That is the whole business model of the postcard.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Why builder relationships ── -->
+    <section class="content-section ai-tool" aria-label="Why builder relationships matter">
+      <div class="content-inner">
+        <div class="content-intro reveal">
+          <p class="section-label">Why It Matters Who Represents You</p>
+          <h2 class="section-heading">Builders Buy From People They Already Know</h2>
+        </div>
+        <div class="content-intro reveal">
+          <p>I sell most of BCL Homes' South Tampa builds. That is an ongoing relationship, and it is the reason this page exists.</p>
+          <p>Because I sell the finished homes, I know what a new build actually closes for on these streets. That is the exact number a builder starts from when they work backward to what they can pay for your lot. Knowing the front end of that equation is what makes it possible to tell you whether an offer is fair or lazy.</p>
+          <p>It also means I can put your property in front of several builders at once rather than one. A builder who is already deep into two projects will bid politely. A builder who needs their next lot bids like they need it. Knowing which is which, right now, is most of the job.</p>
+          <p>Forty years in Tampa Bay, over 1,200 homes sold, and regular work above one million dollars. I have also seen the deals that go sideways, which is the part that actually protects you.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Process ── -->
+    <section class="content-section" aria-label="The process">
+      <div class="content-inner">
+        <div class="content-intro reveal">
+          <p class="section-label">The Process</p>
+          <h2 class="section-heading">What Selling As-Is Looks Like</h2>
+        </div>
+        <div class="steps-grid">
+          <div class="step-card reveal">
+            <div class="step-num">1</div>
+            <h3>A real conversation</h3>
+            <p>Your address, the lot, the condition, and what you are trying to accomplish. I can usually tell you quickly whether builders will be interested, and roughly where that sits against a traditional sale.</p>
+          </div>
+          <div class="step-card reveal">
+            <div class="step-num">2</div>
+            <h3>Your number, both ways</h3>
+            <p>What the land is likely worth to a builder, and what the house might bring listed as-is to a retail buyer. Those are different numbers, and you should see both before choosing.</p>
+          </div>
+          <div class="step-card reveal">
+            <div class="step-num">3</div>
+            <h3>Competition, then closing</h3>
+            <p>If land is the answer, I take it to builders who are actively buying. If listing is the answer, we list it. Either way you pick the offer, on a timeline that suits you.</p>
+          </div>
+        </div>
+        <div class="content-intro reveal">
+          <p>And if the honest answer is that you should keep the house, or fix one specific thing and list it retail, I will tell you that. I would rather be the person you call in three years than talk you into something today.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Neighborhoods ── -->
+    <section class="content-section ai-tool" aria-label="South Tampa neighborhoods">
+      <div class="content-inner">
+        <div class="content-intro reveal">
+          <p class="section-label">Where You Are Matters</p>
+          <h2 class="section-heading">Land Value Changes Block by Block</h2>
+          <p class="section-sub">Two identical lots can be worth very different numbers one street apart. I broke down all 52 South Tampa neighborhoods, what each one feels like, and what is actually happening in them.</p>
+        </div>
+        <div class="content-intro reveal" style="text-align:center;">
+          <a href="/south-tampa-neighborhoods/" class="btn-primary">Explore all 52 South Tampa neighborhoods</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── CTA ── -->
+    <section class="cta" aria-label="Talk to Kevin about selling as-is">
+      <div class="cta-inner reveal">
+        <p class="section-label">No Pressure, No Postcard</p>
+        <h2 class="cta-heading">Find Out What Your Lot Is Worth</h2>
+        <p>One conversation, and you will know whether your value is in the house or the land, and what each path is realistically worth. If selling is not the right move right now, I will say so.</p>
+        <a href="tel:7274108599" class="cta-phone">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          727-410-8599
+        </a>
+        <div class="cta-links">
+          <a href="/home-evaluation-questionnaire/" class="btn-outline">Get a written valuation</a>
+          <a href="/contact/" class="btn-outline">Send a message</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+
+  <!-- BEGIN_FOOTER -->
+<!-- ── FOOTER ── -->
+<footer class="footer">
+  <div class="footer-inner">
+    <a href="/" class="footer-logo">KEVIN <span>FREEL</span></a>
+    <p class="footer-copy">&copy; 2026 Kevin Freel Real Estate. All rights reserved.</p>
+    <div class="footer-social">
+      <a href="https://www.facebook.com/SellingTampa" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+      </a>
+      <a href="https://www.instagram.com/kevinsellstampabay/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+      </a>
+      <a href="https://www.linkedin.com/in/kevin-freel-b0363029/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.063 2.063 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+      </a>
+      <a href="https://x.com/Sellingtampa1" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231 5.45-6.231zm-1.161 17.52h1.833L7.084 4.126H5.117L17.083 19.77z"/></svg>
+      </a>
+      <a href="https://www.tiktok.com/@kevinfreel" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-5.2 1.74 2.89 2.89 0 012.31-4.64 2.93 2.93 0 01.88.13V9.4a6.84 6.84 0 00-1-.05A6.33 6.33 0 005.8 20.1a6.34 6.34 0 0010.86-4.43v-7a8.16 8.16 0 004.77 1.52v-3.4a4.85 4.85 0 01-1.84-.1z"/></svg>
+      </a>
+      <a href="https://share.google/KxNDtGpzlkBEwSXu2" target="_blank" rel="noopener noreferrer" aria-label="Google Business Profile">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84A10.997 10.997 0 0012 23z"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+      </a>
+    </div>
+  </div>
+</footer>
+  <!-- END_FOOTER -->
+
+  <script>
+    /* ── As-is position scorecard ────────────────────────────────────
+       Runs entirely client side and deliberately sends nothing anywhere.
+       Every competitor in this niche makes the seller hand over an address
+       before telling them anything; answering first is the whole point.
+
+       Two scores drive the verdict:
+         LOT   = how much a builder can do with the land
+         DRAG  = how much the house itself pushes retail buyers away
+       A high-drag house on a low-value lot is a flip, not a teardown, and
+       saying so plainly is more useful than steering everyone to "call me". */
+    (function () {
+      var form = document.getElementById('ai-form');
+      if (!form) return;
+      var box = document.getElementById('ai-result');
+
+      var LOT   = { small: 0, mid: 1, good: 2, big: 3 };
+      var ERA   = { pre60: 2, '60to89': 1, post90: 0 };
+      var ROOF  = { new: 0, mid: 1, old: 1.5, veryold: 2 };
+      var COND  = { good: 0, dated: 1, major: 2, rough: 3 };
+      var INS   = { none: 0, pricey: 1, denied: 2 };
+
+      function val(name) {
+        var el = form.querySelector('input[name="' + name + '"]:checked');
+        return el ? el.value : null;
+      }
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var need = ['era','roof','lot','cond','ins','zip','time'];
+        var answers = {};
+        var missing = null;
+        need.forEach(function (n) {
+          answers[n] = val(n);
+          if (!answers[n] && !missing) missing = n;
+        });
+        if (missing) {
+          var hint = document.getElementById('ai-hint');
+          hint.textContent = 'Please answer all seven so the result means something.';
+          hint.style.color = '#c41e2a';
+          var q = form.querySelector('input[name="' + missing + '"]');
+          if (q) q.closest('.ai-q').scrollIntoView({ behavior: 'smooth', block: 'center' });
+          return;
+        }
+
+        var lot  = LOT[answers.lot] + (answers.zip === 'core' ? 2 : 0);
+        var drag = ERA[answers.era] + ROOF[answers.roof] + COND[answers.cond] + INS[answers.ins];
+
+        var label, verdict, why = [], caveat;
+
+        /* Thresholds: max drag is 9 (era 2 + roof 2 + condition 3 + insurance 2).
+           A dated-but-livable house with a mid-age roof and a premium bump scores
+           4, and that seller genuinely has a choice, so the teardown call sits
+           higher at 5.5. Calling everything a teardown would be the same lazy
+           funnel every wholesaler in this market already runs. */
+        if (lot >= 3 && drag >= 5.5) {
+          label = 'Most likely outcome';
+          verdict = 'Your value is probably in the land, not the house.';
+          why.push('Your lot is the kind builders can actually work with, and it is in the part of Tampa where they are buying.');
+          why.push('The house carries enough age and condition drag that retail buyers will discount it heavily, or need cash to buy it at all.');
+          why.push('A builder prices off what a new home sells for on your street, so their number is not capped by your current condition.');
+          caveat = 'That does not automatically mean you should sell to a builder. It means you should see that number before you accept anyone else’s.';
+        } else if (drag >= 5.5 && lot < 3) {
+          label = 'Most likely outcome';
+          verdict = 'A rehab buyer is your realistic market, not a builder.';
+          why.push('The house needs enough work that most retail buyers will pass or discount hard.');
+          why.push('The lot is on the smaller side for a new build here, so builders may not bid aggressively for the land alone.');
+          why.push('Local cash investors generally pay around 80 to 88 percent of market value, because they need resale margin.');
+          caveat = 'Worth getting more than one offer. In this bracket the spread between the first postcard and the best buyer is often meaningful.';
+        } else if (drag >= 2.5) {
+          label = 'You have a real choice';
+          verdict = 'This one could go either way, and that is good news.';
+          why.push('The house has real issues, but not so many that retail buyers walk away automatically.');
+          why.push(lot >= 3
+            ? 'The lot has genuine builder appeal, which gives you a second buyer pool to play against the first.'
+            : 'The lot is workable, though land value alone probably will not carry the deal.');
+          why.push('When both paths are live, the right move is to price them both before committing to either.');
+          caveat = 'This is the case where sellers most often leave money on the table, by taking the first certain offer without checking the other path.';
+        } else {
+          label = 'Most likely outcome';
+          verdict = 'Do not sell this one at a discount.';
+          why.push('The house is in good enough shape, and recent enough, to be financeable and insurable for an ordinary buyer.');
+          why.push('That means the full retail market is open to you, which is the deepest and most competitive pool of buyers there is.');
+          why.push('Cash and as-is offers on a house like this are usually a convenience trade, and the convenience is expensive.');
+          caveat = 'If speed genuinely matters more than price, an as-is sale is still valid. Just go in knowing what you are trading away.';
+        }
+
+        if (answers.ins === 'denied') {
+          why.push('Being non-renewed or declined matters more than most sellers realise: a buyer who cannot insure it usually cannot get a mortgage on it.');
+        }
+        if (answers.roof === 'veryold') {
+          why.push('A roof past 20 years will generally fail a four point inspection, which is often the specific thing blocking a financed buyer.');
+        }
+        if (answers.time === 'fast') {
+          why.push('On your timeline, note that a cash or builder close runs roughly 7 to 21 days, while a financed sale is closer to 60 to 70 days start to finish.');
+        }
+        if (answers.time === 'explore') {
+          why.push('Since you are still exploring, the useful next step is simply knowing your number. Nothing has to happen after that.');
+        }
+
+        document.getElementById('ai-vlabel').textContent = label;
+        document.getElementById('ai-verdict').textContent = verdict;
+        var ul = document.getElementById('ai-why');
+        ul.innerHTML = '';
+        why.forEach(function (w) {
+          var li = document.createElement('li');
+          li.innerHTML = w;
+          ul.appendChild(li);
+        });
+        document.getElementById('ai-caveat').textContent = caveat;
+
+        box.classList.add('show');
+        box.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({
+          event: 'asis_scorecard_complete',
+          asis_lot_score: lot,
+          asis_drag_score: drag,
+          asis_verdict: verdict
+        });
+      });
+
+      form.addEventListener('change', function () {
+        var hint = document.getElementById('ai-hint');
+        hint.textContent = 'Nothing is sent anywhere. This runs in your browser.';
+        hint.style.color = '';
+      });
+    })();
+  </script>
+</body>
+</html>
