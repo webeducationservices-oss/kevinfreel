@@ -3749,3 +3749,11 @@ ul { list-style: none; }
 .author-avatar {
   color: var(--gold-on-dark);
 }
+
+/* Sits under a .blog-cta-pill-row to say why the link is worth following. */
+.blog-related-note {
+  margin: -0.35rem 0 1.75rem;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: var(--text-light);
+}
