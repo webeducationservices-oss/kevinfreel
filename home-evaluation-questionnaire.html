@@ -398,6 +398,115 @@
       .q-hero h1 { font-size: 1.625rem; }
       .q-hero p { font-size: 1rem; }
     }
+
+    /* ── Step wizard ───────────────────────────────────────────────
+       One card at a time. Steps are display:none rather than hidden
+       so the fields stay in the form and still submit with FormData. */
+    .q-step,
+    .q-submit-card { display: none; }
+    .q-step.is-active,
+    .q-submit-card.is-active { display: block; }
+    .q-submit-card.is-active { animation: q-fade .28s ease both; }
+    .q-step.is-active { animation: q-fade .28s ease both; }
+    @keyframes q-fade {
+      from { opacity: 0; transform: translateY(6px); }
+      to   { opacity: 1; transform: none; }
+    }
+
+    .q-progress { margin-bottom: 1.25rem; }
+    .q-progress-row {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      margin-bottom: 0.5rem;
+    }
+    .q-progress-label {
+      font-family: var(--font-sans);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      color: var(--navy);
+    }
+    .q-progress-pct {
+      font-family: var(--font-sans);
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--text-light);
+      font-variant-numeric: tabular-nums;
+    }
+    .q-progress-track {
+      height: 6px;
+      background: var(--border);
+      border-radius: 999px;
+      overflow: hidden;
+    }
+    .q-progress-fill {
+      height: 100%;
+      width: 14%;
+      background: var(--gold);
+      border-radius: 999px;
+      transition: width .32s cubic-bezier(.4,0,.2,1);
+    }
+
+    .q-nav {
+      display: flex;
+      gap: 0.75rem;
+      align-items: center;
+      margin-top: 0.25rem;
+    }
+    .q-back-btn,
+    .q-next-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-family: var(--font-sans);
+      font-size: 0.9375rem;
+      font-weight: 600;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background .18s, border-color .18s, color .18s;
+    }
+    .q-next-btn {
+      margin-left: auto;
+      padding: 0.85rem 1.6rem;
+      background: var(--navy);
+      color: #fff;
+      border: 1px solid var(--navy);
+    }
+    .q-next-btn:hover { background: var(--navy-light); border-color: var(--navy-light); }
+    .q-back-btn {
+      padding: 0.85rem 1.1rem;
+      background: transparent;
+      color: var(--text-light);
+      border: 1px solid var(--border);
+    }
+    .q-back-btn:hover { color: var(--navy); border-color: var(--navy); }
+    .q-next-btn:focus-visible,
+    .q-back-btn:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+
+    /* Invalid field highlight, since novalidate turns off the browser default */
+    .q-card .form-group input.q-invalid,
+    .q-card .form-group select.q-invalid,
+    .q-card .form-group textarea.q-invalid { border-color: #c41e2a; }
+    .q-group-error {
+      display: block;
+      margin-top: 0.4rem;
+      font-family: var(--font-sans);
+      font-size: 0.8125rem;
+      font-weight: 600;
+      color: #c41e2a;
+    }
+
+    @media (max-width: 480px) {
+      .q-next-btn { padding: 0.85rem 1.25rem; }
+      .q-nav { gap: 0.5rem; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .q-step.is-active,
+      .q-submit-card.is-active { animation: none; }
+      .q-progress-fill { transition: none; }
+    }
   </style>
   <!-- BEGIN_GTM -->
   <!-- Google Consent Mode (must be set before GTM loads) -->
@@ -419,6 +528,10 @@
   })(window,document,'script','dataLayer','GTM-5PP6R6HL');</script>
   <!-- END_GTM -->
   <!-- myaieditor inline-edit loader (no-op for real visitors) -->
+  <!-- components.js defines getSourceAttribution(), which the submit handler
+       below calls. Without it every lead from this page landed with no
+       traffic source at all. -->
+  <script src="/components.js" defer></script>
   <script src="/mae-edit-loader.js" async></script>
 </head>
 <body>
@@ -447,8 +560,25 @@
     </section>
 
     <!-- ── Form ── -->
-    <form id="evaluation-form" action="https://myaieditor.com/api/form-notify" method="POST" data-ajax>
+    <!-- data-ajax deliberately REMOVED: components.js binds the first
+         form[data-ajax] and this page runs its own submit handler below.
+         With both bound, every submission posted the lead twice.
+         novalidate: steps are hidden with CSS, and native submit validation
+         cannot focus a hidden invalid field, so it blocked submit silently.
+         Validation is done per step in JS instead. -->
+    <form id="evaluation-form" action="https://myaieditor.com/api/form-notify" method="POST" novalidate>
       <div class="form-fields">
+
+        <div class="q-progress" role="group" aria-label="Form progress">
+          <div class="q-progress-row">
+            <span class="q-progress-label" id="q-progress-label">Step 1 of 7</span>
+            <span class="q-progress-pct" id="q-progress-pct">14%</span>
+          </div>
+          <div class="q-progress-track">
+            <div class="q-progress-fill" id="q-progress-fill" style="width:14%"></div>
+          </div>
+        </div>
+
 
         <!-- Hidden config -->
         <input type="hidden" name="site_slug" value="kevin-freel">
@@ -456,10 +586,11 @@
         <input type="hidden" name="recaptcha_token" id="recaptcha_token">
 
         <!-- Honeypot -->
-        <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+        <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off"
+               aria-hidden="true" data-lpignore="true" data-1p-ignore>
 
         <!-- ── STEP 1: Address ── -->
-        <section class="q-card">
+        <section class="q-card q-step" data-step="1">
           <span class="q-step-label">Step 1 of 7</span>
           <h2 class="q-step-heading">Your Home's Address</h2>
 
@@ -486,7 +617,7 @@
         </section>
 
         <!-- ── STEP 2: Property Basics ── -->
-        <section class="q-card">
+        <section class="q-card q-step" data-step="2">
           <span class="q-step-label">Step 2 of 7</span>
           <h2 class="q-step-heading">Property Basics</h2>
 
@@ -565,7 +696,7 @@
         </section>
 
         <!-- ── STEP 3: Features & Condition ── -->
-        <section class="q-card">
+        <section class="q-card q-step" data-step="3">
           <span class="q-step-label">Step 3 of 7</span>
           <h2 class="q-step-heading">Features &amp; Condition</h2>
 
@@ -634,7 +765,7 @@
         </section>
 
         <!-- ── STEP 4: Recent Improvements ── -->
-        <section class="q-card">
+        <section class="q-card q-step" data-step="4">
           <span class="q-step-label">Step 4 of 7</span>
           <h2 class="q-step-heading">Recent Improvements</h2>
           <p class="q-helper">Pick all that apply. Anything you've done in the last 5 years that adds value.</p>
@@ -657,7 +788,7 @@
         </section>
 
         <!-- ── STEP 5: Selling Timeline ── -->
-        <section class="q-card">
+        <section class="q-card q-step" data-step="5">
           <span class="q-step-label">Step 5 of 7</span>
           <h2 class="q-step-heading">Your Selling Timeline</h2>
 
@@ -696,7 +827,7 @@
         </section>
 
         <!-- ── STEP 6: Anything else ── -->
-        <section class="q-card">
+        <section class="q-card q-step" data-step="6">
           <span class="q-step-label">Step 6 of 7</span>
           <h2 class="q-step-heading">Anything else Kevin should know?</h2>
 
@@ -707,7 +838,7 @@
         </section>
 
         <!-- ── STEP 7: Confirm contact ── -->
-        <section class="q-card">
+        <section class="q-card q-step" data-step="7">
           <span class="q-step-label">Step 7 of 7</span>
           <h2 class="q-step-heading">Confirm Your Contact</h2>
           <p class="q-helper">We pulled this from the previous step — edit if needed.</p>
@@ -751,6 +882,17 @@
           </p>
         </section>
 
+        <div class="q-nav">
+          <button type="button" class="q-back-btn" id="q-back" hidden>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><polyline points="15 18 9 12 15 6"/></svg>
+            Back
+          </button>
+          <button type="button" class="q-next-btn" id="q-next">
+            Next
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
+        </div>
+
       </div><!-- /.form-fields -->
 
       <!-- ── Inline thank-you ── -->
@@ -768,6 +910,173 @@
     </form>
 
   </main>
+
+  <script>
+    /* ── Step wizard ──────────────────────────────────────────────────
+       Shows one card at a time instead of one long scroll.
+
+       This script is deliberately placed BEFORE the submit script below.
+       Listeners on the same element fire in registration order, so this
+       one runs first and can stop an invalid submission with
+       stopImmediatePropagation() before the network handler ever sees it.
+
+       The form carries novalidate, because a hidden required field cannot
+       be focused and would block submit with no message the visitor can
+       see. All validation therefore happens here, explicitly. */
+    (function () {
+      var form = document.getElementById('evaluation-form');
+      if (!form) return;
+      var steps = [].slice.call(form.querySelectorAll('.q-step'));
+      var submitCard = form.querySelector('.q-submit-card');
+      var nextBtn = document.getElementById('q-next');
+      var backBtn = document.getElementById('q-back');
+      var fill = document.getElementById('q-progress-fill');
+      var label = document.getElementById('q-progress-label');
+      var pct = document.getElementById('q-progress-pct');
+
+      // If the markup ever changes shape, leave the page as a plain scroll
+      // form rather than trapping the visitor on a broken step 1.
+      if (steps.length < 2 || !nextBtn || !backBtn) {
+        steps.forEach(function (s) { s.classList.add('is-active'); });
+        if (submitCard) submitCard.classList.add('is-active');
+        var nav = document.querySelector('.q-nav');
+        if (nav) nav.hidden = true;
+        var prog = document.querySelector('.q-progress');
+        if (prog) prog.hidden = true;
+        return;
+      }
+
+      var current = 0;
+
+      function isSkippable(field) {
+        if (field.disabled || field.type === 'hidden') return true;
+        // Fields inside a collapsed conditional panel are not being asked yet.
+        var cond = field.closest('.q-conditional');
+        return !!(cond && !cond.classList.contains('show'));
+      }
+
+      function clearErrors(step) {
+        [].forEach.call(step.querySelectorAll('.q-invalid'), function (f) {
+          f.classList.remove('q-invalid');
+        });
+        [].forEach.call(step.querySelectorAll('.q-group-error'), function (e) {
+          e.remove();
+        });
+      }
+
+      function validate(step) {
+        clearErrors(step);
+        var fields = [].slice.call(step.querySelectorAll('input, select, textarea'));
+        var firstBad = null;
+        var badRadioGroups = {};
+
+        fields.forEach(function (f) {
+          if (isSkippable(f) || f.checkValidity()) return;
+          if (f.type === 'radio' || f.type === 'checkbox') {
+            if (badRadioGroups[f.name]) return;
+            badRadioGroups[f.name] = f;
+          } else {
+            f.classList.add('q-invalid');
+          }
+          if (!firstBad) firstBad = f;
+        });
+
+        // Radio groups get an inline message; a native bubble on a visually
+        // hidden radio input lands in the wrong place.
+        Object.keys(badRadioGroups).forEach(function (name) {
+          var f = badRadioGroups[name];
+          var group = f.closest('.q-block') || f.closest('.form-group') || f.parentNode;
+          if (group && !group.querySelector('.q-group-error')) {
+            var msg = document.createElement('span');
+            msg.className = 'q-group-error';
+            msg.setAttribute('role', 'alert');
+            msg.textContent = 'Please choose one to continue.';
+            group.appendChild(msg);
+          }
+        });
+
+        if (!firstBad) return true;
+
+        if (firstBad.type === 'radio' || firstBad.type === 'checkbox') {
+          var g = firstBad.closest('.q-block') || firstBad.closest('.form-group');
+          if (g) g.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          try { firstBad.focus({ preventScroll: true }); } catch (e) {}
+        } else {
+          try { firstBad.reportValidity(); } catch (e) { firstBad.focus(); }
+        }
+        return false;
+      }
+
+      function render(scroll) {
+        steps.forEach(function (s, i) { s.classList.toggle('is-active', i === current); });
+        var last = current === steps.length - 1;
+        if (submitCard) submitCard.classList.toggle('is-active', last);
+        nextBtn.hidden = last;
+        backBtn.hidden = current === 0;
+
+        var p = Math.round(((current + 1) / steps.length) * 100);
+        if (fill) fill.style.width = p + '%';
+        if (pct) pct.textContent = p + '%';
+        if (label) label.textContent = 'Step ' + (current + 1) + ' of ' + steps.length;
+
+        if (scroll === false) return;
+        var heading = steps[current].querySelector('.q-step-heading');
+        if (heading) {
+          heading.setAttribute('tabindex', '-1');
+          try { heading.focus({ preventScroll: true }); } catch (e) {}
+        }
+        var top = form.getBoundingClientRect().top + window.pageYOffset - 24;
+        window.scrollTo({ top: top < 0 ? 0 : top, behavior: 'smooth' });
+      }
+
+      function go(to, scroll) {
+        current = Math.max(0, Math.min(steps.length - 1, to));
+        render(scroll);
+      }
+
+      nextBtn.addEventListener('click', function () {
+        if (!validate(steps[current])) return;
+        go(current + 1);
+      });
+      backBtn.addEventListener('click', function () { go(current - 1); });
+
+      // Enter should advance rather than submit from step 3 of 7.
+      form.addEventListener('keydown', function (e) {
+        if (e.key !== 'Enter') return;
+        var tag = (e.target.tagName || '').toLowerCase();
+        if (tag === 'textarea' || e.target.type === 'submit') return;
+        if (current === steps.length - 1) return;
+        e.preventDefault();
+        if (validate(steps[current])) go(current + 1);
+      });
+
+      // Final gate. Registered before the network handler, so an invalid form
+      // never reaches it.
+      form.addEventListener('submit', function (e) {
+        for (var i = 0; i < steps.length; i++) {
+          if (validate(steps[i])) continue;
+          e.preventDefault();
+          e.stopImmediatePropagation();
+          go(i);
+          return;
+        }
+      });
+
+      // Clear the error styling as soon as the visitor fixes the field.
+      form.addEventListener('input', function (e) {
+        if (e.target.classList) e.target.classList.remove('q-invalid');
+      });
+      form.addEventListener('change', function (e) {
+        var t = e.target;
+        if (t.type !== 'radio' && t.type !== 'checkbox') return;
+        var g = t.closest('.q-block') || t.closest('.form-group');
+        var msg = g && g.querySelector('.q-group-error');
+        if (msg) msg.remove();
+      });
+
+      render(false);
+    })();
+  </script>
 
   <script>
     (function () {
