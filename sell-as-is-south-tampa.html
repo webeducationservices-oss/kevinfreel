@@ -45,6 +45,7 @@
   </script>
 
 
+  <script src="https://www.google.com/recaptcha/api.js?render=6Lck8aQsAAAAALMA-T6nwfkSf7bv4K-mOhkszeKh"></script>
   <script src="/components.js" defer></script>
   <!-- myaieditor inline-edit loader (no-op for real visitors) -->
   <script src="/mae-edit-loader.js" async></script>
@@ -162,6 +163,58 @@
       .ai-step.is-active { animation: none; }
       .ai-progress-fill { transition: none; }
     }
+
+    /* ── Content cards (replaced the bullet lists) ── */
+    .ai-fact-grid, .ai-lift-grid, .ai-drag-grid {
+      display: grid; gap: .75rem; margin: 1.25rem 0 1.75rem;
+      grid-template-columns: repeat(auto-fit, minmax(255px, 1fr));
+    }
+    .ai-card-item {
+      background: #fff; border: 1px solid var(--border); border-radius: 10px;
+      padding: 1.05rem 1.15rem; box-shadow: 0 1px 3px rgba(0,0,0,.04);
+      border-top: 3px solid var(--border);
+    }
+    .ai-card-item p { margin: 0; font-size: .9375rem; line-height: 1.55; color: var(--text); }
+    .ai-card-title {
+      display: block; font-family: var(--font-sans); font-weight: 700;
+      font-size: .9375rem; color: var(--navy); margin-bottom: .35rem; line-height: 1.3;
+    }
+    /* Severity reads through the top rule, not just the words. */
+    .ai-fact-grid .ai-card-item { border-top-color: #c41e2a; }
+    .ai-lift-grid .ai-card-item { border-top-color: #166534; }
+    .ai-drag-grid .ai-card-item { border-top-color: #9a5b06; }
+    .ai-tool .ai-card-item { background: #fff; }
+
+    /* ── Result CTAs + email form ── */
+    .ai-cta-row { display: flex; flex-wrap: wrap; gap: .6rem; align-items: center; }
+    .ai-cta-row .btn-outline { cursor: pointer; font: inherit; }
+    .ai-send {
+      margin-top: 1.25rem; padding-top: 1.25rem; border-top: 1px solid var(--border);
+      animation: ai-fade .24s ease both;
+    }
+    .ai-send-lede { font-size: .9375rem; color: var(--text-light); margin: 0 0 1rem; }
+    .ai-send-grid {
+      display: grid; gap: .8rem; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      margin-bottom: 1rem;
+    }
+    .ai-fld label {
+      display: block; font-family: var(--font-sans); font-size: .75rem; font-weight: 700;
+      letter-spacing: .05em; text-transform: uppercase; color: var(--navy); margin-bottom: .35rem;
+    }
+    .ai-fld input {
+      width: 100%; padding: .7rem .8rem; font: inherit; font-size: .9375rem;
+      border: 1px solid var(--border); border-radius: 8px; background: #fff; color: var(--text);
+    }
+    .ai-fld input:focus { outline: 2px solid #c41e2a; outline-offset: 1px; border-color: #c41e2a; }
+    .ai-fld input.ai-bad { border-color: #c41e2a; background: rgba(196,30,42,.03); }
+    .ai-send-btn { cursor: pointer; font: inherit; border: 0; }
+    .ai-send-btn:disabled { opacity: .6; cursor: default; }
+    .ai-send-msg { margin: .9rem 0 0; font-size: .9rem; font-weight: 600; }
+    .ai-send-msg.err { color: #c41e2a; }
+    .ai-send-msg.ok  { color: #166534; }
+    /* Height floor so the card stops resizing between questions. */
+    .ai-card > form#ai-form { min-height: 232px; }
+    @media (prefers-reduced-motion: reduce) { .ai-send { animation: none; } }
     @media (prefers-reduced-motion: reduce) { .ai-result.show { animation: none; } }
   </style>
 </head>
@@ -496,8 +549,35 @@
             <h3 class="ai-verdict" id="ai-verdict"></h3>
             <ul class="ai-why" id="ai-why"></ul>
             <p class="ai-caveat" id="ai-caveat"></p>
-            <a href="tel:7274108599" class="btn-primary">Call Kevin: 727-410-8599</a>
-            <a href="/home-evaluation-questionnaire/" class="btn-outline">Get a written valuation</a>
+            <div class="ai-cta-row">
+              <a href="tel:7274108599" class="btn-primary">Call Kevin: 727-410-8599</a>
+              <button type="button" class="btn-outline" id="ai-email-toggle">Email these results to Kevin</button>
+            </div>
+
+            <form class="ai-send" id="ai-send" hidden novalidate>
+              <p class="ai-send-lede">Kevin will look at your address and the answers above, then come back with what he thinks the lot is actually worth. No obligation.</p>
+              <div class="ai-send-grid">
+                <div class="ai-fld">
+                  <label for="ai-first">First name</label>
+                  <input type="text" id="ai-first" name="first_name" autocomplete="given-name" required>
+                </div>
+                <div class="ai-fld">
+                  <label for="ai-last">Last name</label>
+                  <input type="text" id="ai-last" name="last_name" autocomplete="family-name" required>
+                </div>
+                <div class="ai-fld">
+                  <label for="ai-email">Email</label>
+                  <input type="email" id="ai-email" name="email" autocomplete="email" required>
+                </div>
+                <div class="ai-fld">
+                  <label for="ai-phone">Phone</label>
+                  <input type="tel" id="ai-phone" name="phone" autocomplete="tel" required>
+                </div>
+              </div>
+              <button type="submit" class="btn-primary ai-send-btn" id="ai-send-btn">Send my results to Kevin</button>
+              <p class="ai-send-msg" id="ai-send-msg" role="alert" aria-live="assertive" hidden></p>
+            </form>
+
             <p class="ai-restart-row"><button type="button" class="ai-restart" id="ai-restart">Start over</button></p>
           </div>
         </div>
@@ -556,12 +636,20 @@
         </div>
         <div class="content-intro reveal">
           <p>If you own an older South Tampa home, insurance may already be making this decision for you.</p>
-          <ul class="ai-why">
-            <li>Florida carriers require a four point inspection on homes 20 years and older, covering roof, electrical, plumbing and HVAC.</li>
-            <li>Shingle roofs over 20 years are broadly uninsurable. Roofs in the 15 to 20 year range commonly fail a four point even when nothing is leaking.</li>
-            <li>Knob and tube wiring, common before the 1950s, is a hard stop for most standard carriers.</li>
-            <li>A failed four point can mean declined coverage, repairs required before binding, or non-renewal.</li>
-          </ul>
+          <div class="ai-fact-grid">
+            <div class="ai-card-item">
+              <p>Florida carriers require a four point inspection on homes 20 years and older, covering roof, electrical, plumbing and HVAC.</p>
+            </div>
+            <div class="ai-card-item">
+              <p>Shingle roofs over 20 years are broadly uninsurable. Roofs in the 15 to 20 year range commonly fail a four point even when nothing is leaking.</p>
+            </div>
+            <div class="ai-card-item">
+              <p>Knob and tube wiring, common before the 1950s, is a hard stop for most standard carriers.</p>
+            </div>
+            <div class="ai-card-item">
+              <p>A failed four point can mean declined coverage, repairs required before binding, or non-renewal.</p>
+            </div>
+          </div>
           <p>Here is why that matters more than any kitchen upgrade: <strong>a house a buyer cannot insure is a house they usually cannot finance.</strong> When coverage gets hard, your retail buyer pool shrinks to people paying cash, and cash buyers expect a discount for the privilege.</p>
           <p>So the honest question is not "should I fix it up." It is "can I fix the things that are actually blocking a buyer, and would that spend come back to me?" Sometimes a roof pays for itself. Often, on a house a builder is going to take down anyway, it does not.</p>
         </div>
@@ -577,20 +665,47 @@
         </div>
         <div class="content-intro reveal">
           <h3>Raises your number</h3>
-          <ul class="ai-why">
-            <li><strong>Lot dimensions that work.</strong> Width and depth decide what can be built, and that decides what a builder can pay. This is the single biggest lever and you cannot change it.</li>
-            <li><strong>A street where new homes are already selling well.</strong> Builders underwrite the finished product, so recent nearby builds lift your land value directly.</li>
-            <li><strong>Clean, clear title.</strong> Probate, liens, unpermitted additions and boundary problems all cost you money or kill deals. Sorting these early is worth real dollars.</li>
-            <li><strong>Flexibility on closing.</strong> Builders juggle crews and capital. Letting them close on their timeline is often worth more than squeezing the price.</li>
-            <li><strong>More than one buyer at the table.</strong> One offer is a price. Several offers is a market.</li>
-          </ul>
+          <div class="ai-lift-grid">
+            <div class="ai-card-item">
+              <span class="ai-card-title">Lot dimensions that work.</span>
+              <p>Width and depth decide what can be built, and that decides what a builder can pay. This is the single biggest lever and you cannot change it.</p>
+            </div>
+            <div class="ai-card-item">
+              <span class="ai-card-title">A street where new homes are already selling well.</span>
+              <p>Builders underwrite the finished product, so recent nearby builds lift your land value directly.</p>
+            </div>
+            <div class="ai-card-item">
+              <span class="ai-card-title">Clean, clear title.</span>
+              <p>Probate, liens, unpermitted additions and boundary problems all cost you money or kill deals. Sorting these early is worth real dollars.</p>
+            </div>
+            <div class="ai-card-item">
+              <span class="ai-card-title">Flexibility on closing.</span>
+              <p>Builders juggle crews and capital. Letting them close on their timeline is often worth more than squeezing the price.</p>
+            </div>
+            <div class="ai-card-item">
+              <span class="ai-card-title">More than one buyer at the table.</span>
+              <p>One offer is a price. Several offers is a market.</p>
+            </div>
+          </div>
           <h3>Drags it down</h3>
-          <ul class="ai-why">
-            <li><strong>Cosmetic money spent on a house that is coming down.</strong> New counters do not move land value. I have talked sellers out of this more than once.</li>
-            <li><strong>Sitting on market too long.</strong> Days on market reads as a problem even when the house is fine, and every buyer type starts subtracting.</li>
-            <li><strong>Only talking to whoever mailed you a postcard.</strong> That is one buyer's opinion, and they chose you precisely because you had no comparison.</li>
-            <li><strong>Surprises found late.</strong> An issue discovered in inspection costs far more than the same issue disclosed up front, because now it is leverage.</li>
-          </ul>
+          <div class="ai-drag-grid">
+            <div class="ai-card-item">
+              <span class="ai-card-title">Cosmetic money spent on a house that is coming down.</span>
+              <p>New counters do not move land value. I have talked sellers out of this more than once.</p>
+            </div>
+            <div class="ai-card-item">
+              <span class="ai-card-title">Sitting on market too long.</span>
+              <p>Days on market reads as a problem even when the house is fine, and every buyer type starts subtracting.</p>
+            </div>
+            <div class="ai-card-item">
+              <span class="ai-card-title">Only talking to whoever mailed you a postcard.</span>
+              <p>That is one buyer's opinion, and they chose you precisely because you had no comparison.</p>
+            </div>
+            <div class="ai-card-item">
+              <span class="ai-card-title">Surprises found late.</span>
+              <p>An issue discovered in inspection costs far more than the same issue disclosed up front, because now it is leverage.</p>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -764,6 +879,7 @@
 
       var current = 0;          // 0..steps.length-1, or steps.length for the result
       var timer = null;
+      var lastRun = null;       // the scored run, so it can be emailed to Kevin
 
       function val(name) {
         var el = form.querySelector('input[name="' + name + '"]:checked');
@@ -783,13 +899,11 @@
         if (hint)   hint.hidden = onResult;
 
         if (focus === false) return;
-        var target = onResult ? box : steps[current];
-        // Move focus for keyboard and screen reader users, without yanking
-        // the page around for everyone else.
+        // Focus moves for keyboard and screen reader users, but the page does
+        // NOT scroll. The card holds its position between questions, so
+        // scrolling on every answer just threw the reader down the page.
         var first = onResult ? box.querySelector('a') : steps[current].querySelector('input');
         if (first) { try { first.focus({ preventScroll: true }); } catch (e) {} }
-        var top = document.querySelector('.ai-card').getBoundingClientRect().top + window.pageYOffset - 24;
-        window.scrollTo({ top: top < 0 ? 0 : top, behavior: 'smooth' });
       }
 
       function go(to) {
@@ -872,6 +986,8 @@
         });
         document.getElementById('ai-caveat').textContent = caveat;
 
+        lastRun = { answers: a, lot: lot, drag: drag, verdict: verdict, why: why.slice() };
+
         window.dataLayer = window.dataLayer || [];
         window.dataLayer.push({
           event: 'asis_scorecard_complete',
@@ -897,6 +1013,11 @@
         restart.addEventListener('click', function () {
           clearTimeout(timer);
           form.reset();
+          var sendForm = document.getElementById('ai-send');
+          if (sendForm) { sendForm.hidden = true; sendForm.reset(); }
+          var sm = document.getElementById('ai-send-msg');
+          if (sm) { sm.hidden = true; sm.className = 'ai-send-msg'; }
+          lastRun = null;
           current = 0;
           render();
         });
@@ -904,6 +1025,120 @@
 
       // No submit button any more, but Enter in the card would still try.
       form.addEventListener('submit', function (e) { e.preventDefault(); });
+
+      /* ── Email the result to Kevin ──────────────────────────────────
+         Posts to form-notify like every other WES form. The thank-you is
+         gated on the server actually accepting it: form-notify can answer
+         200 with accepted:false, and showing success regardless is how a
+         total outage stays invisible. On failure the answers stay on screen
+         and the visitor gets Kevin's number. */
+      var toggle = document.getElementById('ai-email-toggle');
+      var send = document.getElementById('ai-send');
+      var sendBtn = document.getElementById('ai-send-btn');
+      var sendMsg = document.getElementById('ai-send-msg');
+
+      if (toggle && send) {
+        toggle.addEventListener('click', function () {
+          send.hidden = !send.hidden;
+          if (!send.hidden) {
+            var f = document.getElementById('ai-first');
+            if (f) { try { f.focus({ preventScroll: true }); } catch (e) {} }
+          }
+        });
+      }
+
+      var LABELS = {
+        era:  { pre60:'Before 1960', '60to89':'1960 to 1989', post90:'1990 or newer' },
+        roof: { new:'10 years or less', mid:'11 to 15 years', old:'16 to 20 years', veryold:'Over 20, or unsure' },
+        lot:  { small:'Under 5,000 sq ft', mid:'5,000 to 7,499', good:'7,500 to 9,999', big:'10,000+ sq ft' },
+        cond: { good:'Move-in ready', dated:'Dated but livable', major:'Needs major work', rough:'Not livable as-is' },
+        ins:  { none:'No trouble', pricey:'Premium jumped hard', denied:'Non-renewed or declined' },
+        zip:  { core:'33606 / 33609 / 33611 / 33629', other:'Elsewhere in Tampa Bay' },
+        time: { fast:'As soon as possible', months:'Next few months', explore:'Just exploring' }
+      };
+
+      if (send) {
+        send.addEventListener('submit', async function (e) {
+          e.preventDefault();
+          if (sendMsg) { sendMsg.hidden = true; sendMsg.className = 'ai-send-msg'; }
+
+          var fields = ['ai-first','ai-last','ai-email','ai-phone'].map(function (id) { return document.getElementById(id); });
+          var bad = null;
+          fields.forEach(function (f) {
+            f.classList.remove('ai-bad');
+            if (!f.checkValidity() || !f.value.trim()) { f.classList.add('ai-bad'); if (!bad) bad = f; }
+          });
+          if (bad) {
+            if (sendMsg) { sendMsg.textContent = 'Please fill in all four so Kevin can get back to you.'; sendMsg.className = 'ai-send-msg err'; sendMsg.hidden = false; }
+            try { bad.focus({ preventScroll: true }); } catch (err) {}
+            return;
+          }
+
+          var label = sendBtn.textContent;
+          sendBtn.disabled = true; sendBtn.textContent = 'Sending...';
+
+          var a = (lastRun && lastRun.answers) || {};
+          var payload = {
+            site_slug: 'kevin-freel',
+            form_type: 'as-is-scorecard',
+            _honey: '',
+            first_name: document.getElementById('ai-first').value.trim(),
+            last_name:  document.getElementById('ai-last').value.trim(),
+            email:      document.getElementById('ai-email').value.trim(),
+            phone:      document.getElementById('ai-phone').value.trim(),
+            verdict:    (lastRun && lastRun.verdict) || '',
+            year_built: LABELS.era[a.era]  || '',
+            roof_age:   LABELS.roof[a.roof] || '',
+            lot_size:   LABELS.lot[a.lot]  || '',
+            condition:  LABELS.cond[a.cond] || '',
+            insurance:  LABELS.ins[a.ins]  || '',
+            area:       LABELS.zip[a.zip]  || '',
+            timeline:   LABELS.time[a.time] || '',
+            lot_score:  String((lastRun && lastRun.lot) || ''),
+            drag_score: String((lastRun && lastRun.drag) || ''),
+            reasons:    (lastRun && lastRun.why || []).join(' | ')
+          };
+
+          try {
+            if (typeof waitForRecaptchaToken === 'function') {
+              payload.recaptcha_token = await waitForRecaptchaToken('as_is_scorecard');
+            }
+          } catch (err) { /* non-fatal: form-notify records it as missing_recaptcha_token */ }
+
+          try {
+            if (typeof getSourceAttribution === 'function') Object.assign(payload, getSourceAttribution());
+          } catch (err) {}
+
+          var accepted = false;
+          try {
+            var res = await fetch('https://myaieditor.com/api/form-notify', {
+              method: 'POST', headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify(payload)
+            });
+            var j = await res.json().catch(function () { return {}; });
+            accepted = res.ok && j.success !== false && j.accepted !== false;
+          } catch (err) {}
+
+          if (!accepted) {
+            if (sendMsg) {
+              sendMsg.innerHTML = 'That did not send. Your answers are still here, so please try again or call Kevin directly at <a href="tel:7274108599">727-410-8599</a>.';
+              sendMsg.className = 'ai-send-msg err'; sendMsg.hidden = false;
+            }
+            sendBtn.disabled = false; sendBtn.textContent = label;
+            return;
+          }
+
+          send.querySelector('.ai-send-grid').hidden = true;
+          sendBtn.hidden = true;
+          send.querySelector('.ai-send-lede').hidden = true;
+          if (sendMsg) {
+            sendMsg.textContent = 'Sent. Kevin will look at your answers and get back to you, usually within one business day.';
+            sendMsg.className = 'ai-send-msg ok'; sendMsg.hidden = false;
+          }
+          window.dataLayer = window.dataLayer || [];
+          window.dataLayer.push({ event: 'form_submission', form_type: 'as-is-scorecard', form_location: window.location.pathname });
+        });
+      }
 
       render(false);
     })();
