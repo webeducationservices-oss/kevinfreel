@@ -125,6 +125,49 @@
       font-family: var(--font-serif); color: var(--navy);
       font-size: 1.25rem; margin: 1.75rem 0 .75rem;
     }
+
+    /* ── One question at a time ── */
+    .ai-step { display: none; }
+    .ai-step.is-active { display: block; animation: ai-fade .26s ease both; }
+    .ai-q.ai-step { margin-bottom: 0; }
+    .ai-progress { margin-bottom: 1.5rem; }
+    .ai-progress-row { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: .5rem; }
+    .ai-progress-label {
+      font-family: var(--font-sans); font-size: .75rem; font-weight: 700;
+      letter-spacing: .09em; text-transform: uppercase; color: var(--navy);
+    }
+    .ai-progress-pct {
+      font-family: var(--font-sans); font-size: .75rem; font-weight: 600;
+      color: var(--text-light); font-variant-numeric: tabular-nums;
+    }
+    .ai-progress-track { height: 6px; background: var(--border); border-radius: 999px; overflow: hidden; }
+    .ai-progress-fill {
+      height: 100%; width: 14%; background: #c41e2a; border-radius: 999px;
+      transition: width .3s cubic-bezier(.4,0,.2,1);
+    }
+    .ai-back {
+      display: inline-flex; align-items: center; gap: .35rem;
+      padding: .6rem 1rem; background: transparent; color: var(--text-light);
+      border: 1px solid var(--border); border-radius: 8px; cursor: pointer;
+      font-family: var(--font-sans); font-size: .875rem; font-weight: 600;
+      transition: color .15s, border-color .15s;
+    }
+    .ai-back:hover { color: var(--navy); border-color: var(--navy); }
+    .ai-back:focus-visible { outline: 2px solid #c41e2a; outline-offset: 2px; }
+    .ai-restart-row { margin: 1.1rem 0 0; }
+    .ai-restart {
+      background: none; border: none; padding: 0; cursor: pointer;
+      font-family: var(--font-sans); font-size: .875rem; font-weight: 600;
+      color: var(--text-light); text-decoration: underline; text-underline-offset: 3px;
+    }
+    .ai-restart:hover { color: var(--navy); }
+    /* Bigger tap targets once each question owns the full card */
+    .ai-step .ai-opts label { padding: .95rem 1rem; font-size: 1rem; }
+    .ai-step .ai-qlabel { font-size: .875rem; margin-bottom: .85rem; }
+    @media (prefers-reduced-motion: reduce) {
+      .ai-step.is-active { animation: none; }
+      .ai-progress-fill { transition: none; }
+    }
     @media (prefers-reduced-motion: reduce) { .ai-result.show { animation: none; } }
   </style>
 </head>
@@ -367,12 +410,20 @@
         <div class="content-intro reveal">
           <p class="section-label">Start Here</p>
           <h2 class="section-heading">Is Your Value in the House, or in the Land?</h2>
-          <p class="section-sub">Seven questions, answered right here on this page. No form, no waiting on a callback, no obligation. Most sites in this space make you hand over your address before they tell you anything. This one tells you first.</p>
+          <p class="section-sub">Seven questions, one at a time, answered right here on this page. No form, no waiting on a callback, no obligation. Most sites in this space make you hand over your address before they tell you anything. This one tells you first.</p>
         </div>
 
         <div class="ai-card reveal">
-          <form id="ai-form" novalidate>
-            <div class="ai-q">
+          <div class="ai-progress">
+              <div class="ai-progress-row">
+                <span class="ai-progress-label" id="ai-plabel">Question 1 of 7</span>
+                <span class="ai-progress-pct" id="ai-ppct">1 / 7</span>
+              </div>
+              <div class="ai-progress-track"><div class="ai-progress-fill" id="ai-pfill"></div></div>
+            </div>
+
+            <form id="ai-form" novalidate>
+            <div class="ai-q ai-step">
               <span class="ai-qlabel">1. When was the house built?</span>
               <div class="ai-opts">
                 <label><input type="radio" name="era" value="pre60"><span>Before 1960</span></label>
@@ -381,7 +432,7 @@
               </div>
             </div>
 
-            <div class="ai-q">
+            <div class="ai-q ai-step">
               <span class="ai-qlabel">2. How old is the roof?</span>
               <div class="ai-opts">
                 <label><input type="radio" name="roof" value="new"><span>10 years or less</span></label>
@@ -391,7 +442,7 @@
               </div>
             </div>
 
-            <div class="ai-q">
+            <div class="ai-q ai-step">
               <span class="ai-qlabel">3. Roughly how big is the lot?</span>
               <div class="ai-opts">
                 <label><input type="radio" name="lot" value="small"><span>Under 5,000 sq ft</span></label>
@@ -401,7 +452,7 @@
               </div>
             </div>
 
-            <div class="ai-q">
+            <div class="ai-q ai-step">
               <span class="ai-qlabel">4. What condition is it in honestly?</span>
               <div class="ai-opts">
                 <label><input type="radio" name="cond" value="good"><span>Move-in ready</span></label>
@@ -411,7 +462,7 @@
               </div>
             </div>
 
-            <div class="ai-q">
+            <div class="ai-q ai-step">
               <span class="ai-qlabel">5. Any trouble with insurance?</span>
               <div class="ai-opts">
                 <label><input type="radio" name="ins" value="none"><span>No, insured normally</span></label>
@@ -420,7 +471,7 @@
               </div>
             </div>
 
-            <div class="ai-q">
+            <div class="ai-q ai-step">
               <span class="ai-qlabel">6. Where is it?</span>
               <div class="ai-opts">
                 <label><input type="radio" name="zip" value="core"><span>33606 / 33609 / 33611 / 33629</span></label>
@@ -428,7 +479,7 @@
               </div>
             </div>
 
-            <div class="ai-q">
+            <div class="ai-q ai-step">
               <span class="ai-qlabel">7. What is your timeline?</span>
               <div class="ai-opts">
                 <label><input type="radio" name="time" value="fast"><span>As soon as possible</span></label>
@@ -438,8 +489,11 @@
             </div>
 
             <div class="ai-actions">
-              <button type="submit" class="ai-run">Show My Position</button>
-              <span class="ai-note" id="ai-hint">Nothing is sent anywhere. This runs in your browser.</span>
+              <button type="button" class="ai-back" id="ai-back" hidden>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="15" height="15"><polyline points="15 18 9 12 15 6"/></svg>
+                Back
+              </button>
+              <span class="ai-note" id="ai-hint">Pick an answer and it moves on by itself. Nothing is sent anywhere.</span>
             </div>
           </form>
 
@@ -450,6 +504,7 @@
             <p class="ai-caveat" id="ai-caveat"></p>
             <a href="tel:7274108599" class="btn-primary">Call Kevin: 727-410-8599</a>
             <a href="/home-evaluation-questionnaire/" class="btn-outline">Get a written valuation</a>
+            <p class="ai-restart-row"><button type="button" class="ai-restart" id="ai-restart">Start over</button></p>
           </div>
         </div>
       </div>
@@ -674,66 +729,106 @@
 
   <script>
     /* ── As-is position scorecard ────────────────────────────────────
-       Runs entirely client side and deliberately sends nothing anywhere.
-       Every competitor in this niche makes the seller hand over an address
-       before telling them anything; answering first is the whole point.
+       Seven questions, one at a time, answered entirely in the browser.
+       Nothing is sent anywhere. Every competitor in this niche makes the
+       seller hand over an address before telling them anything, so
+       answering first is the whole point of the tool.
 
        Two scores drive the verdict:
-         LOT   = how much a builder can do with the land
-         DRAG  = how much the house itself pushes retail buyers away
+         LOT  = how much a builder can do with the land
+         DRAG = how much the house itself pushes retail buyers away
        A high-drag house on a low-value lot is a flip, not a teardown, and
-       saying so plainly is more useful than steering everyone to "call me". */
+       a sound house is told to sell retail rather than take a discount.
+       Routing everyone to "call me" is the funnel the wholesalers already
+       run, and it would cost more credibility than it earns. */
     (function () {
       var form = document.getElementById('ai-form');
       if (!form) return;
-      var box = document.getElementById('ai-result');
 
-      var LOT   = { small: 0, mid: 1, good: 2, big: 3 };
-      var ERA   = { pre60: 2, '60to89': 1, post90: 0 };
-      var ROOF  = { new: 0, mid: 1, old: 1.5, veryold: 2 };
-      var COND  = { good: 0, dated: 1, major: 2, rough: 3 };
-      var INS   = { none: 0, pricey: 1, denied: 2 };
+      var steps   = [].slice.call(form.querySelectorAll('.ai-step'));
+      var box     = document.getElementById('ai-result');
+      var backBtn = document.getElementById('ai-back');
+      var restart = document.getElementById('ai-restart');
+      var fill    = document.getElementById('ai-pfill');
+      var plabel  = document.getElementById('ai-plabel');
+      var ppct    = document.getElementById('ai-ppct');
+      var hint    = document.getElementById('ai-hint');
+
+      // If the markup ever changes shape, fall back to showing everything
+      // rather than stranding the visitor on a blank card.
+      if (!steps.length || !backBtn) {
+        steps.forEach(function (s) { s.classList.add('is-active'); });
+        return;
+      }
+
+      var LOT  = { small: 0, mid: 1, good: 2, big: 3 };
+      var ERA  = { pre60: 2, '60to89': 1, post90: 0 };
+      var ROOF = { new: 0, mid: 1, old: 1.5, veryold: 2 };
+      var COND = { good: 0, dated: 1, major: 2, rough: 3 };
+      var INS  = { none: 0, pricey: 1, denied: 2 };
+      var ORDER = ['era', 'roof', 'lot', 'cond', 'ins', 'zip', 'time'];
+
+      var current = 0;          // 0..steps.length-1, or steps.length for the result
+      var timer = null;
 
       function val(name) {
         var el = form.querySelector('input[name="' + name + '"]:checked');
         return el ? el.value : null;
       }
 
-      form.addEventListener('submit', function (e) {
-        e.preventDefault();
-        var need = ['era','roof','lot','cond','ins','zip','time'];
-        var answers = {};
-        var missing = null;
-        need.forEach(function (n) {
-          answers[n] = val(n);
-          if (!answers[n] && !missing) missing = n;
-        });
-        if (missing) {
-          var hint = document.getElementById('ai-hint');
-          hint.textContent = 'Please answer all seven so the result means something.';
-          hint.style.color = '#c41e2a';
-          var q = form.querySelector('input[name="' + missing + '"]');
-          if (q) q.closest('.ai-q').scrollIntoView({ behavior: 'smooth', block: 'center' });
-          return;
+      function render(focus) {
+        var onResult = current >= steps.length;
+        steps.forEach(function (s, i) { s.classList.toggle('is-active', !onResult && i === current); });
+        box.classList.toggle('show', onResult);
+        backBtn.hidden = current === 0;
+
+        var shown = Math.min(current + 1, steps.length);
+        if (fill)   fill.style.width = Math.round((shown / steps.length) * 100) + '%';
+        if (plabel) plabel.textContent = onResult ? 'All seven answered' : 'Question ' + shown + ' of ' + steps.length;
+        if (ppct)   ppct.textContent = shown + ' / ' + steps.length;
+        if (hint)   hint.hidden = onResult;
+
+        if (focus === false) return;
+        var target = onResult ? box : steps[current];
+        // Move focus for keyboard and screen reader users, without yanking
+        // the page around for everyone else.
+        var first = onResult ? box.querySelector('a') : steps[current].querySelector('input');
+        if (first) { try { first.focus({ preventScroll: true }); } catch (e) {} }
+        var top = document.querySelector('.ai-card').getBoundingClientRect().top + window.pageYOffset - 24;
+        window.scrollTo({ top: top < 0 ? 0 : top, behavior: 'smooth' });
+      }
+
+      function go(to) {
+        clearTimeout(timer);
+        current = Math.max(0, Math.min(steps.length, to));
+        if (current >= steps.length) compute();
+        render();
+      }
+
+      function compute() {
+        var a = {};
+        ORDER.forEach(function (n) { a[n] = val(n); });
+        // Guard: if anything is somehow unanswered, go back to it instead of
+        // scoring on partial input and showing a confident wrong answer.
+        for (var i = 0; i < ORDER.length; i++) {
+          if (!a[ORDER[i]]) { current = i; return; }
         }
 
-        var lot  = LOT[answers.lot] + (answers.zip === 'core' ? 2 : 0);
-        var drag = ERA[answers.era] + ROOF[answers.roof] + COND[answers.cond] + INS[answers.ins];
-
+        var lot  = LOT[a.lot] + (a.zip === 'core' ? 2 : 0);
+        var drag = ERA[a.era] + ROOF[a.roof] + COND[a.cond] + INS[a.ins];
         var label, verdict, why = [], caveat;
 
         /* Thresholds: max drag is 9 (era 2 + roof 2 + condition 3 + insurance 2).
-           A dated-but-livable house with a mid-age roof and a premium bump scores
-           4, and that seller genuinely has a choice, so the teardown call sits
-           higher at 5.5. Calling everything a teardown would be the same lazy
-           funnel every wholesaler in this market already runs. */
+           A dated-but-livable house with a mid-age roof and a premium bump
+           scores 4, and that seller genuinely has a choice, so the teardown
+           call sits higher at 5.5. */
         if (lot >= 3 && drag >= 5.5) {
           label = 'Most likely outcome';
           verdict = 'Your value is probably in the land, not the house.';
           why.push('Your lot is the kind builders can actually work with, and it is in the part of Tampa where they are buying.');
           why.push('The house carries enough age and condition drag that retail buyers will discount it heavily, or need cash to buy it at all.');
           why.push('A builder prices off what a new home sells for on your street, so their number is not capped by your current condition.');
-          caveat = 'That does not automatically mean you should sell to a builder. It means you should see that number before you accept anyone else’s.';
+          caveat = 'That does not automatically mean you should sell to a builder. It means you should see that number before you accept anyone else\u2019s.';
         } else if (drag >= 5.5 && lot < 3) {
           label = 'Most likely outcome';
           verdict = 'A rehab buyer is your realistic market, not a builder.';
@@ -759,16 +854,16 @@
           caveat = 'If speed genuinely matters more than price, an as-is sale is still valid. Just go in knowing what you are trading away.';
         }
 
-        if (answers.ins === 'denied') {
+        if (a.ins === 'denied') {
           why.push('Being non-renewed or declined matters more than most sellers realise: a buyer who cannot insure it usually cannot get a mortgage on it.');
         }
-        if (answers.roof === 'veryold') {
+        if (a.roof === 'veryold') {
           why.push('A roof past 20 years will generally fail a four point inspection, which is often the specific thing blocking a financed buyer.');
         }
-        if (answers.time === 'fast') {
+        if (a.time === 'fast') {
           why.push('On your timeline, note that a cash or builder close runs roughly 7 to 21 days, while a financed sale is closer to 60 to 70 days start to finish.');
         }
-        if (answers.time === 'explore') {
+        if (a.time === 'explore') {
           why.push('Since you are still exploring, the useful next step is simply knowing your number. Nothing has to happen after that.');
         }
 
@@ -778,13 +873,10 @@
         ul.innerHTML = '';
         why.forEach(function (w) {
           var li = document.createElement('li');
-          li.innerHTML = w;
+          li.textContent = w;
           ul.appendChild(li);
         });
         document.getElementById('ai-caveat').textContent = caveat;
-
-        box.classList.add('show');
-        box.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
 
         window.dataLayer = window.dataLayer || [];
         window.dataLayer.push({
@@ -793,13 +885,33 @@
           asis_drag_score: drag,
           asis_verdict: verdict
         });
+      }
+
+      /* Auto-advance, debounced. Arrow keys move between radios in a group and
+         fire change on every hop, so advancing instantly would skip the rest of
+         the options for keyboard users. Waiting for the selection to settle
+         works for tap, click and keyboard alike. */
+      form.addEventListener('change', function (e) {
+        if (!e.target.name) return;
+        clearTimeout(timer);
+        timer = setTimeout(function () { go(current + 1); }, 420);
       });
 
-      form.addEventListener('change', function () {
-        var hint = document.getElementById('ai-hint');
-        hint.textContent = 'Nothing is sent anywhere. This runs in your browser.';
-        hint.style.color = '';
-      });
+      backBtn.addEventListener('click', function () { go(current - 1); });
+
+      if (restart) {
+        restart.addEventListener('click', function () {
+          clearTimeout(timer);
+          form.reset();
+          current = 0;
+          render();
+        });
+      }
+
+      // No submit button any more, but Enter in the card would still try.
+      form.addEventListener('submit', function (e) { e.preventDefault(); });
+
+      render(false);
     })();
   </script>
 </body>
