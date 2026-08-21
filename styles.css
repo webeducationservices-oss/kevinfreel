@@ -3297,6 +3297,16 @@ ul { list-style: none; }
   text-align: center;
   color: var(--white);
 }
+.sidebar-cta-photo {
+  display: block;
+  width: 84px;
+  height: 84px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: 50% 22%;
+  margin: 0 auto 0.9rem;
+  border: 2px solid rgba(255, 255, 255, 0.18);
+}
 .sidebar-cta-title {
   font-family: var(--font-serif);
   font-weight: 700;
