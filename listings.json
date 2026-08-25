@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-24T10:41:00Z",
+  "updated_at": "2026-08-25T10:37:27Z",
   "count": 5,
   "listings": [
     {
@@ -20,23 +20,6 @@
       "local_thumb": "/images/listings/TB8510373-sm.webp"
     },
     {
-      "address": "6705 S Himes Avenue",
-      "city": "Tampa",
-      "state": "FL",
-      "zip": "33611",
-      "price_display": "$1,349,000",
-      "price": 1349000,
-      "beds": 4,
-      "baths": 4,
-      "sqft_or_acres": "3,162 sq. ft.",
-      "mls_number": "TB8518724",
-      "status": "Active",
-      "c21_url": "https://www.century21.com/homes/detail/fl/tampa/6705-s-himes-ave/lid-P00800000HCQpphswOSrbKDBkbPTUQOxLu7Adknl",
-      "hero_photo_url": "https://images-listings.century21.com/SOLO/a7/e5/75/ec/-1/17/6-/46/eb/-8/be/d-/0f/8b/b6/40/37/9b/_P/a7e575ec-1176-46eb-8bed-0f8bb640379b_P00.jpg",
-      "local_hero": "/images/listings/TB8518724.webp",
-      "local_thumb": "/images/listings/TB8518724-sm.webp"
-    },
-    {
       "address": "16315 Mcglamery Road",
       "city": "Odessa",
       "state": "FL",
@@ -52,6 +35,23 @@
       "hero_photo_url": "https://images-listings.century21.com/MFRMLS/TB/83/66/06/2/_P/TB8366062_P00.jpg",
       "local_hero": "/images/listings/TB8366062.webp",
       "local_thumb": "/images/listings/TB8366062-sm.webp"
+    },
+    {
+      "address": "6705 S Himes Avenue",
+      "city": "Tampa",
+      "state": "FL",
+      "zip": "33611",
+      "price_display": "$1,289,000",
+      "price": 1289000,
+      "beds": 4,
+      "baths": 4,
+      "sqft_or_acres": "3,162 sq. ft.",
+      "mls_number": "TB8518724",
+      "status": "Active",
+      "c21_url": "https://www.century21.com/homes/detail/fl/tampa/6705-s-himes-ave/lid-P00800000HCQpphswOSrbKDBkbPTUQOxLu7Adknl",
+      "hero_photo_url": "https://images-listings.century21.com/MFRMLS/TB/85/18/72/4/_P/TB8518724_P00.jpg",
+      "local_hero": "/images/listings/TB8518724.webp",
+      "local_thumb": "/images/listings/TB8518724-sm.webp"
     },
     {
       "address": "606 S Glen Avenue #10",
