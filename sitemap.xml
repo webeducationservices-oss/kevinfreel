@@ -96,13 +96,13 @@
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
-      <url>
+  <url>
     <loc>https://www.kevinfreel.com/blog/606glen/</loc>
     <lastmod>2026-05-14</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
-<url>
+  <url>
     <loc>https://www.kevinfreel.com/blog/heights/</loc>
     <lastmod>2026-04-16</lastmod>
     <changefreq>yearly</changefreq>
@@ -883,18 +883,6 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.kevinfreel.com/blog/ten-closings-for-the-month-of-june-a-new-breaking-record-so-blessed-so-grateful</loc>
-    <lastmod>2026-07-09</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.kevinfreel.com/blog/brand-new-south-tampa-home-4-bed-loft-move-in-ready</loc>
-    <lastmod>2026-07-30</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
     <loc>https://www.kevinfreel.com/south-tampa-neighborhoods/</loc>
     <lastmod>2026-07-30</lastmod>
     <changefreq>monthly</changefreq>
@@ -1212,5 +1200,58 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-<url><loc>https://www.kevinfreel.com/blog/south-tampa-new-construction-sold-what-your-lot-is-worth/</loc><lastmod>2026-08-20</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url>
+    <loc>https://www.kevinfreel.com/blog/south-tampa-new-construction-sold-what-your-lot-is-worth/</loc>
+    <lastmod>2026-08-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.kevinfreel.com/blog/brand-new-south-tampa-home-4-bed-loft-move-in-ready/</loc>
+    <lastmod>2026-07-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.kevinfreel.com/blog/ten-closings-for-the-month-of-june-a-new-breaking-record-so-blessed-so-grateful/</loc>
+    <lastmod>2026-07-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.kevinfreel.com/home-evaluation-questionnaire/</loc>
+    <lastmod>2026-08-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.kevinfreel.com/home-prep-checklist/</loc>
+    <lastmod>2026-08-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.kevinfreel.com/investor-guide/</loc>
+    <lastmod>2026-05-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.kevinfreel.com/neighborhood-review/</loc>
+    <lastmod>2026-08-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.kevinfreel.com/partials/footer/</loc>
+    <lastmod>2026-08-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.kevinfreel.com/partials/nav/</loc>
+    <lastmod>2026-08-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
 </urlset>
