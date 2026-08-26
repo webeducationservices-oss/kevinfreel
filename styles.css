@@ -3767,3 +3767,64 @@ ul { list-style: none; }
   line-height: 1.5;
   color: var(--text-light);
 }
+
+/* ── New townhomes pillar: project cards + full-width band images ──
+   The page shipped with 1,519 words and zero photography, which is why it
+   was losing to a blog post. These carry the real project imagery. */
+.th-band {
+  display: block;
+  width: 100%;
+  border-radius: 12px;
+  margin: 1.9rem 0;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+.th-band-cap {
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+  margin: -1.1rem 0 1.9rem;
+  text-align: center;
+}
+.th-projects {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(272px, 1fr));
+  gap: 1.6rem;
+  margin-top: 2.2rem;
+}
+.th-project {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
+}
+.th-project:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.1);
+  border-color: var(--gold);
+}
+.th-project img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+}
+.th-project-body { padding: 1.15rem 1.25rem 1.35rem; }
+.th-project-addr {
+  font-family: var(--font-serif);
+  font-size: 1.06rem;
+  font-weight: 700;
+  line-height: 1.3;
+  margin: 0 0 0.25rem;
+}
+.th-project-meta {
+  font-size: 0.75rem;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  font-weight: 600;
+  margin: 0 0 0.6rem;
+}
+.th-project-body p { font-size: 0.9rem; margin: 0 0 0.85rem; }
+@media (max-width: 640px) {
+  .th-band { margin: 1.4rem 0; border-radius: 10px; }
+}
