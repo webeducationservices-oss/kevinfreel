@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-09-01T14:38:43Z",
-  "count": 5,
+  "updated_at": "2026-09-02T14:13:11Z",
+  "count": 6,
   "listings": [
     {
       "address": "1715 W Carmen Street",
@@ -52,6 +52,23 @@
       "hero_photo_url": "https://images-listings.century21.com/SOLO/a7/e5/75/ec/-1/17/6-/46/eb/-8/be/d-/0f/8b/b6/40/37/9b/_P/a7e575ec-1176-46eb-8bed-0f8bb640379b_P00.jpg",
       "local_hero": "/images/listings/TB8518724.webp",
       "local_thumb": "/images/listings/TB8518724-sm.webp"
+    },
+    {
+      "address": "3809 W Horatio Street",
+      "city": "Tampa",
+      "state": "FL",
+      "zip": "33609",
+      "price_display": "$690,000",
+      "price": 690000,
+      "beds": 3,
+      "baths": 2,
+      "sqft_or_acres": "1,671 sq. ft.",
+      "mls_number": "TB8544421",
+      "status": "Active",
+      "c21_url": "https://www.century21.com/homes/detail/fl/tampa/3809-w-horatio-st/lid-P00800000HGcgGEutNJRaZGfmWSpnhWv3AxwZvTC",
+      "hero_photo_url": "https://images-listings.century21.com/MFRMLS/TB/85/44/42/1/_P/TB8544421_P00.jpg",
+      "local_hero": "/images/listings/TB8544421.webp",
+      "local_thumb": "/images/listings/TB8544421-sm.webp"
     },
     {
       "address": "606 S Glen Avenue #10",
