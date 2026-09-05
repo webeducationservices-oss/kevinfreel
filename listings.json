@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-04T14:06:36Z",
+  "updated_at": "2026-09-05T13:19:41Z",
   "count": 6,
   "listings": [
     {
@@ -15,7 +15,7 @@
       "mls_number": "TB8510373",
       "status": "Active",
       "c21_url": "https://www.century21.com/homes/detail/fl/tampa/1715-w-carmen-st/lid-P00800000HBCC1OzgfmfG7Eh7BFkOlCyEKlD4uSc",
-      "hero_photo_url": "https://images-listings.century21.com/SOLO/e6/bd/10/f6/-a/19/5-/41/f3/-b/28/e-/7b/50/ef/d6/9b/d7/_P/e6bd10f6-a195-41f3-b28e-7b50efd69bd7_P00.jpg",
+      "hero_photo_url": "https://images-listings.century21.com/MFRMLS/TB/85/10/37/3/_P/TB8510373_P00.jpg",
       "local_hero": "/images/listings/TB8510373.webp",
       "local_thumb": "/images/listings/TB8510373-sm.webp"
     },
@@ -83,7 +83,7 @@
       "mls_number": "TB8506425",
       "status": "Active",
       "c21_url": "https://www.century21.com/homes/detail/fl/tampa/606-s-glen-ave-unit-10/lid-P00800000HAZuWUtUj5IUE6S3qYDzy0SDWaK383F",
-      "hero_photo_url": "https://images-listings.century21.com/SOLO/6a/a0/3a/e4/-a/83/a-/48/a8/-8/dd/a-/1c/a7/2d/cd/99/d9/_P/6aa03ae4-a83a-48a8-8dda-1ca72dcd99d9_P00.jpg",
+      "hero_photo_url": "https://images-listings.century21.com/MFRMLS/TB/85/06/42/5/_P/TB8506425_P00.jpg",
       "local_hero": "/images/listings/TB8506425.webp",
       "local_thumb": "/images/listings/TB8506425-sm.webp"
     },
@@ -100,7 +100,7 @@
       "mls_number": "TB8518477",
       "status": "Active",
       "c21_url": "https://www.century21.com/homes/detail/fl/st-petersburg/10265-gandy-blvd-apt-1006/lid-P00800000HCOMGpQloTFUdr1eoWbqfRZEvFhBXJl",
-      "hero_photo_url": "https://images-listings.century21.com/MFRMLS/TB/85/18/47/7/_P/TB8518477_P00.jpg",
+      "hero_photo_url": "https://images-listings.century21.com/SOLO/2d/d7/7b/f5/-f/ad/f-/46/ec/-9/ba/6-/a3/41/ad/f6/dc/a3/_P/2dd77bf5-fadf-46ec-9ba6-a341adf6dca3_P00.jpg",
       "local_hero": "/images/listings/TB8518477.webp",
       "local_thumb": "/images/listings/TB8518477-sm.webp"
     }
