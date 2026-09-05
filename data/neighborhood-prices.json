@@ -1,90 +1,127 @@
 {
-  "updated_at": "2026-07-01",
+  "updated_at": "2026-09-01",
   "source": "Initial values based on Zillow + Redfin + Realtor.com market research, May 2026. Refreshed monthly by scripts/refresh_neighborhood_data.py — see that script for the data source (Zillow ZHVI public CSV).",
   "neighborhoods": {
     "south-tampa": {
-      "median_price": 790000,
-      "trend_pct_5yr": 31,
+      "median_price": 800000,
+      "trend_pct_5yr": 27,
       "avg_days_on_market": 28,
       "avg_sqft": 2100,
       "zillow_url": "https://www.zillow.com/homes/for_sale/south-tampa-tampa-fl/"
     },
     "hyde-park": {
-      "median_price": 855000,
-      "trend_pct_5yr": 33,
+      "median_price": 865000,
+      "trend_pct_5yr": 28,
       "avg_days_on_market": 26,
       "avg_sqft": 2250,
       "zillow_url": "https://www.zillow.com/homes/for_sale/hyde-park-tampa-fl/"
     },
     "tampa-heights": {
       "median_price": 465000,
-      "trend_pct_5yr": 22,
+      "trend_pct_5yr": 18,
       "avg_days_on_market": 24,
       "avg_sqft": 1750,
       "zillow_url": "https://www.zillow.com/homes/for_sale/tampa-heights-tampa-fl/"
     },
     "seminole-heights": {
       "median_price": 365000,
-      "trend_pct_5yr": 25,
+      "trend_pct_5yr": 21,
       "avg_days_on_market": 22,
       "avg_sqft": 1650,
       "zillow_url": "https://www.zillow.com/homes/for_sale/seminole-heights-tampa-fl/"
     },
     "westchase": {
       "median_price": 570000,
-      "trend_pct_5yr": 32,
+      "trend_pct_5yr": 26,
       "avg_days_on_market": 18,
       "avg_sqft": 2400,
       "zillow_url": "https://www.zillow.com/homes/for_sale/westchase-tampa-fl/"
     },
     "carrollwood": {
       "median_price": 445000,
-      "trend_pct_5yr": 37,
+      "trend_pct_5yr": 31,
       "avg_days_on_market": 25,
       "avg_sqft": 2050,
       "zillow_url": "https://www.zillow.com/homes/for_sale/carrollwood-tampa-fl/"
     },
     "wesley-chapel": {
       "median_price": 410000,
-      "trend_pct_5yr": 26,
+      "trend_pct_5yr": 18,
       "avg_days_on_market": 32,
       "avg_sqft": 2300,
       "zillow_url": "https://www.zillow.com/homes/for_sale/wesley-chapel-fl/"
     },
     "st-petersburg": {
-      "median_price": 605000,
-      "trend_pct_5yr": 24,
+      "median_price": 610000,
+      "trend_pct_5yr": 19,
       "avg_days_on_market": 23,
       "avg_sqft": 1850,
       "zillow_url": "https://www.zillow.com/homes/for_sale/downtown-st-petersburg-st-petersburg-fl/"
     },
     "clearwater-beach": {
-      "median_price": 710000,
-      "trend_pct_5yr": 19,
+      "median_price": 700000,
+      "trend_pct_5yr": 13,
       "avg_days_on_market": 35,
       "avg_sqft": 1500,
       "zillow_url": "https://www.zillow.com/homes/for_sale/clearwater-beach-clearwater-fl/"
     },
     "indian-rocks-beach": {
       "median_price": 805000,
-      "trend_pct_5yr": 24,
+      "trend_pct_5yr": 17,
       "avg_days_on_market": 38,
       "avg_sqft": 1700,
       "zillow_url": "https://www.zillow.com/homes/for_sale/indian-rocks-beach-fl/"
     },
     "odessa": {
-      "median_price": 665000,
-      "trend_pct_5yr": 37,
+      "median_price": 670000,
+      "trend_pct_5yr": 30,
       "avg_days_on_market": 30,
       "avg_sqft": 2750,
       "zillow_url": "https://www.zillow.com/homes/for_sale/odessa-fl/"
     },
     "dunedin": {
-      "median_price": 390000,
-      "trend_pct_5yr": 22,
+      "median_price": 395000,
+      "trend_pct_5yr": 17,
       "avg_days_on_market": 21,
       "avg_sqft": 1700,
       "zillow_url": "https://www.zillow.com/homes/for_sale/dunedin-fl/"
+    }
+  },
+  "by_zip": {
+    "33606": {
+      "median_price": 865000,
+      "covers": "Hyde Park, Davis Islands, Harbour Island, SoHo",
+      "trend_pct_5yr": 28
+    },
+    "33609": {
+      "median_price": 615000,
+      "covers": "Beach Park, Palma Ceia West, Culbreath, Swann Estates",
+      "trend_pct_5yr": 23
+    },
+    "33611": {
+      "median_price": 485000,
+      "covers": "Bayshore Beautiful, Ballast Point, Interbay, Gandy",
+      "trend_pct_5yr": 20
+    },
+    "33616": {
+      "median_price": 415000,
+      "covers": "Port Tampa City, Westshore Marina District, MacDill",
+      "trend_pct_5yr": 19
+    },
+    "33629": {
+      "median_price": 1040000,
+      "covers": "Palma Ceia, Golfview, Parkland Estates, Sunset Park, Virginia Park",
+      "trend_pct_5yr": 29
+    },
+    "33602": {
+      "median_price": 520000,
+      "covers": "Downtown edge — North Hyde Park, Harbour Island north",
+      "trend_pct_5yr": 17
+    },
+    "33607": {
+      "median_price": 365000,
+      "covers": "Westshore Business District, Westshore Palms",
+      "trend_pct_5yr": 23
     }
   }
 }

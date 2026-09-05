@@ -5,11 +5,14 @@
   --navy: #111111;
   --navy-light: #1a1a1a;
   --gold: #c41e2a;
+  /* Brand red is only 3.21:1 on --navy, which fails WCAG AA. Use this
+     lightened, same-hue red for accents on dark backgrounds (5.45:1). */
+  --gold-on-dark: #e65b65;
   --gold-hover: #a8171f;
   --cream: #f5f5f5;
   --white: #ffffff;
   --text: #1a1a1a;
-  --text-muted: #6b7280;
+  --text-muted: #686f7d;  /* was #6b7280: 4.43:1 on --cream, just under AA */
   --text-light: #9ca3af;
   --border: #e5e7eb;
   --bg-alt: #f7f7f8;
@@ -123,6 +126,7 @@ ul { list-style: none; }
   gap: 2rem;
   align-items: center;
 }
+.nav-links > li { display: flex; align-items: center; }
 .nav-links a {
   font-size: 0.875rem;
   font-weight: 500;
@@ -131,6 +135,18 @@ ul { list-style: none; }
   letter-spacing: 0.02em;
 }
 .nav-links a:hover { color: var(--gold); }
+
+/* Keyboard focus. White on the dark bar so the ring is always visible;
+   the red accent does not carry enough contrast against near-black. */
+.nav-links > li > a:focus-visible,
+.nav-trigger:focus-visible,
+#menu-btn:focus-visible,
+.nav-logo:focus-visible {
+  outline: 2px solid var(--white);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
 .nav-cta {
   display: inline-flex;
   align-items: center;
@@ -146,6 +162,205 @@ ul { list-style: none; }
 }
 .nav-cta:hover { background: var(--gold-hover); color: var(--navy) !important; }
 .nav-cta svg { width: 16px; height: 16px; }
+
+/* ────────────────────────────────────
+   MEGA MENU (desktop jumbo nav)
+   Panels hang from the right edge of .nav-inner, so they sit under the link
+   cluster instead of drifting to the middle of a 1920 screen. That means
+   .nav-inner is the containing block: leave .nav-item unpositioned or the
+   panel will re-anchor to the trigger and can then run off screen.
+──────────────────────────────────── */
+.nav-inner { position: relative; }
+.nav-item.has-mega { position: static; }
+
+.nav-trigger {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-family: inherit;
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: rgba(255,255,255,0.8);
+  padding: 0;
+  transition: color 0.25s;
+}
+.nav-item.has-mega:hover > .nav-trigger,
+.nav-trigger:hover,
+.nav-item.has-mega.open > .nav-trigger { color: var(--gold); }
+
+.nav-caret {
+  width: 12px;
+  height: 12px;
+  transition: transform 0.25s ease;
+}
+.nav-item.has-mega:hover .nav-caret,
+.nav-item.has-mega.open .nav-caret { transform: rotate(180deg); }
+
+/* Hover bridge. Fills the dead gap between the trigger row and the panel so
+   the menu does not snap shut while the cursor travels down to it. It only
+   exists while the item is open, and it sits below the trigger row, so it can
+   never swallow clicks on a sibling link. */
+.nav-trigger::before {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: -2.5rem;
+  right: -2.5rem;
+  height: 38px;
+  display: none;
+}
+.nav-item.has-mega:hover .nav-trigger::before,
+.nav-item.has-mega.open .nav-trigger::before { display: block; }
+
+/* The panel. Pinned to the right edge of the container and capped at the
+   viewport, so it grows leftwards and can never push the layout sideways no
+   matter how wide the columns get. */
+.mega {
+  position: absolute;
+  top: 100%;
+  right: clamp(1.25rem, 5vw, 2rem);
+  /* .nav-inner ends above the bar's bottom padding, so add it back. The bar
+     switches padding on scroll and this tracks it. */
+  margin-top: 1.25rem;
+  width: max-content;
+  max-width: calc(100vw - 2.5rem);
+  transform: translateY(10px);
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  box-shadow: 0 24px 60px rgba(0,0,0,0.18);
+  padding: 1.75rem 2rem;
+  opacity: 0;
+  /* visibility, not display, so the panel is out of the tab order and out of
+     the a11y tree when closed. Hiding is delayed by the length of the fade so
+     the panel does not blink out; showing is instant, which matters because a
+     hidden element cannot take focus and the keyboard path focuses the first
+     link in the same tick that opens the panel. */
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.24s ease, transform 0.24s ease, visibility 0s linear 0.24s;
+  z-index: 120;
+}
+.nav.scrolled .mega { margin-top: 0.75rem; }
+.nav-item.has-mega:hover > .mega,
+.nav-item.has-mega.open > .mega {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateY(0);
+  transition: opacity 0.24s ease, transform 0.24s ease, visibility 0s linear 0s;
+}
+/* Escape sets .mega-suppressed on the bar so a panel opened by hover really
+   does close, even when the cursor has not moved off the trigger yet. Moving
+   off the item clears it again. */
+.nav.mega-suppressed .nav-item.has-mega:not(.open):hover > .mega {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(10px);
+  transition: opacity 0.24s ease, transform 0.24s ease, visibility 0s linear 0.24s;
+}
+
+.mega-inner {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2.5rem;
+}
+.mega-col {
+  display: flex;
+  flex-direction: column;
+  min-width: 178px;
+  max-width: 230px;
+}
+.mega-heading {
+  font-family: var(--font-sans);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.5rem;
+}
+/* Beat `.nav-links a` (white on dark) for links inside the light panel. */
+.nav-links .mega a {
+  font-size: 0.9375rem;
+  font-weight: 500;
+  letter-spacing: 0;
+  color: var(--text);
+  padding: 0.55rem 0;
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+  transition: color 0.2s ease, padding-left 0.2s ease;
+}
+.nav-links .mega-col a:last-child { border-bottom: none; }
+.nav-links .mega a:hover { color: var(--gold); padding-left: 0.25rem; }
+.nav-links .mega a:focus-visible,
+.nav-links .mega .mega-cta-btn:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+/* The current page inside a panel: red is the active colour everywhere else
+   on this site, so reuse it and add weight rather than a second cue. */
+.nav-links .mega a.nav-active { color: var(--gold); font-weight: 600; }
+
+/* CTA card */
+.mega-cta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 260px;
+  flex-shrink: 0;
+  background: var(--cream);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 1.25rem;
+}
+.mega-cta-title {
+  font-family: var(--font-serif);
+  font-size: 1.0625rem;
+  font-weight: 600;
+  line-height: 1.25;
+  color: var(--navy);
+}
+.mega-cta-text {
+  font-size: 0.8125rem;
+  line-height: 1.55;
+  /* --text, not --text-muted: the muted grey clears 4.5:1 on white but only
+     reaches 4.43:1 on the cream card. Size and the card fill carry the
+     hierarchy instead of colour. */
+  color: var(--text);
+  margin: 0.4rem 0 0.9rem;
+}
+.nav-links .mega .mega-cta-btn {
+  display: inline-block;
+  background: var(--gold);
+  color: var(--white);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  padding: 0.6rem 1.1rem;
+  border-radius: 4px;
+  border-bottom: none;
+  transition: background 0.25s ease;
+}
+.nav-links .mega .mega-cta-btn:hover {
+  background: var(--gold-hover);
+  color: var(--white);
+  padding-left: 1.1rem;
+}
+.nav-links .mega .mega-cta-link {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--text);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+  padding: 0.7rem 0 0;
+  border-bottom: none;
+}
+.nav-links .mega .mega-cta-link:hover { color: var(--gold); padding-left: 0; }
 
 #menu-btn {
   display: none;
@@ -168,14 +383,25 @@ ul { list-style: none; }
 .mobile-menu {
   position: fixed;
   top: 0; right: 0;
-  width: 280px; height: 100%;
+  width: min(320px, 88vw); height: 100%;
   background: var(--navy);
   z-index: 99;
-  padding: 5rem 2rem 2rem;
+  padding: 5rem 1.75rem 2.5rem;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
   transform: translateX(100%);
-  transition: transform 0.35s ease;
+  /* visibility keeps the drawer out of the tab order while it is off canvas.
+     transform alone leaves every link focusable, which on desktop meant
+     tabbing off the phone CTA into an invisible menu. */
+  visibility: hidden;
+  transition: transform 0.35s ease, visibility 0s linear 0.35s;
 }
-.mobile-menu.open { transform: translateX(0); }
+.mobile-menu.open {
+  transform: translateX(0);
+  visibility: visible;
+  transition: transform 0.35s ease, visibility 0s linear 0s;
+}
 .mobile-menu a {
   display: block;
   padding: 0.85rem 0;
@@ -186,11 +412,75 @@ ul { list-style: none; }
   transition: color 0.2s;
 }
 .mobile-menu a:hover { color: var(--gold); }
+.mobile-menu a:focus-visible,
+.mobile-menu button:focus-visible {
+  outline: 2px solid var(--white);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
 .mobile-menu .nav-cta {
   margin-top: 1.5rem;
   justify-content: center;
   width: 100%;
 }
+
+/* ── Mobile accordions (the mega groups, collapsed) ── */
+.m-acc { display: block; }
+.m-acc-trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  width: 100%;
+  padding: 0.85rem 0;
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 500;
+  text-align: left;
+  color: rgba(255,255,255,0.85);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  transition: color 0.2s;
+}
+.m-acc-trigger:hover,
+.m-acc.open > .m-acc-trigger { color: var(--gold); }
+.m-acc-caret {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+}
+.m-acc.open > .m-acc-trigger .m-acc-caret { transform: rotate(180deg); }
+
+.m-acc-panel {
+  max-height: 0;
+  overflow: hidden;
+  visibility: hidden;
+  transition: max-height 0.32s ease, visibility 0s linear 0.32s;
+}
+.m-acc.open > .m-acc-panel {
+  visibility: visible;
+  transition: max-height 0.32s ease, visibility 0s linear 0s;
+}
+.m-acc-heading {
+  display: block;
+  font-size: 0.625rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  /* Muted grey, not the brand red: #c41e2a on near black is only 3.2:1, which
+     fails for label-sized text. Red stays on the light desktop panels. */
+  color: var(--text-light);
+  padding: 0.9rem 0 0.3rem;
+}
+.mobile-menu .m-acc-panel a {
+  padding: 0.6rem 0 0.6rem 0.85rem;
+  font-size: 0.9375rem;
+  font-weight: 400;
+  color: rgba(255,255,255,0.72);
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+.mobile-menu .m-acc-panel a:last-child { border-bottom: none; }
+.m-acc-panel a.nav-active { color: var(--gold); font-weight: 600; }
 
 /* ────────────────────────────────────
    HERO
@@ -269,7 +559,7 @@ ul { list-style: none; }
   gap: 0.5rem;
   padding: 0.9rem 2rem;
   background: var(--gold);
-  color: var(--navy);
+  color: var(--white);
   font-weight: 600;
   font-size: 0.9375rem;
   border-radius: 4px;
@@ -365,7 +655,7 @@ ul { list-style: none; }
   left: 1.5rem;
   z-index: 2;
   background: var(--gold);
-  color: var(--navy);
+  color: var(--white);
   padding: 0.6rem 1.25rem;
   border-radius: 4px;
   font-size: 0.8125rem;
@@ -1327,6 +1617,74 @@ ul { list-style: none; }
   margin-top: 0.5rem;
 }
 .form-submit:hover { background: var(--gold-hover); }
+
+/* ── Listing showing form (in-post) ── */
+.listing-showing-form {
+  background: var(--bg-alt);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 2rem;
+  margin: 2rem 0;
+}
+.listing-showing-head { margin-bottom: 1.5rem; }
+.listing-showing-eyebrow {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.5rem;
+}
+.listing-showing-head h3 {
+  font-family: var(--font-serif, 'Playfair Display', Georgia, serif);
+  font-size: 1.6rem;
+  line-height: 1.2;
+  margin: 0 0 0.5rem;
+  color: var(--text);
+}
+.listing-showing-head p {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+.listing-showing .form-group { margin-bottom: 1rem; }
+.listing-showing label {
+  display: block;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 0.35rem;
+}
+.listing-showing input,
+.listing-showing select,
+.listing-showing textarea {
+  width: 100%;
+  padding: 0.7rem 0.85rem;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font-size: 0.9375rem;
+  font-family: inherit;
+  background: var(--white);
+  color: var(--text);
+}
+.listing-showing input:focus,
+.listing-showing select:focus,
+.listing-showing textarea:focus {
+  outline: none;
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px rgba(196, 30, 42, 0.14);
+}
+.listing-showing textarea { resize: vertical; min-height: 90px; }
+.listing-showing-fineprint {
+  margin: 1rem 0 0;
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+  text-align: center;
+}
+.listing-showing-fineprint a { color: var(--gold); text-decoration: none; font-weight: 600; }
+.listing-showing-fineprint a:hover { text-decoration: underline; }
 .form-status {
   text-align: center;
   margin-top: 1rem;
@@ -1774,6 +2132,32 @@ ul { list-style: none; }
   grid-template-columns: repeat(3, 1fr);
   gap: 1.75rem;
 }
+.resource-grid.two-up { grid-template-columns: repeat(2, 1fr); }
+
+/* In-article lead-magnet block for high-traffic blog posts */
+.blog-cta-magnets {
+  max-width: 1100px;
+  margin: 3rem auto 0;
+  padding: 0 clamp(1.25rem, 3vw, 2rem);
+}
+.blog-cta-magnets .blog-cta-eyebrow {
+  font-size: 0.75rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+.blog-cta-magnets .blog-cta-heading {
+  font-family: var(--font-serif);
+  font-size: clamp(1.5rem, 3.2vw, 2rem);
+  font-weight: 600;
+  color: var(--navy);
+  text-align: center;
+  margin: 0 0 2rem;
+  line-height: 1.2;
+}
 .resource-card {
   background: var(--white);
   border: 1px solid var(--border);
@@ -1898,7 +2282,7 @@ ul { list-style: none; }
 .resource-form .hp-field { position: absolute; left: -9999px; opacity: 0; }
 
 /* ────────────────────────────────────
-   MARKETING PLAN — DETAILED
+   MARKETING PLAN: DETAILED
 ──────────────────────────────────── */
 .mp-intro {
   text-align: center;
@@ -2102,7 +2486,7 @@ ul { list-style: none; }
 }
 
 /* ────────────────────────────────────
-   PHOTOGRAPHY PAGE — GALLERY + LIGHTBOX
+   PHOTOGRAPHY PAGE: GALLERY + LIGHTBOX
 ──────────────────────────────────── */
 .photo-hero-image {
   position: relative;
@@ -2541,7 +2925,8 @@ ul { list-style: none; }
 }
 .blog-post-hero img {
   width: 100%;
-  max-height: 460px;
+  aspect-ratio: 16 / 9;
+  height: auto;
   object-fit: cover;
   border-radius: 14px;
   margin-bottom: 2rem;
@@ -2692,14 +3077,19 @@ ul { list-style: none; }
   aspect-ratio: 16 / 9;
   box-shadow: 0 12px 30px rgba(0,0,0,0.12);
 }
-.blog-video iframe {
+.blog-video iframe,
+.blog-video video {
   width: 100%;
   height: 100%;
   border: 0;
   display: block;
 }
+.blog-video video {
+  object-fit: cover;
+  background: #000;
+}
 
-/* ── Blog feature/stat card grids — replace inline <ul> blocks ── */
+/* ── Blog feature/stat card grids: replace inline <ul> blocks ── */
 .blog-article .feature-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -2791,9 +3181,14 @@ ul { list-style: none; }
   transition: background 0.2s, transform 0.2s;
 }
 .blog-cta-pill:hover { background: var(--gold); color: var(--white); transform: translateY(-1px); }
+/* .blog-article a sets color: var(--gold) at (0,1,1) and outranks the pill's
+   own (0,1,0) rule, so the pill's white text lost the cascade and rendered
+   red on near-black. Match on both classes to win it back without !important. */
+.blog-article a.blog-cta-pill,
+.blog-article a.blog-cta-pill:hover { color: var(--white); }
 .blog-cta-pill span { font-size: 1.05em; }
 
-/* Article-card override — when used inside .blog-article */
+/* Article-card override: when used inside .blog-article */
 .blog-article .article-card {
   background: var(--bg-alt);
   border: 1px solid var(--border);
@@ -2902,6 +3297,16 @@ ul { list-style: none; }
   text-align: center;
   color: var(--white);
 }
+.sidebar-cta-photo {
+  display: block;
+  width: 84px;
+  height: 84px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: 50% 22%;
+  margin: 0 auto 0.9rem;
+  border: 2px solid rgba(255, 255, 255, 0.18);
+}
 .sidebar-cta-title {
   font-family: var(--font-serif);
   font-weight: 700;
@@ -2935,7 +3340,7 @@ ul { list-style: none; }
 .sidebar-cta-link {
   display: inline-block;
   margin-top: 0.85rem;
-  color: var(--gold);
+  color: var(--gold-on-dark);
   font-size: 0.85rem;
   font-weight: 600;
   text-decoration: none;
@@ -3035,7 +3440,7 @@ ul { list-style: none; }
 }
 @media (max-width: 720px) {
   .blog-post-hero { padding-top: 5.5rem; padding-bottom: 1.5rem; }
-  .blog-post-hero img { max-height: 320px; margin-bottom: 1.5rem; }
+  .blog-post-hero img { margin-bottom: 1.5rem; }
   .blog-post-hero-content h1 { font-size: clamp(1.6rem, 7vw, 2.2rem); }
   .post-meta { font-size: 0.85rem; gap: 0.5rem; }
   .blog-post-wrap { padding: 1rem 1.25rem 2.5rem; gap: 1.75rem; }
@@ -3074,6 +3479,44 @@ ul { list-style: none; }
   .mp-award-card .mp-award-badge { margin: 0 auto; }
 }
 
+/* The bar is five items plus the phone CTA now, so it fits with room to spare,
+   but the tightened spacing is kept for the 961px to 1200px band where the
+   logo, the five labels and the CTA would otherwise crowd each other. */
+@media (max-width: 1200px) {
+  .nav-links { gap: 1.35rem; }
+  .nav-cta { padding: 0.6rem 1rem; }
+}
+/* Hand off to the hamburger at 960px. The mega panels need real horizontal
+   room; below this the drawer accordions are the better experience. */
+@media (max-width: 960px) {
+  .nav-links { display: none; }
+  #menu-btn { display: flex; }
+}
+
+/* Respect reduced motion: the fade, the slide, the caret spin and the
+   accordion height animation all collapse to instant state changes. */
+@media (prefers-reduced-motion: reduce) {
+  .mega {
+    transform: none;
+    transition: none;
+  }
+  /* The open-state rules carry their own transition shorthand, and they are
+     more specific than a bare .mega, so each one has to be cleared by name or
+     the fade survives. */
+  .nav-item.has-mega:hover > .mega,
+  .nav-item.has-mega.open > .mega { transform: none; transition: none; }
+  .nav.mega-suppressed .nav-item.has-mega:not(.open):hover > .mega { transform: none; transition: none; }
+  .nav-caret,
+  .m-acc-caret,
+  .m-acc-panel,
+  .mobile-menu,
+  .menu-overlay,
+  .nav-links .mega a { transition: none; }
+  .m-acc.open > .m-acc-panel,
+  .mobile-menu.open { transition: none; }
+  .nav-links .mega a:hover { padding-left: 0; }
+}
+
 @media (max-width: 768px) {
   .nav-links { display: none; }
   #menu-btn { display: flex; }
@@ -3110,7 +3553,8 @@ ul { list-style: none; }
   .result-grid { grid-template-columns: 1fr; }
   .marketing-features { grid-template-columns: 1fr; }
   .partner-logos { gap: 1.25rem; }
-  .resource-grid { grid-template-columns: 1fr; }
+  /* .two-up needs the matching specificity or it stays 2-col and overflows */
+  .resource-grid, .resource-grid.two-up { grid-template-columns: 1fr; }
   .photography-features { grid-template-columns: 1fr; }
   .gallery-grid { grid-template-columns: 1fr; }
   .mp-category-head h2 { font-size: 1.5rem; }
@@ -3299,4 +3743,88 @@ ul { list-style: none; }
   .listings-grid { grid-template-columns: 1fr; }
   .listing-price { font-size: 1.375rem; }
   .listing-card-body { padding: 1.25rem 1.25rem 1.5rem; }
+}
+
+/* ── Contrast: brand red on dark surfaces ──
+   --gold (#c41e2a) is 3.21:1 on --navy, under the 4.5:1 AA minimum. On dark
+   surfaces use the lightened same-hue --gold-on-dark instead. Labels on LIGHT
+   backgrounds deliberately keep --gold, which already passes at 4.8 to 5.9,
+   so this is scoped by container rather than applied to the class globally. */
+.hero .hero-label,
+.portfolio .section-label,
+.cta .section-label,
+.sidebar-card .section-label,
+.download-card .section-label,
+.mp-stat-strip .section-label,
+.author-avatar {
+  color: var(--gold-on-dark);
+}
+
+/* Sits under a .blog-cta-pill-row to say why the link is worth following. */
+.blog-related-note {
+  margin: -0.35rem 0 1.75rem;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: var(--text-light);
+}
+
+/* ── New townhomes pillar: project cards + full-width band images ──
+   The page shipped with 1,519 words and zero photography, which is why it
+   was losing to a blog post. These carry the real project imagery. */
+.th-band {
+  display: block;
+  width: 100%;
+  border-radius: 12px;
+  margin: 1.9rem 0;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+.th-band-cap {
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+  margin: -1.1rem 0 1.9rem;
+  text-align: center;
+}
+.th-projects {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(272px, 1fr));
+  gap: 1.6rem;
+  margin-top: 2.2rem;
+}
+.th-project {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
+}
+.th-project:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.1);
+  border-color: var(--gold);
+}
+.th-project img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+}
+.th-project-body { padding: 1.15rem 1.25rem 1.35rem; }
+.th-project-addr {
+  font-family: var(--font-serif);
+  font-size: 1.06rem;
+  font-weight: 700;
+  line-height: 1.3;
+  margin: 0 0 0.25rem;
+}
+.th-project-meta {
+  font-size: 0.75rem;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  font-weight: 600;
+  margin: 0 0 0.6rem;
+}
+.th-project-body p { font-size: 0.9rem; margin: 0 0 0.85rem; }
+@media (max-width: 640px) {
+  .th-band { margin: 1.4rem 0; border-radius: 10px; }
 }

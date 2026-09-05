@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Neighborhood Review | Kevin Freel Real Estate</title>
+  <meta name="description" content="Weekly neighborhood review form for Kevin Freel.">
+  <meta name="robots" content="noindex, nofollow">
+
+  <!-- BEGIN_FAVICONS -->
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <meta name="theme-color" content="#c41e2a">
+  <!-- END_FAVICONS -->
+
+  <link rel="preload" as="font" type="font/woff2" href="/fonts/playfair-display.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="/fonts/inter.woff2" crossorigin>
+  <link rel="stylesheet" href="/fonts/fonts.css">
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/components.js" defer></script>
+  <!-- reCAPTCHA v3. components.js only auto-injects this for forms carrying
+       data-ajax / data-resource, and #revForm carries neither. Without this
+       tag waitForRecaptchaToken() times out and the review posts with NO
+       token, so form-notify buries it as missing_recaptcha_token. -->
+  <script src="https://www.google.com/recaptcha/api.js?render=6Lck8aQsAAAAALMA-T6nwfkSf7bv4K-mOhkszeKh" async defer></script>
+
+  <style>
+  .rev-wrap{max-width:780px;margin:0 auto;padding:7rem clamp(1.25rem,4vw,2rem) 5rem}
+  .rev-eyebrow{font-size:.75rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:.6rem}
+  .rev-wrap h1{font-family:var(--font-serif);font-size:clamp(1.9rem,4.5vw,2.75rem);line-height:1.1;color:var(--navy);margin:0 0 .75rem;font-weight:600}
+  .rev-sub{color:var(--text-muted);font-size:1rem;line-height:1.65;margin:0 0 2rem;max-width:60ch}
+
+  .rev-meta{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:2rem}
+  .rev-pill{font-size:.75rem;font-weight:600;color:var(--text-muted);background:var(--bg-alt);border:1px solid var(--border);border-radius:999px;padding:.35rem .8rem}
+
+  .rev-personality{background:var(--bg-alt);border-left:3px solid var(--gold);border-radius:0 8px 8px 0;padding:1.15rem 1.4rem;margin-bottom:2.5rem}
+  .rev-personality .lbl{font-size:.6875rem;letter-spacing:.14em;text-transform:uppercase;color:var(--text-muted);font-weight:700;margin-bottom:.4rem}
+  .rev-personality p{margin:0;color:var(--text);line-height:1.6;font-size:.9375rem}
+
+  .rev-field{margin-bottom:2.25rem}
+  .rev-field > label{display:block;font-family:var(--font-serif);font-size:1.25rem;color:var(--navy);font-weight:600;margin-bottom:.35rem}
+  .rev-hint{font-size:.875rem;color:var(--text-muted);line-height:1.55;margin:0 0 .85rem;max-width:62ch}
+  .rev-current{background:#fbfaf7;border:1px solid var(--border);border-radius:10px;padding:1.35rem 1.6rem;margin-bottom:2.75rem;max-height:340px;overflow-y:auto}
+  .rev-current-lbl{font-size:.625rem;letter-spacing:.14em;text-transform:uppercase;color:#8a6d3b;font-weight:700;margin-bottom:.75rem}
+  .rev-current-h{font-size:.6875rem;letter-spacing:.1em;text-transform:uppercase;color:var(--text-light);font-weight:700;margin:1rem 0 .35rem}
+  .rev-current-h:first-of-type{margin-top:0}
+  .rev-current p{margin:0 0 .6rem;color:var(--text-muted);font-size:.875rem;line-height:1.65}
+  textarea.rev-input{width:100%;min-height:120px;padding:1rem 1.15rem;border:1px solid var(--border);border-radius:8px;font-family:inherit;font-size:.9375rem;line-height:1.7;color:var(--text);resize:vertical;background:var(--white)}
+  textarea.rev-input:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 3px rgba(196,30,42,.1)}
+  input.rev-input{width:100%;padding:.85rem 1.15rem;border:1px solid var(--border);border-radius:8px;font-family:inherit;font-size:.9375rem;color:var(--text)}
+  input.rev-input:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 3px rgba(196,30,42,.1)}
+
+  .rev-submit{width:100%;padding:1rem;font-size:1rem;font-weight:600;font-family:inherit;background:var(--gold);color:#fff;border:0;border-radius:8px;cursor:pointer;transition:background .18s}
+  .rev-submit:hover{background:var(--gold-hover)}
+  .rev-submit:disabled{opacity:.6;cursor:not-allowed}
+  .rev-status{margin-top:1rem;font-size:.9375rem;text-align:center}
+  .rev-status.error{color:#9a1720}
+  .rev-status.ok{color:#2a6d3b}
+  .hp-field{position:absolute;left:-9999px;opacity:0}
+
+  .rev-loading,.rev-error{text-align:center;padding:4rem 1rem;color:var(--text-muted)}
+  .rev-done{text-align:center;padding:3rem 1rem}
+  .rev-done h2{font-family:var(--font-serif);font-size:2rem;color:var(--navy);margin:0 0 .75rem;font-weight:600}
+  .rev-done p{color:var(--text-muted);line-height:1.65;max-width:50ch;margin:0 auto 1.5rem}
+  </style>
+</head>
+<body>
+
+  <main>
+    <div class="rev-wrap">
+
+      <div id="revLoading" class="rev-loading">Loading neighborhood&hellip;</div>
+
+      <div id="revError" class="rev-error" hidden>
+        <h1>Neighborhood not found</h1>
+        <p>That link looks incomplete. Open the link from your weekly email, or <a href="/contact/">let Justin know</a>.</p>
+      </div>
+
+      <form id="revForm" hidden>
+        <p class="rev-eyebrow">This week&rsquo;s neighborhood</p>
+        <h1 id="revName">&nbsp;</h1>
+        <p class="rev-sub">Read what is live below, then tell us what you actually know, Kevin. <strong>Do not write prose.</strong> Bullet points, half sentences, whatever comes out. We turn your notes into the page and put your name on it. Answer only what you have something to say about.</p>
+
+        <div class="rev-meta" id="revMeta"></div>
+
+        <div class="rev-personality">
+          <div class="lbl">Your one-line personality (already live)</div>
+          <p id="revPersonality"></p>
+        </div>
+
+        <div class="rev-current">
+          <div class="rev-current-lbl">What is on the page right now</div>
+          <div id="liveCopy"></div>
+        </div>
+
+        <div class="rev-field">
+          <label for="wrong">What did we get wrong?</label>
+          <p class="rev-hint">Anything above that is inaccurate, out of date, or just not how people who live there would put it. Be blunt.</p>
+          <textarea class="rev-input solo" id="wrong" name="wrong" placeholder="e.g. Nobody calls it that. The flooding is mostly south of Morrison, not the whole area."></textarea>
+        </div>
+
+        <div class="rev-field">
+          <label for="missing">What are we missing?</label>
+          <p class="rev-hint">The things you know from actually selling there. Which streets are the good ones, what the insurance really runs, what buyers always ask you, what surprises people at closing.</p>
+          <textarea class="rev-input solo" id="missing" name="missing" placeholder="e.g. Everyone wants north of Bay to Bay. The 1950s ranches on the south end are teardowns now, going for lot value around..."></textarea>
+        </div>
+
+        <div class="rev-field">
+          <label for="buyers">Who actually buys here?</label>
+          <p class="rev-hint">And who ends up disappointed. This is the part no one can write without having done the showings.</p>
+          <textarea class="rev-input solo" id="buyers" name="buyers" placeholder="e.g. Young families trading up from Seminole Heights, and MacDill officers. Not a good fit for anyone who wants a big yard."></textarea>
+        </div>
+
+        <div class="rev-field">
+          <label for="guidance">Anything else</label>
+          <p class="rev-hint">A story, a comp you remember, how you would change the page, or what you would tell a friend over coffee.</p>
+          <textarea class="rev-input solo" id="guidance" name="guidance" placeholder="Optional"></textarea>
+        </div>
+
+        <input class="hp-field" type="text" name="_honey" tabindex="-1" autocomplete="off">
+        <button type="submit" class="rev-submit" id="revSubmit">Send my notes</button>
+        <div class="rev-status" id="revStatus" aria-live="polite"></div>
+      </form>
+
+      <div id="revDone" class="rev-done" hidden>
+        <h2>Got it. Thanks, Kevin.</h2>
+        <p>Your notes are on their way. We will work them into the page and put it up under your name, usually within a day.</p>
+        <a href="/south-tampa-neighborhoods/" class="btn-primary">See the neighborhood guide</a>
+      </div>
+
+    </div>
+  </main>
+
+  <script>
+  (function () {
+    var params = new URLSearchParams(window.location.search);
+    var slug = params.get('n');
+    var loading = document.getElementById('revLoading');
+    var errBox  = document.getElementById('revError');
+    var form    = document.getElementById('revForm');
+    var doneBox = document.getElementById('revDone');
+
+    if (!slug) { loading.hidden = true; errBox.hidden = false; return; }
+
+    fetch('/data/south-tampa-neighborhoods.json')
+      .then(function (r) { return r.json(); })
+      .then(function (data) {
+        var n = data.neighborhoods && data.neighborhoods[slug];
+        if (!n) { loading.hidden = true; errBox.hidden = false; return; }
+
+        document.title = n.name + ' | Neighborhood Review';
+        document.getElementById('revName').textContent = n.name;
+        document.getElementById('revPersonality').textContent = n.personality || '';
+
+        // Context pills
+        var meta = document.getElementById('revMeta');
+        var district = (data.districts || []).filter(function (d) { return d.id === n.district; })[0];
+        var bits = [];
+        if (district) bits.push(district.name);
+        if (n.zips && n.zips.length) bits.push('ZIP ' + n.zips.join(', '));
+        (n.vibes || []).forEach(function (v) {
+          var vv = (data.vibes || []).filter(function (x) { return x.id === v; })[0];
+          if (vv) bits.push(vv.label);
+        });
+        bits.forEach(function (b) {
+          var s = document.createElement('span');
+          s.className = 'rev-pill';
+          s.textContent = b;
+          meta.appendChild(s);
+        });
+
+        // Show what is currently published so Kevin is reacting to something
+        // concrete rather than recalling the neighborhood cold.
+        var live = document.getElementById('liveCopy');
+        var d = n.kevin || n.draft || {};
+        var SECTIONS = [
+          ['take', 'Overview'],
+          ['expect', 'What to expect'],
+          ['investment', 'The investment angle'],
+          ['best_for', 'Best for']
+        ];
+        var wrote = false;
+        SECTIONS.forEach(function (pair) {
+          var text = d[pair[0]];
+          if (!text) return;
+          wrote = true;
+          var h = document.createElement('div');
+          h.className = 'rev-current-h';
+          h.textContent = pair[1];
+          live.appendChild(h);
+          text.split('\n\n').forEach(function (para) {
+            if (!para.trim()) return;
+            var el = document.createElement('p');
+            el.textContent = para.trim();
+            live.appendChild(el);
+          });
+        });
+        if (!wrote) {
+          var none = document.createElement('p');
+          none.textContent = 'Nothing published for this one yet.';
+          none.style.fontStyle = 'italic';
+          live.appendChild(none);
+        }
+
+        loading.hidden = true;
+        form.hidden = false;
+      })
+      .catch(function () { loading.hidden = true; errBox.hidden = false; });
+
+    form.addEventListener('submit', async function (e) {
+      e.preventDefault();
+      var btn = document.getElementById('revSubmit');
+      var status = document.getElementById('revStatus');
+      btn.disabled = true;
+      btn.textContent = 'Sending…';
+      status.textContent = '';
+      status.className = 'rev-status';
+
+      var payload = {
+        site_slug: 'kevin-freel',
+        form_type: 'neighborhood-review',
+        neighborhood_slug: slug,
+        neighborhood_name: document.getElementById('revName').textContent,
+        first_name: 'Kevin',
+        last_name: 'Freel',
+        email: 'kevinfreel@c21be.com',
+        wrong: document.getElementById('wrong').value,
+        missing: document.getElementById('missing').value,
+        buyers: document.getElementById('buyers').value,
+        guidance: document.getElementById('guidance').value,
+        _honey: form.querySelector('[name="_honey"]').value
+      };
+
+      // reCAPTCHA v3. components.js exposes this loader
+      try {
+        if (typeof waitForRecaptchaToken === 'function') {
+          payload.recaptcha_token = await waitForRecaptchaToken('neighborhood_review');
+        }
+      } catch (err) { /* form-notify will decide */ }
+
+      try {
+        var res = await fetch('https://myaieditor.com/api/form-notify', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+        // form-notify can answer 200 with { accepted: false } (blocked), so
+        // res.ok alone is not proof the review was recorded.
+        var json = await res.json().catch(function () { return {}; });
+        if (res.ok && json.success !== false && json.accepted !== false) {
+          form.hidden = true;
+          doneBox.hidden = false;
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        } else {
+          status.textContent = 'That did not go through. Text Justin and he will grab it manually.';
+          status.className = 'rev-status error';
+          btn.disabled = false;
+          btn.textContent = 'Send it to Justin';
+        }
+      } catch (err) {
+        status.textContent = 'That did not go through. Text Justin and he will grab it manually.';
+        status.className = 'rev-status error';
+        btn.disabled = false;
+        btn.textContent = 'Send it to Justin';
+      }
+    });
+  })();
+  </script>
+
+</body>
+</html>

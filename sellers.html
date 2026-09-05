@@ -83,17 +83,125 @@
 <!-- ── NAV ── -->
 <nav class="nav scrolled" aria-label="Main navigation">
   <div class="nav-inner">
-    <a href="/" class="nav-logo" aria-label="Kevin Freel — Realtor Since 1985"><span class="nav-logo-name">KEVIN <span>FREEL</span></span><span class="nav-logo-tagline">Realtor Since 1985</span></a>
+    <a href="/" class="nav-logo" aria-label="Kevin Freel, Realtor Since 1985"><span class="nav-logo-name">KEVIN <span>FREEL</span></span><span class="nav-logo-tagline">Realtor Since 1985</span></a>
     <ul class="nav-links">
-      <li><a href="/search/" data-nav="search">Search</a></li>
-      <li><a href="/listings/" data-nav="listings">Listings</a></li>
-      <li><a href="/about/" data-nav="about">About</a></li>
-      <li><a href="/resources/" data-nav="resources">Resources</a></li>
-      <li><a href="/sellers/" data-nav="sellers">Sellers</a></li>
-      <li><a href="/buyers/" data-nav="buyers">Buyers</a></li>
-      <li><a href="/photography/" data-nav="photography">Photography</a></li>
-      <li><a href="/blog/" data-nav="blog">Blog</a></li>
+
+      <!-- BUYING -->
+      <li class="nav-item has-mega">
+        <button type="button" class="nav-trigger" id="trig-buying" aria-expanded="false" aria-controls="mega-buying">
+          Buying
+          <svg class="nav-caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="mega" id="mega-buying" aria-labelledby="trig-buying">
+          <div class="mega-inner">
+            <div class="mega-col">
+              <span class="mega-heading">Start Your Search</span>
+              <a href="/search/" data-nav="search">Search All Homes</a>
+              <a href="/listings/" data-nav="listings">Kevin&rsquo;s Listings</a>
+            </div>
+            <div class="mega-col">
+              <span class="mega-heading">Know The Process</span>
+              <a href="/buyers/" data-nav="buyers">The Buying Process</a>
+              <a href="/mortgage-advice/" data-nav="mortgage-advice">Mortgage &amp; Financing</a>
+              <a href="/new-townhomes-tampa/" data-nav="new-townhomes-tampa">New Townhomes in Tampa</a>
+              <a href="/investor-guide/" data-nav="investor-guide">Tampa Bay Investor&rsquo;s Guide</a>
+            </div>
+            <div class="mega-cta">
+              <span class="mega-cta-title">New to Tampa Bay?</span>
+              <p class="mega-cta-text">Start with Kevin&rsquo;s free guide: neighborhoods, timelines and what to expect at every step.</p>
+              <a class="mega-cta-btn" href="/resources/">Free Buyers Guide</a>
+            </div>
+          </div>
+        </div>
+      </li>
+
+      <!-- SELLING -->
+      <li class="nav-item has-mega">
+        <button type="button" class="nav-trigger" id="trig-selling" aria-expanded="false" aria-controls="mega-selling">
+          Selling
+          <svg class="nav-caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="mega" id="mega-selling" aria-labelledby="trig-selling">
+          <div class="mega-inner">
+            <div class="mega-col">
+              <span class="mega-heading">Start Here</span>
+              <a href="/home-evaluation-questionnaire/" data-nav="home-evaluation-questionnaire">What&rsquo;s My Home Worth</a>
+              <a href="/sellers/" data-nav="sellers">How Kevin Sells</a>
+              <a href="/sell-as-is-south-tampa/" data-nav="sell-as-is-south-tampa">Selling As-Is or a Teardown</a>
+            </div>
+            <div class="mega-col">
+              <span class="mega-heading">Get Ready</span>
+              <a href="/marketing-plan/" data-nav="marketing-plan">The Marketing Plan</a>
+              <a href="/home-prep-checklist/" data-nav="home-prep-checklist">74-Point Prep Checklist</a>
+              <a href="/photography/" data-nav="photography">Listing Photography</a>
+            </div>
+            <div class="mega-cta">
+              <span class="mega-cta-title">Thinking of selling?</span>
+              <p class="mega-cta-text">Get a real number for your home in today&rsquo;s Tampa Bay market, with no obligation.</p>
+              <a class="mega-cta-btn" href="/home-evaluation-questionnaire/">Free Home Valuation</a>
+            </div>
+          </div>
+        </div>
+      </li>
+
+      <!-- NEIGHBORHOODS -->
+      <li class="nav-item has-mega">
+        <button type="button" class="nav-trigger" id="trig-neighborhoods" aria-expanded="false" aria-controls="mega-neighborhoods" data-nav-extra="south-tampa-neighborhoods">
+          Neighborhoods
+          <svg class="nav-caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="mega" id="mega-neighborhoods" aria-labelledby="trig-neighborhoods">
+          <div class="mega-inner">
+            <div class="mega-col">
+              <span class="mega-heading">South Tampa</span>
+              <a href="/neighborhoods/historic-hyde-park/" data-nav="neighborhoods">Historic Hyde Park</a>
+              <a href="/neighborhoods/palma-ceia/" data-nav="neighborhoods">Palma Ceia</a>
+              <a href="/neighborhoods/davis-islands/" data-nav="neighborhoods">Davis Islands</a>
+              <a href="/neighborhoods/beach-park/" data-nav="neighborhoods">Beach Park</a>
+              <a href="/neighborhoods/soho/" data-nav="neighborhoods">SoHo</a>
+            </div>
+            <div class="mega-col">
+              <span class="mega-heading">More</span>
+              <a href="/neighborhoods/bayshore-beautiful/" data-nav="neighborhoods">Bayshore Beautiful</a>
+              <a href="/neighborhoods/ballast-point/" data-nav="neighborhoods">Ballast Point</a>
+              <a href="/neighborhoods/sunset-park/" data-nav="neighborhoods">Sunset Park</a>
+              <a href="/neighborhoods/culbreath-isles/" data-nav="neighborhoods">Culbreath Isles</a>
+              <a href="/neighborhoods/westshore-marina-district/" data-nav="neighborhoods">Westshore Marina District</a>
+            </div>
+            <div class="mega-cta">
+              <span class="mega-cta-title">All 52 South Tampa neighborhoods</span>
+              <p class="mega-cta-text">Median prices, boundaries and the feel of each pocket, block by block.</p>
+              <a class="mega-cta-btn" href="/south-tampa-neighborhoods/">Browse All Neighborhoods</a>
+              <a class="mega-cta-link" href="/tampa-bay-neighborhoods/" data-nav="tampa-bay-neighborhoods">Greater Tampa Bay</a>
+            </div>
+          </div>
+        </div>
+      </li>
+
+      <!-- ABOUT -->
+      <li class="nav-item has-mega">
+        <button type="button" class="nav-trigger" id="trig-about" aria-expanded="false" aria-controls="mega-about">
+          About
+          <svg class="nav-caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="mega mega-2col" id="mega-about" aria-labelledby="trig-about">
+          <div class="mega-inner">
+            <div class="mega-col">
+              <span class="mega-heading">Kevin</span>
+              <a href="/about/" data-nav="about">About Kevin</a>
+              <a href="/blog/" data-nav="blog">Blog</a>
+            </div>
+            <div class="mega-col">
+              <span class="mega-heading">Local Knowledge</span>
+              <a href="/resources/" data-nav="resources">Free Guides &amp; Tools</a>
+              <a href="/tampa-bay-recommendations/" data-nav="tampa-bay-recommendations">Tampa Bay Recommendations</a>
+            </div>
+          </div>
+        </div>
+      </li>
+
       <li><a href="/contact/" data-nav="contact">Contact</a></li>
+
       <li>
         <a href="tel:7274108599" class="nav-cta">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
@@ -101,7 +209,7 @@
         </a>
       </li>
     </ul>
-    <button id="menu-btn" aria-label="Open menu" aria-expanded="false">
+    <button id="menu-btn" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
     </button>
   </div>
@@ -109,17 +217,82 @@
 
 <!-- ── Mobile Menu ── -->
 <div id="menu-overlay" class="menu-overlay"></div>
-<div id="mobile-menu" class="mobile-menu" aria-label="Mobile navigation">
-  <a href="/" data-nav="home">Home</a>
-  <a href="/search/" data-nav="search">Search</a>
-  <a href="/listings/" data-nav="listings">Listings</a>
-  <a href="/about/" data-nav="about">About</a>
-  <a href="/resources/" data-nav="resources">Resources</a>
-  <a href="/sellers/" data-nav="sellers">Sellers</a>
-  <a href="/buyers/" data-nav="buyers">Buyers</a>
-  <a href="/photography/" data-nav="photography">Photography</a>
-  <a href="/blog/" data-nav="blog">Blog</a>
-  <a href="/contact/" data-nav="contact">Contact</a>
+<div id="mobile-menu" class="mobile-menu" role="navigation" aria-label="Mobile navigation">
+  <a href="/" class="m-link" data-nav="home">Home</a>
+
+  <div class="m-acc">
+    <button type="button" class="m-acc-trigger" aria-expanded="false" aria-controls="m-buying">
+      Buying
+      <svg class="m-acc-caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polyline points="6 9 12 15 18 9"/></svg>
+    </button>
+    <div class="m-acc-panel" id="m-buying">
+      <span class="m-acc-heading">Start Your Search</span>
+      <a href="/search/" data-nav="search">Search All Homes</a>
+      <a href="/listings/" data-nav="listings">Kevin&rsquo;s Listings</a>
+      <span class="m-acc-heading">Know The Process</span>
+      <a href="/buyers/" data-nav="buyers">The Buying Process</a>
+      <a href="/mortgage-advice/" data-nav="mortgage-advice">Mortgage &amp; Financing</a>
+      <a href="/investor-guide/" data-nav="investor-guide">Tampa Bay Investor&rsquo;s Guide</a>
+    </div>
+  </div>
+
+  <div class="m-acc">
+    <button type="button" class="m-acc-trigger" aria-expanded="false" aria-controls="m-selling">
+      Selling
+      <svg class="m-acc-caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polyline points="6 9 12 15 18 9"/></svg>
+    </button>
+    <div class="m-acc-panel" id="m-selling">
+      <span class="m-acc-heading">Start Here</span>
+      <a href="/home-evaluation-questionnaire/" data-nav="home-evaluation-questionnaire">What&rsquo;s My Home Worth</a>
+      <a href="/sellers/" data-nav="sellers">How Kevin Sells</a>
+      <span class="m-acc-heading">Get Ready</span>
+      <a href="/marketing-plan/" data-nav="marketing-plan">The Marketing Plan</a>
+      <a href="/home-prep-checklist/" data-nav="home-prep-checklist">74-Point Prep Checklist</a>
+      <a href="/photography/" data-nav="photography">Listing Photography</a>
+    </div>
+  </div>
+
+  <div class="m-acc">
+    <button type="button" class="m-acc-trigger" aria-expanded="false" aria-controls="m-neighborhoods">
+      Neighborhoods
+      <svg class="m-acc-caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polyline points="6 9 12 15 18 9"/></svg>
+    </button>
+    <div class="m-acc-panel" id="m-neighborhoods">
+      <span class="m-acc-heading">South Tampa</span>
+      <a href="/neighborhoods/historic-hyde-park/" data-nav="neighborhoods">Historic Hyde Park</a>
+      <a href="/neighborhoods/palma-ceia/" data-nav="neighborhoods">Palma Ceia</a>
+      <a href="/neighborhoods/davis-islands/" data-nav="neighborhoods">Davis Islands</a>
+      <a href="/neighborhoods/beach-park/" data-nav="neighborhoods">Beach Park</a>
+      <a href="/neighborhoods/soho/" data-nav="neighborhoods">SoHo</a>
+      <span class="m-acc-heading">More</span>
+      <a href="/neighborhoods/bayshore-beautiful/" data-nav="neighborhoods">Bayshore Beautiful</a>
+      <a href="/neighborhoods/ballast-point/" data-nav="neighborhoods">Ballast Point</a>
+      <a href="/neighborhoods/sunset-park/" data-nav="neighborhoods">Sunset Park</a>
+      <a href="/neighborhoods/culbreath-isles/" data-nav="neighborhoods">Culbreath Isles</a>
+      <a href="/neighborhoods/westshore-marina-district/" data-nav="neighborhoods">Westshore Marina District</a>
+      <span class="m-acc-heading">Guides</span>
+      <a href="/south-tampa-neighborhoods/" data-nav="south-tampa-neighborhoods">All 52 South Tampa Neighborhoods</a>
+      <a href="/tampa-bay-neighborhoods/" data-nav="tampa-bay-neighborhoods">Greater Tampa Bay</a>
+    </div>
+  </div>
+
+  <div class="m-acc">
+    <button type="button" class="m-acc-trigger" aria-expanded="false" aria-controls="m-about">
+      About
+      <svg class="m-acc-caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polyline points="6 9 12 15 18 9"/></svg>
+    </button>
+    <div class="m-acc-panel" id="m-about">
+      <span class="m-acc-heading">Kevin</span>
+      <a href="/about/" data-nav="about">About Kevin</a>
+      <a href="/blog/" data-nav="blog">Blog</a>
+      <span class="m-acc-heading">Local Knowledge</span>
+      <a href="/resources/" data-nav="resources">Free Guides &amp; Tools</a>
+      <a href="/tampa-bay-recommendations/" data-nav="tampa-bay-recommendations">Tampa Bay Recommendations</a>
+    </div>
+  </div>
+
+  <a href="/contact/" class="m-link" data-nav="contact">Contact</a>
+
   <a href="tel:7274108599" class="nav-cta">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
     727-410-8599
@@ -279,6 +452,19 @@
     </section>
 
     <!-- ── CTA ── -->
+    <section class="content-section" aria-label="Selling as-is or a teardown">
+      <div class="content-inner">
+        <div class="content-intro reveal">
+          <p class="section-label">A Different Kind of Sale</p>
+          <h2 class="section-heading">Selling an Older Home As-Is</h2>
+          <p class="section-sub">Not every home should be listed the usual way. If yours is older, hard to insure, or sitting on a lot a builder would want, the value may be in the land rather than the house, and the process is completely different.</p>
+        </div>
+        <div class="content-intro reveal" style="text-align:center;">
+          <a href="/sell-as-is-south-tampa/" class="btn-primary">Selling a teardown or as-is home in South Tampa</a>
+        </div>
+      </div>
+    </section>
+
     <section class="cta" aria-label="Get a free home evaluation">
       <div class="cta-inner reveal">
         <p class="section-label">Let's Talk</p>

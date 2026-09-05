@@ -65,6 +65,23 @@ ZIPS_BY_SLUG = {
     "dunedin": ["34698", "34689"],                       # Dunedin
 }
 
+# South Tampa ZIPs, tracked individually so the per-neighborhood pages built by
+# scripts/build_neighborhoods.py can anchor to the ZIP that actually contains
+# each neighborhood. These are written to the `by_zip` block of the data file.
+#
+# NOTE ON PRECISION: ~51 named South Tampa neighborhoods share these six ZIPs,
+# so ZHVI cannot distinguish Golfview from Palma Ceia. The neighborhood pages
+# label these figures as area context and defer to a CMA for anything specific.
+SOUTH_TAMPA_ZIPS = {
+    "33606": "Hyde Park, Davis Islands, Harbour Island, SoHo",
+    "33609": "Beach Park, Palma Ceia West, Culbreath, Swann Estates",
+    "33611": "Bayshore Beautiful, Ballast Point, Interbay, Gandy",
+    "33616": "Port Tampa City, Westshore Marina District, MacDill",
+    "33629": "Palma Ceia, Golfview, Parkland Estates, Sunset Park, Virginia Park",
+    "33602": "Downtown edge — North Hyde Park, Harbour Island north",
+    "33607": "Westshore Business District, Westshore Palms",
+}
+
 
 def fetch_zhvi_csv(timeout=60):
     """Download the ZHVI CSV and return parsed rows + the date columns."""
@@ -204,6 +221,31 @@ def refresh_data(existing: dict) -> dict:
         print(f"    {c}")
     if misses:
         print(f"  misses (no ZIP match): {misses}")
+
+    # ── Per-ZIP block for the South Tampa neighborhood pages ──────────
+    by_zip = {}
+    zip_misses = []
+    for z, covers in SOUTH_TAMPA_ZIPS.items():
+        row = zip_idx.get(z) or zip_idx.get(z.zfill(5))
+        if not row:
+            zip_misses.append(z)
+            continue
+        latest, older = latest_and_5yr_for_zip(row, date_cols)
+        if latest is None:
+            zip_misses.append(z)
+            continue
+        entry = {
+            "median_price": round_to_thousand(latest),
+            "covers": covers,
+        }
+        if older:
+            entry["trend_pct_5yr"] = round(((latest - older) / older) * 100.0)
+        by_zip[z] = entry
+
+    updated["by_zip"] = by_zip
+    print(f"  by_zip: {len(by_zip)} South Tampa ZIP(s) resolved")
+    if zip_misses:
+        print(f"  by_zip misses: {zip_misses}")
 
     return updated
 

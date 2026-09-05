@@ -2,46 +2,134 @@
   "cleanUrls": true,
   "trailingSlash": true,
   "redirects": [
-    { "source": "/home/", "destination": "/", "permanent": true },
-    { "source": "/real-estate/", "destination": "/", "permanent": true },
-    { "source": "/real-estate/:path*", "destination": "/", "permanent": true },
-    { "source": "/real-estate-sellers/", "destination": "/sellers/", "permanent": true },
-    { "source": "/real-estate-buyers/", "destination": "/buyers/", "permanent": true },
-    { "source": "/search-tampa-bay-properties/", "destination": "/search/", "permanent": true },
-    { "source": "/search-tampa-bay-properties/:path*", "destination": "/search/", "permanent": true },
-    { "source": "/best-mortgage-advice/", "destination": "/mortgage-advice/", "permanent": true },
-    { "source": "/best-mortgage-advice/:slug*", "destination": "/mortgage-advice/", "permanent": true },
-    { "source": "/tampa-bay-recommendation-wizard/", "destination": "/tampa-bay-recommendations/", "permanent": true },
-    { "source": "/subscribe/", "destination": "/contact/", "permanent": true },
-    { "source": "/rsvp/", "destination": "/contact/", "permanent": true },
-    { "source": "/building-inquiry/", "destination": "/contact/", "permanent": true },
-    { "source": "/new-page-1/", "destination": "/", "permanent": true },
-    { "source": "/contact-us/", "destination": "/contact/", "permanent": true }
+    {
+      "source": "/home/",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/real-estate/",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/real-estate/:path+/",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/real-estate-sellers/",
+      "destination": "/sellers/",
+      "permanent": true
+    },
+    {
+      "source": "/real-estate-buyers/",
+      "destination": "/buyers/",
+      "permanent": true
+    },
+    {
+      "source": "/search-tampa-bay-properties/",
+      "destination": "/search/",
+      "permanent": true
+    },
+    {
+      "source": "/search-tampa-bay-properties/:path+/",
+      "destination": "/search/",
+      "permanent": true
+    },
+    {
+      "source": "/best-mortgage-advice/",
+      "destination": "/mortgage-advice/",
+      "permanent": true
+    },
+    {
+      "source": "/best-mortgage-advice/:slug+/",
+      "destination": "/mortgage-advice/",
+      "permanent": true
+    },
+    {
+      "source": "/tampa-bay-recommendation-wizard/",
+      "destination": "/tampa-bay-recommendations/",
+      "permanent": true
+    },
+    {
+      "source": "/subscribe/",
+      "destination": "/contact/",
+      "permanent": true
+    },
+    {
+      "source": "/rsvp/",
+      "destination": "/contact/",
+      "permanent": true
+    },
+    {
+      "source": "/building-inquiry/",
+      "destination": "/contact/",
+      "permanent": true
+    },
+    {
+      "source": "/new-page-1/",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/contact-us/",
+      "destination": "/contact/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/3223-w-paxton-ave-open-house/",
+      "destination": "/blog/south-tampa-new-construction-sold-what-your-lot-is-worth/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/3223paxton/",
+      "destination": "/blog/south-tampa-new-construction-sold-what-your-lot-is-worth/",
+      "permanent": true
+    }
   ],
   "headers": [
     {
       "source": "/(.*)",
       "headers": [
-        { "key": "X-Frame-Options", "value": "ALLOWALL" },
+        {
+          "key": "X-Frame-Options",
+          "value": "ALLOWALL"
+        },
         {
           "key": "Content-Security-Policy",
           "value": "frame-ancestors https://myaieditor.com https://myaiediter.com https://*.vercel.app http://localhost:3000 http://localhost:*"
         },
-        { "key": "X-Content-Type-Options", "value": "nosniff" },
-        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" }
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        }
       ]
     },
     {
       "source": "/(.+\\.(?:jpg|jpeg|png|gif|svg|webp|ico|woff2?))",
       "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
       ]
     },
     {
       "source": "/pdfs/(.*)",
       "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=86400" },
-        { "key": "Content-Disposition", "value": "inline" }
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=86400"
+        },
+        {
+          "key": "Content-Disposition",
+          "value": "inline"
+        }
       ]
     }
   ]
