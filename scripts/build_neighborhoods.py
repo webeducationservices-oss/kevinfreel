@@ -62,7 +62,7 @@ def read_partial(p: Path) -> str:
     return p.read_text().strip() if p.exists() else ""
 
 
-def head_block(title: str, desc: str, canonical: str, *, css_depth: int = 0) -> str:
+def head_block(title: str, desc: str, canonical: str, *, css_depth: int = 0, extra_head: str = "") -> str:
     """Shared <head>. css_depth is unused (all asset paths are root-absolute)."""
     return f"""<!DOCTYPE html>
 <html lang="en">
@@ -80,6 +80,11 @@ def head_block(title: str, desc: str, canonical: str, *, css_depth: int = 0) -> 
   <meta property="og:url" content="{canonical}">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Kevin Freel Real Estate">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{esc(title)}">
+  <meta name="twitter:description" content="{esc(desc)}">
+  <meta name="twitter:image" content="{SITE}/images/og-image.jpg">
   <!-- BEGIN_FAVICONS -->
   <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -115,7 +120,7 @@ def head_block(title: str, desc: str, canonical: str, *, css_depth: int = 0) -> 
   }})(window,document,'script','dataLayer','{GTM}');</script>
   <!-- END_GTM -->
   <script src="/mae-edit-loader.js" async></script>
-"""
+{extra_head}"""
 
 
 def body_open() -> str:
@@ -508,10 +513,47 @@ def build_detail(slug: str, n: dict, data: dict, prices: dict) -> str:
     kevin = n.get("kevin") or {}
     mkt = market_for(n, prices)
 
-    title = f"{n['name']} | South Tampa Neighborhood Guide | Kevin Freel"
+    _suffix = " | South Tampa Neighborhood Guide"
+    if len(n["name"]) + len(_suffix) > 60:
+        _suffix = " | South Tampa"
+    title = f"{n['name']}{_suffix}"
     desc = (n.get("personality") or "")[:155]
 
-    out = [head_block(title, desc, f"{SITE}/neighborhoods/{slug}/")]
+    # These 52 pages shipped with no structured data at all. Place carries the
+    # neighbourhood itself; BreadcrumbList gives Google the hierarchy back to the
+    # catalog, which is what the internal linking already says in HTML.
+    _ld = {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "Place",
+                "name": n["name"],
+                "description": desc,
+                "url": f"{SITE}/neighborhoods/{slug}/",
+                "address": {
+                    "@type": "PostalAddress",
+                    "addressLocality": "Tampa",
+                    "addressRegion": "FL",
+                    "addressCountry": "US",
+                    **({"postalCode": n["zips"][0]} if n.get("zips") else {}),
+                },
+                "containedInPlace": {"@type": "City", "name": "Tampa", "sameAs": "https://en.wikipedia.org/wiki/Tampa,_Florida"},
+            },
+            {
+                "@type": "BreadcrumbList",
+                "itemListElement": [
+                    {"@type": "ListItem", "position": 1, "name": "Home", "item": f"{SITE}/"},
+                    {"@type": "ListItem", "position": 2, "name": "South Tampa Neighborhoods", "item": f"{SITE}/south-tampa-neighborhoods/"},
+                    {"@type": "ListItem", "position": 3, "name": n["name"], "item": f"{SITE}/neighborhoods/{slug}/"},
+                ],
+            },
+        ],
+    }
+    _schema = ('  <script type="application/ld+json">\n  '
+               + json.dumps(_ld, indent=2).replace("\n", "\n  ")
+               + "\n  </script>\n")
+
+    out = [head_block(title, desc, f"{SITE}/neighborhoods/{slug}/", extra_head=_schema)]
 
     out.append("""  <style>
   .nb-hero{max-width:820px;margin:0 auto;padding:8rem clamp(1.25rem,4vw,2rem) 0}
