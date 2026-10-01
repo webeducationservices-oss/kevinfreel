@@ -81,8 +81,23 @@ ul { list-style: none; }
   left: 0;
   right: 0;
   z-index: 100;
-  padding: 1.25rem 0;
   transition: background 0.35s, box-shadow 0.35s, padding 0.35s;
+  /* The dark bar used to come ONLY from .nav.scrolled. The nav partial hardcodes
+     that class so the first paint looked right, but components.js runs
+     `toggle('scrolled', scrollY > 60)` on every scroll event, so scrolling
+     anywhere near the top STRIPPED it. On the homepage that is correct (the nav
+     sits over a full-height dark hero). On the other 210 pages there is nothing
+     behind it, so the bar went transparent over white and every white link
+     disappeared. Solid is now the default; only a page with a real hero opts
+     out, and it fails safe to readable if :has() is unsupported. */
+  background: rgba(15, 25, 35, 0.97);
+  box-shadow: 0 1px 20px rgba(0,0,0,0.15);
+  padding: 0.75rem 0;
+}
+body:has(.hero) .nav:not(.scrolled) {
+  background: transparent;
+  box-shadow: none;
+  padding: 1.25rem 0;
 }
 .nav.scrolled {
   background: rgba(15, 25, 35, 0.97);

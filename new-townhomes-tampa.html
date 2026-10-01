@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>New Townhomes in Tampa | Kevin Freel</title>
-  <meta name="description" content="New townhomes in Tampa: where they are being built, what they cost by neighborhood, and what to check before signing a builder contract.">
+  <meta name="description" content="New Tampa townhomes by neighborhood and builder: Mobley, Momentum, BCL, Starling. Current price ranges, HOA, unit counts and which projects are still available.">
   <link rel="canonical" href="https://www.kevinfreel.com/new-townhomes-tampa/">
 
   <meta property="og:title" content="New Townhomes in Tampa">
@@ -43,10 +43,142 @@
       {"@type":"Question","name":"How much do new townhomes in Tampa cost?","acceptedAnswer":{"@type":"Answer","text":"Entry level new construction further from downtown generally runs from the high $300s to the mid $400s. The Heights and Ybor corridors sit between the mid $400s and high $600s. Hyde Park and South Tampa luxury townhomes start around $650,000 and some pass one million dollars. Two buildings on the same street can price very differently depending on builder, finish level and whether an HOA carries real amenities."}},
       {"@type":"Question","name":"Do I need my own agent to buy a new construction townhome?","acceptedAnswer":{"@type":"Answer","text":"The agent in the builder's sales office represents the builder, not you. Bringing your own agent generally costs the buyer nothing, because the builder has already accounted for it, and it changes who is reviewing the contract and the finish schedule on your behalf."}},
       {"@type":"Question","name":"What should I check before buying a new townhome in Tampa?","acceptedAnswer":{"@type":"Answer","text":"Get the HOA documents in writing and confirm what the fee covers and whether it can rise. Read the builder warranty and how long it lasts. Get a real insurance quote rather than an estimate, since flood zone and elevation still decide the number even on new construction. Confirm what is standard versus an upgrade, because the model home is rarely the contract. And walk the parking and storage before signing."}},
-      {"@type":"Question","name":"Are there Tampa townhomes with no HOA fees?","acceptedAnswer":{"@type":"Answer","text":"Yes. Some Tampa townhomes, particularly smaller infill projects in Hyde Park and South Tampa, carry no HOA fee at all. That is rarer than buyers expect and is worth real money over the life of ownership, so it is worth asking about specifically."}}
+      {"@type":"Question","name":"Are there Tampa townhomes with no HOA fees?","acceptedAnswer":{"@type":"Answer","text":"Yes. Some Tampa townhomes, particularly smaller infill projects in Hyde Park and South Tampa, carry no HOA fee at all. That is rarer than buyers expect and is worth real money over the life of ownership, so it is worth asking about specifically."}},
+      {"@type":"Question","name":"Which builders are active in Tampa townhomes right now?","acceptedAnswer":{"@type":"Answer","text":"The names Kevin has worked with most on Tampa townhome projects are Mobley Custom Homes, BCL Homes, Momentum Homes, Starling Custom Homes, Tamlin Homes and Devonshire. Mobley is the most prolific on small 50x100 infill lots, Momentum built the four-unit custom row at 4324 W Gray Street, and Starling and BCL together put up 3223 W Paxton Avenue in South Tampa. Most builders will not deal directly with a homeowner, so having an agent on your side matters."}}
     ]
   }
   </script>
+  <style>
+    /* At-a-glance comparison table for the townhome projects */
+    .th-glance {
+      margin: 2.5rem 0;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+    .th-glance table {
+      width: 100%;
+      min-width: 760px;
+      border-collapse: collapse;
+      font-size: 0.95rem;
+      background: #fff;
+    }
+    .th-glance caption {
+      caption-side: top;
+      text-align: left;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #c41e2a;
+      padding-bottom: 0.5rem;
+    }
+    .th-glance th,
+    .th-glance td {
+      padding: 0.85rem 1rem;
+      text-align: left;
+      border-bottom: 1px solid #e8e4df;
+      vertical-align: top;
+    }
+    .th-glance thead th {
+      background: #111111;
+      color: #fff;
+      font-weight: 600;
+      font-size: 0.85rem;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      border-bottom: none;
+    }
+    .th-glance tbody tr:nth-child(even) td { background: #faf7f3; }
+    .th-glance tbody tr:hover td { background: #f3ece2; }
+    .th-glance .proj-name { font-weight: 600; color: #111111; }
+    .th-status {
+      display: inline-block;
+      padding: 0.2rem 0.55rem;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      line-height: 1.3;
+    }
+    .th-status--sold { background: #efe5df; color: #6a4a3a; }
+    .th-status--active { background: #d9ead3; color: #2d5a1b; }
+    .th-status--resale { background: #fdf2d4; color: #7a5a0f; }
+    @media (max-width: 640px) {
+      .th-glance { margin: 1.5rem -1rem; padding: 0 1rem; }
+    }
+
+    /* Project card badges */
+    .th-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      margin: 0 0 0.75rem;
+    }
+    .th-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      padding: 0.2rem 0.55rem;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      font-weight: 500;
+      background: #f3ece2;
+      color: #5c4a39;
+      line-height: 1.4;
+    }
+    .th-badge strong { color: #111111; font-weight: 600; }
+
+    /* Builders section */
+    .builder-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.1rem;
+      margin: 1.5rem 0;
+    }
+    .builder-card {
+      background: #fff;
+      border: 1px solid #e8e4df;
+      border-radius: 10px;
+      padding: 1.3rem 1.4rem;
+      display: flex;
+      flex-direction: column;
+    }
+    .builder-card h3 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1.25rem;
+      margin: 0 0 0.35rem;
+      color: #111111;
+    }
+    .builder-card .builder-tag {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: #c41e2a;
+      margin: 0 0 0.6rem;
+    }
+    .builder-card p { font-size: 0.92rem; line-height: 1.55; color: #4a3e32; margin: 0 0 0.75rem; }
+    .builder-card .builder-watch {
+      margin-top: auto;
+      font-size: 0.85rem;
+      padding: 0.65rem 0.85rem;
+      background: #faf7f3;
+      border-left: 3px solid #c41e2a;
+      color: #4a3e32;
+    }
+    .builder-card .builder-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 0.75rem;
+      font-size: 0.85rem;
+    }
+    .builder-card .builder-links a {
+      color: #c41e2a;
+      text-decoration: none;
+      border-bottom: 1px solid #c41e2a;
+      padding-bottom: 1px;
+    }
+  </style>
 
 
   <script src="/components.js" defer></script>
@@ -121,6 +253,7 @@
               <a href="/buyers/" data-nav="buyers">The Buying Process</a>
               <a href="/mortgage-advice/" data-nav="mortgage-advice">Mortgage &amp; Financing</a>
               <a href="/new-townhomes-tampa/" data-nav="new-townhomes-tampa">New Townhomes in Tampa</a>
+              <a href="/tampa-townhome-builders/" data-nav="tampa-townhome-builders">Tampa Townhome Builders</a>
               <a href="/investor-guide/" data-nav="investor-guide">Tampa Bay Investor&rsquo;s Guide</a>
             </div>
             <div class="mega-cta">
@@ -249,6 +382,8 @@
       <span class="m-acc-heading">Know The Process</span>
       <a href="/buyers/" data-nav="buyers">The Buying Process</a>
       <a href="/mortgage-advice/" data-nav="mortgage-advice">Mortgage &amp; Financing</a>
+      <a href="/new-townhomes-tampa/" data-nav="new-townhomes-tampa">New Townhomes in Tampa</a>
+      <a href="/tampa-townhome-builders/" data-nav="tampa-townhome-builders">Tampa Townhome Builders</a>
       <a href="/investor-guide/" data-nav="investor-guide">Tampa Bay Investor&rsquo;s Guide</a>
     </div>
   </div>
@@ -324,6 +459,100 @@
         <p class="hero-label">For Townhome Buyers</p>
         <h1>New Townhomes in Tampa</h1>
         <p class="page-hero-sub">Where they are being built right now, what they cost, and the questions worth asking before you sign on a home that does not exist yet. Kevin has sold new construction townhomes across Tampa since they started going up.</p>
+      </div>
+    </section>
+
+    <section class="content-section" aria-label="Tampa townhome projects at a glance">
+      <div class="content-inner">
+        <div class="content-intro reveal">
+          <p class="section-label">At a Glance</p>
+          <h2 class="section-heading">Current Tampa Townhome Projects</h2>
+          <p class="section-sub">Projects Kevin has personally represented, with the builder, the HOA situation and the price band each one typically trades in. Status is as of the last check against the local MLS. Call for anything you want current to the hour.</p>
+        </div>
+        <div class="th-glance">
+          <table>
+            <caption>New construction townhomes in Tampa, by neighborhood</caption>
+            <thead>
+              <tr>
+                <th scope="col">Project</th>
+                <th scope="col">Neighborhood</th>
+                <th scope="col">Builder</th>
+                <th scope="col">Units</th>
+                <th scope="col">Price range</th>
+                <th scope="col">HOA</th>
+                <th scope="col">Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="proj-name">1206 W. Lemon</td>
+                <td>South Tampa, near downtown</td>
+                <td>&mdash;</td>
+                <td>3</td>
+                <td>Entry close-in band</td>
+                <td>Yes</td>
+                <td><span class="th-status th-status--sold">Sold out</span></td>
+              </tr>
+              <tr>
+                <td class="proj-name">418 W. Frances</td>
+                <td>Tampa Heights</td>
+                <td>&mdash;</td>
+                <td>2</td>
+                <td>Heights &amp; Ybor band</td>
+                <td>None</td>
+                <td><span class="th-status th-status--sold">Sold out</span></td>
+              </tr>
+              <tr>
+                <td class="proj-name">2204 N. Central</td>
+                <td>Tampa Heights</td>
+                <td>&mdash;</td>
+                <td>2</td>
+                <td>Heights &amp; Ybor band</td>
+                <td>Yes</td>
+                <td><span class="th-status th-status--resale">Resale market</span></td>
+              </tr>
+              <tr>
+                <td class="proj-name">4324 W. Gray</td>
+                <td>South Tampa</td>
+                <td><a href="#builders">Momentum Homes</a></td>
+                <td>4</td>
+                <td>Hyde Park &amp; South Tampa band</td>
+                <td>Yes</td>
+                <td><span class="th-status th-status--sold">Sold out</span></td>
+              </tr>
+              <tr>
+                <td class="proj-name">Palmetto Beach row</td>
+                <td>Near Ybor</td>
+                <td>&mdash;</td>
+                <td>7 sales</td>
+                <td>Heights &amp; Ybor band</td>
+                <td>Yes</td>
+                <td><span class="th-status th-status--active">Market active</span></td>
+              </tr>
+              <tr>
+                <td class="proj-name">3223 W. Paxton</td>
+                <td>South Tampa</td>
+                <td><a href="#builders">Starling + BCL Homes</a></td>
+                <td>1</td>
+                <td>Hyde Park &amp; South Tampa band</td>
+                <td>None</td>
+                <td><span class="th-status th-status--sold">Sold Jun 2026</span></td>
+              </tr>
+              <tr>
+                <td class="proj-name">Hyde Park courtyard</td>
+                <td>Historic Hyde Park</td>
+                <td>&mdash;</td>
+                <td>1</td>
+                <td>Around $685K</td>
+                <td>None</td>
+                <td><span class="th-status th-status--sold">Sold</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="content-intro reveal" style="text-align:center;margin-top:1.25rem;">
+          <a href="tel:7274108599" class="btn-primary">Ask Kevin what is coming next</a>
+        </div>
       </div>
     </section>
 
@@ -435,7 +664,13 @@
             <img src="/images/new-townhomes-tampa/lemon-exterior.webp" alt="1206 W. Lemon Street, new construction townhomes in Tampa" width="1200" height="800" loading="lazy">
             <div class="th-project-body">
               <p class="th-project-addr">1206 W. Lemon Street</p>
-              <p class="th-project-meta">Units 1, 2 &amp; 3 &middot; South Tampa</p>
+              <p class="th-project-meta">Units 1, 2 &amp; 3 &middot; South Tampa, near downtown</p>
+              <div class="th-badges">
+                <span class="th-badge">3 units</span>
+                <span class="th-badge">HOA: <strong>Yes</strong></span>
+                <span class="th-badge">Entry close-in band</span>
+                <span class="th-badge">Status: <strong>Sold out</strong></span>
+              </div>
               <p>A three-unit row Kevin listed and sold. The clearest example of what close-in new construction looks like today.</p>
               <a class="blog-cta-pill" href="/blog/1206lemon/">See the story <span aria-hidden="true">&rarr;</span></a>
             </div>
@@ -445,6 +680,12 @@
             <div class="th-project-body">
               <p class="th-project-addr">418 W. Frances Avenue</p>
               <p class="th-project-meta">Units 1 &amp; 2 &middot; Tampa Heights</p>
+              <div class="th-badges">
+                <span class="th-badge">2 units</span>
+                <span class="th-badge">HOA: <strong>None</strong></span>
+                <span class="th-badge">Heights &amp; Ybor band</span>
+                <span class="th-badge">Status: <strong>Sold out</strong></span>
+              </div>
               <p>New construction with no HOA fees, walking distance to Armature Works and the Riverwalk.</p>
               <a class="blog-cta-pill" href="/blog/tampaheights/">See the story <span aria-hidden="true">&rarr;</span></a>
             </div>
@@ -454,6 +695,12 @@
             <div class="th-project-body">
               <p class="th-project-addr">Palmetto Beach</p>
               <p class="th-project-meta">Seven sales &middot; Near Ybor</p>
+              <div class="th-badges">
+                <span class="th-badge">7 sales</span>
+                <span class="th-badge">HOA: <strong>Yes</strong></span>
+                <span class="th-badge">Heights &amp; Ybor band</span>
+                <span class="th-badge">Status: <strong>Market active</strong></span>
+              </div>
               <p>Seven townhome sales in one pocket. New construction in the city at the value end of close-in.</p>
               <a class="blog-cta-pill" href="/blog/plamettobeach/">See the story <span aria-hidden="true">&rarr;</span></a>
             </div>
@@ -463,6 +710,13 @@
             <div class="th-project-body">
               <p class="th-project-addr">4324 W. Gray Street</p>
               <p class="th-project-meta">Four custom units &middot; South Tampa</p>
+              <div class="th-badges">
+                <span class="th-badge">4 units</span>
+                <span class="th-badge">Builder: <strong><a href="#builders">Momentum Homes</a></strong></span>
+                <span class="th-badge">HOA: <strong>Yes</strong></span>
+                <span class="th-badge">Hyde Park &amp; S. Tampa band</span>
+                <span class="th-badge">Status: <strong>Sold out</strong></span>
+              </div>
               <p>Four custom townhomes by Momentum Homes, and what a custom builder does differently.</p>
               <a class="blog-cta-pill" href="/blog/4324wgrayst/">See the story <span aria-hidden="true">&rarr;</span></a>
             </div>
@@ -472,8 +726,45 @@
             <div class="th-project-body">
               <p class="th-project-addr">2204 N. Central Avenue</p>
               <p class="th-project-meta">Attached homes &middot; Tampa Heights</p>
+              <div class="th-badges">
+                <span class="th-badge">2 units</span>
+                <span class="th-badge">HOA: <strong>Yes</strong></span>
+                <span class="th-badge">Heights &amp; Ybor band</span>
+                <span class="th-badge">Status: <strong>Resale market</strong></span>
+              </div>
               <p>Attached new construction on a tree-lined street, a short walk from the Heights corridor.</p>
               <a class="blog-cta-pill" href="/blog/just-listed-brand-new-townhomes-with-1920s-charm-near-armatureworks-amp-the-riverwalk/">See the story <span aria-hidden="true">&rarr;</span></a>
+            </div>
+          </div>
+          <div class="th-project">
+            <img src="/images/blog/3223-w-paxton-ave-open-house/hero.webp" alt="3223 W Paxton Avenue, custom South Tampa home" width="1200" height="800" loading="lazy" onerror="this.src='/images/new-townhomes-tampa/lemon-exterior.webp'">
+            <div class="th-project-body">
+              <p class="th-project-addr">3223 W. Paxton Avenue</p>
+              <p class="th-project-meta">Custom build &middot; South Tampa, near Hyde Park Village</p>
+              <div class="th-badges">
+                <span class="th-badge">1 unit</span>
+                <span class="th-badge">Builder: <strong><a href="#builders">Starling + BCL Homes</a></strong></span>
+                <span class="th-badge">HOA: <strong>None</strong></span>
+                <span class="th-badge">Hyde Park &amp; S. Tampa band</span>
+                <span class="th-badge">Status: <strong>Sold Jun 2026</strong></span>
+              </div>
+              <p>Five-bed, chef's kitchen, covered lanai. The newer end of what South Tampa custom townhome-adjacent product looks like now.</p>
+              <a class="blog-cta-pill" href="/blog/3223-w-paxton-ave-open-house/">See the story <span aria-hidden="true">&rarr;</span></a>
+            </div>
+          </div>
+          <div class="th-project">
+            <img src="/images/new-townhomes-tampa/lemon-inside.webp" alt="Hyde Park townhome with courtyard" width="1200" height="800" loading="lazy">
+            <div class="th-project-body">
+              <p class="th-project-addr">Hyde Park Courtyard Townhome</p>
+              <p class="th-project-meta">Infill &middot; Historic Hyde Park</p>
+              <div class="th-badges">
+                <span class="th-badge">1 unit</span>
+                <span class="th-badge">HOA: <strong>None</strong></span>
+                <span class="th-badge">Around $685K</span>
+                <span class="th-badge">Status: <strong>Sold</strong></span>
+              </div>
+              <p>A luxury-end townhome with a private courtyard and no HOA fees. The quieter half of the Hyde Park market, and the one many buyers do not know exists.</p>
+              <a class="blog-cta-pill" href="/blog/just-listed-hyde-park-townhome-with-courtyard-685000-no-hoa-fees/">See the story <span aria-hidden="true">&rarr;</span></a>
             </div>
           </div>
         </div>
@@ -485,6 +776,107 @@
           <div class="feature-card"><a href="/blog/just-listed-brand-new-townhomes-with-1920s-charm-near-armatureworks-amp-the-riverwalk/"><strong>Brand new, with 1920s charm, near Armature Works</strong></a><br>New construction that does not look like new construction.</div>
           <div class="feature-card"><a href="/blog/just-listed-hyde-park-townhome-with-courtyard-685000-no-hoa-fees/"><strong>A Hyde Park townhome with a courtyard, no HOA fees</strong></a><br>The luxury end, and why no HOA matters more than buyers think.</div>
           <div class="feature-card"><a href="/blog/just-listed-south-tampa-townhome-amp-sold-in-8-days-for-465000-closing-this-friday-all-cash/"><strong>Listed and sold in 8 days, all cash</strong></a><br>What the right price on the right townhome actually does.</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="builders" class="content-section" aria-label="Tampa townhome builders active right now">
+      <div class="content-inner">
+        <div class="content-intro reveal">
+          <p class="section-label">The Builders</p>
+          <h2 class="section-heading">Which Builders Are Active in Tampa Townhomes Right Now</h2>
+          <p class="section-sub">These are the names Kevin has sold work from and knows personally. Every one of them deals with Kevin's office directly, which matters because most Tampa townhome builders will not deal with a homeowner.</p>
+        </div>
+        <div class="builder-grid">
+
+          <article class="builder-card reveal">
+            <p class="builder-tag">Most prolific infill</p>
+            <h3>Mobley Custom Homes</h3>
+            <p>Custom homes with many floor plans tuned to small 50 by 100 infill lots, which is almost every Tampa Heights and South Tampa townhome site. Customize or upgrade across most of the plan. Kevin has written about Mobley projects more than any other builder on the site.</p>
+            <div class="builder-watch"><strong>What to watch for:</strong> upgrade list length. The standard spec is honest, the delta to the model-home finish is where the number moves.</div>
+            <div class="builder-links">
+              <a href="/blog/discover-your-dream-home-in-south-tampa-with-mobley-custom-homes/">Mobley project with Kevin</a>
+              <a href="https://www.mobleyhomes.com/" target="_blank" rel="noopener">mobleyhomes.com</a>
+            </div>
+          </article>
+
+          <article class="builder-card reveal">
+            <p class="builder-tag">Design-forward partners</p>
+            <h3>Momentum Homes</h3>
+            <p>Two partners who put real detail into every unit. Their modern farmhouse look is what buyers show Kevin in the "I want this" photo. Momentum built the four custom townhomes at 4324 W Gray Street.</p>
+            <div class="builder-watch"><strong>What to watch for:</strong> finish schedule in writing. Momentum's style is tempting; make sure the contract matches the showing.</div>
+            <div class="builder-links">
+              <a href="/blog/4324wgrayst/">4 Momentum townhomes at Gray</a>
+              <a href="https://www.momentumhometampa.com/" target="_blank" rel="noopener">momentumhometampa.com</a>
+            </div>
+          </article>
+
+          <article class="builder-card reveal">
+            <p class="builder-tag">South Tampa custom</p>
+            <h3>Starling Custom Homes + BCL Homes</h3>
+            <p>Starling and BCL together put up 3223 W Paxton Avenue in South Tampa, the newer end of what single-lot South Tampa custom product looks like. BCL is one of the most-named builders on this site. Pair them for premium one-off builds near Hyde Park Village and Beach Park.</p>
+            <div class="builder-watch"><strong>What to watch for:</strong> on a one-off custom like Paxton, the builder's warranty and the subcontractor list matter more than they do on a bigger project.</div>
+            <div class="builder-links">
+              <a href="/blog/3223-w-paxton-ave-open-house/">3223 Paxton open house</a>
+              <a href="https://starlingcustomhomes.com/" target="_blank" rel="noopener">starlingcustomhomes.com</a>
+              <a href="https://bclhomes.com/" target="_blank" rel="noopener">bclhomes.com</a>
+            </div>
+          </article>
+
+          <article class="builder-card reveal">
+            <p class="builder-tag">Three-generation builder</p>
+            <h3>M Ryan Homes</h3>
+            <p>Three-generation Tampa builder. Known for value, large bedrooms and the fact that most are en-suites, which matters more in a townhome plan where everyone is sharing a wall somewhere.</p>
+            <div class="builder-watch"><strong>What to watch for:</strong> parking and tandem garages. Walk them before you sign, not after.</div>
+            <div class="builder-links">
+              <a href="/blog/i-work-with-several-amazing-quality-builders-in-tampa-bay/">Builders Kevin recommends</a>
+            </div>
+          </article>
+
+          <article class="builder-card reveal">
+            <p class="builder-tag">Custom with primary down</p>
+            <h3>New Legacy Homes</h3>
+            <p>Three-partner custom builder with a handful of floor plans that put the primary bedroom on the first floor. That is a surprisingly short list in Tampa townhome product and the right answer for a lot of downsizing buyers.</p>
+            <div class="builder-watch"><strong>What to watch for:</strong> stair count. The whole point is one-floor living if that is why you are here.</div>
+            <div class="builder-links">
+              <a href="/blog/i-work-with-several-amazing-quality-builders-in-tampa-bay/">Builders Kevin recommends</a>
+            </div>
+          </article>
+
+          <article class="builder-card reveal">
+            <p class="builder-tag">Thirty-year luxury</p>
+            <h3>Devonshire Custom Homes</h3>
+            <p>Custom builder for 30+ years. Builds on larger lots and known for the details carried through every room. Not the right fit for a tight infill townhome site; the right fit for the upper end of South Tampa and Hyde Park.</p>
+            <div class="builder-watch"><strong>What to watch for:</strong> on a Devonshire you are paying for details that only show up after you move in. Plan to walk the home twice before closing, in daylight.</div>
+            <div class="builder-links">
+              <a href="/blog/i-work-with-several-amazing-quality-builders-in-tampa-bay/">Builders Kevin recommends</a>
+            </div>
+          </article>
+
+          <article class="builder-card reveal">
+            <p class="builder-tag">Modern on your lot</p>
+            <h3>State Street Homes</h3>
+            <p>Modern-style builder who will build on your lot. The right call if you already own the land and want contemporary rather than modern farmhouse.</p>
+            <div class="builder-watch"><strong>What to watch for:</strong> flat and low-slope roofs cost less to build and more to insure. Get a real insurance quote before you sign.</div>
+            <div class="builder-links">
+              <a href="/blog/i-work-with-several-amazing-quality-builders-in-tampa-bay/">Builders Kevin recommends</a>
+            </div>
+          </article>
+
+          <article class="builder-card reveal">
+            <p class="builder-tag">Boutique custom</p>
+            <h3>Tamlin Homes</h3>
+            <p>Smaller-volume custom builder Kevin has written about on several South Tampa projects, including sophisticated pool homes with the owner's retreat on the first floor. A good fit when you want the custom look without the biggest-builder price tag.</p>
+            <div class="builder-watch"><strong>What to watch for:</strong> timeline. Boutique builders are detail-first; expect that to show up in schedule.</div>
+            <div class="builder-links">
+              <a href="/blog/stunning-newer-sophisticated-pool-home-in-south-tampa-owners-retreat-on-the-first-floor/">Tamlin project with Kevin</a>
+            </div>
+          </article>
+
+        </div>
+
+        <div class="content-intro reveal" style="text-align:center;margin-top:1.5rem;">
+          <a href="/tampa-townhome-builders/" class="btn-outline">Full Tampa townhome builders directory</a>
         </div>
       </div>
     </section>
