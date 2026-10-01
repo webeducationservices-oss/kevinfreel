@@ -50,9 +50,15 @@
   </url>
   <url>
     <loc>https://www.kevinfreel.com/new-townhomes-tampa/</loc>
-    <lastmod>2026-08-20</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.kevinfreel.com/tampa-townhome-builders/</loc>
+    <lastmod>2026-10-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.kevinfreel.com/photography/</loc>
@@ -1242,4 +1248,5 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+<url><loc>https://www.kevinfreel.com/blog/south-tampa-townhome-vs-condo-hoa-fees/</loc><lastmod>2026-10-01</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
 </urlset>
