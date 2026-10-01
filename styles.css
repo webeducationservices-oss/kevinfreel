@@ -3155,7 +3155,20 @@ body:has(.hero) .nav:not(.scrolled) {
   border-radius: 12px;
   box-shadow: 0 14px 34px rgba(0,0,0,0.14);
 }
-.blog-photo-grid.tb-band { margin-top: 1.75rem; }
+.blog-photo-grid.tb-band {
+  margin-top: 1.75rem;
+  width: 1200px;
+  max-width: calc(100vw - 4rem);
+  margin-left: 50%;
+  transform: translateX(-50%);
+}
+.tb-band + .blog-photo-caption {
+  width: 1200px;
+  max-width: calc(100vw - 4rem);
+  margin-left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+}
 @media (max-width: 600px) {
   .tb-hero-shot { padding: 0 1rem; }
 }
