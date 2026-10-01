@@ -1248,5 +1248,10 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-<url><loc>https://www.kevinfreel.com/blog/south-tampa-townhome-vs-condo-hoa-fees/</loc><lastmod>2026-10-01</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url>
+    <loc>https://www.kevinfreel.com/blog/south-tampa-townhome-vs-condo-hoa-fees/</loc>
+    <lastmod>2026-10-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
 </urlset>
