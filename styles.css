@@ -3143,9 +3143,10 @@ body:has(.hero) .nav:not(.scrolled) {
 
 /* ── Townhome builders page imagery ── */
 .tb-hero-shot {
-  max-width: var(--max-w);
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 0 1.5rem;
+  padding: 0;
+  width: calc(100vw - 4rem);
 }
 .tb-hero-shot img {
   width: 100%;
