@@ -335,6 +335,68 @@ try { getSourceAttribution(); } catch (e) {}
    and utm params are long gone. */
 try { getSourceAttribution(); } catch (e) { /* attribution is best-effort */ }
 
+/* ── Conversion tracking ─────────────────────────────────────────────
+   Kevin's Tag Manager container (GTM-5PP6R6HL) cannot be edited by WES, and
+   for months it reported no phone taps and no form leads at all, so Google Ads
+   had nothing to optimize toward. These fire directly instead:
+
+     phone tap      -> Ads "Website Phone Tap" + GA4 phone_click
+     accepted lead  -> Ads "Website Lead Form" + GA4 generate_lead
+
+   A lead fires ONLY after form-notify has accepted it, never on submit, so
+   spam and failed sends are not counted. Redirects wait for the conversion to
+   send (event_callback) but never longer than one second, so a blocked tag
+   cannot strand a visitor on the form.
+
+   If the old GTM import (form_submission / tel: linkClick tags) is ever
+   published, it will DOUBLE COUNT these. Remove one or the other. */
+var KF_ADS_ID = 'AW-429070132';
+var KF_GA4_ID = 'G-GP6Y589211';
+var KF_CONV = {
+  lead:  'AW-429070132/-QLeCLm97ZUdELSuzMwB',
+  phone: 'AW-429070132/tetsCLy97ZUdELSuzMwB'
+};
+(function () {
+  window.dataLayer = window.dataLayer || [];
+  if (typeof window.gtag !== 'function') {
+    window.gtag = function () { window.dataLayer.push(arguments); };
+  }
+  if (!document.querySelector('script[src*="gtag/js?id=' + KF_ADS_ID + '"]')) {
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=' + KF_ADS_ID;
+    document.head.appendChild(s);
+  }
+  gtag('js', new Date());
+  gtag('config', KF_ADS_ID);
+})();
+
+window.kfTrackLead = function (formType, done) {
+  var finished = false;
+  function finish() {
+    if (finished) return;
+    finished = true;
+    if (typeof done === 'function') done();
+  }
+  try {
+    window.dataLayer.push({ event: 'generate_lead', form_type: formType, form_location: window.location.pathname });
+    gtag('event', 'generate_lead', { send_to: KF_GA4_ID, form_type: formType });
+    gtag('event', 'conversion', { send_to: KF_CONV.lead, event_callback: finish });
+  } catch (e) { /* tracking is never allowed to break a lead */ }
+  setTimeout(finish, 1000);
+};
+
+document.addEventListener('click', function (e) {
+  var a = e.target && e.target.closest ? e.target.closest('a[href^="tel:"]') : null;
+  if (!a) return;
+  try {
+    var num = a.getAttribute('href');
+    window.dataLayer.push({ event: 'phone_click', link_url: num, form_location: window.location.pathname });
+    gtag('event', 'phone_click', { send_to: KF_GA4_ID, link_url: num });
+    gtag('event', 'conversion', { send_to: KF_CONV.phone });
+  } catch (err) { /* never block the dial */ }
+}, true);
+
 /* ── Mobile Menu ── */
 const menuBtn = document.getElementById('menu-btn');
 const mobileMenu = document.getElementById('mobile-menu');
@@ -607,6 +669,10 @@ document.querySelectorAll('form[data-resource]').forEach(function (rForm) {
         // GTM conversion event
         window.dataLayer = window.dataLayer || [];
         window.dataLayer.push({ event: 'form_submission', form_type: 'resource-' + slug, form_location: window.location.pathname });
+        // The home-valuation magnet navigates away below, so it fires its own
+        // conversion with a callback; every other magnet stays on the page.
+        var hvRedirect = !(json.next && pdfTab && pdfMagnets[slug]) && json.next && slug === 'home-valuation';
+        if (!hvRedirect && window.kfTrackLead) window.kfTrackLead('resource-' + slug);
 
         // Handle redirect / PDF open
         if (json.next && pdfTab && pdfMagnets[slug]) {
@@ -614,8 +680,11 @@ document.querySelectorAll('form[data-resource]').forEach(function (rForm) {
           pdfTab.location.href = json.next;
           if (status) { status.textContent = 'Your guide is opening in a new tab. Check your email too!'; status.className = 'resource-status success'; }
         } else if (json.next && slug === 'home-valuation') {
-          // Home valuation: full-page redirect to the questionnaire
-          window.location.href = json.next;
+          // Home valuation: full-page redirect to the questionnaire, after the
+          // conversion has had its chance to send.
+          var hvNext = json.next;
+          if (window.kfTrackLead) window.kfTrackLead('resource-' + slug, function () { window.location.href = hvNext; });
+          else window.location.href = hvNext;
           return;
         } else if (json.next) {
           // Page magnets: open in a new tab so they don't lose context
@@ -831,7 +900,10 @@ if (form) {
       // accepted the lead. form-notify can return 200 with accepted:false.
       var json = await res.json().catch(function () { return {}; });
       if (res.ok && json.success !== false && json.accepted !== false) {
-        window.location.href = '/thank-you/';
+        // This handler used to redirect without telling anything a lead had
+        // happened, so the contact page and showing requests never counted.
+        if (window.kfTrackLead) window.kfTrackLead(data.form_type || 'contact', function () { window.location.href = '/thank-you/'; });
+        else window.location.href = '/thank-you/';
       } else {
         if (status) { status.textContent = "We couldn't send that just now. Please call Kevin at 727-410-8599."; status.className = 'form-status error'; }
         btn.disabled = false;
