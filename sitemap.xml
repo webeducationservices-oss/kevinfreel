@@ -50,9 +50,15 @@
   </url>
   <url>
     <loc>https://www.kevinfreel.com/new-townhomes-tampa/</loc>
-    <lastmod>2026-08-20</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.kevinfreel.com/tampa-townhome-builders/</loc>
+    <lastmod>2026-10-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.kevinfreel.com/photography/</loc>
@@ -1219,12 +1225,6 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.kevinfreel.com/home-evaluation-questionnaire/</loc>
-    <lastmod>2026-08-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://www.kevinfreel.com/home-prep-checklist/</loc>
     <lastmod>2026-08-26</lastmod>
     <changefreq>monthly</changefreq>
@@ -1237,12 +1237,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.kevinfreel.com/neighborhood-review/</loc>
-    <lastmod>2026-08-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://www.kevinfreel.com/partials/footer/</loc>
     <lastmod>2026-08-26</lastmod>
     <changefreq>monthly</changefreq>
@@ -1251,6 +1245,18 @@
   <url>
     <loc>https://www.kevinfreel.com/partials/nav/</loc>
     <lastmod>2026-08-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.kevinfreel.com/blog/south-tampa-townhome-vs-condo-hoa-fees/</loc>
+    <lastmod>2026-10-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.kevinfreel.com/blog/luxury-townhomes-south-tampa/</loc>
+    <lastmod>2026-10-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>

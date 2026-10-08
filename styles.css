@@ -81,8 +81,23 @@ ul { list-style: none; }
   left: 0;
   right: 0;
   z-index: 100;
-  padding: 1.25rem 0;
   transition: background 0.35s, box-shadow 0.35s, padding 0.35s;
+  /* The dark bar used to come ONLY from .nav.scrolled. The nav partial hardcodes
+     that class so the first paint looked right, but components.js runs
+     `toggle('scrolled', scrollY > 60)` on every scroll event, so scrolling
+     anywhere near the top STRIPPED it. On the homepage that is correct (the nav
+     sits over a full-height dark hero). On the other 210 pages there is nothing
+     behind it, so the bar went transparent over white and every white link
+     disappeared. Solid is now the default; only a page with a real hero opts
+     out, and it fails safe to readable if :has() is unsupported. */
+  background: rgba(15, 25, 35, 0.97);
+  box-shadow: 0 1px 20px rgba(0,0,0,0.15);
+  padding: 0.75rem 0;
+}
+body:has(.hero) .nav:not(.scrolled) {
+  background: transparent;
+  box-shadow: none;
+  padding: 1.25rem 0;
 }
 .nav.scrolled {
   background: rgba(15, 25, 35, 0.97);
@@ -153,7 +168,7 @@ ul { list-style: none; }
   gap: 0.5rem;
   padding: 0.6rem 1.5rem;
   background: var(--gold);
-  color: var(--navy) !important;
+  color: var(--white) !important;
   font-weight: 600;
   font-size: 0.875rem;
   border-radius: 4px;
@@ -1033,7 +1048,14 @@ ul { list-style: none; }
   max-width: 560px;
   margin: 0 auto;
 }
+/* Active page indicator. --gold is 5.89:1 on the white mega panel but only
+   3.01:1 on the dark nav bar and drawer, so the current-page link was the
+   least readable thing in the header. Split by surface. */
 .nav-active { color: var(--gold) !important; }
+.nav-links > li > a.nav-active,
+.nav-trigger.nav-active,
+.m-acc-trigger.nav-active,
+.m-acc-panel a.nav-active { color: var(--gold-on-dark) !important; }
 
 /* ────────────────────────────────────
    ABOUT BIO
@@ -3089,6 +3111,72 @@ ul { list-style: none; }
   background: #000;
 }
 
+/* ── Blog photo grid: 3 across, 2 on tablet, 2 on phone. Tiles are a fixed
+   3:2 so rows line up no matter what the source crop was. ── */
+.blog-photo-grid {
+  display: grid;
+  /* 2 across inside an article: the column is ~668px, so 3 across left the
+     tiles at 215px. The builders band overrides this to 3 since it gets 1200. */
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem;
+  margin: 0 0 0.75rem;
+}
+.blog-photo-grid img {
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  display: block;
+  margin: 0;
+  border-radius: 10px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.10);
+}
+.blog-photo-caption {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  margin: 0 0 1.75rem;
+  font-style: italic;
+}
+@media (max-width: 900px) {
+  .blog-photo-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 460px) {
+  .blog-photo-grid { gap: 0.5rem; }
+}
+
+/* ── Townhome builders page imagery ── */
+.tb-hero-shot {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0;
+  width: calc(100vw - 4rem);
+}
+.tb-hero-shot img {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  display: block;
+  border-radius: 12px;
+  box-shadow: 0 14px 34px rgba(0,0,0,0.14);
+}
+.blog-photo-grid.tb-band {
+  grid-template-columns: repeat(3, 1fr);
+  margin-top: 1.75rem;
+  width: 1200px;
+  max-width: calc(100vw - 4rem);
+  margin-left: 50%;
+  transform: translateX(-50%);
+}
+.tb-band + .blog-photo-caption {
+  width: 1200px;
+  max-width: calc(100vw - 4rem);
+  margin-left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+}
+@media (max-width: 600px) {
+  .tb-hero-shot { padding: 0 1rem; }
+}
+
 /* ── Blog feature/stat card grids: replace inline <ul> blocks ── */
 .blog-article .feature-grid {
   display: grid;
@@ -3827,4 +3915,26 @@ ul { list-style: none; }
 .th-project-body p { font-size: 0.9rem; margin: 0 0 0.85rem; }
 @media (max-width: 640px) {
   .th-band { margin: 1.4rem 0; border-radius: 10px; }
+}
+
+/* Footer NAP. The site carried no phone number and no locality anywhere in its
+   chrome, which is a local-SEO gap on a realtor site. Street address is
+   deliberately absent until Kevin confirms the office address to publish. */
+.footer-nap {
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.72);
+  margin: 0 0 0.4rem;
+}
+.footer-nap a { color: var(--gold-on-dark); font-weight: 600; text-decoration: none; }
+.footer-nap a:hover { color: var(--white); }
+.footer-nap span { margin: 0 0.45rem; opacity: 0.5; }
+
+/* One card per row, title above its sentence. Used where each card carries a
+   full sentence and two across would squeeze it, e.g. the luxury townhome
+   guide's marketing section. */
+.blog-article .feature-grid.feature-grid--stack { grid-template-columns: 1fr; }
+.blog-article .feature-grid--stack .feature-card strong {
+  display: block;
+  margin-bottom: 0.2rem;
+  color: var(--navy);
 }

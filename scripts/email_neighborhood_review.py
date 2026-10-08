@@ -33,6 +33,7 @@ import json
 import os
 import sys
 import urllib.error
+import urllib.parse
 import urllib.request
 from pathlib import Path
 
@@ -51,6 +52,8 @@ DEFAULT_TO = "kevinfreel@c21be.com"
 # email, so "all 52 done" and "the run failed" both notify him too. Silence
 # should only ever mean the machine was off.
 ADMIN = "justin@webeducationservices.com"
+SUPABASE = "https://sqeegvibwqkiugiwomqd.supabase.co"
+SITE_ID = "e52c801e-cbb7-41a2-ab62-090a210572d4"  # kevin-freel
 
 MODEL = "claude-opus-5"
 
@@ -201,9 +204,57 @@ def draft_with_claude(slug: str, n: dict, data: dict, prices: dict) -> dict:
     return response.parsed_output.model_dump()
 
 
-def pick_next(data: dict, slug: str | None) -> tuple[str, dict] | None:
-    """Next neighborhood needing Kevin's voice, or None when all 52 are done."""
+def pending_review_slugs() -> set[str]:
+    """Slugs Kevin has already answered that nobody has written up yet.
+
+    Without this the loop re-asks the same neighborhood every Tuesday, because
+    it only knows a neighborhood is handled once a human writes the `kevin`
+    block. Kevin answered Historic Hyde Park on 2026-09-25 and was emailed
+    about it again afterwards; nine sends went out for that one neighborhood.
+    Nagging a client for something he already did is how he stops replying.
+    """
+    key = os.environ.get("SUPABASE_SERVICE_ROLE_KEY")
+    if not key:
+        print("  SUPABASE_SERVICE_ROLE_KEY not set, cannot check for replies")
+        return set()
+    q = urllib.parse.urlencode({
+        "site_id": f"eq.{SITE_ID}",
+        "form_type": "eq.neighborhood-review",
+        "select": "raw_data",
+    })
+    req = urllib.request.Request(
+        f"{SUPABASE}/rest/v1/leads?{q}",
+        headers={"apikey": key, "Authorization": f"Bearer {key}"},
+    )
+    try:
+        with urllib.request.urlopen(req, timeout=20) as r:
+            rows = json.loads(r.read() or b"[]")
+    except Exception as e:                      # never let this block the run
+        print(f"  could not read replies ({e}); proceeding without the check")
+        return set()
+    out = set()
+    for row in rows:
+        rd = row.get("raw_data") or {}
+        if isinstance(rd, str):
+            try:
+                rd = json.loads(rd)
+            except Exception:
+                continue
+        s = (rd or {}).get("neighborhood_slug")
+        if s:
+            out.add(s)
+    return out
+
+
+def pick_next(data: dict, slug: str | None,
+              awaiting: set[str] | None = None) -> tuple[str, dict] | None:
+    """Next neighborhood needing Kevin's voice, or None when all 52 are done.
+
+    `awaiting` holds slugs he has already answered that are still waiting to be
+    written up. Those are skipped so he is never asked twice for the same one.
+    """
     nbhs = data["neighborhoods"]
+    awaiting = awaiting or set()
     if slug:
         if slug not in nbhs:
             raise SystemExit(f"Unknown slug: {slug}")
@@ -212,7 +263,7 @@ def pick_next(data: dict, slug: str | None) -> tuple[str, dict] | None:
     # Tier 1 first (the neighborhoods with real search demand), then the rest.
     for tier in (1, 2):
         for s, n in nbhs.items():
-            if n.get("tier") == tier and not n.get("kevin"):
+            if n.get("tier") == tier and not n.get("kevin") and s not in awaiting:
                 return s, n
     return None
 
@@ -410,7 +461,10 @@ def main() -> int:
         return draft_all(data, prices, force=args.force, workers=args.workers)
 
     to = os.environ.get("REVIEW_TO", DEFAULT_TO)
-    nxt = pick_next(data, args.slug)
+    awaiting = pending_review_slugs()
+    if awaiting:
+        print(f"  already answered, awaiting write-up: {sorted(awaiting)}")
+    nxt = pick_next(data, args.slug, awaiting)
 
     # Every neighborhood is in Kevin's voice. Congratulate him and stop.
     if nxt is None:
