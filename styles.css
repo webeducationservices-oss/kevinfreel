@@ -3928,3 +3928,13 @@ body:has(.hero) .nav:not(.scrolled) {
 .footer-nap a { color: var(--gold-on-dark); font-weight: 600; text-decoration: none; }
 .footer-nap a:hover { color: var(--white); }
 .footer-nap span { margin: 0 0.45rem; opacity: 0.5; }
+
+/* One card per row, title above its sentence. Used where each card carries a
+   full sentence and two across would squeeze it, e.g. the luxury townhome
+   guide's marketing section. */
+.blog-article .feature-grid.feature-grid--stack { grid-template-columns: 1fr; }
+.blog-article .feature-grid--stack .feature-card strong {
+  display: block;
+  margin-bottom: 0.2rem;
+  color: var(--navy);
+}
