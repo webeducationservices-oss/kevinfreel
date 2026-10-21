@@ -697,12 +697,12 @@ POST_TEMPLATE = '''<!DOCTYPE html>
 
   <title>{title_esc} — Kevin Freel Real Estate</title>
   <meta name="description" content="{desc_esc}">
-  <link rel="canonical" href="https://kevinfreel.com/blog/{slug}">
+  <link rel="canonical" href="https://www.kevinfreel.com/blog/{slug}/">
 
   <meta property="og:title" content="{title_esc}">
   <meta property="og:description" content="{desc_esc}">
   <meta property="og:image" content="{og_image_abs}">
-  <meta property="og:url" content="https://kevinfreel.com/blog/{slug}">
+  <meta property="og:url" content="https://www.kevinfreel.com/blog/{slug}/">
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="Kevin Freel Real Estate">
   <meta name="twitter:image" content="{og_image_abs}">
@@ -853,12 +853,12 @@ INDEX_TEMPLATE = '''<!DOCTYPE html>
 
   <title>Blog — Kevin Freel Real Estate</title>
   <meta name="description" content="Market updates, just-listed highlights, sold success stories, and Tampa Bay real estate tips — straight from Kevin.">
-  <link rel="canonical" href="https://kevinfreel.com/blog">
+  <link rel="canonical" href="https://www.kevinfreel.com/blog/">
 
   <meta property="og:title" content="Blog — Kevin Freel Real Estate">
   <meta property="og:description" content="Tampa Bay real estate updates, market reports, and sold stories from 40-year Realtor Kevin Freel.">
   <meta property="og:image" content="https://kevinfreel.com/images/og-image.jpg">
-  <meta property="og:url" content="https://kevinfreel.com/blog">
+  <meta property="og:url" content="https://www.kevinfreel.com/blog/">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Kevin Freel Real Estate">
 
