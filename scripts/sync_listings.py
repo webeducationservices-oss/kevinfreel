@@ -778,12 +778,12 @@ def render_listings_page(listings: list[dict[str, Any]], updated_at: str) -> str
 
   <title>Kevin Freel's Active Listings — Tampa Bay Real Estate</title>
   <meta name="description" content="{html.escape(desc)}">
-  <link rel="canonical" href="https://kevinfreel.com/listings">
+  <link rel="canonical" href="https://www.kevinfreel.com/listings/">
 
   <meta property="og:title" content="Kevin Freel's Active Listings — Tampa Bay Real Estate">
   <meta property="og:description" content="{html.escape(desc)}">
   <meta property="og:image" content="https://kevinfreel.com/images/og-image.jpg">
-  <meta property="og:url" content="https://kevinfreel.com/listings">
+  <meta property="og:url" content="https://www.kevinfreel.com/listings/">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Kevin Freel Real Estate">
 
