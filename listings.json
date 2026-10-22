@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-21T14:58:47Z",
+  "updated_at": "2026-10-22T14:58:42Z",
   "count": 7,
   "listings": [
     {
@@ -20,23 +20,6 @@
       "local_thumb": "/images/listings/TB8510373-sm.webp"
     },
     {
-      "address": "16315 Mcglamery Road",
-      "city": "Odessa",
-      "state": "FL",
-      "zip": "33556",
-      "price_display": "$1,300,000",
-      "price": 1300000,
-      "beds": 0,
-      "baths": 0,
-      "sqft_or_acres": "5.06 Acres",
-      "mls_number": "TB8366062",
-      "status": "Active",
-      "c21_url": "https://www.century21.com/homes/detail/fl/odessa/16315-mcglamery-rd/lid-P00800000GpTDzMsMEy962WmdgTIOpoRd2fl09WN",
-      "hero_photo_url": "https://images-listings.century21.com/MFRMLS/TB/83/66/06/2/_P/TB8366062_P00.jpg",
-      "local_hero": "/images/listings/TB8366062.webp",
-      "local_thumb": "/images/listings/TB8366062-sm.webp"
-    },
-    {
       "address": "6705 S Himes Avenue",
       "city": "Tampa",
       "state": "FL",
@@ -52,6 +35,23 @@
       "hero_photo_url": "https://images-listings.century21.com/SOLO/a7/e5/75/ec/-1/17/6-/46/eb/-8/be/d-/0f/8b/b6/40/37/9b/_P/a7e575ec-1176-46eb-8bed-0f8bb640379b_P00.jpg",
       "local_hero": "/images/listings/TB8518724.webp",
       "local_thumb": "/images/listings/TB8518724-sm.webp"
+    },
+    {
+      "address": "16315 Mcglamery Road",
+      "city": "Odessa",
+      "state": "FL",
+      "zip": "33556",
+      "price_display": "$1,200,000",
+      "price": 1200000,
+      "beds": 0,
+      "baths": 0,
+      "sqft_or_acres": "5.06 Acres",
+      "mls_number": "TB8366062",
+      "status": "Active",
+      "c21_url": "https://www.century21.com/homes/detail/fl/odessa/16315-mcglamery-rd/lid-P00800000GpTDzMsMEy962WmdgTIOpoRd2fl09WN",
+      "hero_photo_url": "https://images-listings.century21.com/MFRMLS/TB/83/66/06/2/_P/TB8366062_P00.jpg",
+      "local_hero": "/images/listings/TB8366062.webp",
+      "local_thumb": "/images/listings/TB8366062-sm.webp"
     },
     {
       "address": "212 S Bradford Avenue",
