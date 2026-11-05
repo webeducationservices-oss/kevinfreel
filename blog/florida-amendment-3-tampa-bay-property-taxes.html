@@ -32,6 +32,30 @@
   <link rel="preload" as="image" type="image/webp" href="/images/blog/florida-amendment-3-tampa-bay-property-taxes/hero.webp" fetchpriority="high">
   <link rel="stylesheet" href="/fonts/fonts.css">
   <link rel="stylesheet" href="/styles.css">
+  <style>
+/* Amendment 3 post: scannability helpers, scoped to this page */
+.blog-article .a3-key{background:#fff7f7;border:1px solid #f1d3d6;border-left:5px solid var(--gold);border-radius:10px;padding:1rem 1.2rem;margin:-.5rem 0 1.6rem;font-weight:600;color:var(--navy);line-height:1.5}
+.blog-article .a3-key-label{display:block;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);font-weight:800;margin-bottom:.3rem}
+.blog-article .a3-scenario{background:var(--bg-alt,#f7f7f8);border-radius:12px;padding:1.1rem 1.3rem .4rem;margin:0 0 1.2rem;border-top:4px solid var(--navy)}
+.blog-article .a3-scenario h3{margin-top:0}
+.blog-article .a3-table{width:100%;border-collapse:collapse;margin:0 0 1.6rem;font-size:1rem}
+.blog-article .a3-table caption{text-align:left;font-weight:700;color:var(--navy);margin-bottom:.5rem}
+.blog-article .a3-table th,.blog-article .a3-table td{padding:.7rem .9rem;border-bottom:1px solid var(--border);text-align:left}
+.blog-article .a3-table thead th{background:var(--navy);color:#fff;font-weight:700}
+.blog-article .a3-table tbody th{color:var(--navy)}
+.blog-article .a3-table td{font-variant-numeric:tabular-nums;font-weight:600}
+.blog-article > ul.a3-schedule{list-style:none;margin-left:0;padding:0;display:grid;gap:.6rem}
+.blog-article .a3-schedule li{background:var(--bg-alt,#f7f7f8);border-left:4px solid var(--gold);border-radius:8px;padding:.75rem 1rem;margin:0}
+.blog-article .a3-pull{font-family:var(--font-serif);font-size:1.45rem;line-height:1.35;color:var(--navy);border-left:4px solid var(--gold);padding:.2rem 0 .2rem 1.1rem;margin:1.6rem 0}
+.blog-article > ol.a3-check{list-style:none;counter-reset:a3;margin-left:0;padding:0;display:grid;gap:.7rem}
+.blog-article .a3-check li{counter-increment:a3;position:relative;background:#fff;border:1px solid var(--border);border-radius:10px;padding:.9rem 1rem .9rem 3.4rem;margin:0}
+.blog-article .a3-check li::before{content:counter(a3);position:absolute;left:1rem;top:.85rem;width:1.7rem;height:1.7rem;border-radius:50%;background:var(--gold);color:#fff;font-weight:800;font-size:.9rem;display:grid;place-items:center}
+.blog-article > ul.a3-recap{list-style:none;margin-left:0;padding:1.1rem 1.3rem;background:var(--navy);border-radius:12px}
+.blog-article .a3-recap li{color:#fff;padding-left:1.6rem;position:relative;margin:.5rem 0}
+.blog-article .a3-recap li::before{content:"";position:absolute;left:0;top:.45rem;width:.7rem;height:.7rem;border-radius:2px;background:var(--gold-on-dark,#e65b65)}
+.blog-article h2[id^="gotcha-"]{border-top:1px solid var(--border);padding-top:1.6rem;margin-top:2.6rem}
+</style>
+
 <script type="application/ld+json">
 {
  "@context": "https://schema.org",
@@ -423,77 +447,78 @@
         <p>Let&rsquo;s walk through what passed, what it means for Tampa Bay homeowners, and the important details I&rsquo;d want every buyer to understand.</p>
         <h2 id="what-is-florida-amendment-3-and-what-changes-in-2027">What Is Florida Amendment 3, and What Changes in 2027?</h2>
         <p>Florida Amendment 3 increases the amount of a qualifying primary residence&rsquo;s assessed value that is exempt from non-school property taxes.</p>
-        <p>Before the amendment, Florida&rsquo;s standard homestead exemption provided approximately $50,000 in exemptions for non-school property taxes, subject to the existing exemption rules and inflation adjustments.</p>
+        <p>Before the amendment, Florida&rsquo;s standard homestead exemption provided approximately <strong>$50,000</strong> in exemptions for non-school property taxes, subject to the existing exemption rules and inflation adjustments.</p>
         <p>The new amendment raises that exemption significantly.</p>
         <p>Here&rsquo;s the schedule:</p>
-        <ul>
+        <ul class="a3-schedule">
           <li><strong>2027:</strong> The exemption increases to $150,000 of assessed value for eligible homeowners.</li>
           <li><strong>2028:</strong> The exemption increases to $250,000.</li>
           <li><strong>2029 and beyond:</strong> The larger exemption adjusts annually for positive inflation.</li>
         </ul>
-        <p>These amounts apply to non-school property taxes. The existing $25,000 homestead exemption for school property taxes remains.</p>
+        <p>These amounts apply to non-school property taxes. The existing <strong>$25,000</strong> homestead exemption for school property taxes remains.</p>
         <p>Let&rsquo;s use an example.</p>
         <p>Imagine you own a home in Tampa with an assessed value of $400,000.</p>
         <p>Under the expanded exemption in 2028, a qualifying homeowner could have:</p>
-        <ul>
-          <li>$250,000 exempt from non-school property taxes.</li>
-          <li>$150,000 remaining in taxable value for non-school levies.</li>
-          <li>$25,000 exempt from school property taxes.</li>
-          <li>$375,000 remaining in taxable value for school levies.</li>
-        </ul>
+        <table class="a3-table"><caption>Example: $400,000 assessed value, 2028</caption>
+<thead><tr><th></th><th>Non-school taxes</th><th>School taxes</th></tr></thead>
+<tbody><tr><th>Exempt</th><td>$250,000</td><td>$25,000</td></tr>
+<tr><th>Still taxable</th><td>$150,000</td><td>$375,000</td></tr></tbody></table>
         <p>That&rsquo;s a substantial reduction in the amount subject to county, city, and applicable special district taxes.</p>
         <p>However, the actual dollars saved depend on the local property tax rates and any other applicable exemptions.</p>
         <p>And here&rsquo;s the first important distinction: the exemption applies to assessed value, not necessarily your home&rsquo;s purchase price or current market value.</p>
         <p>That becomes especially important when purchasing a home from someone who has owned it for decades.</p>
         <h2 id="gotcha-1">Gotcha #1: The December 31, 2026 Florida Residency Deadline</h2>
         <img src="/images/blog/florida-amendment-3-tampa-bay-property-taxes/gotcha-1.webp" alt="Florida Amendment 3 buyer gotcha #1: The December 31, 2026 Florida residency deadline" width="1200" height="675" loading="lazy">
+        <div class="a3-key"><span class="a3-key-label">Gotcha #1 in one line</span>Permanent Florida residency by December 31, 2026 is what counts. Arrive after it and you start with a smaller exemption.</div>
         <p>This may be the biggest surprise in the entire amendment.</p>
-        <p>To qualify for the expanded homestead exemption without the new-resident waiting period, the amendment distinguishes between people who maintained a permanent Florida residence as of December 31, 2026, and those who established Florida residency afterward.</p>
-        <p>Read that carefully.</p>
-        <p>The key date is December 31, 2026, and the requirement concerns permanent Florida residency. It does not simply require that you purchased a home before that date.</p>
+        <p>To qualify for the expanded homestead exemption without the new-resident waiting period, the amendment distinguishes between people who maintained a permanent Florida residence as of <strong>December 31, 2026</strong>, and those who established Florida residency afterward.</p>
+        <p class="a3-pull">Read that carefully.</p>
+        <p>The key date is <strong>December 31, 2026</strong>, and the requirement concerns permanent Florida residency. It does not simply require that you purchased a home before that date.</p>
         <p>For example, suppose you&rsquo;ve rented an apartment in South Tampa for the last three years.</p>
         <p>You decide to purchase your first home in April 2027.</p>
-        <p>Although you didn&rsquo;t own a home before December 31, 2026, you were already a permanent Florida resident before the deadline. Under the amendment&rsquo;s residency distinction, you can qualify for the larger exemption when your new home becomes eligible for homestead.</p>
+        <p>Although you didn&rsquo;t own a home before <strong>December 31, 2026</strong>, you were already a permanent Florida resident before the deadline. Under the amendment&rsquo;s residency distinction, you can qualify for the larger exemption when your new home becomes eligible for homestead.</p>
         <p>Now consider someone relocating from New York to Tampa in April 2027.</p>
         <p>That person wasn&rsquo;t a permanent Florida resident by the December 31 deadline.</p>
         <p>Even if they purchase an identical home next door, their initial homestead tax treatment could be different.</p>
-        <p>The amendment provides a smaller exemption for new Florida residents until their fifth year of homestead exemption eligibility.</p>
+        <p>The amendment provides a smaller exemption for new Florida residents until their <strong>fifth year</strong> of homestead exemption eligibility.</p>
         <p>That&rsquo;s a distinction buyers need to understand before calculating what their new Florida home will actually cost.</p>
         <p>One more thing: Simply having a Florida mailing address or signing a contract doesn&rsquo;t establish permanent residency. Property appraisers consider evidence of your actual permanent home, including documentation such as driver&rsquo;s licenses, voter registration, prior residency, and other records.</p>
         <p>If you&rsquo;re moving to Florida near the end of 2026, don&rsquo;t assume a closing date or a piece of paperwork automatically satisfies the residency requirement.</p>
         <h2 id="gotcha-2">Gotcha #2: Buying in December 2026 Versus January 2027 Can Affect Your First Year of Homestead</h2>
         <img src="/images/blog/florida-amendment-3-tampa-bay-property-taxes/gotcha-2.webp" alt="Florida Amendment 3 buyer gotcha #2: Buying in December 2026 versus January 2027" width="1200" height="675" loading="lazy">
-        <p>Florida property tax exemptions are generally determined by a property&rsquo;s ownership and residency status on January 1 of the tax year.</p>
+        <div class="a3-key"><span class="a3-key-label">Gotcha #2 in one line</span>Exemptions follow who owns and lives in the home on January 1. File by March 1.</div>
+        <p>Florida property tax exemptions are generally determined by a property&rsquo;s ownership and residency status on <strong>January 1</strong> of the tax year.</p>
         <p>That rule existed before Amendment 3, and it&rsquo;s particularly important now.</p>
-        <p>If you purchase a home and establish it as your permanent residence by January 1, 2027, you may qualify for the homestead exemption for the 2027 tax year.</p>
-        <p>You must also apply by the regular March 1 filing deadline.</p>
+        <p>If you purchase a home and establish it as your permanent residence by <strong>January 1, 2027</strong>, you may qualify for the homestead exemption for the 2027 tax year.</p>
+        <p>You must also apply by the regular <strong>March 1</strong> filing deadline.</p>
         <p>Here&rsquo;s how that might work.</p>
-        <h3>Scenario A: You Close in December 2026</h3>
-        <p>You&rsquo;re already a permanent Florida resident, or you establish your permanent Florida residency by December 31, 2026.</p>
+        <div class="a3-scenario"><h3>Scenario A: You Close in December 2026</h3>
+        <p>You&rsquo;re already a permanent Florida resident, or you establish your permanent Florida residency by <strong>December 31, 2026</strong>.</p>
         <p>You close on a home in Tampa on December 20 and move in before the end of the year.</p>
-        <p>Assuming you satisfy the remaining homestead requirements, you could qualify for the new $150,000 non-school exemption in 2027.</p>
-        <h3>Scenario B: You Close in February 2027</h3>
+        <p>Assuming you satisfy the remaining homestead requirements, you could qualify for the new <strong>$150,000</strong> non-school exemption in 2027.</p></div>
+        <div class="a3-scenario"><h3>Scenario B: You Close in February 2027</h3>
         <p>You&rsquo;ve lived in Florida for years, but you purchase your home in February 2027.</p>
-        <p>Because you did not own that property on January 1, 2027, your own homestead exemption generally cannot begin until the 2028 tax year.</p>
-        <p>However, because you were a Florida resident before the December 31, 2026 cutoff, you may qualify for the expanded $250,000 exemption when your homestead begins in 2028.</p>
-        <p>The home&rsquo;s existing 2027 tax status is a separate consideration, which I&rsquo;ll explain next.</p>
-        <h3>Scenario C: You Move From Out of State in 2027</h3>
+        <p>Because you did not own that property on <strong>January 1, 2027</strong>, your own homestead exemption generally cannot begin until the 2028 tax year.</p>
+        <p>However, because you were a Florida resident before the <strong>December 31, 2026</strong> cutoff, you may qualify for the expanded $250,000 exemption when your homestead begins in 2028.</p>
+        <p>The home&rsquo;s existing 2027 tax status is a separate consideration, which I&rsquo;ll explain next.</p></div>
+        <div class="a3-scenario"><h3>Scenario C: You Move From Out of State in 2027</h3>
         <p>You relocate from another state and purchase a primary residence in Tampa Bay in June 2027.</p>
         <p>You generally cannot establish your own homestead exemption on that property until 2028.</p>
-        <p>And because you weren&rsquo;t a Florida resident by December 31, 2026, the amendment provides the smaller exemption initially.</p>
-        <p>Under the five-year provision, if 2028 is your first qualifying homestead year, your fifth year would be 2032.</p>
+        <p>And because you weren&rsquo;t a Florida resident by <strong>December 31, 2026</strong>, the amendment provides the smaller exemption initially.</p>
+        <p>Under the <strong>five-year</strong> provision, if 2028 is your first qualifying homestead year, your fifth year would be 2032.</p>
         <p>That could mean several years of higher property taxes compared with a similarly situated homeowner who met the residency cutoff.</p>
-        <p>The five-year provision is subject to federal constitutional limitations and future implementation details, so buyers should verify their eligibility rather than assume a particular outcome.</p>
+        <p>The <strong>five-year</strong> provision is subject to federal constitutional limitations and future implementation details, so buyers should verify their eligibility rather than assume a particular outcome.</p></div>
         <p>My advice? If you&rsquo;re shopping for a Tampa Bay home near the end of 2026, understand how your closing date and residency status affect your taxes. But don&rsquo;t rush into the wrong home simply to beat a deadline.</p>
-        <p>A tax benefit is only one part of a much larger financial decision.</p>
+        <p class="a3-pull">A tax benefit is only one part of a much larger financial decision.</p>
         <h2 id="gotcha-3">Gotcha #3: Buying in 2027 Doesn&rsquo;t Automatically Mean Paying the Full Property Tax Bill</h2>
         <img src="/images/blog/florida-amendment-3-tampa-bay-property-taxes/gotcha-3.webp" alt="Florida Amendment 3 buyer gotcha #3: Buying in 2027 and the seller&#x27;s homestead exemption" width="1200" height="675" loading="lazy">
+        <div class="a3-key"><span class="a3-key-label">Gotcha #3 in one line</span>If the seller had homestead on January 1, it usually stays on that year&rsquo;s bill. Taxes get prorated at closing.</div>
         <p>Here&rsquo;s where Florida&rsquo;s existing tax system can be confusing.</p>
         <p>Let&rsquo;s say you purchase a home in Hyde Park in June 2027.</p>
         <p>The seller has owned that property for 20 years and has a homestead exemption.</p>
-        <p>You might assume that because you personally don&rsquo;t qualify for homestead on January 1, 2027, you&rsquo;ll immediately owe taxes without any exemption for the remainder of that year.</p>
+        <p>You might assume that because you personally don&rsquo;t qualify for homestead on <strong>January 1, 2027</strong>, you&rsquo;ll immediately owe taxes without any exemption for the remainder of that year.</p>
         <p>That&rsquo;s not necessarily what happens.</p>
-        <p>Florida generally determines property tax exemptions based on January 1 ownership and residency. If a property was homesteaded by the seller on January 1, that exemption typically remains reflected in the property&rsquo;s tax calculation for the entire year, even when the home sells.</p>
+        <p>Florida generally determines property tax exemptions based on <strong>January 1</strong> ownership and residency. If a property was homesteaded by the seller on January 1, that exemption typically remains reflected in the property&rsquo;s tax calculation for the entire year, even when the home sells.</p>
         <p>But the exemption belongs to the seller. It doesn&rsquo;t transfer to you as a permanent benefit.</p>
         <p>When you close, the title company will typically prorate the year&rsquo;s property taxes between you and the seller according to the contract.</p>
         <p>Because Florida generally bills property taxes in November for the current calendar year, closing statements often use an estimate to divide that obligation.</p>
@@ -503,41 +528,44 @@
         <p>That&rsquo;s something I want buyers to understand before they get to the closing table.</p>
         <h2 id="gotcha-4">Gotcha #4: The Seller&rsquo;s Property Tax Bill Could Be Completely Misleading</h2>
         <img src="/images/blog/florida-amendment-3-tampa-bay-property-taxes/gotcha-4.webp" alt="Florida Amendment 3 buyer gotcha #4: Why the seller&#x27;s property tax bill can mislead buyers" width="1200" height="675" loading="lazy">
+        <div class="a3-key"><span class="a3-key-label">Gotcha #4 in one line</span>When a home sells, Save Our Homes resets. The home is reassessed at market value the next January 1.</div>
         <p>This is one of the most common property tax misunderstandings I see buyers make.</p>
         <p>You find a beautiful home in Palma Ceia listed for $850,000.</p>
         <p>The current owner&rsquo;s property taxes look surprisingly low.</p>
         <p>That&rsquo;s great, right?</p>
         <p>Maybe. But those taxes were calculated under the seller&rsquo;s ownership history, assessed value, and exemptions.</p>
         <p>If the seller purchased that home 25 years ago, their assessed value might be substantially lower than its current market value because of Florida&rsquo;s Save Our Homes assessment limitation.</p>
-        <p>When ownership changes, that accumulated assessment limitation generally resets, and the home can be reassessed at its current just value on January 1 of the following year.</p>
+        <p>When ownership changes, that accumulated assessment limitation generally resets, and the home can be reassessed at its current just value on <strong>January 1</strong> of the following year.</p>
         <p>Amendment 3 provides a larger exemption, but it does not prevent this reassessment.</p>
         <p>You could receive a larger homestead exemption while also having a higher assessed value than the previous owner.</p>
-        <p>Both can be true.</p>
+        <p class="a3-pull">Both can be true.</p>
         <p>That means your property tax bill could increase even under a law designed to provide tax relief.</p>
         <p>This is particularly relevant in established neighborhoods such as Hyde Park, Davis Islands, Beach Park, and Palma Ceia, where long-term ownership and rising property values can create a substantial difference between assessed and market values.</p>
         <p>Before buying, get a property tax estimate based on your anticipated ownership, likely assessed value, and eligibility, not just the seller&rsquo;s current tax bill.</p>
         <p>If you&rsquo;re just beginning your search, take a look at my <a href="/buyers/">Tampa Bay homebuyer&rsquo;s guide</a>. Understanding the financial details upfront makes the entire buying process easier.</p>
         <h2 id="gotcha-5">Gotcha #5: The Five-Year Waiting Period Could Surprise New Florida Residents</h2>
         <img src="/images/blog/florida-amendment-3-tampa-bay-property-taxes/gotcha-5.webp" alt="Florida Amendment 3 buyer gotcha #5: The five-year waiting period for new Florida residents" width="1200" height="675" loading="lazy">
+        <div class="a3-key"><span class="a3-key-label">Gotcha #5 in one line</span>New residents start near $50K. The bigger exemption begins in their fifth homestead year.</div>
         <p>This is the provision I would pay particularly close attention to if you&rsquo;re relocating to Tampa Bay.</p>
-        <p>People who were not permanent Florida residents by December 31, 2026, are treated differently under the new amendment.</p>
-        <p>They generally begin with an exemption of approximately $50,000 for non-school property taxes instead of the expanded $150,000 or $250,000 amounts.</p>
-        <p>The larger exemption becomes available beginning with the fifth year of their homestead exemption.</p>
+        <p>People who were not permanent Florida residents by <strong>December 31, 2026</strong>, are treated differently under the new amendment.</p>
+        <p>They generally begin with an exemption of approximately <strong>$50,000</strong> for non-school property taxes instead of the expanded $150,000 or $250,000 amounts.</p>
+        <p>The larger exemption becomes available beginning with the <strong>fifth year</strong> of their homestead exemption.</p>
         <p>Notice something important.</p>
-        <p>The amendment refers to the fifth year of the homestead exemption, not simply the fifth anniversary of moving to Florida.</p>
+        <p>The amendment refers to the <strong>fifth year</strong> of the homestead exemption, not simply the fifth anniversary of moving to Florida.</p>
         <p>Those dates might not be the same.</p>
         <p>For example, someone could move to Florida in 2027, rent for two years, and purchase their first home in 2029.</p>
-        <p>Their homestead eligibility would generally begin in 2030, assuming they meet the January 1 requirements.</p>
-        <p>Under the amendment&rsquo;s five-year rule, the larger exemption would not become available until the fifth qualifying homestead year.</p>
+        <p>Their homestead eligibility would generally begin in 2030, assuming they meet the <strong>January 1</strong> requirements.</p>
+        <p>Under the amendment&rsquo;s <strong>five-year</strong> rule, the larger exemption would not become available until the fifth qualifying homestead year.</p>
         <p>There is an additional provision allowing counties and municipalities, beginning in 2030, to shorten the waiting period under certain circumstances with a two-thirds vote of their governing bodies.</p>
         <p>But that is not an automatic benefit.</p>
         <p>The residency restriction also includes language requiring compliance with the U.S. Constitution. That means future court decisions or implementing legislation could affect how the rule operates.</p>
         <p>For now, this is something relocating buyers should understand and verify when planning their budgets.</p>
         <h2 id="gotcha-6">Gotcha #6: Your Property Tax Bill Isn&rsquo;t Going Away</h2>
         <img src="/images/blog/florida-amendment-3-tampa-bay-property-taxes/gotcha-6.webp" alt="Florida Amendment 3 buyer gotcha #6: Your property tax bill isn&#x27;t going away" width="1200" height="675" loading="lazy">
+        <div class="a3-key"><span class="a3-key-label">Gotcha #6 in one line</span>School taxes, assessments, CDD fees, insurance and HOA dues all still apply.</div>
         <p>I&rsquo;ve seen people interpret Amendment 3 as the elimination of property taxes on their primary homes.</p>
         <p>That&rsquo;s not what the amendment does.</p>
-        <p>Even with a $250,000 homestead exemption in 2028, homeowners may still owe:</p>
+        <p>Even with a <strong>$250,000</strong> homestead exemption in 2028, homeowners may still owe:</p>
         <ul>
           <li>School district property taxes.</li>
           <li>Non-school property taxes on assessed value exceeding their applicable exemption.</li>
@@ -547,12 +575,13 @@
         <p>Those charges can vary quite a bit depending on the neighborhood.</p>
         <p>A home in an established South Tampa neighborhood may have a very different set of assessments from a home in a newer planned community in Odessa or Lutz.</p>
         <p>The amendment also does not eliminate homeowners insurance, flood insurance, HOA dues, or condominium association fees.</p>
-        <p>And for qualifying homeowners with assessed values of $250,000 or less in 2028, a zero non-school ad valorem tax liability doesn&rsquo;t mean every item on the property tax bill disappears.</p>
+        <p>And for qualifying homeowners with assessed values of <strong>$250,000</strong> or less in 2028, a zero non-school ad valorem tax liability doesn&rsquo;t mean every item on the property tax bill disappears.</p>
         <p>The important number isn&rsquo;t just how much your exemption increases. It&rsquo;s what your total annual cost of ownership looks like after everything is included.</p>
         <h2 id="gotcha-7">Gotcha #7: Florida&rsquo;s Save Our Homes Protection Is Still Important</h2>
         <img src="/images/blog/florida-amendment-3-tampa-bay-property-taxes/gotcha-7.webp" alt="Florida Amendment 3 buyer gotcha #7: Save Our Homes protection and portability" width="1200" height="675" loading="lazy">
+        <div class="a3-key"><span class="a3-key-label">Gotcha #7 in one line</span>Increases stay capped at 3% or CPI, whichever is lower. Moving from one Florida homestead to another? Ask about portability.</div>
         <p>One piece of good news is that Amendment 3 does not eliminate Florida&rsquo;s existing Save Our Homes assessment limitation.</p>
-        <p>For qualifying homestead properties, annual increases in assessed value are generally limited to the lower of 3% or the applicable Consumer Price Index change.</p>
+        <p>For qualifying homestead properties, annual increases in assessed value are generally limited to the lower of <strong>3%</strong> or the applicable Consumer Price Index change.</p>
         <p>That&rsquo;s valuable protection for homeowners who stay in their properties over time.</p>
         <p>But remember, the protection doesn&rsquo;t automatically carry over to the person buying the home.</p>
         <p>If you&rsquo;re selling one Florida homestead and purchasing another, you may qualify for something called portability.</p>
@@ -563,23 +592,25 @@
         <p>It&rsquo;s worth checking before you sell, not after you&rsquo;ve already closed.</p>
         <h2 id="gotcha-8">Gotcha #8: Rental Properties and Second Homes Get a Different Tax Benefit</h2>
         <img src="/images/blog/florida-amendment-3-tampa-bay-property-taxes/gotcha-8.webp" alt="Florida Amendment 3 buyer gotcha #8: Rental properties and second homes under Amendment 3" width="1200" height="675" loading="lazy">
+        <div class="a3-key"><span class="a3-key-label">Gotcha #8 in one line</span>Starting in 2027, the yearly cap on assessed value increases drops from 10% to 5%. A sale can still trigger reassessment.</div>
         <p>Amendment 3 isn&rsquo;t just about primary residences.</p>
         <p>It also changes the assessment limitation for non-homestead properties.</p>
-        <p>Previously, qualifying non-homestead properties had a 10% annual cap on increases in assessed value for non-school taxes.</p>
-        <p>Beginning in 2027, Amendment 3 reduces that cap to 5%.</p>
+        <p>Previously, qualifying non-homestead properties had a <strong>10%</strong> annual cap on increases in assessed value for non-school taxes.</p>
+        <p>Beginning in 2027, Amendment 3 reduces that cap to <strong>5%</strong>.</p>
         <p>This affects property types such as rental homes, second homes, and commercial real estate.</p>
         <p>For Tampa Bay property investors, that could provide additional protection from increases in assessed value.</p>
         <p>However, there are two important distinctions.</p>
-        <p>First, the 5% limit applies to increases in assessed value, not necessarily the annual tax bill. Changes in property tax rates can still affect what you owe.</p>
+        <p>First, the <strong>5%</strong> limit applies to increases in assessed value, not necessarily the annual tax bill. Changes in property tax rates can still affect what you owe.</p>
         <p>Second, a change in ownership can trigger reassessment. The cap does not necessarily protect a newly purchased investment property from being assessed at its current market value.</p>
         <p>For someone buying a vacation property near Clearwater Beach or a rental investment in St. Petersburg, the treatment is different from a primary homestead residence.</p>
         <p>Make sure your calculations reflect the actual use of the property.</p>
         <h2 id="gotcha-9">Gotcha #9: Local Governments Could Respond to Lost Property Tax Revenue</h2>
         <img src="/images/blog/florida-amendment-3-tampa-bay-property-taxes/gotcha-9.webp" alt="Florida Amendment 3 buyer gotcha #9: Local governments and lost property tax revenue" width="1200" height="675" loading="lazy">
+        <div class="a3-key"><span class="a3-key-label">Gotcha #9 in one line</span>Florida TaxWatch projects $45.8 billion less in local property taxes over five years. Millage rates, fees and assessments could change.</div>
         <p>There&rsquo;s another side of Amendment 3 that homeowners should understand.</p>
         <p>Property taxes help pay for local government services, including public safety, infrastructure, parks, libraries, and other community needs.</p>
         <p>The statewide increase in exemptions will significantly reduce the property tax revenue available to counties, cities, and special districts.</p>
-        <p>Estimates from Florida TaxWatch, based on state revenue projections, put the potential reduction at approximately $45.8 billion statewide over five fiscal years.</p>
+        <p>Estimates from Florida TaxWatch, based on state revenue projections, put the potential reduction at approximately <strong>$45.8 billion</strong> statewide over five fiscal years.</p>
         <p>That&rsquo;s a substantial amount of money.</p>
         <p>Here in Tampa Bay, Hillsborough and Pinellas counties, local municipalities, and special districts will have to account for the changing revenue picture.</p>
         <p>Local governments may consider budget changes, adjustments to millage rates, or changes in other fees and assessments.</p>
@@ -593,7 +624,7 @@
         <p>There is a lot to like about a larger homestead exemption, particularly for long-term Florida residents.</p>
         <p>But if you&rsquo;re getting ready to purchase a home, I would focus less on the headlines and more on the details that affect your specific property.</p>
         <p>Before closing, here&rsquo;s what I&rsquo;d want you to know:</p>
-        <ol>
+        <ol class="a3-check">
           <li><strong>Your permanent Florida residency date.</strong> Were you a permanent resident by December 31, 2026? This could determine when you qualify for the expanded exemption.</li>
           <li><strong>Your closing and occupancy dates.</strong> Will you meet the January 1 ownership and permanent-residence requirements for the applicable tax year?</li>
           <li><strong>The property&rsquo;s current exemption status.</strong> Does the seller have a homestead exemption, and how will that affect the taxes for the year you close?</li>
@@ -604,8 +635,8 @@
         <p>For official details, you can review the <a href="https://www.flsenate.gov/Committees/BillSummaries/2026F/html/1" target="_blank" rel="noopener">Florida Legislature&rsquo;s Amendment 3 summary</a>. Your county property appraiser should also be part of your research, particularly while implementation guidance is being finalized.</p>
         <h2 id="is-it-better-to-buy-a-tampa-bay-home-before-the-end-of-2026">Is It Better to Buy a Tampa Bay Home Before the End of 2026?</h2>
         <p>That&rsquo;s a question worth asking, but the answer depends on your situation.</p>
-        <p>If you&rsquo;re already a Florida resident and can establish a qualifying homestead before January 1, 2027, purchasing before the end of 2026 may allow you to receive the expanded exemption a year earlier.</p>
-        <p>If you&rsquo;re moving to Florida from another state, establishing permanent residency before December 31, 2026, may also have important implications under the amendment&rsquo;s residency provisions.</p>
+        <p>If you&rsquo;re already a Florida resident and can establish a qualifying homestead before <strong>January 1, 2027</strong>, purchasing before the end of 2026 may allow you to receive the expanded exemption a year earlier.</p>
+        <p>If you&rsquo;re moving to Florida from another state, establishing permanent residency before <strong>December 31, 2026</strong>, may also have important implications under the amendment&rsquo;s residency provisions.</p>
         <p>But I wouldn&rsquo;t tell anyone to buy a home just because there&rsquo;s a tax deadline approaching.</p>
         <p>Location, condition, insurance costs, financing, and long-term affordability all matter.</p>
         <p>A home that&rsquo;s right for your family five or ten years from now is more important than chasing one year&rsquo;s tax savings.</p>
@@ -616,13 +647,9 @@
         <h2 id="the-bottom-line-on-florida-amendment-3">The Bottom Line on Florida Amendment 3</h2>
         <p>Florida Amendment 3 creates an opportunity for meaningful property tax relief, especially for established Florida residents who qualify for the larger homestead exemption.</p>
         <p>But there are several details worth remembering.</p>
-        <p>The December 31, 2026 residency cutoff is important.</p>
-        <p>January 1 determines annual homestead eligibility.</p>
-        <p>Buying in 2027 doesn&rsquo;t necessarily mean you&rsquo;ll lose the seller&rsquo;s existing exemption for the entire year, but you generally won&rsquo;t qualify for your own new homestead until 2028.</p>
-        <p>New Florida residents face different rules, and buyers should never assume the taxes advertised on a listing are the taxes they&rsquo;ll pay after purchasing the property.</p>
-        <p>And perhaps most importantly, Amendment 3 doesn&rsquo;t eliminate all property taxes.</p>
+        <ul class="a3-recap"><li>The December 31, 2026 residency cutoff is important.</li><li>January 1 determines annual homestead eligibility.</li><li>Buying in 2027 doesn&rsquo;t necessarily mean you&rsquo;ll lose the seller&rsquo;s existing exemption for the entire year, but you generally won&rsquo;t qualify for your own new homestead until 2028.</li><li>New Florida residents face different rules, and buyers should never assume the taxes advertised on a listing are the taxes they&rsquo;ll pay after purchasing the property.</li><li>And perhaps most importantly, Amendment 3 doesn&rsquo;t eliminate all property taxes.</li></ul>
         <p>I&rsquo;ve always believed buying a home should come with a clear understanding of what you&rsquo;re getting into, financially and otherwise.</p>
-        <p>The best surprises in real estate are finding the perfect home, not receiving an unexpected tax bill.</p>
+        <p class="a3-pull">The best surprises in real estate are finding the perfect home, not receiving an unexpected tax bill.</p>
         <h2 id="let-s-talk-about-your-next-move">Let&rsquo;s Talk About Your Next Move</h2>
         <p>If you&rsquo;re planning to buy or sell a home in South Tampa or anywhere throughout the Tampa Bay area, I&rsquo;d be happy to help you work through the numbers and understand the questions to ask before closing.</p>
         <p>I can help you evaluate properties, compare neighborhoods, and coordinate with the right professionals to get accurate information about taxes, insurance, financing, and the closing process.</p>
