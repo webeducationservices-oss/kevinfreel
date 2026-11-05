@@ -16,6 +16,12 @@ carries his byline, because the expertise in it is genuinely his.
     python3 scripts/email_neighborhood_review.py --slug palma-ceia
     python3 scripts/email_neighborhood_review.py --all      # backfill framing
 
+Targeted questions: add an `ask` block to a neighborhood in the data (topic, why,
+since, questions[{id, label, hint}], optional subject). That neighborhood jumps
+the queue, the email lists the questions, and the review form adds a field for
+each. It stays open until Kevin replies after `since`; at write-up set its
+status to "answered". Palma Ceia condos (2026-11-05) was the first.
+
 Environment:
     ANTHROPIC_API_KEY   drafting the baseline framing (--all, or a new
                         neighborhood with none yet)
@@ -204,23 +210,26 @@ def draft_with_claude(slug: str, n: dict, data: dict, prices: dict) -> dict:
     return response.parsed_output.model_dump()
 
 
-def pending_review_slugs() -> set[str]:
-    """Slugs Kevin has already answered that nobody has written up yet.
+def pending_review_slugs() -> dict[str, str]:
+    """Slugs Kevin has already answered, mapped to his newest reply's timestamp.
 
     Without this the loop re-asks the same neighborhood every Tuesday, because
     it only knows a neighborhood is handled once a human writes the `kevin`
     block. Kevin answered Historic Hyde Park on 2026-09-25 and was emailed
     about it again afterwards; nine sends went out for that one neighborhood.
     Nagging a client for something he already did is how he stops replying.
+
+    The timestamp lets an `ask` (targeted follow-up questions) tell whether he
+    has replied since it went out, rather than ever.
     """
     key = os.environ.get("SUPABASE_SERVICE_ROLE_KEY")
     if not key:
         print("  SUPABASE_SERVICE_ROLE_KEY not set, cannot check for replies")
-        return set()
+        return {}
     q = urllib.parse.urlencode({
         "site_id": f"eq.{SITE_ID}",
         "form_type": "eq.neighborhood-review",
-        "select": "raw_data",
+        "select": "raw_data,created_at",
     })
     req = urllib.request.Request(
         f"{SUPABASE}/rest/v1/leads?{q}",
@@ -231,8 +240,8 @@ def pending_review_slugs() -> set[str]:
             rows = json.loads(r.read() or b"[]")
     except Exception as e:                      # never let this block the run
         print(f"  could not read replies ({e}); proceeding without the check")
-        return set()
-    out = set()
+        return {}
+    out: dict[str, str] = {}
     for row in rows:
         rd = row.get("raw_data") or {}
         if isinstance(rd, str):
@@ -242,23 +251,44 @@ def pending_review_slugs() -> set[str]:
                 continue
         s = (rd or {}).get("neighborhood_slug")
         if s:
-            out.add(s)
+            at = row.get("created_at") or ""
+            out[s] = max(out.get(s, ""), at)
     return out
 
 
+def open_ask(n: dict, replied_at: str | None) -> dict | None:
+    """The neighborhood's targeted questions, if they are still unanswered.
+
+    An `ask` block in the data (topic, why, questions) adds specific questions
+    to the review form and the email. It stays open until Kevin replies after
+    its `since` date, or someone sets its status to "answered" at write-up.
+    """
+    ask = n.get("ask")
+    if not ask or ask.get("status") == "answered" or not ask.get("questions"):
+        return None
+    if replied_at and replied_at[:10] >= ask.get("since", ""):
+        return None
+    return ask
+
+
 def pick_next(data: dict, slug: str | None,
-              awaiting: set[str] | None = None) -> tuple[str, dict] | None:
+              awaiting: dict[str, str] | None = None) -> tuple[str, dict] | None:
     """Next neighborhood needing Kevin's voice, or None when all 52 are done.
 
     `awaiting` holds slugs he has already answered that are still waiting to be
     written up. Those are skipped so he is never asked twice for the same one.
     """
     nbhs = data["neighborhoods"]
-    awaiting = awaiting or set()
+    awaiting = awaiting or {}
     if slug:
         if slug not in nbhs:
             raise SystemExit(f"Unknown slug: {slug}")
         return slug, nbhs[slug]
+
+    # Targeted questions go first: someone asked for them on purpose.
+    for s, n in nbhs.items():
+        if open_ask(n, awaiting.get(s)):
+            return s, n
 
     # Tier 1 first (the neighborhoods with real search demand), then the rest.
     for tier in (1, 2):
@@ -356,7 +386,26 @@ def send_completion(to: str) -> None:
     print(f"  completion email sent to {to} (cc {ADMIN}) [{mid}]")
 
 
-def send_email(to: str, slug: str, n: dict, draft: dict, remaining: int) -> None:
+def ask_block(ask: dict) -> str:
+    """The email's version of the targeted questions on the review form."""
+    items = "".join(
+        f'<li style="margin:0 0 6px;">{html.escape(q["label"])}</li>'
+        for q in ask["questions"]
+    )
+    why = html.escape(ask.get("why") or "")
+    return f"""
+    <div style="background:#fff;border:1px solid #e5e7eb;border-top:3px solid #c41e2a;border-radius:6px;padding:18px 22px;margin:0 0 24px;">
+      <p style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#6b7280;margin:0 0 8px;">This week, a few specific questions</p>
+      <p style="font-family:Georgia,serif;font-size:20px;color:#111;margin:0 0 8px;">{html.escape(ask.get("topic") or "")}</p>
+      <p style="font-size:14px;line-height:1.6;color:#4a4a4a;margin:0 0 10px;">{why}</p>
+      <ul style="font-size:14px;line-height:1.6;color:#4a4a4a;margin:0 0 10px;padding-left:20px;">{items}</ul>
+      <p style="font-size:13px;line-height:1.6;color:#6b7280;margin:0;">Only what you know for sure. If you're not sure about something, say so and we'll leave it off the page.</p>
+    </div>
+"""
+
+
+def send_email(to: str, slug: str, n: dict, draft: dict, remaining: int,
+               ask: dict | None = None) -> None:
 
     link = f"{SITE}/neighborhood-review/?n={slug}"
     preview = (draft.get("take") or "").split("\n\n")[0][:320]
@@ -373,6 +422,7 @@ def send_email(to: str, slug: str, n: dict, draft: dict, remaining: int) -> None
       <p style="font-size:14px;line-height:1.65;color:#4a4a4a;margin:0;font-style:italic;">{preview}&hellip;</p>
     </div>
 
+{ask_block(ask) if ask else ""}
     <p style="font-size:15px;line-height:1.6;color:#4a4a4a;margin:0 0 18px;">
       Tell us what we got wrong and what we are missing. Which streets are the
       good ones, what the insurance really runs, who actually buys there, who
@@ -397,7 +447,7 @@ def send_email(to: str, slug: str, n: dict, draft: dict, remaining: int) -> None
         "to": [to],
         "cc": [ADMIN],
         "reply_to": ADMIN,
-        "subject": f"Neighborhood of the week: {n['name']}",
+        "subject": (ask or {}).get("subject") or f"Neighborhood of the week: {n['name']}",
         "html": shell("Neighborhood of the Week", body),
     })
     print(f"  sent to {to} (cc {ADMIN}) [{mid}]")
@@ -492,11 +542,15 @@ def main() -> int:
         DATA.write_text(json.dumps(data, indent=2, ensure_ascii=False) + "\n")
         print(f"  saved to {DATA.relative_to(ROOT)}")
 
+    ask = open_ask(n, awaiting.get(slug))
+    if ask:
+        print(f"  with {len(ask['questions'])} targeted question(s): {ask.get('topic')}")
+
     if args.dry_run:
         print(f"(dry run: would email {to}, cc {ADMIN})")
         return 0
 
-    send_email(to, slug, n, draft, remaining)
+    send_email(to, slug, n, draft, remaining, ask)
     return 0
 
 

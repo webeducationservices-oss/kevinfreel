@@ -659,6 +659,19 @@ def build_detail(slug: str, n: dict, data: dict, prices: dict) -> str:
       </section>
 """)
 
+    # Extra sections answered through a targeted `ask` (Palma Ceia condos was
+    # the first). His words only, like the rest of the kevin block, and the
+    # heading carries his name so the byline below stays true.
+    for sec in kevin.get("sections") or []:
+        heading, body = sec.get("heading"), sec.get("body")
+        if not (heading and body):
+            continue
+        out.append(f"""      <section class="nb-section">
+        <h2>{esc(heading)}</h2>
+        {paras_of(body)}
+      </section>
+""")
+
     best = kevin.get("best_for") or draft.get("best_for")
     if best:
         out.append(f"""      <section class="nb-section">
@@ -670,7 +683,7 @@ def build_detail(slug: str, n: dict, data: dict, prices: dict) -> str:
     # rewrite the take but leave the market sections alone), so the byline must
     # claim exactly what he actually wrote and no more.
     narrative = ("take", "expect", "investment")
-    his = [k for k in narrative if kevin.get(k)]
+    his = [k for k in narrative if kevin.get(k)] + (["sections"] if kevin.get("sections") else [])
     theirs = [k for k in narrative if not kevin.get(k) and draft.get(k)]
 
     if his and not theirs:

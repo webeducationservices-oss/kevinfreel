@@ -297,6 +297,35 @@
         "expect": "Flood exposure varies block by block in this part of South Tampa, and that variation matters more than the neighborhood label. Most of South Tampa sits inside a FEMA Special Flood Hazard Area, where flood insurance is mandatory with a mortgage, and elevation changes here are measured in a few feet, not a few stories. Tampa's CRS Class 5 rating earns a 25 percent NFIP premium discount inside flood zones, which helps, but insurance overall is the line item that surprises people relocating here. The zone determination, the elevation certificate, and the age of the roof should be pulled on the specific address before a buyer gets attached to it.\n\nLots are generally modest and rectangular, which is why new construction tends to go up rather than out and why side-yard setbacks feel close. Parking is mostly driveway and street, and the narrower brick blocks fill up when a house is entertaining. Traffic concentrates on the through routes, Bay to Bay Boulevard, MacDill Avenue, Himes and Dale Mabry, while the interior streets stay quiet. Expect construction to be a constant background condition: South Tampa and Central Tampa together account for about 88 percent of the City's residential demolitions, averaging roughly 231 permitted teardowns a year across South Tampa, and this district takes a real share of them. Grand trees are protected by city ordinance, which shapes what can be built and where.",
         "investment": "Positioned at the top of the South Tampa range, this is one of the addresses that sets the ceiling rather than follows it. Demand is broad because the appeal is not tied to a single feature, and inventory of genuinely well-kept older homes on good streets stays thin. That combination keeps well-presented listings moving.\n\nMuch of what changes hands here trades on the land as much as the house. The FEMA 50 percent rule is the reason: in an A or V zone, once repairs or improvements exceed half the structure's value, with costs accumulating over a rolling 12 months and land excluded, the home has to be brought up to current floodplain code including elevation. That math pushes many older low-lying houses toward demolition rather than remodel, and buyers planning a substantial renovation should price that scenario before writing an offer. Worth investigating on any specific property: the flood zone and elevation certificate, permit history on prior additions, whether the street and its pavers are city maintained, protected trees on the lot, and what the setbacks and lot coverage rules would actually allow if the plan is to build.",
         "best_for": "Buyers who want the classic brick-street, oak-canopy South Tampa address and are willing to pay top-of-market for it, and to take on an older home's condition and flood-zone homework in exchange."
+      },
+      "ask": {
+        "since": "2026-11-05",
+        "status": "open",
+        "topic": "Condos near Palma Ceia",
+        "why": "People search Google for condos in Palma Ceia, and the page doesn't answer them yet.",
+        "subject": "Neighborhood of the week: Palma Ceia, plus four condo questions",
+        "questions": [
+          {
+            "id": "condo_where",
+            "label": "Where are the condos near Palma Ceia, really?",
+            "hint": "Which buildings or streets. Inside Palma Ceia itself, or just outside it on Bayshore, MacDill, Dale Mabry or Westshore?"
+          },
+          {
+            "id": "condo_new",
+            "label": "What's new construction?",
+            "hint": "Anything just finished, going up, or approved. Building names if you know them."
+          },
+          {
+            "id": "condo_prices",
+            "label": "What are the price bands?",
+            "hint": "Rough ranges are perfect. Older 2/2s, newer buildings, the Bayshore towers."
+          },
+          {
+            "id": "condo_know",
+            "label": "What should condo buyers know?",
+            "hint": "HOA fees, special assessments, inspections and reserves, insurance, rental rules, parking, pets, flood."
+          }
+        ]
       }
     },
     "palma-ceia-pines": {

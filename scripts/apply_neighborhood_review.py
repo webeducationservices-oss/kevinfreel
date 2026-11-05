@@ -153,9 +153,29 @@ def main() -> int:
             print(f"\n  ── {PROMPTS[f]} ──")
             for line in v.splitlines():
                 print(f"     {line}")
+        # Answers to targeted questions (an `ask` block in the data). The
+        # question text travels with the answers, so this still reads after
+        # the ask is retired.
+        try:
+            asked = json.loads(raw.get("ask_questions") or "[]")
+        except ValueError:
+            asked = []
+        for q in asked:
+            v = (raw.get(q.get("id", "")) or "").strip()
+            if not v:
+                continue
+            said_something = True
+            print(f"\n  ── {q.get('label') or q.get('id')} ──")
+            for line in v.splitlines():
+                print(f"     {line}")
         if not said_something:
             print("\n  (submitted with every field blank)")
         print()
+        if asked:
+            print(f"  Targeted questions ({raw.get('ask_topic') or 'ask'}): write only what he")
+            print(f"  confirmed into neighborhoods.{slug}.kevin.sections as")
+            print('  [{"heading": "Kevin on ...", "body": "..."}], then set')
+            print(f"  neighborhoods.{slug}.ask.status to \"answered\".")
         print(f"  Currently published: {'Kevin' if n.get('kevin') else 'baseline framing'}")
         print(f"  Write into: data/south-tampa-neighborhoods.json -> "
               f"neighborhoods.{slug}.kevin")

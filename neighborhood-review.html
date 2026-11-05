@@ -57,6 +57,9 @@
 
   .rev-submit{width:100%;padding:1rem;font-size:1rem;font-weight:600;font-family:inherit;background:var(--gold);color:#fff;border:0;border-radius:8px;cursor:pointer;transition:background .18s}
   .rev-submit:hover{background:var(--gold-hover)}
+  .rev-ask{border:1px solid var(--border);border-top:3px solid var(--gold);border-radius:10px;padding:1.6rem 1.6rem .4rem;margin-bottom:2.75rem}
+  .rev-ask h2{font-family:var(--font-serif);font-size:1.6rem;line-height:1.2;color:var(--navy);margin:0 0 .5rem;font-weight:600}
+  .rev-ask .rev-field > label{font-size:1.125rem}
   .rev-submit:disabled{opacity:.6;cursor:not-allowed}
   .rev-status{margin-top:1rem;font-size:.9375rem;text-align:center}
   .rev-status.error{color:#9a1720}
@@ -98,6 +101,16 @@
         <div class="rev-current">
           <div class="rev-current-lbl">What is on the page right now</div>
           <div id="liveCopy"></div>
+        </div>
+
+        <!-- Targeted questions, shown only when this neighborhood's data
+             carries an open `ask` block (see email_neighborhood_review.py). -->
+        <div class="rev-ask" id="askBox" hidden>
+          <p class="rev-eyebrow">This week, a few specific questions</p>
+          <h2 id="askTopic"></h2>
+          <p class="rev-hint" id="askWhy"></p>
+          <p class="rev-hint">Only what you know for sure. Anything you write here can go on the page under your name, so if you're not sure about something, say so and we'll leave it off.</p>
+          <div id="askFields"></div>
         </div>
 
         <div class="rev-field">
@@ -209,6 +222,37 @@
           live.appendChild(none);
         }
 
+        // Targeted questions for this week, if the data asks any.
+        var ask = n.ask && n.ask.status !== 'answered' && Array.isArray(n.ask.questions) ? n.ask : null;
+        if (ask) {
+          document.getElementById('askTopic').textContent = ask.topic || 'A few specific questions';
+          document.getElementById('askWhy').textContent = ask.why || '';
+          var askFields = document.getElementById('askFields');
+          ask.questions.forEach(function (q) {
+            var id = 'ask_' + String(q.id).replace(/[^a-z0-9_]/gi, '');
+            var wrap = document.createElement('div');
+            wrap.className = 'rev-field';
+            var lab = document.createElement('label');
+            lab.htmlFor = id;
+            lab.textContent = q.label;
+            wrap.appendChild(lab);
+            if (q.hint) {
+              var hint = document.createElement('p');
+              hint.className = 'rev-hint';
+              hint.textContent = q.hint;
+              wrap.appendChild(hint);
+            }
+            var ta = document.createElement('textarea');
+            ta.className = 'rev-input solo';
+            ta.id = id;
+            ta.name = id;
+            ta.setAttribute('data-ask', q.label);
+            wrap.appendChild(ta);
+            askFields.appendChild(wrap);
+          });
+          document.getElementById('askBox').hidden = false;
+        }
+
         loading.hidden = true;
         form.hidden = false;
       })
@@ -237,6 +281,19 @@
         guidance: document.getElementById('guidance').value,
         _honey: form.querySelector('[name="_honey"]').value
       };
+
+      // Answers to this week's targeted questions travel with the question
+      // text, so the lead row still reads correctly after the ask is retired.
+      // form-notify keeps strings only, hence the JSON string.
+      var asked = [];
+      form.querySelectorAll('textarea[data-ask]').forEach(function (ta) {
+        payload[ta.name] = ta.value;
+        asked.push({ id: ta.name, label: ta.getAttribute('data-ask') });
+      });
+      if (asked.length) {
+        payload.ask_topic = document.getElementById('askTopic').textContent;
+        payload.ask_questions = JSON.stringify(asked);
+      }
 
       // reCAPTCHA v3. components.js exposes this loader
       try {
