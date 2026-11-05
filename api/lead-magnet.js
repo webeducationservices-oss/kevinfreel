@@ -9,6 +9,9 @@
  *      reCAPTCHA / honeypot / rate-limit verifier — do NOT double-verify here).
  *   2. Reads form-notify's `accepted` flag. If false, returns the same response
  *      to the client and skips the marketing email (the submission is spam).
+ *      If form-notify errors or can't be reached, returns success:false with a
+ *      502 so the visitor sees the call-Kevin fallback and no conversion fires:
+ *      a lead form-notify never received is a lead Kevin never sees.
  *   3. Sends a branded marketing email to the visitor via Resend directly,
  *      with the appropriate PDF attached (for buyers-guide / mortgage-roadmap)
  *      or a "View Report" button (for neighborhood-report / prep-checklist /
@@ -369,7 +372,7 @@ async function forwardToFormNotify(payload, slug) {
       body: JSON.stringify(body),
     });
     if (!res.ok) {
-      return { networkOk: false, accepted: true, reason: `form_notify_http_${res.status}` };
+      return { networkOk: false, accepted: false, reason: `form_notify_http_${res.status}` };
     }
     const json = await res.json().catch(() => ({}));
     // Default to accepted=true if the flag is missing (rolling deploy safety).
@@ -381,7 +384,7 @@ async function forwardToFormNotify(payload, slug) {
     };
   } catch (err) {
     console.error('[lead-magnet] form-notify forward failed:', err);
-    return { networkOk: false, accepted: true, reason: 'form_notify_unreachable' };
+    return { networkOk: false, accepted: false, reason: 'form_notify_unreachable' };
   }
 }
 
@@ -496,8 +499,15 @@ export default async function handler(req, res) {
   // 1. Forward to form-notify (the authoritative gate).
   const { networkOk, accepted, reason } = await forwardToFormNotify(body, slug);
 
-  // 2. Spam path — return without sending the marketing email.
-  if (networkOk && !accepted) {
+  // 2. Form service down or erroring: report failure so the client shows the
+  //    call-Kevin fallback and fires no conversion.
+  if (!networkOk) {
+    res.status(502).json({ success: false, accepted: false, next: null, reason });
+    return;
+  }
+
+  // 2b. Spam path — return without sending the marketing email.
+  if (!accepted) {
     res.status(200).json({ success: true, accepted: false, next: null, reason });
     return;
   }

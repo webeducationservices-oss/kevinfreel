@@ -1,0 +1,2 @@
+# Build-time partials: injected into pages by scripts/build_partials.py, never served on their own.
+partials/
