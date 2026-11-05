@@ -86,6 +86,16 @@
       "source": "/blog/3223paxton/",
       "destination": "/blog/south-tampa-new-construction-sold-what-your-lot-is-worth/",
       "permanent": true
+    },
+    {
+      "source": "/blog/florida-amendment-3-tampa-bay-homebuyers",
+      "destination": "/blog/florida-amendment-3-tampa-bay-property-taxes/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/florida-amendment-3-tampa-bay-homebuyers/",
+      "destination": "/blog/florida-amendment-3-tampa-bay-property-taxes/",
+      "permanent": true
     }
   ],
   "headers": [
