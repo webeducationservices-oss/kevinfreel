@@ -3074,6 +3074,11 @@ body:has(.hero) .nav:not(.scrolled) {
   padding-left: 0.5rem;
 }
 .blog-article li { margin-bottom: 0.5rem; }
+/* The global ul reset removes bullets; restore them for plain article lists. */
+.blog-article > ul { list-style: disc; }
+.blog-article > ol { list-style: decimal; }
+.blog-article > ul > li::marker,
+.blog-article > ol > li::marker { color: var(--gold); }
 .blog-article strong { color: var(--navy); font-weight: 600; }
 .blog-article img {
   width: 100%;
